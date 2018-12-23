@@ -193,7 +193,7 @@ function placeGames(games, type, append = false) {
             '</a>' +
             '</div>';
 
-            $(game_item).appendTo($('.games-list header.' + type + '-games-section'));
+            $(game_item).insertAfter($('.games-list header.' + type + '-games-section'));
 
 
 
