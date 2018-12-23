@@ -19,7 +19,7 @@
             <nav id="nav">
                 <ul>
                     <li>
-                        <a href="casino.html">Casino</a>
+                        <a href="{{ URL::to('/casino') }}">Casino</a>
                     </li>
                     <li>
                         <a href="casino-live.html">Casino live</a>
@@ -83,7 +83,7 @@
                     <a href="casino-live.html" class="casino-live-link" title="Casino live">
                         <span class="chest" data-text="Casino live">Casino live</span>
                     </a>
-                    <a href="casino.html" class="casino-link" title="Casino">
+                    <a href="{{ URL::to('/casino') }}" class="casino-link" title="Casino">
                         <span class="chest" data-text="Casino">Casino</span>
                     </a>
                     <a href="sport.html" class="sport-link" title="Sport">

@@ -22,6 +22,11 @@ class HomeController extends Controller
         return view('index.about');
     }
 
+    public function casino()
+    {
+        return view('index.casino');
+    }
+
 	public function sports(){
 		$countries = StaygamingBO::getCountries();
 		$bonuses = array();

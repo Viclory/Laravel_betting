@@ -27,6 +27,7 @@ mix.copy('resources/assets/js/pace.min.js', 'public/js')
     .copy('resources/assets/js/modernizr.custom.js', 'public/js')
     .copy('resources/assets/js/select2.full.min.js', 'public/js')
     .copy('resources/assets/js/validation.js', 'public/js')
+    .copy('resources/assets/js/games.js', 'public/js')
 ;
 //.js('resources/assets/js/validation.js', 'public/js')
     //.extract(['jquery', 'bootstrap', 'isotope-layout'])

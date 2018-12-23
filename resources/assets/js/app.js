@@ -364,6 +364,10 @@ function getPopularGames(additional_params) {
     $.extend(params, additional_params);
     $.extend(params, collectParams());
 
+    console.log(params);
+
+    return false;
+
     var games = applyFilters(params);
     placeGames(games, 'popular');
 
