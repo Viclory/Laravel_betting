@@ -92,7 +92,7 @@
                     <div id="game-iframe-box">
                         <div class="sub-box">
                             <img src="{{ asset('img\game-iframe-proportion.png') }}" alt="">
-                            <iframe id="game-frame" src="#" data-ratio="16/9"></iframe>
+                            <iframe id="game-frame" src="" data-ratio="16/9"></iframe>
                         </div>
                         <div class="controls">
                             <div class="control-btn js-full-screen">
@@ -1224,11 +1224,6 @@
 </div>
 
 <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-<script>
-    $(document).ready(function(){
-        console.log('rrrr');
-    });
-</script>
 <script src="{{ asset('js/modernizr.custom.js') }}"></script>
 <script src="{{ asset('js/jquery.responsImg.min.js') }}"></script>
 <script src="{{ asset('js/select2.full.min.js') }}"></script>
@@ -1238,7 +1233,7 @@
 <script src="{{ asset('js/sticky.min.js') }}"></script>
 <script src="{{ asset('js/iframeResizer.min.js') }}"></script>
 <script src="{{ asset('js/validation.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/games.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

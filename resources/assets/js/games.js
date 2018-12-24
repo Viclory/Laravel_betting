@@ -163,6 +163,8 @@ function getPopularGames(additional_params) {
 
     placeGames(games, 'popular');
 
+    //gameActions();
+
     // if (games.show_more == true) {
     //     $('.games-section.popular-games .row .view-more').removeClass('d-none');
     // } else {
@@ -176,32 +178,16 @@ function placeGames(games, type, append = false) {
     if (games.result.length > 0) {
         $.each(games.result,function(index,value){
 
-
-/*
-            gamesHtml+='<div class="grid-item">' +
-                '<div class="game-item align-items-baseline" data-game-id="'+value.id+'" style="background-image:url('+value.game_img+');">' +
-                '<a href="/game/' + value.vendor_game_id + '"><div class="overlay"></div><div class="game-title">'+value.name+'</div></a>' +
-                '</div>' +
-                '</div>';
-                */
-
             var game_item = '<div class="game-item">' +
-            '<a href="" class="game-link js-open-popup" data-touch-popup="choose-game-popup" data-popup="authorization" style="background-image: url(' + value.game_img + ');">' +
+            '<a href="#" class="game-link js-open-popup" data-touch-popup="choose-game-popup" data-popup="authorization" style="background-image: url(' + value.game_img + ');">' +
             '<div class="overlay">' +
-            '<span data-text="Играть бесплатно" class="js-open-game" data-src="/game/' + value.vendor_game_id + '" data-game-bg="static-bg">Играть бесплатно</span>' +
+            '<span data-text="Играть бесплатно" class="js-open-game" data-src="' + value.iframe_not_logged + '" data-game-bg="static-bg">Играть бесплатно</span>' +
             '</div>' +
             '</a>' +
             '</div>';
 
             $(game_item).insertAfter($('.games-list header.' + type + '-games-section'));
-
-
-
-
-
-
         });
-        $('.' + type + '-games-section .count-text .count').html($('.games-list header.' + type + '-games-section .game-item').length);
     } else {
         gamesHtml = '<div>No Results</div>';
     }
@@ -219,6 +205,6 @@ function placeGames(games, type, append = false) {
 console.log($('.games-list header.popular-games-section'));
 
 if ($('header.popular-games-section').is(':visible')) {
-    console.log('getPopularGames');
+    //console.log('getPopularGames');
     getPopularGames({limit: games_count});
 }

@@ -440,7 +440,7 @@
     }
 
     /*Game box*/
-    function gameActions(){
+    var gameActions = function(){
         var scrollTopTouch;
         $('.js-open-game').click(function(e){
             e.stopPropagation();
