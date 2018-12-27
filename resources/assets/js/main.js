@@ -775,8 +775,8 @@
     $('#login_form button').on('click', function(){
         // alert('login');
 
-        var login_form = $(this).parents('form');
-        initFormValidation('login_form', login_form);
+        // var login_form = $(this).parents('form');
+        // initFormValidation('login_form', login_form);
 
         if ($(login_form).validate().form()) {
             $(login_form).submit();
@@ -892,6 +892,7 @@
     /*Document ready*/
     $(function(){
         initFormValidation('registration', $('#quick_registration'));
+        initFormValidation('login_form', $('#login_form'));
     });
 
     /*Window load*/

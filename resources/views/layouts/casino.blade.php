@@ -671,35 +671,9 @@
             </footer>
             <span class="js-close-popup" title="Закрыть"></span>
         </div>
-        <div class="simple-popup authorization hidden">
-            <p class="h2" data-text="Авторизация">Авторизация</p>
-
-            <div class="max-w">
-                <form action="#" class="form">
-                    <div class="field">
-                        <input type="text" class="form-control icon-login" placeholder="Ваш логин">
-                    </div>
-                    <div class="field error-field">
-                        <input type="password" class="form-control icon-password" placeholder="Ваш пароль">
-
-                        <div class="field-error">
-                            <div class="align-m">
-                                <p>Ошибка пароля</p>
-                            </div>
-                        </div>
-                        <p><a href="" data-popup="recover-password" class="js-open-popup">Забыли пароль?</a></p>
-                    </div>
-                    <button type="button" class="btn full-width">Войти</button>
-                </form>
-            </div>
-            <footer class="footer">
-                <div class="max-w">
-                    <p>Вы еще не зарегистрированы? <a href="" data-popup="registration-popup" class="js-open-popup">Создать&nbsp;аккаунт</a>
-                    </p>
-                </div>
-            </footer>
-            <span class="js-close-popup" title="Закрыть"></span>
-        </div>
+        @if(!Auth::user())
+            @include('partials.login-popup')
+        @endif
         <div class="simple-popup payment-order hidden">
             <p class="h2" data-text="Депозит с neteller">Депозит с neteller</p>
 
@@ -1232,6 +1206,8 @@
 <script src="{{ asset('js/swiper.min.js') }}"></script>
 <script src="{{ asset('js/sticky.min.js') }}"></script>
 <script src="{{ asset('js/iframeResizer.min.js') }}"></script>
+<script src="{{ asset('js/jquery.validate.js') }}"></script>
+<script src="{{ asset('js/jquery.validate.messages_' . \App::getLocale() . '.js') }}"></script>
 <script src="{{ asset('js/validation.js') }}"></script>
 <script src="{{ asset('js/games.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
