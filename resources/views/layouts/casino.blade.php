@@ -35,6 +35,8 @@
             </nav>
             <div class="js-clock"></div>
             <div class="controls">
+
+                @if (Auth::user())
                 <a href="" data-popup="payment-order" class="icon-btn deposit js-open-popup">
                     <span class="icon"></span>
                     <span class="sum">100 <span class="currency">$</span></span>
@@ -42,6 +44,8 @@
                 <a href="" data-popup="private-office-popup" class="icon-btn account js-open-popup">
                     <span class="icon"></span>
                 </a>
+                @endif
+
                 <a href="" data-popup="assistance-popup" class="icon-btn assistance js-open-popup">
                     <span class="icon"></span>
                 </a>

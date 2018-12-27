@@ -66,9 +66,9 @@ class PlayerController extends Controller
 		    'city' => $request->input('city')
 	    ];
 
-	    $result = StaygamingBO::registerUser($registerBean);
+        $result = StaygamingBO::registerUser($registerBean);
 
-	    $res = json_decode($result);
+        $res = json_decode($result);
 	    if (isset($res->status) && $res->status > 0) {
 		    $newPlayer = Player::createPlayer($request);
 		    if (Auth::attempt(array('username' => $newPlayer->username, 'password' => $request->password))) {
@@ -88,7 +88,7 @@ class PlayerController extends Controller
 	    if (!$player) {
 	        $result = array(
 	            'status' => 0,
-                'message' => 'User not found'
+                'message' => __('auth.user_not_found')
             );
 
         } else {

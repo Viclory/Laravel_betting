@@ -87,8 +87,8 @@ function initFormValidation(formId, formObj) {
                     // zip: $('#register-player-form input[name="zip"]').val()
                 };
 
-                console.log(registerObj);
-                return false;
+                // console.log(registerObj);
+                // return false;
 
 
                 $.post(
@@ -96,14 +96,11 @@ function initFormValidation(formId, formObj) {
                     registerObj,
                     function(result){
                         var res = $.parseJSON(result);
-                        console.log(res);
-                        return false;
-                        // if (res.status > 0) {
-                        //     $('.signup-popup').modal("hide");
-                        //     top.location.reload();
-                        // } else {
-                        //     alert('something went wrong' + res.message);
-                        // }
+                        if (res.status > 0) {
+                            top.location.reload();
+                        } else {
+                            alert(res.message);
+                        }
                     }
 
                 );
@@ -164,6 +161,7 @@ function initFormValidation(formId, formObj) {
 
                         if (res.status == 0) {
                             alert(res.message);
+                            $(form).find('#login_username').focus();
                             return false;
                         } else {
                             if (res.result.id > 0) {
