@@ -1,17 +1,12 @@
 <div class="simple-popup authorization hidden">
     <p class="h2" data-text="Авторизация">Авторизация</p>
     <div class="max-w">
-        <form action="#" class="form">
+        <form class="form login-form" id="login_form" action="{{ Url::to('/player/login') }}" method="post">
             <div class="field">
-                <input type="text" class="form-control icon-login" placeholder="Ваш логин">
+                <input type="text" name="login_username" id="login_username" class="form-control icon-login" placeholder="Ваш логин">
             </div>
             <div class="field error-field">
-                <input type="password" class="form-control icon-password" placeholder="Ваш пароль">
-                <div class="field-error">
-                    <div class="align-m">
-                        <p>Ошибка пароля</p>
-                    </div>
-                </div>
+                <input type="password" class="form-control icon-password" name="login_password" id="login_password" placeholder="Ваш пароль">
                 <p><a href="" data-popup="recover-password" class="js-open-popup">Забыли пароль?</a></p>
             </div>
             <button type="button" class="btn full-width">Войти</button>

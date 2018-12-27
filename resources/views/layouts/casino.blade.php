@@ -12,11 +12,11 @@
 <div id="all">
     <header id="header">
         <div class="container">
-            <a href="index-4.html" id="logo" title="На главную"></a>
+            <a href="{{ URL::to('/') }}" id="logo" title="На главную"></a>
             <nav id="nav">
                 <ul>
                     <li class="active">
-                        <a href="casino.html">Casino</a>
+                        <a href="{{ URL::to('/casino') }}">Casino</a>
                     </li>
                     <li>
                         <a href="casino-live.html">Casino live</a>

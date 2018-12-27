@@ -85,21 +85,30 @@ class PlayerController extends Controller
     public function login(Request $request)
     {
 	    $player = Player::where('username', $request->username)->first();
-	    $result = StaygamingBO::loginUser($request);
-	    $res = json_decode($result);
-	    if ($res->status > 0) {
-		    if (Auth::attempt(array('username' => $res->result->username, 'password' => $request->password))) {
-			    $player->access_token = $res->result->token;
+	    if (!$player) {
+	        $result = array(
+	            'status' => 0,
+                'message' => 'User not found'
+            );
 
-			    // update balance api call here
-			    $player->balance = $res->result->balance;
+        } else {
+            $result = StaygamingBO::loginUser($request);
+            $res = json_decode($result);
+            if ($res->status > 0) {
+                if (Auth::attempt(array('username' => $res->result->username, 'password' => $request->password))) {
+                    $player->access_token = $res->result->token;
 
-			    $player->save();
-			    $request->session()->put('player', $res->result);
+                    // update balance api call here
+                    $player->balance = $res->result->balance;
 
-		    }
-	    }
-	    return $result;
+                    $player->save();
+                    $request->session()->put('player', $res->result);
+
+                }
+            }
+        }
+
+	    return json_encode($result);
     }
 
     public function logout()

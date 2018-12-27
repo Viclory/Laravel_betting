@@ -25,9 +25,9 @@ Route::post('/games', 'HomeController@games');
 //Route::get('/games/{games_type}', ['uses' => 'HomeController@viewGames']);
 //Route::post('/get-all-games', 'HomeController@getAllHomeGames');
 //Route::get('/sports', 'HomeController@sports');
-//Route::post('/player/register', 'PlayerController@register');
+Route::post('/player/register', 'PlayerController@register');
 //
-//Route::post('/player/login', 'PlayerController@login');
+Route::post('/player/login', 'PlayerController@login');
 //Auth::routes();
 //
 //Route::get('/logout', 'PlayerController@logout')->middleware('auth');

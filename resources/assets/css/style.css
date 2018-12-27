@@ -457,6 +457,9 @@ p img:first-child{
     outline: none !important;
     text-overflow: ellipsis;
     }
+.field .form-control.field-error {
+    margin-top: 0;
+}
 .form-control[class*="icon-"]{
     padding-left: 52px;
     }
@@ -3623,6 +3626,7 @@ html:not(.ie) .games-list .game-item .overlay span:before{
     right: auto;
     max-width: none;
     margin: 10px 0 0;
+    /*color: #F00;*/
     }
 .registration-popup .field-error .align-m{
     text-align: left;

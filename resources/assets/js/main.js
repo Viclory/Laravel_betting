@@ -739,11 +739,27 @@
         if (dataStep == 'registration-complete') {
 
             var reg_form = $(this).parents('form');
+            clearErrors($(reg_form));
+            // initFormValidation('registration', reg_form);
 
-            if (!validateForm('registration', reg_form)) {
-                return false;
+            if ($(reg_form).validate().form()) {
+                $(reg_form).submit();
             }
+            // console.log();
+            // validateForm('registration', reg_form);
+
+            // $(reg_form).validate();
+            //$(reg_form).find('button[type="submit"]').trigger('click');
+            //console.log($(reg_form));
+            //$(reg_form).validate();
+
+            // if (!validateForm('registration', reg_form)) {
+            //     console.log('reg form is not valid');
+            //     return false;
+            // }
             //alert('validation');
+
+            return false;
 
         }
 
@@ -754,6 +770,18 @@
         $("." + dataStep).removeClass('hidden');
 
         $('#popup > .container').scrollTop(0);
+    });
+
+    $('#login_form button').on('click', function(){
+        // alert('login');
+
+        var login_form = $(this).parents('form');
+        initFormValidation('login_form', login_form);
+
+        if ($(login_form).validate().form()) {
+            $(login_form).submit();
+        }
+
     });
 
 
@@ -863,8 +891,7 @@
 
     /*Document ready*/
     $(function(){
-
-
+        initFormValidation('registration', $('#quick_registration'));
     });
 
     /*Window load*/

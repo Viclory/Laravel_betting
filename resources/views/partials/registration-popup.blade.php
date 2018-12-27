@@ -8,20 +8,21 @@
             </div>
             <div class="quick-registration hidden child">
                 <p class="title">Создайте бесплатный аккаунт<br>Быстрая регистрация</p>
-                <form class="form" method="post" action="{{ URL::to('/player/register') }}">
+                <form class="form" id="quick_registration" method="post" action="{{ URL::to('/player/register') }}">
+                    <input type="hidden" name="merchant_id" id="merchant_id" value="{{ env('MERCHANT_ID') }}">
                     <div class="two-cols">
                         <div class="col">
                             <div class="field">
-                                <input type="text" class="form-control" placeholder="Ваш логин">
+                                <input type="text" class="form-control" name="registration_login" id="registration_login" placeholder="Ваш логин">
                             </div>
                         </div>
                         <div class="col">
                             <div class="field">
-                                <select name="currency" id="currency" class="select" data-placeholder="Валюта">
+                                <select name="registration_currency" id="registration_currency" class="select" data-placeholder="Валюта">
                                     <option value=""></option>
                                     <?php $currencies = \App\Helpers\Functions::getCurrencies(); ?>
                                     @foreach($currencies as $currency)
-                                        <option value="{{$currency->id}}">{{$currency->char_code}}</option>
+                                        <option value="{{$currency->int_code}}">{{$currency->char_code}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -30,24 +31,24 @@
                     <div class="two-cols">
                         <div class="col">
                             <div class="field">
-                                <input type="password" class="form-control" placeholder="Пароль">
+                                <input type="password" name="registration_password" id="registration_password" class="form-control" placeholder="Пароль">
                             </div>
                         </div>
                         <div class="col">
                             <div class="field">
-                                <input type="password" class="form-control" placeholder="Повторите пароль">
+                                <input type="password" name="registration_confirm_password" id="registration_confirm_password" class="form-control" placeholder="Повторите пароль">
                             </div>
                         </div>
                     </div>
                     <div class="two-cols">
                         <div class="col">
                             <div class="field">
-                                <input type="text" class="form-control" placeholder="E-mail">
+                                <input type="text" name="registration_email" id="registration_email" class="form-control" placeholder="E-mail">
                             </div>
                         </div>
                         <div class="col">
                             <div class="field">
-                                <select name="country_id" id="country_id" class="select" data-placeholder="Страна">
+                                <select name="registration_country_id" id="registration_country_id" class="select" data-placeholder="Страна">
                                     <option value="">---</option>
                                     <?php $countries = \App\Helpers\Functions::getCountries(); ?>
                                     @foreach ($countries as $country)
@@ -60,7 +61,7 @@
                     <div class="two-cols">
                         <div class="col">
                             <div class="field">
-                                <input type="text" class="form-control" placeholder="Введите промокод">
+                                <input type="text" name="promocode" id="registration_promocode" class="form-control" placeholder="Введите промокод">
                             </div>
                         </div>
                         <div class="col">
@@ -71,14 +72,16 @@
                     </div>
                     <div class="field">
                         <div class="checkbox-item">
-                            <input id="rules-inp" name="rules-inp" type="checkbox">
+                            <input id="rules-inp" name="rules-inp" id="registration_rules" type="checkbox" checked>
                             <label for="rules-inp">Я прочитал(а) и принял(а) <a href="">Правила и условия</a></label>
                         </div>
                     </div>
                     <div class="btns-box">
-                        <a href="" data-step="choose-registration" class="btn sub-color js-further-step">Назад</a>
-                        <a href="" data-step="registration-complete" class="btn js-further-step">регистрация</a>
+                        <a href="#" data-step="choose-registration" class="btn sub-color js-further-step">Назад</a>
+                        <a href="#" data-step="registration-complete" class="btn js-further-step">регистрация</a>
                     </div>
+
+                    {{--<button type="submit" class="">qqq</button>--}}
                 </form>
             </div>
             <div class="full-registration hidden child">
@@ -226,3 +229,6 @@
     </div>
     <span class="js-close-popup" title="Закрыть"></span>
 </div>
+<script>
+
+</script>

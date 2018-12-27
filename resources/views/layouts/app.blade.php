@@ -517,7 +517,9 @@
             <span class="js-close-popup" title="Закрыть"></span>
         </div>
 
+        @if(!Auth::user())
         @include('partials.registration-popup')
+        @endif
 
         <div class="assistance-popup hidden">
             <div class="header">
@@ -753,6 +755,8 @@
 <script src="{{ asset('js/swiper.min.js') }}"></script>
 <script src="{{ asset('js/sticky.min.js') }}"></script>
 <script src="{{ asset('js/iframeResizer.min.js') }}"></script>
+<script src="{{ asset('js/jquery.validate.js') }}"></script>
+<script src="{{ asset('js/jquery.validate.messages_' . \App::getLocale() . '.js') }}"></script>
 <script src="{{ asset('js/validation.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 
