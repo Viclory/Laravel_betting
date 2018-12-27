@@ -52,7 +52,7 @@ class PlayerController extends Controller
     public function register(Request $request)
     {
 	    $registerBean = [
-		    'name' => $request->input('name'),
+		    'name' => $request->input('username'),
 		    'email' => $request->input('email'),
 		    'password' => $request->input('password'),
 		    'dob' => $request->input('dob'),
@@ -67,6 +67,7 @@ class PlayerController extends Controller
 	    ];
 
         $result = StaygamingBO::registerUser($registerBean);
+//        var_dump($result);exit;
 
         $res = json_decode($result);
 	    if (isset($res->status) && $res->status > 0) {

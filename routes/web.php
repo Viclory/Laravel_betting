@@ -30,7 +30,7 @@ Route::post('/player/register', 'PlayerController@register');
 Route::post('/player/login', 'PlayerController@login');
 //Auth::routes();
 //
-//Route::get('/logout', 'PlayerController@logout')->middleware('auth');
+Route::get('/logout', 'PlayerController@logout')->middleware('auth');
 //
 //Route::post('/deposit', 'PlayerController@makeDeposit');
 //Route::post('/withdraw', 'PlayerController@makeWithdraw');
