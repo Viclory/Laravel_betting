@@ -693,10 +693,10 @@
         }
     });
 
-    $('.js-leave-popup').click(function(e){
-        e.preventDefault();
-        $('.js-close-popup').trigger('click');
-    });
+    // $('.js-leave-popup').click(function(e){
+    //     e.preventDefault();
+    //     $('.js-close-popup').trigger('click');
+    // });
 
 
     $('.private-office-popup .nav-item, .private-office-popup .tab-btn, .private-office-popup .resp-accordion').click(function(){

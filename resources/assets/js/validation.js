@@ -155,16 +155,16 @@ function initFormValidation(formId, formObj) {
                         username: $(form).find('#login_username').val(),
                         password: $(form).find('#login_password').val(),
                     },
-                    function(result) {
-                        console.log(result);
-                        var res = $.parseJSON(result);
-
-                        if (res.status == 0) {
-                            alert(res.message);
+                    function(response) {
+                        console.log(response);
+                        var resp = $.parseJSON(response);
+                        resp = JSON.parse(resp);
+                        if (resp.status == 0) {
+                            alert(resp.message);
                             $(form).find('#login_username').focus();
                             return false;
                         } else {
-                            if (res.result.id > 0) {
+                            if (resp.result.id > 0) {
                                 top.location.reload();
                             }
                         }
