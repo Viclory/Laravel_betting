@@ -17,7 +17,7 @@ Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/casino', 'HomeController@casino')->name('casino');
 
 
-
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 
 //Route::get('/get-all-games/{page_number}/{type}', 'HomeController@getAllHomeGames');

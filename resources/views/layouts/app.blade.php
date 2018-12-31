@@ -38,7 +38,7 @@
             </nav>
             <div class="controls">
                 @if(!Auth::user())
-                <a href="#" data-popup="registration-popup" class="btn sub-color small-btn js-open-popup">Регистрация</a>
+                <a href="#" data-popup="registration-popup" class="btn sub-color small-btn js-open-popup">{{ __('auth.registration') }}</a>
                 <a href="" data-popup="authorization" class="icon-btn login js-open-popup">
                     <span class="icon"></span>
                 </a>
@@ -54,25 +54,8 @@
                 <a href="" data-popup="assistance-popup" class="icon-btn assistance js-open-popup">
                     <span class="icon"></span>
                 </a>
-                <div id="langs-box">
-                        <span class="current-lang">
-                            <img src="{{ asset('\img\rus-lang.png') }}" alt="">
-                        </span>
-                    <div class="dropdown">
-                        <a href="" title="Eng">
-                            <img src="{{ asset('\img\en-lang.png') }}" alt="">
-                            <span>Vietnamese</span>
-                        </a>
-                        <a href="" title="Tur">
-                            <img src="img\tur-lang.png" alt="">
-                            <span>English</span>
-                        </a>
-                        <a href="" title="Tur">
-                            <img src="img\tur-lang.png" alt="">
-                            <span>Turkish</span>
-                        </a>
-                    </div>
-                </div>
+                @include('partials.languages-selector')
+
             </div>
             <span id="js-open-nav" title="Открыть меню">
                     <span></span>
