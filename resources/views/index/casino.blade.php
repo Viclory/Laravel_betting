@@ -7,10 +7,7 @@
             <div class="container">
                 <img src="{{ asset('img/top-character-casino.png') }}" class="character" alt="">
 
-                <div class="we-give">
-                    <p>Мы дарим до <span class="money">600$</span> на первый депозит</p>
-                    <a href="" class="btn js-open-popup" data-popup="authorization">открыть аккаунт</a>
-                </div>
+                @include('partials.we-give')
             </div>
         </div>
         <main id="main">

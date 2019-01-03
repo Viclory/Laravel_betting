@@ -16,6 +16,16 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'user_not_found' => 'Пользователь не найден',
-    'registration' => 'Регистрация'
+    'registration' => 'Регистрация',
+    'your_login' => 'Ваш логин',
+    'signin' => 'Авторизация',
+    'your_password' => 'Ваш пароль',
+    'forgot_your_password' => 'Забыли пароль',
+    'login' => 'Войти',
+    'logout' => 'Выйти',
+    'not_registered' => 'Вы еще не зарегистрированы',
+    'create_account' => 'Создать аккаунт',
+    'close' => 'Закрыть',
+    'open_account' => 'открыть аккаунт'
 
 ];

@@ -178,9 +178,15 @@ function placeGames(games, type, append = false) {
     if (games.result.length > 0) {
         $.each(games.result,function(index,value){
 
-            var game_item = '<div class="game-item">' +
-            '<a href="#" class="game-link js-open-popup" data-touch-popup="choose-game-popup" data-popup="authorization" style="background-image: url(' + value.game_img + ');">' +
-            '<div class="overlay">' +
+            var game_item = '<div class="game-item">';
+
+            if (value.iframe_logged == undefined) {
+                game_item += '<a href="#" class="game-link js-open-popup" data-touch-popup="choose-game-popup" data-popup="authorization" style="background-image: url(' + value.game_img + ');">';
+            } else {
+                game_item += '<a href="#" class="game-link js-open-game" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
+            }
+
+            game_item += '<div class="overlay">' +
             '<span data-text="Играть бесплатно" class="js-open-game" data-src="' + value.iframe_not_logged + '" data-game-bg="static-bg">Играть бесплатно</span>' +
             '</div>' +
             '</a>' +

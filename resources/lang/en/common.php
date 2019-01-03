@@ -13,4 +13,6 @@ return [
     */
 
     'rus_lang_selector' => 'Russian',
+    'go_to_main' => 'Go to main',
+    'read_more' => 'Read More'
 ];

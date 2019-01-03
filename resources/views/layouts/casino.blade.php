@@ -50,26 +50,8 @@
                     <span class="icon"></span>
                 </a>
 
-                <div id="langs-box">
-                        <span class="current-lang">
-                            <img src="{{ asset('img/rus-lang.png') }}" alt="">
-                        </span>
+                @include('partials.languages-selector')
 
-                    <div class="dropdown">
-                        <a href="" title="Eng">
-                            <img src="{{ asset('img/en-lang.png') }}" alt="">
-                            <span>Vietnamese</span>
-                        </a>
-                        <a href="" title="Tur">
-                            <img src="{{ asset('img/tur-lang.png') }}" alt="">
-                            <span>English</span>
-                        </a>
-                        <a href="" title="Tur">
-                            <img src="{{ asset('img/tur-lang.png') }}" alt="">
-                            <span>Turkish</span>
-                        </a>
-                    </div>
-                </div>
             </div>
             <span id="js-open-nav" title="Открыть меню">
                     <span></span>
@@ -375,7 +357,7 @@
         <div class="private-office-popup hidden">
             <div class="sub-box">
                 <div class="office-nav">
-                    <a href="" class="js-leave-popup">Выйти</a>
+                    <a href="{{ URL::to('/logout') }}" class="js-leave-popup">Выйти</a>
                     <a href="" class="nav-item active" data-box="profile-box">
                             <span class="icon">
                                 <img src="{{ asset('img/profile-icon.png') }}" alt="">
@@ -718,15 +700,7 @@
             </div>
             <span class="js-close-popup" title="Закрыть"></span>
         </div>
-        <div class="choose-game-popup hidden">
-            <img src="{{ asset('img/uploads/choose-game-popup-img.jpg') }}" alt="">
-
-            <div class="btns-box">
-                <a href="" class="btn js-open-popup" data-popup="authorization">на деньги</a>
-                <a href="" class="btn sub-color js-open-game" data-src="" data-game-bg="static-bg">попробуй</a>
-            </div>
-            <span class="js-close-popup" title="Закрыть"></span>
-        </div>
+        @include('partials.choose-game-popup')
         <div class="registration-popup hidden">
             <div class="sub-box">
                 <div class="registration-box">
@@ -1211,7 +1185,9 @@
 <script src="{{ asset('js/sticky.min.js') }}"></script>
 <script src="{{ asset('js/iframeResizer.min.js') }}"></script>
 <script src="{{ asset('js/jquery.validate.js') }}"></script>
-<script src="{{ asset('js/jquery.validate.messages_' . \App::getLocale() . '.js') }}"></script>
+@if (\App::getLocale() != 'en')
+    <script src="{{ asset('js/jquery.validate.messages_' . \App::getLocale() . '.js') }}"></script>
+@endif
 <script src="{{ asset('js/validation.js') }}"></script>
 <script src="{{ asset('js/games.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>

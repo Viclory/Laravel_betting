@@ -406,10 +406,15 @@ class StaygamingBO extends Model
 	public static function games(Request $request)
 	{
 		$url = 'api/v1/games';
-		$res = self::api($url, 'POST', array(
-			'params' => json_encode($request->toArray())
-//			'api_token' => Auth::user()->access_token)
-		));
+
+		$params = array(
+            'params' => json_encode($request->toArray())
+        );
+
+		if (Auth::user()) {
+		    $params['api_token'] = Auth::user()->access_token;
+        }
+		$res = self::api($url, 'POST', $params);
 
 		return $res;
 	}
