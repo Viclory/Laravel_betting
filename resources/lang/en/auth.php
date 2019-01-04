@@ -25,6 +25,7 @@ return [
     'not_registered' => "Don't have an account",
     'create_account' => 'Create an account',
     'close' => 'Close',
-    'open_account' => 'open account'
+    'open_account' => 'open account',
+    'user_not_found' => 'User not found'
 
 ];
