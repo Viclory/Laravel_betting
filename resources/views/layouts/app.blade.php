@@ -59,10 +59,10 @@
 
             </div>
             <span id="js-open-nav" title="Открыть меню">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
         </div>
     </header>
 
@@ -93,77 +93,13 @@
                 </div>
             </div>
         </div>
-        <span class="js-anchor" title="Вниз"></span>
+        <span class="js-anchor" title="{{ __('common.down') }}"></span>
     </div>
 
     @yield('content')
 
-    <footer id="footer">
-        <div class="container">
-            <div class="top-box">
-                <div class="sub-nav">
-                    <div class="col">
-                        <ul>
-                            <li>
-                                <a href="{{ URL::to('/about') }}">О нас</a>
-                            </li>
-                            <li>
-                                <a href="">Контакты</a>
-                            </li>
-                            <li>
-                                <a href="">Правила и условия</a>
-                            </li>
-                            <li>
-                                <a href="">Ответственная игра</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col">
-                        <ul>
-                            <li>
-                                <a href="">Правила приема ставок</a>
-                            </li>
-                            <li>
-                                <a href="">Политика конфиденциальности</a>
-                            </li>
-                            <li>
-                                <a href="">Партнерам</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://vk.com/" class="vkontakte" target="_blank" title="Vkontakte">vk</a>
-                    <a href="https://twitter.com/" class="twitter" target="_blank" title="Twitter"></a>
-                    <a href="https://facebook.com/" class="facebook" target="_blank" title="Facebook">f</a>
-                </div>
-                <img src="{{ asset('img/footer-logo.png') }}" id="footer-logo" alt="">
-            </div>
-            <div id="logos-box">
-                <img src="{{ asset('img/uploads/footer-logo1.jpg') }}" alt="">
-                <img src="{{ asset('img/uploads/footer-logo2.jpg') }}" alt="">
-                <img src="{{ asset('img/uploads/footer-logo3.jpg') }}" alt="">
-                <img src="{{ asset('img/uploads/footer-logo4.jpg') }}" alt="">
-                <img src="{{ asset('img/uploads/footer-logo5.jpg') }}" alt="">
-                <img src="{{ asset('img/uploads/footer-logo6.jpg') }}" alt="">
-            </div>
-            <div class="middle-box">
-                <div class="text">
-                    <p>LEPRECONCASINO – Play Casino, Live Casino, Slots, Bingo and Sportsbook online<br>LEPRECONCASINO has one of the largest selections of casino games. Play casino games like Roulette, Slots, Blackjack and lots more. For new players here at Lepreconcasino our welcome package gives you a 200% on the first deposit.</p>
-                </div>
-                <div class="img">
-                    <img src="{{ asset('img/uploads/footer-img1.jpg') }}" alt="">
-                    <img src="{{ asset('img/uploads/footer-img2.jpg') }}" alt="">
-                </div>
-            </div>
-            <div id="copy">
-                <div id="copy-logo">
-                    <img src="{{ asset('img/copy-logo.jpg') }}" alt="">
-                </div>
-                <p>Все права защищены 2018</p>
-            </div>
-        </div>
-    </footer>
+    @include('partials.footer')
+
 </div>
 
 <div id="page-overlay"></div>
@@ -252,14 +188,14 @@
         <div class="assistance-popup hidden">
             <div class="header">
                 <div class="col">
-                    <a href="" class="back-link">Назад</a>
+                    <a href="" class="back-link">{{ __('common.back') }}</a>
                 </div>
                 <div class="col">
-                    <a href="" class="js-close-popup">Закрыть окно</a>
+                    <a href="" class="js-close-popup">{{ __('common.close_window') }}</a>
                 </div>
             </div>
             <div class="main-box">
-                <p class="h2">Как мы можем <br>вам помочь?</p>
+                <p class="h2">{{ __('common.how_can_we_help_you') }}?</p>
                 <p>Отправьте нам электронное сообщение или пообщайтесь с нами в чате, просмотрите FAQ или свяжитесь с нами в социальных сетях</p>
                 <p>Онлайн-чат открыт с 08:00 до 00:00</p>
                 <div class="assistance-items">
@@ -268,8 +204,8 @@
                             <img src="img\chat-icon.png" alt="">
                         </div>
                         <div class="text">
-                            <p><a href="" data-child="chat-box">Онлайн-чат</a></p>
-                            <p>Чат с нашей командой поддержки</p>
+                            <p><a href="" data-child="chat-box">{{ __('common.online_chat') }}</a></p>
+                            <p>{{ __('common.chat_with_support') }}</p>
                         </div>
                     </div>
                     <div class="item">
@@ -277,8 +213,8 @@
                             <img src="img\mail-icon.png" alt="">
                         </div>
                         <div class="text">
-                            <p><a href="" data-child="message-box">Отправить сообщение для поддержки</a></p>
-                            <p>Ответ получите в течение 12 часов</p>
+                            <p><a href="" data-child="message-box">{{ __('common.message_to_support') }}</a></p>
+                            <p>{{ __('common.answer_during', ['hours' => 12]) }}</p>
                         </div>
                     </div>
                     <div class="item">
@@ -286,8 +222,8 @@
                             <img src="img\interrogation-icon.png" alt="">
                         </div>
                         <div class="text">
-                            <p><a href="" data-child="faq-box">Часто задаваемые вопросы</a></p>
-                            <p>Тут вы найдете ответ на ваш вопрос</p>
+                            <p><a href="" data-child="faq-box">{{ __('common.faq') }}</a></p>
+                            <p>{{ __('common.will_find_answer_here') }}</p>
                         </div>
                     </div>
                 </div>
@@ -297,7 +233,7 @@
                         <a href="https://twitter.com/" class="twitter" target="_blank" title="Twitter"></a>
                         <a href="https://facebook.com/" class="facebook" target="_blank" title="Facebook">f</a>
                     </div>
-                    <p>Свяжитесь с нами по email:</p>
+                    <p>{{ __('common.contact_us_by_email') }}:</p>
                     <p><a href="mailto:email@email.com">email@email.com</a></p>
                 </footer>
             </div>

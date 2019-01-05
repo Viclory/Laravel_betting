@@ -14,5 +14,24 @@ return [
 
     'rus_lang_selector' => 'Russian',
     'go_to_main' => 'Go to main',
-    'read_more' => 'Read More'
+    'read_more' => 'Read More',
+    'back' => 'Back',
+    'close_window' => 'Close window',
+    'contacts' => 'Contacts',
+    'terms_and_rules' => 'Terms and Rules',
+    'about' => 'About Us',
+    'responsible_gambling' => 'Responsible Gambling',
+    'betting_rules' => 'Betting Rules',
+    'privacy_policy' => 'Privacy Policy',
+    'for_partners' => 'For Partners',
+    'all_rights_reserved' => 'All rights reserved',
+    'down' => 'Down',
+    'online_chat' => 'Online-chat',
+    'chat_with_support' => 'Chat with support team',
+    'message_to_support' => 'Send a message to support team',
+    'answer_during' => 'You will get the answer during :HOURS hours',
+    'faq' => 'Frequently asked questions',
+    'will_find_answer_here' => 'Here you will find the answer of your question',
+    'contact_us_by_email' => 'Contact us by email',
+    'how_can_we_help_you' => 'How can we help you'
 ];
