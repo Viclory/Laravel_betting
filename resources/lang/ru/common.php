@@ -33,5 +33,6 @@ return [
     'faq' => 'Часто задаваемые вопросы',
     'will_find_answer_here' => 'Тут вы найдете ответ на ваш вопрос',
     'contact_us_by_email' => 'Свяжитесь с нами по email',
-    'how_can_we_help_you' => 'Как мы можем вам помочь'
+    'how_can_we_help_you' => 'Как мы можем вам помочь',
+    'open_menu' => 'Открыть меню'
 ];

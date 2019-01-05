@@ -37,9 +37,10 @@
             <div class="controls">
 
                 @if (Auth::user())
+                    <?php $balanceObj = App\StaygamingBO::getBalanceByPlayerId(Auth::user()->player_id); ?>
                 <a href="" data-popup="payment-order" class="icon-btn deposit js-open-popup">
                     <span class="icon"></span>
-                    <span class="sum">100 <span class="currency">$</span></span>
+                    <span class="sum">{{ $balanceObj->result->balance }} <span class="currency">{{ $balanceObj->result->currency }}</span></span>
                 </a>
                 <a href="" data-popup="private-office-popup" class="icon-btn account js-open-popup">
                     <span class="icon"></span>
@@ -53,11 +54,11 @@
                 @include('partials.languages-selector')
 
             </div>
-            <span id="js-open-nav" title="Открыть меню">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
+            <span id="js-open-nav" title="{{ __('common.open_menu') }}">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
         </div>
     </header>
 

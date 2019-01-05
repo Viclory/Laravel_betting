@@ -156,9 +156,12 @@ function initFormValidation(formId, formObj) {
                         password: $(form).find('#login_password').val(),
                     },
                     function(response) {
-                        console.log(response);
                         var resp = $.parseJSON(response);
-                        resp = JSON.parse(resp);
+
+                        if (typeof resp != 'object') {
+                            resp = JSON.parse(resp);
+                        }
+
                         if (resp.status == 0) {
                             alert(resp.message);
                             $(form).find('#login_username').focus();

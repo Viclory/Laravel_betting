@@ -33,5 +33,6 @@ return [
     'faq' => 'Frequently asked questions',
     'will_find_answer_here' => 'Here you will find the answer of your question',
     'contact_us_by_email' => 'Contact us by email',
-    'how_can_we_help_you' => 'How can we help you'
+    'how_can_we_help_you' => 'How can we help you',
+    'open_menu' => 'Open menu'
 ];
