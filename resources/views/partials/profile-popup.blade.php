@@ -1,3 +1,4 @@
+<?php $player_info = \App\Helpers\Functions::getPlayerInfo(); ?>
 <div class="private-office-popup hidden">
     <div class="sub-box">
         <div class="office-nav">
@@ -6,25 +7,25 @@
                 <span class="icon">
                     <img src="{{ asset('img/profile-icon.png') }}" alt="">
                 </span>
-                Профиль
+                {{ __('common.profile') }}
             </a>
             <a href="" class="nav-item" data-box="deposit-box">
                 <span class="icon">
                     <img src="{{ asset('img/deposit-icon.png') }}" alt="">
                 </span>
-                Депозит
+                {{ __('common.deposit') }}
             </a>
             <a href="" class="nav-item" data-box="withdrawal-box">
                 <span class="icon">
                     <img src="{{ asset('img/withdrawal-icon.png') }}" alt="">
                 </span>
-                Вывод
+                {{ __('common.withdraw') }}
             </a>
             <a href="" class="nav-item" data-box="bonus-box">
                 <span class="icon">
                     <img src="{{ asset('img/bonus-icon.png') }}" alt="">
                 </span>
-                Бонусы
+                {{ __('common.bonuses') }}
             </a>
         </div>
 
@@ -34,7 +35,7 @@
                     <ul class="tabs-list tabs">
                         <li>
                             <span class="tab-btn">
-                                <span class="desktop-text">Персональные данные</span>
+                                <span class="desktop-text">{{ __('common.personal_data') }}</span>
                                 <span class="mobile-text">Данные</span>
                             </span>
                         </li>
@@ -42,7 +43,7 @@
                             <span class="tab-btn">Проверка</span>
                         </li>
                         <li>
-                            <span class="tab-btn">Изменить пароль</span>
+                            <span class="tab-btn">{{ __('common.change_password') }}</span>
                         </li>
                     </ul>
                     <div class="tabs-content tabs">
@@ -51,26 +52,26 @@
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="Ваш логин">
+                                            <input type="text" class="form-control" value="{{ $player_info->username }}" placeholder="{{ __('common.your_login') }}">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="Имя">
+                                            <input type="text" class="form-control" value="{{ $player_info->name }}" placeholder="{{ __('common.your_name') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="Фамилия">
+                                            <input type="text" class="form-control" placeholder="{{ __('common.your_surname') }}">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="field">
                                             <select name="sel-gender2" id="sel-gender2" class="select">
-                                                <option value="Мужской">Мужской</option>
-                                                <option value="Женский">Женский</option>
+                                                <option value="male">{{ __('common.male') }}</option>
+                                                <option value="female">{{ __('common.female') }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -83,26 +84,26 @@
                                     </div>
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="Город">
+                                            <input type="text" class="form-control" placeholder="{{ __('common.city') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="Адрес">
+                                            <input type="text" class="form-control" placeholder="{{ __('common.address') }}">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="Индекс">
+                                            <input type="text" class="form-control" placeholder="{{ __('common.zip') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="dolfec@gmail.com">
+                                            <input type="text" class="form-control" value="{{ $player_info->email }}" placeholder="Email">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -114,11 +115,11 @@
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="1989-08-11">
+                                            <input type="text" class="form-control" value="{{ $player_info->dob }}" placeholder="1989-08-11">
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn">сохранить</button>
+                                <button class="btn">{{ __('common.save') }}</button>
                             </form>
                         </div>
                         <div class="tab">
@@ -129,18 +130,18 @@
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="password" class="form-control" placeholder="Новый пароль">
+                                            <input type="password" class="form-control" placeholder="{{ __('common.new_password') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="password" class="form-control" placeholder="Повторите пароль">
+                                            <input type="password" class="form-control" placeholder="{{ __('common.repeat_password') }}">
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn">сохранить</button>
+                                <button class="btn">{{ __('common.save') }}</button>
                             </form>
                         </div>
                     </div>
@@ -150,13 +151,13 @@
                 <div class="private-office-tabs">
                     <ul class="tabs-list tabs">
                         <li>
-                            <span class="tab-btn">Баланс</span>
+                            <span class="tab-btn">{{ __('common.balance') }}</span>
                         </li>
                         <li>
-                            <span class="tab-btn">История</span>
+                            <span class="tab-btn">{{ __('common.history') }}</span>
                         </li>
                         <li>
-                            <span class="tab-btn">История оплаты</span>
+                            <span class="tab-btn">{{ __('common.payment_history') }}</span>
                         </li>
                     </ul>
                     <div class="tabs-content tabs">
@@ -180,7 +181,7 @@
                             История
                         </div>
                         <div class="tab">
-                            История оплаты
+                            {{ __('common.payment_history') }}
                         </div>
                     </div>
                 </div>
@@ -217,7 +218,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="btn">Вывод</button>
+                                        <button class="btn">{{ __('common.withdraw') }}</button>
                                     </form>
                                 </div>
                                 <div class="item">

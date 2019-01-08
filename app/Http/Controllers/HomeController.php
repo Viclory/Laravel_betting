@@ -4,12 +4,21 @@ use App\StaygamingBO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Player;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
     public function index(Request $request)
     {
         return view('index.home', compact('countries', 'currencies'));
+    }
+
+    public function selectLanguage(Request $request)
+    {
+        if (isset($_COOKIE['locale']) && $_COOKIE['locale'] != '') {
+            return $this->index($request);
+        }
+        return view('index.select-language');
     }
 
     public function contacts()

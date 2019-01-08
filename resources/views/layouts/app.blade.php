@@ -109,7 +109,9 @@
 
 <div id="popup">
     <div class="container">
+        @if(\Auth::user())
         @include('partials.profile-popup')
+        @endif
 
         <div class="simple-popup center recover-password hidden">
             <!--      <p class="h2" data-text="Запросить пароль">Запросить пароль</p>
@@ -410,21 +412,7 @@
 </div>
 
 
-<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-<script src="{{ asset('js/modernizr.custom.js') }}"></script>
-<script src="{{ asset('js/jquery.responsImg.min.js') }}"></script>
-<script src="{{ asset('js/select2.full.min.js') }}"></script>
-<script src="{{ asset('js/tabs.min.js') }}"></script>
-<script src="{{ asset('js/jquery.date-dropdowns.js') }}"></script>
-<script src="{{ asset('js/swiper.min.js') }}"></script>
-<script src="{{ asset('js/sticky.min.js') }}"></script>
-<script src="{{ asset('js/iframeResizer.min.js') }}"></script>
-<script src="{{ asset('js/jquery.validate.js') }}"></script>
-@if (\App::getLocale() != 'en')
-<script src="{{ asset('js/jquery.validate.messages_' . \App::getLocale() . '.js') }}"></script>
-@endif
-<script src="{{ asset('js/validation.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
+@include('partials.included_scripts')
 
 
 </body>

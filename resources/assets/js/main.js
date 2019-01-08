@@ -876,6 +876,15 @@
         }
     });
 
+    $('footer.footer a.select-lang').on('click', function(e){
+        e.preventDefault();
+        if (!$(this).hasClass('disabled')) {
+            var selected_lang = $(this).parents('.select-language-popup').find('ul.choose-list li.active a').attr('data-text');
+            $.cookie('locale', selected_lang);
+            top.location.href = '/lang/' + selected_lang;
+        }
+    });
+
 
     /*Keyboard controls*/
     $(document).keyup(function(e){
@@ -891,6 +900,11 @@
 
     /*Document ready*/
     $(function(){
+        if ($.cookie('locale') == undefined) {
+            // show languages popup
+            console.log($('.select-language-popup').length);
+            //$('[data-popup="language-popup"]').trigger('click');
+        }
         initFormValidation('registration', $('#quick_registration'));
         initFormValidation('login_form', $('#login_form'));
     });

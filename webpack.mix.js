@@ -18,6 +18,7 @@ mix.copy('resources/assets/js/pace.min.js', 'public/js')
 
     .copy('resources/assets/js/main.js', 'public/js')
     .copy('resources/assets/js/jquery-3.3.1.min.js', 'public/js')
+    .copy('resources/assets/js/jquery.cookie.js', 'public/js')
     .copy('resources/assets/js/iframeResizer.min.js', 'public/js')
     .copy('resources/assets/js/jquery.date-dropdowns.js', 'public/js')
     .copy('resources/assets/js/jquery.responsImg.min.js', 'public/js')

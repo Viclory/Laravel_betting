@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@selectLanguage');
 Route::get('/contacts', 'HomeController@contacts')->name('contacts');
 Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/casino', 'HomeController@casino')->name('casino');
@@ -34,7 +34,7 @@ Route::get('/logout', 'PlayerController@logout')->middleware('auth');
 //
 //Route::post('/deposit', 'PlayerController@makeDeposit');
 //Route::post('/withdraw', 'PlayerController@makeWithdraw');
-////Route::get('/my-account', 'PlayerController@myAccount');
+//Route::get('/my-account', 'PlayerController@myAccount');
 //
 //Route::get('/profile', 'PlayerController@profile');
 //Route::get('/game-history', 'PlayerController@gameHistory');
