@@ -14,3 +14,4 @@
 @endif
 <script src="{{ asset('js/validation.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/games.js') }}"></script>

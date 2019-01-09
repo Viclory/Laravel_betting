@@ -193,6 +193,7 @@ function placeGames(games, type, append = false) {
             '</div>';
 
             $(game_item).insertAfter($('.games-list header.' + type + '-games-section'));
+            $('.games-list header.' + type + '-games-section').find('.count-text .count').html($('.games-list header.' + type + '-games-section').next('.game-item').length);
         });
     } else {
         gamesHtml = '<div>No Results</div>';
