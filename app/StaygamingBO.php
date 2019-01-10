@@ -458,4 +458,15 @@ class StaygamingBO extends Model
 
         return $res;
     }
+
+    public static function activatePlayer(\App\Player $player)
+    {
+        $url = 'api/v1/player/activate';
+
+        $res = self::api($url, 'POST', ['hash' => $player->email_hash, 'email' => $player->email ]);
+
+        $result = json_decode($res);
+
+        return $result;
+    }
 }

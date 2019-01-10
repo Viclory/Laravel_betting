@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Player;
 use Illuminate\Support\Facades\Session;
 use App\GameVendors\Habanero;
+use App\Mail\RegisteredPlayer;
+use Illuminate\Support\Facades\Mail;
 
 class PlayerController extends Controller
 {
@@ -67,18 +69,22 @@ class PlayerController extends Controller
 	    ];
 
         $result = StaygamingBO::registerUser($registerBean);
-//        var_dump($result);exit;
 
         $res = json_decode($result);
 	    if (isset($res->status) && $res->status > 0) {
 		    $newPlayer = Player::createPlayer($request);
-		    if (Auth::attempt(array('username' => $newPlayer->username, 'password' => $request->password))) {
-				$newPlayer->access_token = $res->result->token;
-				$newPlayer->player_id = $res->result->id;
-				$newPlayer->save();
-			    return json_encode($res);
-		    }
-	    } else {
+
+            // send confirmation email
+//		    if (Auth::attempt(array('username' => $newPlayer->username, 'password' => $request->password))) {
+//            $newPlayer->access_token = $res->result->token;
+            $newPlayer->player_id = $res->result->id;
+            $newPlayer->email_hash = $res->result->email_hash;
+            $newPlayer->save();
+//			    return json_encode($res);
+//		    }
+            Mail::to($newPlayer->email)->send(new RegisteredPlayer($newPlayer));
+            return json_encode($res);
+        } else {
 			return $result;
 	    }
     }
@@ -305,5 +311,32 @@ class PlayerController extends Controller
         $res = StaygamingBO::getTrustlyDepoIframeUrl($request->amount);
 
         return $res;
+    }
+
+    public function activate($hash, $email)
+    {
+        $player = \App\Player::where('email', $email)->first();
+        if (!$player) {
+            return view('player.activation-email-sent', ['title' => __('registration.something_went_wrong'), 'text' => __('registration.player_not_found')]);
+        }
+
+        if ($player->email_hash != $hash) {
+            return view('player.activation-email-sent', ['title' => __('registration.something_went_wrong'), 'text' => __('registration.activation_code_incorrect')]);
+        }
+
+        $activation_result = StaygamingBO::activatePlayer($player);
+
+        if ($activation_result->status > 0) {
+            return view('player.activation-email-sent', ['title' => __('registration.congrats'), 'text' => __('registration.account_activated')]);
+        }
+
+    }
+
+    public function justRegistered()
+    {
+        return view('player.activation-email-sent', [
+            'title' => 'Congrats! You\'ve registered!',
+            'text' => 'Only thing is left is to activate your profile. Please check your registration email and follow instructions there'
+        ]);
     }
 }

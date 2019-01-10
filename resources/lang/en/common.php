@@ -55,5 +55,13 @@ return [
     'new_password' => 'New password',
     'repeat_password' => 'Repeat password',
     'history' => 'History',
-    'confirm' => 'Confirm'
+    'confirm' => 'Confirm',
+    'popular' => 'Popular',
+    'slots' => 'Slots',
+    'jackpot' => 'Jackpot',
+    'table_games' => 'Table',
+    'video_poker' => 'Video Poker',
+    'search' => 'Search',
+    'open"_search' => 'Open Search',
+    'home' => 'Home'
 ];

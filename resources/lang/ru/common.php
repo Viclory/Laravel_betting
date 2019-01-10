@@ -55,5 +55,13 @@ return [
     'new_password' => 'Новый пароль',
     'repeat_password' => 'Повторите пароль',
     'history' => 'История',
-    'confirm' => 'Подтвердить'
+    'confirm' => 'Подтвердить',
+    'popular' => 'Популярные',
+    'slots' => 'Слоты',
+    'jackpot' => 'Джекпот',
+    'table_games' => 'На столах',
+    'video_poker' => 'Видео Покер',
+    'search' => 'Поиск',
+    'open"_search' => 'Открыть поиск',
+    'home' => 'Домой'
 ];

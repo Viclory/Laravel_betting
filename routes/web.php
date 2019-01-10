@@ -16,6 +16,9 @@ Route::get('/contacts', 'HomeController@contacts')->name('contacts');
 Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/casino', 'HomeController@casino')->name('casino');
 
+Route::get('/player/activate/{hash}/email/{email}', ['uses' => 'PlayerController@activate']);
+Route::get('/player/just-registered', 'PlayerController@justRegistered');
+
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 

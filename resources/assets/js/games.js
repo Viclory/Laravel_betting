@@ -192,8 +192,12 @@ function placeGames(games, type, append = false) {
             '</a>' +
             '</div>';
 
+            // $(game_item).appendTo($('.popular-games-section-items'));
+
             $(game_item).insertAfter($('.games-list header.' + type + '-games-section'));
-            $('.games-list header.' + type + '-games-section').find('.count-text .count').html($('.games-list header.' + type + '-games-section').next('.game-item').length);
+            //console.log($('.games-list header.' + type + '-games-section').parents('.games-list.' + type + '-games-items').find('.game-item').length);
+            $('.games-list header.' + type + '-games-section').find('.count-text .count').html($('.games-list header.' + type + '-games-section').parents('.games-list.' + type + '-games-items').find('.game-item').length);
+            //$('.games-list header.' + type + '-games-section').find('.count-text .count').html($('.games-list header.' + type + '-games-section').nextAll('.game-item').not('header').length);
         });
     } else {
         gamesHtml = '<div>No Results</div>';

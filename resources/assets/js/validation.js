@@ -76,8 +76,7 @@ function initFormValidation(formId, formObj) {
                     email: data_formatted.registration_email,
                     username: data_formatted.registration_login,
                     password: data_formatted.registration_password,
-                    //dob: $(form).find('[name="calendar1_[year]"]').val() + '-' + $(form).find('[name="calendar1_[month]"]').val() + '-' + $(form).find('[name="calendar1_[day]"]').val(),
-                    dob: '1985-07-12',
+                    dob: $(form).find('[name="calendar1"]').val(),
                     currency: data_formatted.registration_currency,
                     // phone: $('#register-player-form #phone').val(),
                     country_id: data_formatted.registration_country_id,
@@ -91,19 +90,23 @@ function initFormValidation(formId, formObj) {
                 // return false;
 
 
+
+
                 $.post(
                     $(form).attr('action'),
                     registerObj,
                     function(result){
                         var res = $.parseJSON(result);
+                        //console.log(res);return false;
                         if (res.status > 0) {
-                            top.location.reload();
+                            top.location.href='/player/just-registered';
                         } else {
                             alert(res.message);
                         }
                     }
 
                 );
+
             },
 
 
