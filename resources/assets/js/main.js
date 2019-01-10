@@ -930,6 +930,8 @@
             if($('.games-filter').length) {
                 gamesFilterSlider.update();
             }
+
+            helpSectionsText();
         });
     });
 

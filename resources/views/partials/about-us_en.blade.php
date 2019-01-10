@@ -1,4 +1,4 @@
-<div class="item active">
+<div class="item" id="about-us">
     <div class="title">
         <h2>About Us</h2>
     </div>
@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="item">
+<div class="item" id="support">
     <div class="title">
         <h2>Customer Support</h2>
     </div>
@@ -19,7 +19,7 @@
         <p>You can contact us via chat or by e-mail: <a href="mailto:support@lepreconcasino.com">support@lepreconcasino.com</a></p>
     </div>
 </div>
-<div class="item">
+<div class="item" id="terms-and-conditions">
     <div class="title">
         <h2>Terms and Conditions of Use of Services at Lepreconcasino</h2>
     </div>
@@ -195,7 +195,7 @@
 
     {{--</div>--}}
 {{--</div>--}}
-<div class="item">
+<div class="item" id="betting-rules">
     <div class="title">
         <h2>Betting Rules</h2>
     </div>

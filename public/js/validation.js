@@ -76,8 +76,7 @@ function initFormValidation(formId, formObj) {
                     email: data_formatted.registration_email,
                     username: data_formatted.registration_login,
                     password: data_formatted.registration_password,
-                    //dob: $(form).find('[name="calendar1_[year]"]').val() + '-' + $(form).find('[name="calendar1_[month]"]').val() + '-' + $(form).find('[name="calendar1_[day]"]').val(),
-                    dob: '1985-07-12',
+                    dob: $(form).find('[name="calendar1"]').val(),
                     currency: data_formatted.registration_currency,
                     // phone: $('#register-player-form #phone').val(),
                     country_id: data_formatted.registration_country_id,
@@ -91,19 +90,23 @@ function initFormValidation(formId, formObj) {
                 // return false;
 
 
+
+
                 $.post(
                     $(form).attr('action'),
                     registerObj,
                     function(result){
                         var res = $.parseJSON(result);
+                        //console.log(res);return false;
                         if (res.status > 0) {
-                            top.location.reload();
+                            top.location.href='/player/just-registered';
                         } else {
                             alert(res.message);
                         }
                     }
 
                 );
+
             },
 
 
@@ -156,9 +159,12 @@ function initFormValidation(formId, formObj) {
                         password: $(form).find('#login_password').val(),
                     },
                     function(response) {
-                        console.log(response);
                         var resp = $.parseJSON(response);
-                        resp = JSON.parse(resp);
+
+                        if (typeof resp != 'object') {
+                            resp = JSON.parse(resp);
+                        }
+
                         if (resp.status == 0) {
                             alert(resp.message);
                             $(form).find('#login_username').focus();
@@ -194,4 +200,16 @@ function initFormValidation(formId, formObj) {
 function clearErrors(form)
 {
     $(form).find('.field-error').remove();
+}
+
+function helpSectionsText()
+{
+    var url_string = window.location.href
+    var url = new URL(url_string);
+    var section = url.searchParams.get("section");
+    console.log(section);
+
+    if($('#' + section).length > 0) {
+        $('#' + section + ' .title').trigger('click');
+    }
 }

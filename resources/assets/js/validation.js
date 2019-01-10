@@ -201,3 +201,15 @@ function clearErrors(form)
 {
     $(form).find('.field-error').remove();
 }
+
+function helpSectionsText()
+{
+    var url_string = window.location.href
+    var url = new URL(url_string);
+    var section = url.searchParams.get("section");
+    console.log(section);
+
+    if($('#' + section).length > 0) {
+        $('#' + section + ' .title').trigger('click');
+    }
+}

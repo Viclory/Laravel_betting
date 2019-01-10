@@ -5,29 +5,29 @@
                 <div class="col">
                     <ul>
                         <li>
-                            <a href="{{ URL::to('/about') }}">{{ __('common.about') }}</a>
+                            <a href="{{ URL::to('/about?section=about-us') }}">{{ __('common.about') }}</a>
                         </li>
                         <li>
-                            <a href="">{{ __('common.contacts') }}</a>
+                            <a href="{{ URL::to('/about?section=contacts') }}">{{ __('common.contacts') }}</a>
                         </li>
                         <li>
-                            <a href="">{{ __('common.terms_and_rules') }}</a>
+                            <a href="{{ URL::to('/about?section=terms-and-conditions') }}">{{ __('common.terms_and_rules') }}</a>
                         </li>
                         <li>
-                            <a href="">{{ __('common.responsible_gambling') }}</a>
+                            <a href="{{ URL::to('/about?section=responsible-gambling') }}">{{ __('common.responsible_gambling') }}</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col">
                     <ul>
                         <li>
-                            <a href="">{{ __('common.betting_rules') }}</a>
+                            <a href="{{ URL::to('/about?section=betting-rules') }}">{{ __('common.betting_rules') }}</a>
                         </li>
                         <li>
-                            <a href="">{{ __('common.privacy_policy') }}</a>
+                            <a href="{{ URL::to('/about?section=privacy-policy') }}">{{ __('common.privacy_policy') }}</a>
                         </li>
                         <li>
-                            <a href="">{{ __('common.for_partners') }}</a>
+                            <a href="#">{{ __('common.for_partners') }}</a>
                         </li>
                     </ul>
                 </div>
