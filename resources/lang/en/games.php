@@ -14,5 +14,17 @@ return [
     */
 
     'play_on_rel_money' => 'Real Money',
-    'try' => 'Try'
+    'try' => 'Try',
+    'new_games' => 'New games',
+    'all_games' => 'All games',
+    'popular_games' => 'Popular games',
+    'slots' => 'Slots',
+    'jackpot' => 'Jackpot',
+    'table' => 'Table games',
+    'video_poker' => 'Video poker',
+    'load_more' => 'load more',
+    'search_games' => 'Search games',
+    'search_games_results' => 'Search Results',
+    'found_games' => 'Found',
+    'all_games_are_loaded' => 'All games are loaded'
 ];

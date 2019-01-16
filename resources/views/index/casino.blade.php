@@ -11,81 +11,104 @@
             </div>
         </div>
         <main id="main">
-            <div id="games-filter-box">
-                <header class="header">
-                    <div class="container">
-                        <div class="sub-box">
-                            <div class="games-filter">
-                                <div class="swiper-container">
-                                    <div class="swiper-wrapper">
-                                        <a href="" class="swiper-slide js-filter-games">
-                                            <div class="icon popular-icon"></div>
-                                            <span>{{ __('common.popular') }}</span>
-                                        </a>
-                                        <a href="" class="swiper-slide js-filter-games">
-                                            <div class="icon slots-icon"></div>
-                                            <span>{{ __('common.slots') }}</span>
-                                        </a>
-                                        <a href="" class="swiper-slide js-filter-games">
-                                            <div class="icon jackpot-icon"></div>
-                                            <span>{{ __('common.jackpot') }}</span>
-                                        </a>
-                                        <a href="" class="swiper-slide js-filter-games">
-                                            <div class="icon on-tables-icon"></div>
-                                            <span>{{ __('common.table_games') }}</span>
-                                        </a>
-                                        <a href="" class="swiper-slide js-filter-games">
-                                            <div class="icon poker-icon"></div>
-                                            <span>{{ __('common.video_poker') }}</span>
-                                        </a>
-                                        <a href="" class="swiper-slide js-filter-games">
-                                            <div class="icon last-games-icon"></div>
-                                            <span>прошлые игры</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <button class="slider-btn swiper-button-next"></button>
-                                <button class="slider-btn swiper-button-prev"></button>
-                            </div>
-                            <div class="games-search-box">
-                                    <span class="js-open-search" title="{{ __('common.open_search') }}">
-                                        <span class="icon"></span>
-                                        {{ __('common.search') }}
-                                    </span>
 
-                                <form action="#" class="games-search-form">
-                                    <input type="text" class="form-control" placeholder="Поиск по играм">
-                                    <button type="button" class="search-btn" title="{{ __('common.search') }}"></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-                <span class="js-open-popup btn half-btn" data-popup="provider-popup">Провайдер</span>
-            </div>
-            <div class="container">
+            @include('partials.games-filter-box', ['active' => 'casino'])
+
+
+            <div class="container games-wrapper">
+
+                <!-- POPULAR GAMES -->
                 <div class="games-list popular-games-items">
                     <header class="header popular-games-section">
-                        <span class="type">Популярные</span>
+                        <span class="type">{{ __('games.popular_games') }}</span>
                         <span class="count-text">
-                            <span class="text">Популярных игр /</span>
+                            <span class="text">{{ __('games.found_games') }} /</span>
                             <span class="count"></span>
                         </span>
                     </header>
                 </div>
+
+                <!-- NEW GAMES -->
                 <div class="games-list new-games-items">
-                    <header class="header">
-                        <span class="type">Новинки</span>
+                    <header class="header new-games-section">
+                        <span class="type">{{ __('games.new_games') }}</span>
                         <span class="count-text">
-                            <span class="text">Новых игр /</span>
-                            <span class="count">78</span>
+                            <span class="text">{{ __('games.found_games') }} /</span>
+                            <span class="count"></span>
                         </span>
                     </header>
                 </div>
-                <div class="ajax-upload-box">
-                    <a href="pages\more-games.html" class="js-load-more btn">загрузить еще</a>
 
-                    <p class="message" data-text="Все игры загружены">Все игры загружены</p>
+                <!-- ALL GAMES -->
+                <div class="games-list all-games-items">
+                    <header class="header all-games-section">
+                        <span class="type">{{ __('games.all_games') }}</span>
+                        <span class="count-text">
+                            <span class="text">{{ __('games.found_games') }} /</span>
+                            <span class="count"></span>
+                        </span>
+                    </header>
+                </div>
+
+                <!-- SLOTS GAMES -->
+                <div class="games-list slots-games-items hidden">
+                    <header class="header slots-games-section">
+                        <span class="type">{{ __('games.slots') }}</span>
+                        <span class="count-text">
+                            <span class="text">{{ __('games.slots') }} /</span>
+                            <span class="count"></span>
+                        </span>
+                    </header>
+                </div>
+
+                <!-- JACKPOT GAMES -->
+                <div class="games-list jackpot-games-items hidden">
+                    <header class="header jackbot-games-section">
+                        <span class="type">{{ __('games.jackpot') }}</span>
+                        <span class="count-text">
+                            <span class="text">{{ __('games.jackpot') }} /</span>
+                            <span class="count"></span>
+                        </span>
+                    </header>
+                </div>
+
+                <!-- TABLE GAMES -->
+                <div class="games-list jackpot-games-items hidden">
+                    <header class="header table-games-section">
+                        <span class="type">{{ __('games.table') }}</span>
+                        <span class="count-text">
+                            <span class="text">{{ __('games.table') }} /</span>
+                            <span class="count"></span>
+                        </span>
+                    </header>
+                </div>
+
+                <!-- VIDEO-POKER GAMES -->
+                <div class="games-list jackpot-games-items hidden">
+                    <header class="header videopoker-games-section">
+                        <span class="type">{{ __('games.video_poker') }}</span>
+                        <span class="count-text">
+                            <span class="text">{{ __('games.table') }} /</span>
+                            <span class="count"></span>
+                        </span>
+                    </header>
+                </div>
+
+                <!-- SEARCH GAMES -->
+                <div class="games-list search-games-items hidden">
+                    <header class="header search-games-section">
+                        <span class="type">{{ __('games.search_games_results') }}</span>
+                        <span class="count-text">
+                            <span class="text">{{ __('games.found_games') }} /</span>
+                            <span class="count"></span>
+                        </span>
+                    </header>
+                </div>
+
+                <div class="ajax-upload-box">
+                    <a href="#" class="js-load-more btn">{{ __('games.load_more') }}</a>
+
+                    <p class="message" data-text="Все игры загружены">{{ __('games.all_games_are_loaded') }}</p>
                 </div>
             </div>
         </main>

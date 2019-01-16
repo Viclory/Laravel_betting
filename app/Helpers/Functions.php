@@ -51,11 +51,12 @@ class Functions {
 
 	public static function getPlayerInfo()
 	{
-		//$player_id = \Auth::user()->player_id;
-		$player_info = StaygamingBO::getPlayerInfo(\Auth::user());
-		$player_obj = json_decode($player_info);
-		if ($player_obj->status > 0) {
-			return $player_obj->result;
+        //$player_id = \Auth::user()->player_id;
+        $player_info = StaygamingBO::getPlayerInfo(\Auth::user());
+        $player_obj = json_decode($player_info);
+        if ($player_obj->status > 0) {
+//            var_dump($player_obj->result);exit;
+            return $player_obj->result;
 		} else {
 			return null;
 		}

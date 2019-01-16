@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@selectLanguage');
 Route::get('/contacts', 'HomeController@contacts')->name('contacts');
 Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/casino', 'HomeController@casino')->name('casino');
+Route::get('/casino-live', 'HomeController@casinoLive')->name('casino-live');
 
 Route::get('/player/activate/{hash}/email/{email}', ['uses' => 'PlayerController@activate']);
 Route::get('/player/just-registered', 'PlayerController@justRegistered');
@@ -25,9 +26,10 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@
 
 //Route::get('/get-all-games/{page_number}/{type}', 'HomeController@getAllHomeGames');
 Route::post('/games', 'HomeController@games');
+Route::post('/recover-password', 'PlayerController@recoverPassword');
 //Route::get('/games/{games_type}', ['uses' => 'HomeController@viewGames']);
 //Route::post('/get-all-games', 'HomeController@getAllHomeGames');
-//Route::get('/sports', 'HomeController@sports');
+Route::get('/sport', 'HomeController@sport');
 Route::post('/player/register', 'PlayerController@register');
 //
 Route::post('/player/login', 'PlayerController@login');

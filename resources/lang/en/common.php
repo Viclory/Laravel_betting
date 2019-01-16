@@ -63,5 +63,17 @@ return [
     'video_poker' => 'Video Poker',
     'search' => 'Search',
     'open"_search' => 'Open Search',
-    'home' => 'Home'
+    'home' => 'Home',
+    'close' => 'Close',
+    'player_does_not_exists' => 'No such email',
+    'all_tables' => 'All Tables',
+    'blackjack' => 'Blackjack',
+    'roulette' => 'Roulette',
+    'baccarat' => 'Baccarat',
+    'poker' => 'Poker',
+    'last_games' => 'Last Games',
+    'provider_filter' => 'Vendor',
+    'fullscreen_mode' => 'Fullscreen mode',
+    'assistance_popup_send_message_guide' => 'Send us a message or talk to us using chat, look into FAQ or contact with us over social networks',
+    'faq' => 'Frequently Asked Questions'
 ];

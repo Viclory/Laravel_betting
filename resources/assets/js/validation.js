@@ -194,6 +194,64 @@ function initFormValidation(formId, formObj) {
         });
     }
 
+    if (formId == 'recover_password') {
+        $(formObj).validate({
+            focusCleanup: true,
+            success: function(label, element){
+                $(element).parents('.field').find('.field-error').remove();
+            },
+            submitHandler: function(form) {
+                $.post(
+                    $(form).attr('action'),
+                    {
+                        email: $(form).find('#email').val(),
+                        _token: $(form).find('input[name="_token"]').val()
+                    },
+                    function(response) {
+                        resp = response;
+
+                        // var resp = $.parseJSON(response);
+
+                        // console.log(resp.status);return false;
+                        // if (typeof resp != 'object') {
+                        //     resp = JSON.parse(resp);
+                        // }
+
+                        if (resp.status == 0) {
+                            // alert(resp.message);
+                            $('<div class="field-error"><div class="align-m"><p>' + resp.message + '</p></div></div>').insertAfter($(formObj).find('#email'))
+                            // $(form).find('.field-error .align-m p').html(resp.message);
+                            $(form).find('#email').focus();
+                            return false;
+                        } else {
+                            if (resp.result.id > 0) {
+
+                                $(formObj).parents('.max-w').hide();
+                                $(formObj).parents('.recover-password').find('.submit-ok-box').show();
+                                return true;
+                                // top.location.reload();
+                            }
+                        }
+                    },
+                    'json',
+                );
+            },
+            errorPlacement: function(error, element){
+                var field_error = '<div class="field-error"><div class="align-m">' +
+                    '<p>' + error.text() + '</p>' + '</div>' + '</div>';
+
+                $(field_error).insertAfter($(element));
+            },
+            rules: {
+                email: {
+                    required: true,
+                    email: true,
+                },
+
+            }
+        });
+    }
+
     return false;
 }
 
@@ -204,10 +262,9 @@ function clearErrors(form)
 
 function helpSectionsText()
 {
-    var url_string = window.location.href
+    var url_string = window.location.href;
     var url = new URL(url_string);
     var section = url.searchParams.get("section");
-    console.log(section);
 
     if($('#' + section).length > 0) {
         $('#' + section + ' .title').trigger('click');

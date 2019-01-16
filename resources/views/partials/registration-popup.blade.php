@@ -3,8 +3,8 @@
         <div class="registration-box">
             <div class="choose-registration child">
                 <p class="title">Выберите вариант <br>регистрации</p>
-                <a href="" data-step="quick-registration" class="btn js-further-step">Быстрая регистрация</a>
-                <a href="" data-step="full-registration" class="btn js-further-step">Полная регистрация</a>
+                <a href="" data-step="quick-registration" class="btn js-further-step">{{ __('registration.quick_registration') }}</a>
+                <a href="" data-step="full-registration" class="btn js-further-step">{{ __('registration.full_registration') }}</a>
             </div>
             <div class="quick-registration hidden child">
                 <p class="title">Создайте бесплатный аккаунт<br>Быстрая регистрация</p>
@@ -13,12 +13,12 @@
                     <div class="two-cols">
                         <div class="col">
                             <div class="field">
-                                <input type="text" class="form-control" name="registration_login" id="registration_login" placeholder="Ваш логин">
+                                <input type="text" class="form-control" name="registration_login" id="registration_login" placeholder="{{ __('auth.your_login') }}">
                             </div>
                         </div>
                         <div class="col">
                             <div class="field">
-                                <select name="registration_currency" id="registration_currency" class="select" data-placeholder="Валюта">
+                                <select name="registration_currency" id="registration_currency" class="select" data-placeholder="{{ __('registration.currency') }}">
                                     <option value=""></option>
                                     <?php $currencies = \App\Helpers\Functions::getCurrencies(); ?>
                                     @foreach($currencies as $currency)
@@ -31,7 +31,7 @@
                     <div class="two-cols">
                         <div class="col">
                             <div class="field">
-                                <input type="password" name="registration_password" id="registration_password" class="form-control" placeholder="Пароль">
+                                <input type="password" name="registration_password" id="registration_password" class="form-control" placeholder="{{ __('registration.password') }}">
                             </div>
                         </div>
                         <div class="col">

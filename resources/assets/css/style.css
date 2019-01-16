@@ -6481,3 +6481,7 @@ html:not(.ie) .games-list .game-item .overlay span:before{
         max-width: 80px;
         }
     }
+
+.hidden {
+    display: none;
+}

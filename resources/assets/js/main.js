@@ -184,20 +184,7 @@
         stickyHeader();
     }
 
-    /*Clock*/
-    function jsClock(){
-        setInterval(function() {
-            var date = new Date();
-            var hours = date.getHours();
-            var minutes = date.getMinutes();
-            if (minutes < 10){
-                minutes = '0' + minutes;
-            }
-            $('.js-clock').html(
-                hours + ":" + minutes
-            );
-        }, 1000);
-    }
+
 
     /*Nav*/
     $('#js-open-nav').click(function(e){
@@ -359,6 +346,16 @@
         else{
             $(this).removeClass('active');
         }
+
+        selected_games_type = $(this).attr('data-game-type');
+
+        params = collectParams();
+
+        clearGames();
+
+        getPopularGames(params);
+        getNewGames(params);
+        getAllGames(params);
     });
 
     if($('.games-filter').length){
@@ -440,54 +437,56 @@
     }
 
     /*Game box*/
-    var gameActions = function(){
-        var scrollTopTouch;
-        $('.js-open-game').click(function(e){
-            e.stopPropagation();
-            e.preventDefault();
-
-            if($html.hasClass('touchevents')){
-                scrollTopTouch = $(window).scrollTop();
-            }
-
-            $html.addClass('opened-game game-page');
-            $('#header').removeClass('sticky');
-
-            var gameBoxBg = $(this).attr('data-game-bg');
-            var gameIframeSrc = $(this).attr('data-src');
-
-
-            $('#game-box').addClass(gameBoxBg);
-            $('#game-frame').attr('src', gameIframeSrc);
-
-            /*Init*/
-            if($('.js-clock').length){
-                jsClock();
-            }
-
-            $('.js-close-popup').trigger('click');
-        });
-
-        $('.js-close-game').click(function(){
-            $html.removeClass('opened-game game-page scroll-top');
-            $('#game-box').attr('class', '');
-            $('#game-frame').attr('src', '');
-            var scrollTop = $(window).scrollTop();
-            if($html.hasClass('no-touchevents')){
-                $('html, body').scrollTop(scrollTop - 1);
-            }
-            else{
-                $('html, body').scrollTop(scrollTopTouch - 1);
-            }
-
-
-            if($('#game-iframe-box .js-full-screen').hasClass('active')){
-                toggleFullScreen(document.body);
-            }
-
-        });
-    }
-    gameActions();
+    // var gameActions = function(){
+    //     var scrollTopTouch;
+    //     console.log('++++++++++++++++++');
+    //     $('.js-open-game').click(function(e){
+    //         console.log('========================');return false;
+    //         e.stopPropagation();
+    //         e.preventDefault();
+    //
+    //         if($html.hasClass('touchevents')){
+    //             scrollTopTouch = $(window).scrollTop();
+    //         }
+    //
+    //         $html.addClass('opened-game game-page');
+    //         $('#header').removeClass('sticky');
+    //
+    //         var gameBoxBg = $(this).attr('data-game-bg');
+    //         var gameIframeSrc = $(this).attr('data-src');
+    //
+    //
+    //         $('#game-box').addClass(gameBoxBg);
+    //         $('#game-frame').attr('src', gameIframeSrc);
+    //
+    //         /*Init*/
+    //         if($('.js-clock').length){
+    //             jsClock();
+    //         }
+    //
+    //         $('.js-close-popup').trigger('click');
+    //     });
+    //
+    //     $('.js-close-game').click(function(){
+    //         $html.removeClass('opened-game game-page scroll-top');
+    //         $('#game-box').attr('class', '');
+    //         $('#game-frame').attr('src', '');
+    //         var scrollTop = $(window).scrollTop();
+    //         if($html.hasClass('no-touchevents')){
+    //             $('html, body').scrollTop(scrollTop - 1);
+    //         }
+    //         else{
+    //             $('html, body').scrollTop(scrollTopTouch - 1);
+    //         }
+    //
+    //
+    //         if($('#game-iframe-box .js-full-screen').hasClass('active')){
+    //             toggleFullScreen(document.body);
+    //         }
+    //
+    //     });
+    // }
+    // gameActions();
 
 
     function toggleFullScreen(elem) {
@@ -573,9 +572,18 @@
             alert('Please wait');
         }
         else{
-            var url = $(this).attr('href');
-            moreGames(url, true);
-            ajaxUploadBox = $(this).parents('.ajax-upload-box');
+            // /var url = $(this).attr('href');
+            // moreGames(url, true);
+            // ajaxUploadBox = $(this).parents('.ajax-upload-box');
+
+            // var type = $(this).parents('.games-section').attr('data-games-type');
+            var exclude = [];
+
+            console.log($(this));
+
+            // $(this).parents('.games-section').find('.game-item').each(function(){
+            //     exclude.push($(this).attr('data-game-id'));
+            // });
         }
     });
 
@@ -708,8 +716,13 @@
 
     /*Fake submit*/
     $('.recover-password .form button').click(function(e){
-        $(this).parents('.recover-password').children('.max-w').hide();
-        $(this).parents('.recover-password').find('.submit-ok-box').show();
+        e.preventDefault();
+        $(e.target).parents('form').trigger('submit');
+        // return false;
+        // $(this).parents('.recover-password').children('.max-w').hide();
+
+        // recover password sent
+        //$(this).parents('.recover-password').find('.submit-ok-box').show();
     });
 
     /*Assistance popup*/
@@ -859,6 +872,16 @@
         if(!$(this).hasClass('disabled')){
             $('.js-close-popup').trigger('click');
         }
+        selected_vendor = $(this).parents('.provider-popup').find('ul.choose-list li.active a').attr('data-vendor-id');
+
+        console.log('vendor confirmed');
+        params = collectParams();
+
+        clearGames();
+
+        getPopularGames(params);
+        getNewGames(params);
+        getAllGames(params);
     });
 
 
@@ -907,6 +930,7 @@
         }
         initFormValidation('registration', $('#quick_registration'));
         initFormValidation('login_form', $('#login_form'));
+        initFormValidation('recover_password', $('#recover_password'));
     });
 
     /*Window load*/

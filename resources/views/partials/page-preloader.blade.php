@@ -1,57 +1,5 @@
-<!DOCTYPE html>
-<html class="sub-page">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <title>Casino</title>
-    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <script src="js\pace.min.js"></script>
-</head>
-<body class="responsimg" data-responsimg780="{{ asset('/img/sub-page-bg.jpg') }}" data-responsimg10="{{ asset('/img/sub-page-mobile-bg.jpg') }}">
-
-
-<div id="popup" class="select-language-popup">
-    <div class="container">
-        <div class="control-box">
-            <header class="header">
-                <img src="{{ asset('/img/footer-logo.png') }}" alt="">
-            </header>
-            <div class="content-box">
-                <div class="sub-box">
-                    <ul class="choose-list">
-
-                        <li>
-                            <a href="#" data-text="vi">Vietnamese</a>
-                        </li>
-                        <li>
-                            <a href="#" data-text="en">English</a>
-                        </li>
-                        <li>
-                            <a href="#" data-text="ru">Русский</a>
-                        </li>
-                        <li>
-                            <a href="#" data-text="es">Español</a>
-                        </li>
-                        <li>
-                            <a href="#" data-text="pt">Portugues</a>
-                        </li>
-                        <li>
-                            <a href="#" data-text="zn">China</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <footer class="footer">
-                <a href="#" class="btn select-lang js-confirm disabled">{{ __('common.confirm') }}</a>
-            </footer>
-        </div>
-    </div>
-</div>
-
 <div id="page-preloader">
-    <img src="{{ asset('/img/prelodaer-logo.png') }}" alt="">
+    <img src="{{ asset('img/prelodaer-logo.png') }}" alt="">
 
     <div id="loading-progress">
         <svg class="lds-spin" width="160px" height="160px" viewbox="0 0 100 100" preserveaspectratio="xMidYMid">
@@ -154,9 +102,3 @@
         </svg>
     </div>
 </div>
-
-@include('partials.included_scripts');
-
-
-</body>
-</html>

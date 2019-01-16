@@ -187,14 +187,14 @@
         <h3>Last updated: 18th of August 2018.</h3>
     </div>
 </div>
-{{--<div class="item">--}}
-    {{--<div class="title">--}}
-        {{--<h2>Betting Rules</h2>--}}
-    {{--</div>--}}
-    {{--<div class="text">--}}
-
-    {{--</div>--}}
-{{--</div>--}}
+<div class="item" id="contacts">
+    <div class="title">
+        <h2>Contacts</h2>
+    </div>
+    <div class="text">
+        <a href="mailto:{{ env('SUPPORT_EMAIL') }}">{{ env('SUPPORT_EMAIL') }}</a>
+    </div>
+</div>
 <div class="item" id="betting-rules">
     <div class="title">
         <h2>Betting Rules</h2>
@@ -203,7 +203,7 @@
         {{--<p><a href="https://bettend.com/img/Sports%20Betting%20Rules%20-%20PDF.pdf" target="_blank">Sports Betting Rules – SPORTS, MARKETS AND RULES</a></p>--}}
     </div>
 </div>
-<div class="item">
+<div class="item" id="privacy-policy">
     <div class="title">
         <h2>Privacy Policy</h2>
     </div>
@@ -259,11 +259,11 @@
         </ol>
     </div>
 </div>
-{{--<div class="item">--}}
-    {{--<div class="title">--}}
-        {{--<h2>Партнерам</h2>--}}
-    {{--</div>--}}
-    {{--<div class="text">--}}
+<div class="item" id="partners">
+    <div class="title">
+        <h2>Партнерам</h2>
+    </div>
+    <div class="text">
 
-    {{--</div>--}}
-{{--</div>--}}
+    </div>
+</div>

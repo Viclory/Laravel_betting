@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\RequestNewPassword;
 use Illuminate\Auth\AuthenticationException;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
@@ -338,5 +339,17 @@ class PlayerController extends Controller
             'title' => 'Congrats! You\'ve registered!',
             'text' => 'Only thing is left is to activate your profile. Please check your registration email and follow instructions there'
         ]);
+    }
+
+    public function recoverPassword(Request $request)
+    {
+        $player = \App\Player::where('email', $request->input('email'))->first();
+        if (!$player) {
+            return response()->json([ 'status' => '0', 'message' => __('common.player_does_not_exists')]);
+        } else {
+//            Mail::to($player->email)->send(new RequestNewPassword($player));
+//            return json_encode($res);
+        }
+//        var_dump($player);exit;
     }
 }
