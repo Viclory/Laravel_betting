@@ -5,6 +5,7 @@
     var popular_games_limit = 20;
     var new_games_limit = 10;
     var all_games_limit = 30;
+    var load_more_limit = 60;
     // console.log('games-count: ' + games_count);
 // });
 
@@ -189,6 +190,10 @@ function applyFilters(params) {
     });
     $.extend(params, {types: checked_types});
 
+
+    // console.log('ttttttttttt');
+    // console.log(params);
+
     $.ajax({
         url: '/games',
         method: 'post',
@@ -266,16 +271,16 @@ function placeGames(games, type, append = false) {
             var game_item = '<div class="game-item">';
 
             if (value.iframe_logged == undefined) {
-                game_item += '<a href="#" class="game-link js-open-popup" data-touch-popup="choose-game-popup" data-popup="authorization" style="background-image: url(' + value.game_img + ');">';
+                game_item += '<a href="#" class="game-link js-open-popup" data-game-id="' + value.id + '" data-touch-popup="choose-game-popup" data-popup="authorization" style="background-image: url(' + value.game_img + ');">';
             } else {
-                game_item += '<a href="#" class="game-link js-open-game" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
+                game_item += '<a href="#" class="game-link js-open-game" data-game-id="' + value.id + '" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
             }
 
             game_item += '<div class="overlay">' +
             '<span data-text="Играть бесплатно" class="js-open-game" data-src="' + value.iframe_not_logged + '" data-game-bg="static-bg">Играть бесплатно</span>' +
             '</div>';
 
-            if (type == 'new') {
+            if (type == 'new' || value.is_new > 0) {
                 game_item += '<span class="novelty-label">New</span>';
             }
 
@@ -284,14 +289,27 @@ function placeGames(games, type, append = false) {
 
             // $(game_item).appendTo($('.popular-games-section-items'));
 
-            $(game_item).insertAfter($('.games-list header.' + type + '-games-section'));
 
-            $(game_item + ' a.js-open-popup').on('click', function(e){
-                console.log('ddfdfdfdfdfdfddfdfdfd');
-            });
+            if (append) {
+                if (value.is_popular > 0) {
+                    console.log('popular +1');
+                    $(game_item).appendTo($('.games-list.popular-games-items'));
+                } else if(value.is_new > 0) {
+                    console.log('new +1');
+                    $(game_item).appendTo($('.games-list.new-games-items'));
+                } else {
+                    console.log('all +1');
+                    $(game_item).appendTo($('.games-list.all-games-items'));
+                }
+            } else {
+                $(game_item).insertAfter($('.games-list header.' + type + '-games-section'));
+                //console.log($('.games-list header.' + type + '-games-section').parents('.games-list.' + type + '-games-items').find('.game-item').length);
+                $('.games-list header.' + type + '-games-section').find('.count-text .count').html($('.games-list header.' + type + '-games-section').parents('.games-list.' + type + '-games-items').find('.game-item').length);
+            }
 
-            //console.log($('.games-list header.' + type + '-games-section').parents('.games-list.' + type + '-games-items').find('.game-item').length);
-            $('.games-list header.' + type + '-games-section').find('.count-text .count').html($('.games-list header.' + type + '-games-section').parents('.games-list.' + type + '-games-items').find('.game-item').length);
+            // $(game_item + ' a.js-open-popup').on('click', function(e){
+                // console.log('ddfdfdfdfdfdfddfdfdfd');
+            // });
             //$('.games-list header.' + type + '-games-section').find('.count-text .count').html($('.games-list header.' + type + '-games-section').nextAll('.game-item').not('header').length);
         });
 
