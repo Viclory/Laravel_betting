@@ -7,6 +7,9 @@
     <title>Casino | Казино</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/pace.min.js') }}"></script>
+    <script>
+        var casino_type = "{{ $casino_type }}";
+    </script>
 </head>
 <body>
 <div id="all">

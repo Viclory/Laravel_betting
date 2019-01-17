@@ -12,7 +12,7 @@ class Player extends Authenticatable
 	    $player = new self();
 	    $player->username = $request->username;
 	    $player->email = $request->email;
-	    $player->name = $request->username;
+	    $player->name = isset($request->name) ? $request->name : $request->username;
 	    $player->password = bcrypt($request->password);
 	    $player->access_token = '';
 	    $player->balance = 0;

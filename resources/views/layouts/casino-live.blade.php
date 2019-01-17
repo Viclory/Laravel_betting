@@ -6,8 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="format-detection" content="telephone=no" />
 <title>Casino | Казино</title>
-<link rel="stylesheet" href="css/style.css" />
-<script src="js/pace.min.js"></script>
+<link rel="stylesheet" href="{{ asset('/css/style.css') }}" />
+<script src="{{ asset('/js/pace.min.js') }}"></script>
+
+<script>
+    var casino_type = "{{ $casino_type }}";
+</script>
 </head>
 <body>
 

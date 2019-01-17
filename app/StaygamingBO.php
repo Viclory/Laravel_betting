@@ -284,9 +284,10 @@ class StaygamingBO extends Model
 	    $getBonusList = array();
     	if (Auth::user() != null) {
 		    $getBonusList = self::api($url, 'POST', array('player_id' => $player_id, 'api_token' => Auth::user()->access_token));
+		    $getBonusList = json_decode($getBonusList);
 	    }
 
-	    return json_decode($getBonusList);
+	    return $getBonusList;
     }
 
     public static function updatePlayer($request)

@@ -78,40 +78,40 @@
                     </div>
                     <div class="btns-box">
                         <a href="#" data-step="choose-registration" class="btn sub-color js-further-step">Назад</a>
-                        <a href="#" data-step="registration-complete" class="btn js-further-step">регистрация</a>
+                        <a href="#" data-step="quick-registration-complete" class="btn js-further-step">регистрация</a>
                     </div>
 
-                    {{--<button type="submit" class="">qqq</button>--}}
                 </form>
             </div>
             <div class="full-registration hidden child">
                 <div class="step step1">
                     <p class="title">Создайте бесплатный аккаунт в два простых шага</p>
-                    <form class="form">
+                    <form class="form" id="full-registration-step1">
+                        <input type="hidden" name="merchant_id" value="{{ env('MERCHANT_ID') }}">
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" class="form-control" placeholder="Ваш логин">
+                                    <input type="text" name="login" id="full_registration_login" class="form-control" placeholder="Ваш логин">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" class="form-control" placeholder="Ваше имя">
+                                    <input type="text" name="player_firstname" id="full_registration_firstname" class="form-control" placeholder="Ваше имя">
                                 </div>
                             </div>
                         </div>
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" class="form-control" placeholder="Ваша фамилия">
+                                    <input type="text" name="player_lastname" id="full_registration_lastname" class="form-control" placeholder="Ваша фамилия">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <select name="sel-gender" id="sel-gender" class="select" data-placeholder="Пол">
+                                    <select name="gender" id="full_registration_gender" class="select" data-placeholder="Пол">
                                         <option></option>
-                                        <option value="Мужчина">Мужчина</option>
-                                        <option value="Женщина">Женщина</option>
+                                        <option value="m">Мужчина</option>
+                                        <option value="f">Женщина</option>
                                     </select>
                                 </div>
                             </div>
@@ -119,15 +119,17 @@
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" class="form-control" placeholder="E-mail">
+                                    <input type="text" class="form-control" name="email" id="full_registration_email" placeholder="E-mail">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <select name="sel-currency2" id="sel-currency2" class="select" data-placeholder="Валюта">
-                                        <option></option>
-                                        <option value="Доллары">Доллары</option>
-                                        <option value="Рубли">Рубли</option>
+                                    <select name="currency" id="full_registration_currency" class="select" data-placeholder="Валюта">
+                                        <option value=""></option>
+                                        <?php $currencies = \App\Helpers\Functions::getCurrencies(); ?>
+                                        @foreach($currencies as $currency)
+                                            <option value="{{$currency->int_code}}">{{$currency->char_code}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -136,80 +138,77 @@
                             <div id="calendar2"></div>
                         </div>
                         <div class="btns-box">
-                            <a href="" data-step="choose-registration" class="btn sub-color js-further-step">Назад</a>
-                            <a href="" data-step="step2" class="btn js-to-step fix-width">Далее</a>
+                            <a href="#" data-step="choose-registration" class="btn sub-color js-further-step">Назад</a>
+                            <a href="#" data-step="step2" class="btn js-to-step fix-width">Далее</a>
                         </div>
                     </form>
                 </div>
                 <div class="step step2 hidden">
                     <p class="title">Регистрация почти завершена - последний шаг</p>
-                    <form class="form">
+                    <form class="form" id="full-registration-step2">
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <select name="sel-country2" id="sel-country2" class="select" data-placeholder="Страна">
+                                    <select name="country" id="full_registration_country" class="select" data-placeholder="Страна">
                                         <option></option>
-                                        <option value="Австралия">Австралия</option>
-                                        <option value="Беларусь">Беларусь</option>
-                                        <option value="Канада">Канада</option>
-                                        <option value="Россия">Россия</option>
-                                        <option value="США">США</option>
-                                        <option value="Филиппины">Филиппины</option>
-                                        <option value="Япония">Япония</option>
+                                        <?php $countries = \App\Helpers\Functions::getCountries(); ?>
+                                        @foreach ($countries as $country)
+                                            <option value="{{$country->id}}">{{$country->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" class="form-control" placeholder="Город">
+                                    <input type="text" name="city" id="full_registration_city" class="form-control" placeholder="Город">
                                 </div>
                             </div>
                         </div>
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" class="form-control" placeholder="Адрес">
+                                    <input type="text" name="address" id="full_registration_address" class="form-control" placeholder="Адрес">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" class="form-control" placeholder="Почтовый индекс">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="two-cols">
-                            <div class="col">
-                                <div class="field">
-                                    <input type="text" class="form-control" placeholder="Телефон">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="field">
-                                    <input type="text" class="form-control" placeholder="Введите промокод">
+                                    <input type="text" name="zip" id="full_registration_zip" class="form-control" placeholder="Почтовый индекс">
                                 </div>
                             </div>
                         </div>
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <input type="password" class="form-control" placeholder="Пароль">
+                                    <input type="text" name="phone" id="full_registration_phone" class="form-control" placeholder="Телефон">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <input type="password" class="form-control" placeholder="Повторите пароль">
+                                    <input type="text" name="promocode" id="full_registration_promocode" class="form-control" placeholder="Введите промокод">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two-cols">
+                            <div class="col">
+                                <div class="field">
+                                    <input type="password" name="password" id="full_registration_password" class="form-control" placeholder="Пароль">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="field">
+                                    <input type="password" name="confirm_password" id="full_registration_confirm_password" class="form-control" placeholder="Повторите пароль">
                                 </div>
                             </div>
                         </div>
                         <div class="field">
                             <div class="checkbox-item">
                                 <input id="rules-inp2" name="rules-inp2" type="checkbox" checked="">
-                                <label for="rules-inp2">Я прочитал(а) и принял(а) <a href="">Правила и условия</a></label>
+                                <label for="rules-inp2">Я прочитал(а) и принял(а) <a href="#">Правила и условия</a></label>
                             </div>
                         </div>
                         <div class="btns-box">
-                            <a href="" data-step="step1" class="btn sub-color js-to-step">Назад</a>
-                            <a href="" data-step="registration-complete" class="btn js-further-step">Регистрация</a>
+                            <a href="#" data-step="step1" class="btn sub-color js-to-step">Назад</a>
+                            <a href="#" data-step="full-registration-complete" class="btn js-further-step">Регистрация</a>
                         </div>
                     </form>
                 </div>

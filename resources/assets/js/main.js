@@ -332,6 +332,14 @@
 
     $('.games-filter .js-filter-games').click(function(e){
         e.preventDefault();
+        if (selected_vendor != null) {
+            $('.provider-popup ul.choose-list li.active').removeClass('active');
+            selected_vendor = null;
+        }
+        if ($('input[name="games-search-box"]').val().length > 0) {
+            $('input[name="games-search-box"]').val('');
+            search($('input[name="games-search-box"]'));
+        }
         if($html.hasClass('opened-games-search')){
             $html.removeClass('opened-games-search');
         }
@@ -749,7 +757,7 @@
         e.preventDefault();
 
         var dataStep = $(this).attr('data-step');
-        if (dataStep == 'registration-complete') {
+        if (dataStep == 'quick-registration-complete') {
 
             var reg_form = $(this).parents('form');
             clearErrors($(reg_form));
@@ -774,11 +782,47 @@
 
             return false;
 
+        } else if(dataStep == 'full-registration-complete') {
+
+            if ($('form#full-registration-step1').validate().form() && $('form#full-registration-step2').validate().form()) {
+
+                var form_step1 = $('form#full-registration-step1');
+                var form_step2 = $('form#full-registration-step2');
+                var registerObj = {
+                    username: $(form_step1).find('input[name="login"]').val(),
+                    name: $(form_step1).find('input[name="player_firstname"]').val() + ' ' + $(form_step1).find('input[name="player_lastname"]').val(),
+                    gender: $(form_step1).find('[name="gender"]').val(),
+                    email: $(form_step1).find('input[name="email"]').val(),
+                    currency: $(form_step1).find('[name="currency"]').val(),
+                    dob: $(form_step1).find('[name="calendar2_[year]"]').val() + '-' + $(form_step1).find('[name="calendar2_[month]"]').val() + '-' + $(form_step1).find('[name="calendar2_[day]"]').val(),
+
+                    country_id: $(form_step2).find('[name="country"]').val(),
+                    city: $(form_step2).find('[name="city"]').val(),
+                    address: $(form_step2).find('[name="address"]').val(),
+                    zip: $(form_step2).find('[name="zip"]').val(),
+                    phone: $(form_step2).find('[name="phone"]').val(),
+                    promocode: $(form_step2).find('[name="promocode"]').val(),
+                    password: $(form_step2).find('[name="password"]').val(),
+                    merchant_id: $(form_step1).find('input[name="merchant_id"]').val(),
+                };
+
+                $.post(
+                    $('form#quick_registration').attr('action'),
+                    registerObj,
+                    function(result){
+                        var res = $.parseJSON(result);
+                        if (res.status > 0) {
+                            top.location.href='/player/just-registered';
+                        } else {
+                            alert(res.message);
+                        }
+                    }
+                );
+            }
+            return false;
         }
 
         $(this).parents('.child').addClass('hidden');
-
-
 
         $("." + dataStep).removeClass('hidden');
 
@@ -800,6 +844,10 @@
 
     $('.js-to-step').click(function(e){
         e.preventDefault();
+
+        if (!$('#full-registration-step1').validate().form()) {
+            return false;
+        }
 
         $(this).parents('.step').addClass('hidden');
 
@@ -931,6 +979,8 @@
         initFormValidation('registration', $('#quick_registration'));
         initFormValidation('login_form', $('#login_form'));
         initFormValidation('recover_password', $('#recover_password'));
+        initFormValidation('full-registration-step1', $('#full-registration-step1'));
+        initFormValidation('full-registration-step2', $('#full-registration-step2'));
     });
 
     /*Window load*/

@@ -33,12 +33,12 @@ class HomeController extends Controller
 
     public function casino()
     {
-        return view('index.casino');
+        return view('index.casino', ['casino_type' => 'casino']);
     }
 
     public function casinoLive()
     {
-        return view('index.casino-live');
+        return view('index.casino-live', ['casino_type' => 'casino-live']);
     }
 
 	public function sport(){

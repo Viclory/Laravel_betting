@@ -252,6 +252,98 @@ function initFormValidation(formId, formObj) {
         });
     }
 
+    if (formId == 'full-registration-step1') {
+        $(formObj).validate({
+            focusCleanup: true,
+            success: function (label, element) {
+                $(element).parents('.field').find('.field-error').remove();
+            },
+            // submitHandler: function(form) {
+            //     console.log('fullRegistrationSubmitHandler');
+            //     return false;
+            // },
+            errorPlacement: function(error, element){
+
+                var field_error = '<div class="field-error"><div class="align-m">' +
+                    '<p>' + error.text() + '</p>' + '</div>' + '</div>';
+
+                if ($(element).hasClass('select')) {
+                    $(field_error).insertAfter($(element).next('span.select2'));
+                } else {
+                    $(field_error).insertAfter($(element));
+                }
+
+
+            },
+            rules: {
+                login: {
+                    required: true,
+                    minlength: 4,
+                },
+                player_firstname: {
+                    required: true,
+                    minlength: 2
+                },
+                player_lastname: {
+                    required: true,
+                    minlength: 2
+                },
+                gender: {
+                    required: true
+                },
+                currency: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+
+            }
+        });
+    }
+
+    if (formId == 'full-registration-step2') {
+        $(formObj).validate({
+            focusCleanup: true,
+            success: function (label, element) {
+                $(element).parents('.field').find('.field-error').remove();
+            },
+            // submitHandler: function(form) {
+            //     console.log('fullRegistrationSubmitHandler');
+            //     return false;
+            // },
+            errorPlacement: function(error, element){
+
+                console.log($(element));
+                var field_error = '<div class="field-error"><div class="align-m">' +
+                    '<p>' + error.text() + '</p>' + '</div>' + '</div>';
+
+                if ($(element).hasClass('select')) {
+                    $(field_error).insertAfter($(element).next('span.select2'));
+                } else {
+                    $(field_error).insertAfter($(element));
+                }
+
+                return false;
+
+            },
+            rules: {
+                country: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                },
+                confirm_password: {
+                    required: true,
+                    equalTo: "#full_registration_password"
+                },
+
+            }
+        });
+    }
+
     return false;
 }
 

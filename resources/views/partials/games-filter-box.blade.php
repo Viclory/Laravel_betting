@@ -5,7 +5,7 @@
                 <div class="games-filter">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a href="" class="swiper-slide js-filter-games active" data-game-type="popular">
+                            <a href="" class="swiper-slide js-filter-games @if($active == 'casino') active @endif" data-game-type="popular">
                                 <div class="icon popular-icon"></div>
                                 <span>{{ __('common.popular') }}</span>
                             </a>
@@ -15,7 +15,7 @@
                                 <span>{{ __('common.slots') }}</span>
                             </a>
                             @elseif($active == 'casino-live')
-                            <a href="" class="swiper-slide js-filter-games" data-game-type="all-tables">
+                            <a href="" class="swiper-slide js-filter-games active" data-game-type="all-tables">
                                 <div class="icon all-tables-icon"></div>
                                 <span>{{ __('common.all_tables') }}</span>
                             </a>
@@ -74,13 +74,13 @@
                     <button class="slider-btn swiper-button-prev"></button>
                 </div>
                 <div class="games-search-box">
-                                    <span class="js-open-search" title="{{ __('common.open_search') }}">
-                                        <span class="icon"></span>
-                                        {{ __('common.search') }}
-                                    </span>
+                    <span class="js-open-search" title="{{ __('common.open_search') }}">
+                        <span class="icon"></span>
+                        {{ __('common.search') }}
+                    </span>
 
                     <form action="#" class="games-search-form">
-                        <input type="text" class="form-control" name="games-search-box" placeholder="{{ __('games.search_games') }}">
+                        <input type="text" class="form-control" name="games-search-box" placeholder="{{ __('games.search_games') }}" value="">
                         <button type="button" class="search-btn" title="{{ __('common.search') }}"></button>
                     </form>
                 </div>

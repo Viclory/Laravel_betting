@@ -137,6 +137,10 @@ function search(elm) {
 function collectParams(default_params) {
     var params = {};
 
+    $.extend(params, {casino_type: casino_type});
+
+    console.log(params);
+
     if (default_params != null) {
         $.extend(params, default_params);
     }
@@ -320,7 +324,7 @@ function emptySearch() {
 
     $('.ajax-upload-box p.message').hide();
     $('.ajax-upload-box a.js-load-more').show();
-
+    return false;
 }
 
 

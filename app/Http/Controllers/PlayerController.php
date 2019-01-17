@@ -55,12 +55,12 @@ class PlayerController extends Controller
     public function register(Request $request)
     {
 	    $registerBean = [
-		    'name' => $request->input('username'),
+		    'name' => $request->input('name', $request->input('username')),
 		    'email' => $request->input('email'),
 		    'password' => $request->input('password'),
 		    'dob' => $request->input('dob'),
 		    'currency_id' => $request->input('currency'),
-		    'phone' => $request->input('phone'),
+		    'phone' => $request->input('phone', ' '),
 		    'username' => $request->input('username'),
 		    'country_id' => $request->input('country_id'),
 		    'merchant_id' => $request->input('merchant_id'),
@@ -68,6 +68,8 @@ class PlayerController extends Controller
 		    'zip' => $request->input('zip'),
 		    'city' => $request->input('city')
 	    ];
+
+//	    dd($registerBean);
 
         $result = StaygamingBO::registerUser($registerBean);
 
