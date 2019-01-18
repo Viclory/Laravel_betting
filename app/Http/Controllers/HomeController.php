@@ -36,6 +36,11 @@ class HomeController extends Controller
         return view('index.casino', ['casino_type' => 'casino']);
     }
 
+    public function bingo()
+    {
+        return view('player.activation-email-sent', ['title' => 'Under Construction', 'text' => 'Coming soon']);
+    }
+
     public function casinoLive()
     {
         return view('index.casino-live', ['casino_type' => 'casino-live']);

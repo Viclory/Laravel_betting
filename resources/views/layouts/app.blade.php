@@ -22,13 +22,13 @@
                         <a href="{{ URL::to('/casino') }}">Casino</a>
                     </li>
                     <li>
-                        <a href="casino-live.html">Casino live</a>
+                        <a href="{{ URL::to('/casino-live') }}">Casino live</a>
                     </li>
                     <li>
-                        <a href="sport.html">Sport</a>
+                        <a href="{{ URL::to('/sport') }}">Sport</a>
                     </li>
                     <li>
-                        <a href="bingo.html">Bingo</a>
+                        <a href="{{ URL::to('/bingo') }}">Bingo</a>
                     </li>
                     <li>
                         <a href="#bonus-anchor">Bonus</a>
@@ -74,16 +74,16 @@
                     <img src="{{ asset('img/character-proportion.gif') }}" class="proportion" alt="">
                 </div>
                 <div id="main-nav">
-                    <a href="casino-live.html" class="casino-live-link" title="Casino live">
+                    <a href="{{ URL::to('/casino-live') }}" class="casino-live-link" title="Casino live">
                         <span class="chest" data-text="Casino live">Casino live</span>
                     </a>
                     <a href="{{ URL::to('/casino') }}" class="casino-link" title="Casino">
                         <span class="chest" data-text="Casino">Casino</span>
                     </a>
-                    <a href="sport.html" class="sport-link" title="Sport">
+                    <a href="{{ URL::to('/sport') }}" class="sport-link" title="Sport">
                         <span class="chest" data-text="Sport">Sport</span>
                     </a>
-                    <a href="bingo.html" class="bingo-link" title="Bingo">
+                    <a href="{{ URL::to('/bingo') }}" class="bingo-link" title="Bingo">
                         <span class="chest" data-text="Bingo">Bingo</span>
                     </a>
                     <a href="#bonus-anchor" class="bonus-link" title="Bonus">
