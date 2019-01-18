@@ -415,7 +415,7 @@ function gameActions() {
         }
 
 
-        if($('#game-iframe-box .js-full-screen').hasClass('active')){
+        if($('#game-iframe-box .js-full-screen').hasClass('active')) {
             toggleFullScreen(document.body);
         }
 

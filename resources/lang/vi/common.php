@@ -15,7 +15,7 @@ return [
     'rus_lang_selector' => 'Русский',
     'go_to_main'        => 'На главную',
     'read_more'         => 'Читать далее',
-    'back'              => 'Назад',
+    'back'              => 'Quay lại',
     'close_window'      => 'Закрыть окно',
 
     'contacts'          => 'Liên hệ',
@@ -79,5 +79,6 @@ return [
     'provider_filter' => 'Провайдер',
     'fullscreen_mode' => 'Полноэкранный режим',
     'assistance_popup_send_message_guide' => 'Отправьте нам электронное сообщение или пообщайтесь с нами в чате, просмотрите FAQ или свяжитесь с нами в социальных сетях',
-    'faq' => 'Часто задаваемые вопросы'
+    'faq' => 'Часто задаваемые вопросы',
+    'common' => 'Quốc gia'
 ];

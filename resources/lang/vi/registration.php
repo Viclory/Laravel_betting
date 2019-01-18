@@ -8,5 +8,10 @@ return [
     'quick_registration' => 'Đăng ký nhanh',
     'full_registration' => 'Đăng ký đầy đủ',
     'currency' => 'Tiền tệ',
-    'password' => 'Mật khẩu'
+    'password' => 'Mật khẩu',
+    'choose_register_option' => 'Hãy chọn phương án đăng ký',
+    'create_free_account' => 'Hãy tạo tài khoản miễn phí',
+    'repeat_password' => 'Lặp lại mật khẩu',
+    'enter_promocode' => 'Nhập mã khuyến mãi',
+    'sign_up_2_steps' => 'Создайте бесплатный аккаунт в два простых шага',
 ];

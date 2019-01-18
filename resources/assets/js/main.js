@@ -602,7 +602,6 @@
                     exclude[games_category].push($(this).find('a').attr('data-game-id'));
                 });
 
-                // console.log(exclude["all"]);
             });
 
             for (var i in exclude)
@@ -611,31 +610,20 @@
                 exclude[i] = tmp.join(',');
             }
 
-            // console.log(exclude);
-
             var params = {
                 exclude_popular: exclude["popular"],
                 exclude_new: exclude["new"],
                 exclude_all: exclude["all"],
                 casino_type: casino_type,
                 limit: load_more_limit,
-                games_type: selected_games_type
+                game_type: selected_games_type
             };
 
             var games = applyFilters(params);
 
             placeGames(games,'', true);
 
-            // console.log(params);
-            // console.log(games);
-
             return false;
-
-            // console.log($(this));
-
-            // $(this).parents('.games-section').find('.game-item').each(function(){
-            //     exclude.push($(this).attr('data-game-id'));
-            // });
         }
     });
 

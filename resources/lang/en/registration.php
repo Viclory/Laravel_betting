@@ -8,5 +8,10 @@ return [
     'quick_registration' => 'Quick Registration',
     'full_registration' => 'Full Registration',
     'currency' => 'Currency',
-    'password' => 'Password'
+    'password' => 'Password',
+    'choose_register_option' => 'Choose registration option',
+    'create_free_account' => 'Create Free Account',
+    'repeat_password' => 'Repeat Password',
+    'enter_promocode' => 'Enter Promocode',
+    'sign_up_2_steps' => 'Create free account in 2 easy steps',
 ];
