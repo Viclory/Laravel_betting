@@ -2,12 +2,12 @@
     <div class="sub-box">
         <div class="registration-box">
             <div class="choose-registration child">
-                <p class="title">Выберите вариант <br>регистрации</p>
+                <p class="title">{{ __('registration.choose_register_option') }}</p>
                 <a href="" data-step="quick-registration" class="btn js-further-step">{{ __('registration.quick_registration') }}</a>
                 <a href="" data-step="full-registration" class="btn js-further-step">{{ __('registration.full_registration') }}</a>
             </div>
             <div class="quick-registration hidden child">
-                <p class="title">Создайте бесплатный аккаунт<br>Быстрая регистрация</p>
+                <p class="title">{{ __('registration.create_free_account') }}<br>{{ __('registration.quick_registration') }}</p>
                 <form class="form" id="quick_registration" method="post" action="{{ URL::to('/player/register') }}">
                     <input type="hidden" name="merchant_id" id="merchant_id" value="{{ env('MERCHANT_ID') }}">
                     <div class="two-cols">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col">
                             <div class="field">
-                                <input type="password" name="registration_confirm_password" id="registration_confirm_password" class="form-control" placeholder="Повторите пароль">
+                                <input type="password" name="registration_confirm_password" id="registration_confirm_password" class="form-control" placeholder="{{ __('registration.repeat_password') }}">
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="col">
                             <div class="field">
-                                <select name="registration_country_id" id="registration_country_id" class="select" data-placeholder="Страна">
+                                <select name="registration_country_id" id="registration_country_id" class="select" data-placeholder="{{ __('common.country') }}">
                                     <option value="">---</option>
                                     <?php $countries = \App\Helpers\Functions::getCountries(); ?>
                                     @foreach ($countries as $country)
@@ -61,7 +61,7 @@
                     <div class="two-cols">
                         <div class="col">
                             <div class="field">
-                                <input type="text" name="promocode" id="registration_promocode" class="form-control" placeholder="Введите промокод">
+                                <input type="text" name="promocode" id="registration_promocode" class="form-control" placeholder="{{ __('registration.enter_promocode') }}">
                             </div>
                         </div>
                         <div class="col">
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     <div class="btns-box">
-                        <a href="#" data-step="choose-registration" class="btn sub-color js-further-step">Назад</a>
+                        <a href="#" data-step="choose-registration" class="btn sub-color js-further-step">{{ __('common.back') }}</a>
                         <a href="#" data-step="quick-registration-complete" class="btn js-further-step">регистрация</a>
                     </div>
 
@@ -85,13 +85,13 @@
             </div>
             <div class="full-registration hidden child">
                 <div class="step step1">
-                    <p class="title">Создайте бесплатный аккаунт в два простых шага</p>
+                    <p class="title">{{ __('registration.sign_up_2_steps') }}</p>
                     <form class="form" id="full-registration-step1">
                         <input type="hidden" name="merchant_id" value="{{ env('MERCHANT_ID') }}">
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" name="login" id="full_registration_login" class="form-control" placeholder="Ваш логин">
+                                    <input type="text" name="login" id="full_registration_login" class="form-control" placeholder="{{ __('common.your_login') }}">
                                 </div>
                             </div>
                             <div class="col">

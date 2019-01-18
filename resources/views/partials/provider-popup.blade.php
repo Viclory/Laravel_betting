@@ -7,7 +7,7 @@
             <ul class="choose-list">
                 <?php $vendors = \App\Helpers\Functions::getGameVendors(); ?>
                 @foreach ($vendors as $vendor)
-                    <li><a href="" data-vendor-id="{{ $vendor->id }}">{{ $vendor->name }}</a></li>
+                    <li><a href="" data-vendor-id="{{ $vendor->id }}">@if($vendor->display_name != null) {{ $vendor->display_name}} @else {{$vendor->name}}@endif</a></li>
                 @endforeach
             </ul>
         </div>
