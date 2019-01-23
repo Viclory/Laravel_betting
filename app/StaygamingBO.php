@@ -388,13 +388,13 @@ class StaygamingBO extends Model
 		return $result;
 	}
 
-	public static function getGamesVendors()
+	public static function getGamesVendors($casino_type)
 	{
-		$url = 'api/v1/games-vendors';
+		$url = 'api/v1/games-vendors/' . $casino_type;
 
-		$res = self::api($url, 'GET');
+        $res = self::api($url, 'GET');
 
-		if ($res->status == 0) {
+        if ($res->status == 0) {
 			$result = $res->result;
 		} else {
 			$result = array();

@@ -20,9 +20,9 @@ class Functions {
 	}
 
 
-	public static function getGameVendors()
+	public static function getGameVendors($casino_type = 'casino')
 	{
-		$games_vendors = StaygamingBO::getGamesVendors();
+		$games_vendors = StaygamingBO::getGamesVendors($casino_type);
 
 		return $games_vendors;
 	}
