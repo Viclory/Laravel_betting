@@ -496,6 +496,44 @@
     // }
     // gameActions();
 
+    var msg_key = 'msg-' + (new Date().getTime());
+    if ($('.game-message.msg1').length) {
+        $('.game-message.msg1').addClass(msg_key);
+        setTimeout(function () {
+            $('.game-message.msg1.' + msg_key).fadeIn(200);
+        }, 5000);
+    }
+
+    if ($('.game-message.msg2').length) {
+        $('.game-message.msg2').addClass(msg_key);
+        setTimeout(function () {
+            $('.game-message.msg2.' + msg_key).fadeIn(200);
+        }, 40000);
+    }
+
+
+    $(document).on('click', '.js-close-game', function(){
+        if ($html.hasClass('game-single-page')) {
+            return;
+        }
+        $html.removeClass('opened-game game-page scroll-top');
+        setTimeout(function () {
+            $('#game-all').html('');
+        }, 200);
+        //$('#game-box').attr('class', '');
+        //$('#game-frame').attr('src', '');
+        var scrollTop = $(window).scrollTop();
+        if($html.hasClass('no-touchevents')){
+            $('html, body').scrollTop(scrollTop - 1);
+        } else{
+            $('html, body').scrollTop(scrollTopTouch - 1);
+        }
+
+        if($('#game-iframe-box .js-full-screen').hasClass('active')){
+            toggleFullScreen(document.body);
+        }
+    });
+
 
     function toggleFullScreen(elem) {
         if((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
@@ -524,6 +562,39 @@
 
     $('#game-iframe-box .js-full-screen').click(function(){
         toggleFullScreen(document.body);
+    });
+
+
+    /* Standard syntax */
+    document.addEventListener("fullscreenchange", function () {
+        setTimeout(function () {
+            windowGameHeight = $(window).height() - 160;
+            $('#game-iframe-box .sub-box').css({width: windowGameHeight * gameProportion, height: windowGameHeight});
+        }, 600);
+    });
+
+    /* Firefox */
+    document.addEventListener("mozfullscreenchange", function () {
+        setTimeout(function () {
+            windowGameHeight = $(window).height() - 160;
+            $('#game-iframe-box .sub-box').css({width: windowGameHeight * gameProportion, height: windowGameHeight});
+        }, 600);
+    });
+
+    /* Chrome, Safari and Opera */
+    document.addEventListener("webkitfullscreenchange", function () {
+        setTimeout(function () {
+            windowGameHeight = $(window).height() - 160;
+            $('#game-iframe-box .sub-box').css({width: windowGameHeight * gameProportion, height: windowGameHeight});
+        }, 600);
+    });
+
+    /* IE / Edge */
+    document.addEventListener("msfullscreenchange", function () {
+        setTimeout(function () {
+            windowGameHeight = $(window).height() - 160;
+            $('#game-iframe-box .sub-box').css({width: windowGameHeight * gameProportion, height: windowGameHeight});
+        }, 1600);
     });
 
 
