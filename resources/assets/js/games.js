@@ -1,13 +1,10 @@
-// $(document).ready(function(){
-    var games_count = getGamesCountDependsOnResolution();
-    var selected_games_type = 'slots';
-    var selected_vendor = null;
-    var popular_games_limit = 20;
-    var new_games_limit = 10;
-    var all_games_limit = 30;
-    var load_more_limit = 60;
-    // console.log('games-count: ' + games_count);
-// });
+var games_count = getGamesCountDependsOnResolution();
+var selected_games_type = 'slots';
+var selected_vendor = null;
+var popular_games_limit = 20;
+var new_games_limit = 10;
+var all_games_limit = 30;
+var load_more_limit = 60;
 
 
 function getGamesCountDependsOnResolution(type = null) {
@@ -191,9 +188,6 @@ function applyFilters(params) {
     $.extend(params, {types: checked_types});
 
 
-    // console.log('ttttttttttt');
-    // console.log(params);
-
     $.ajax({
         url: '/games',
         method: 'post',
@@ -227,7 +221,6 @@ function getNewGames(additional_params) {
 
 function getPopularGames(additional_params) {
 
-    console.log('getPopularGames called');
     var params = {
         type: 'popular',
         request_total_count: true,
@@ -237,19 +230,7 @@ function getPopularGames(additional_params) {
     $.extend(params, additional_params);
     $.extend(params, collectParams());
 
-    // console.log(params);
-
-    // return false;
-
     var games = applyFilters(params);
-
-
-    // console.log(games);
-
-
-
-
-    //return false;
 
     placeGames(games, 'popular');
 
@@ -277,19 +258,17 @@ function placeGames(games, type, append = false) {
             }
 
             game_item += '<div class="overlay">' +
-            '<span data-text="Играть бесплатно" class="js-open-game" data-src="' + value.iframe_not_logged + '" data-game-bg="static-bg">Играть бесплатно</span>' +
-            '</div>';
+                '<span data-text="Играть бесплатно" class="js-open-game" data-src="' + value.iframe_not_logged + '" data-game-bg="static-bg">Играть бесплатно</span>' +
+                '</div>';
 
             if (type == 'new' || value.is_new > 0) {
                 game_item += '<span class="novelty-label">New</span>';
             }
 
             game_item += '</a>' +
-            '</div>';
+                '</div>';
 
             // $(game_item).appendTo($('.popular-games-section-items'));
-
-            attachClickEvents($(game_item));
 
 
             if (append) {
@@ -328,8 +307,6 @@ function placeGames(games, type, append = false) {
 }
 
 function emptySearch() {
-    // console.log('emptySearch called');
-    // console.log($('.games-list.search-games-items'));
     $('.games-list.search-games-items').addClass('hidden');
     $('.games-list.popular-games-items').removeClass('hidden');
     $('.games-list.new-games-items').removeClass('hidden');
@@ -342,7 +319,6 @@ function emptySearch() {
 
 
 if ($('header.popular-games-section').is(':visible')) {
-    //console.log('getPopularGames');
     getPopularGames({limit: 20, game_type: 'slots'});
 }
 
@@ -364,138 +340,28 @@ $('.games-search-box input[name="games-search-box"]').on('keyup', function(){
     $(this).data('timer', wait);
 });
 
-function gameActions() {
     var scrollTopTouch;
     var $html = $('html'), isTouch = $html.hasClass('touchevents');
-    // var $body = $('body');
-    // console.log('++++++++++++++++++');
-    // $('.js-open-game').click(function(e){
-    //     console.log('tut');
-    //     e.stopPropagation();
-    //     e.preventDefault();
-    //
-    //     var $link = $(this);
-    //
-    //     var provider = $link.data('provider');
-    //     var id = $link.data('id');
-    //     var mode = $link.data('mode');
-    //
-    //     $('.ajaxLoader').show();
-    //
-    //     // $.ajax({
-    //     $('.ajaxLoader').hide();
-    //     console.log('ajaxloaderhide');
-    //     //     data: {
-    //     //         provider: provider,
-    //     //         id: id,
-    //     //         mode: mode
-    //     //     },
-    //     //     success: function (data) {
-    //
-    //             if ($('#user_agent').val() == 'mobile') {
-    //                 var mobile_launch_url = $(data).find('#game-frame').attr('src');
-    //                 window.location = mobile_launch_url + '&mobileLobbyUrl=' + window.location.origin + window.location.pathname;
-    //                 return false;
-    //             }
-    //
-    //             // $('#game-all').html(data);
-    //
-    //             if($html.hasClass('touchevents')){
-    //                 scrollTopTouch = $(window).scrollTop();
-    //             }
-    //
-    //             $html.addClass('opened-game game-page');
-    //             $('#header').removeClass('sticky');
-    //
-    //     var gameBoxBg = $(this).attr('data-game-bg');
-    //     var gameIframeSrc = $(this).attr('data-src');
-    //
-    //             $('#game-box').addClass(gameBoxBg);
-    //             $('#game-frame').attr('src', gameIframeSrc);
-    //
-    //             gameLaunchWidth = $('#game-frame').attr('data-launch-width');
-    //             gameLaunchHeight = $('#game-frame').attr('data-launch-height');
-    //             gameProportion = gameLaunchWidth / gameLaunchHeight;
-    //             windowGameHeight = $(window).height() - 160;
-    //
-    //             $('#game-iframe-box .sub-box').css({width:windowGameHeight * gameProportion, height: windowGameHeight});
-    //
-    //             /*Init*/
-    //             jsClock();
-    //
-    //             $('.js-close-popup').trigger('click');
-    //
-    //             var msg_key = 'msg-' + (new Date().getTime());
-    //
-    //             $('.game-message.msg1').addClass(msg_key);
-    //             setTimeout(function () {
-    //                 $('.game-message.msg1.' + msg_key).fadeIn(200);
-    //             }, 5000);
-    //
-    //             $('.game-message.msg2').addClass(msg_key);
-    //             setTimeout(function () {
-    //                 $('.game-message.msg2.' + msg_key).fadeIn(200);
-    //             }, 40000);
-    //
-    //             /*var game_width_launch = $('.fixed_game_window .game-window-wrapper').data('launch-width');
-    //             var game_height_launch = $('.fixed_game_window .game-window-wrapper').data('launch-height');
-    //
-    //             var index_width = game_width_launch / game_height_launch;
-    //             var window_height_without_headder = $(window).height() - 95;
-    //             var new_window_width = window_height_without_headder * index_width;
-    //
-    //             $('.game-window-wrapper').width(new_window_width);
-    //             $('.game-window-wrapper').height(window_height_without_headder);
-    //             $('.game-window-wrapper').data('prev_widht', new_window_width);
-    //             $('.game-window-wrapper').data('prev_height', window_height_without_headder);*/
-    //
-    //             /*if ($('#user_currency').val() == '') {
-    //                 setTimeout(function () {
-    //                     $('.jq_notification-Lepricon_register').animate({
-    //                         left: 0
-    //                     }, 400, function () {
-    //                         $(this).css("display", "block");
-    //                     });
-    //                 }, 40000);
-    //             }*/
-    //         // },
-    //         // error: function () {
-    //         //     $('.ajaxLoader').hide();
-    //         // },
-    //         // type: 'POST',
-    //         // url: '/game_ajax',
-    //         // dataType: 'html'
-    //     // });
-    // });
+
+    $('.js-close-game').click(function(){
+
+        $html.removeClass('opened-game game-page scroll-top');
+        $('#game-box').attr('class', '');
+        $('#game-frame').attr('src', '');
+        var scrollTop = $(window).scrollTop();
+        if($html.hasClass('no-touchevents')){
+            $('html, body').scrollTop(scrollTop - 1);
+        }
+        else{
+            $('html, body').scrollTop(scrollTopTouch - 1);
+        }
 
 
-}
+        if($('#game-iframe-box .js-full-screen').hasClass('active')) {
+            toggleFullScreen(document.body);
+        }
 
-$('.js-close-game').click(function(){
-    
-    //
-    $('html').removeClass('opened-game game-page scroll-top');
-    $('#game-box').attr('class', '');
-    $('#game-frame').attr('src', '');
-    var scrollTop = $(window).scrollTop();
-    if($('html').hasClass('no-touchevents')){
-        $('html, body').scrollTop(scrollTop - 1);
-    }
-    else{
-        $('html, body').scrollTop(scrollTopTouch - 1);
-    }
-
-
-    if($('#game-iframe-box .js-full-screen').hasClass('active')) {
-        toggleFullScreen(document.body);
-    }
-
-});
-
-function attachClickEvents(game_item_element)
-{
-
-}
+    });
 
 /*Clock*/
 function jsClock(){
