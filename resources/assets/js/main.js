@@ -504,7 +504,7 @@
         /*Init*/
         jsClock();
 
-        // $('.js-close-popup').trigger('click');
+        $('.js-close-popup').trigger('click');
 
         var msg_key = 'msg-' + (new Date().getTime());
 
@@ -736,40 +736,9 @@
         });
     }
 
-    /*Popup*/
-    $('.js-open-popup:not(.game-link)').click(function(e){
-        e.preventDefault();
-        $('#popup').find('.visible').removeClass('visible').addClass('hidden');
-        var dataPopup = $(this).attr('data-popup');
-        $html.addClass('opened-popup');
-        $("." + dataPopup).removeClass('hidden').addClass('visible');
 
 
-        /*Tain iframe resize recalc hack*/
-        var resizeEvent = new Event('resize');
-        window.dispatchEvent(resizeEvent);
 
-        setTimeout(function(){
-            var resizeEvent = new Event('resize');
-            window.dispatchEvent(resizeEvent);
-        }, 250);
-    });
-
-    $('.game-link.js-open-popup').click(function(e){
-        e.preventDefault();
-        $('#popup').find('.visible').removeClass('visible').addClass('hidden');
-        var dataPopup;
-        if($html.hasClass('no-touchevents')){
-            dataPopup = $(this).attr('data-popup');
-        }
-        else{
-            dataPopup = $(this).attr('data-touch-popup');
-            var btnGameSrc = $(this).find('.js-open-game').attr('data-src');
-            $('.choose-game-popup .js-open-game').attr('data-src', btnGameSrc);
-        }
-        $html.addClass('opened-popup');
-        $("." + dataPopup).removeClass('hidden').addClass('visible');
-    });
 
     $('.js-close-popup').click(function(e){
         e.preventDefault();
