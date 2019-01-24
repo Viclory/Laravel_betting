@@ -55,7 +55,13 @@ class HomeController extends Controller
 		} else {
 			$player_token = '';
 		}
-		return view('sports', compact('countries', 'currencies','bonuses','player_token'));
+		return view('sports', [
+		    'countries' => $countries,
+            'currencies' => $currencies,
+            'bonuses' => $bonuses,
+            'player_token' => $player_token,
+            'casino_type' => 'sport']
+        );
 	}
 
 	public function games(Request $request)
