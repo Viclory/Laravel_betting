@@ -45,7 +45,7 @@
     </header>
 
     <div id="page-bg">
-        <iframe class="sport-iframe">
+        {{--<iframe class="sport-iframe">--}}
             @if($agent->isMobile())
                 <script type="text/javascript" src="https://msports-itainment-uat.biahosted.com/staticResources/betinactionApi.js"></script>
             @else
@@ -163,7 +163,7 @@
 
 
             </script>
-        </iframe>
+        {{--</iframe>--}}
     </div>
 
 
@@ -183,21 +183,6 @@
             @include('partials.recover-password-popup')
             @include('partials.login-popup')
         @endif
-
-        <div class="simple-popup payment-order hidden">
-            <p class="h2" data-text="Депозит с neteller">Депозит с neteller</p>
-            <div class="max-w">
-                <p class="large">Min deposit amount: 1.16 USD<br> Max deposit amount: 116.50 USD<br> Remaining deposit amount: 116.50 USD</p>
-                <form action="#" class="form">
-                    <div class="field">
-                        <input type="text" class="form-control" placeholder="Amount">
-                        <button type="button" class="btn sub-color field-btn">USD</button>
-                    </div>
-                    <button type="button" class="btn full-width">продолжить</button>
-                </form>
-            </div>
-            <span class="js-close-popup" title="Закрыть"></span>
-        </div>
 
         <div class="simple-popup top-up-balance hidden">
             <p class="h2" data-text="Пополнить баланс">Пополнить баланс</p>
