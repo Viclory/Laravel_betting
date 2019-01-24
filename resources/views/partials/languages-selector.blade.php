@@ -8,7 +8,7 @@
                 @continue
             @endif
             <a href="{{ route('lang.switch', $lang) }}" title="{{ $language }}">
-                <img src="{{ asset("\img\\".$lang."-lang.png") }}" alt="">
+                <img src="{{ asset('/img/' . $lang . '-lang.png') }}" alt="">
                 <span>{{ $language }}</span>
             </a>
         @endforeach

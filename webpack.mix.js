@@ -13,6 +13,7 @@ let webpack = require('webpack');
  */
 mix.copy('resources/assets/js/pace.min.js', 'public/js')
     .copy('resources/assets/css/style.css', 'public/css')
+    .copy('resources/assets/css/custom.css', 'public/css')
     .copy('resources/assets/fonts/','public/fonts', false)
     .copy('resources/assets/img/','public/img', false)
 

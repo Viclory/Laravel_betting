@@ -1,62 +1,62 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 @font-face{
     font-family: 'fontello';
-    src: url('../fonts/fontello-1.eot');
-    src: url('../fonts/fontello-1.eot') format('embedded-opentype'), url('../fonts/fontello-1.woff2') format('woff2'), url('../fonts/fontello-1.woff') format('woff'), url('../fonts/fontello-1.txt') format('truetype'), url('../fonts/fontello-1.svg') format('svg');
+    src: url('../fonts/fontello.eot?60480236');
+    src: url('../fonts/fontello.eot?60480236#iefix') format('embedded-opentype'), url('../fonts/fontello.woff2?60480236') format('woff2'), url('../fonts/fontello.woff?60480236') format('woff'), url('../fonts/fontello.ttf?60480236') format('truetype'), url('../fonts/fontello.svg?60480236#fontello') format('svg');
     font-weight: normal;
     font-style: normal;
     }
 @font-face{
     font-family: 'supernaturalKG';
     src: url('../fonts/supernaturalKG.eot');
-    src: url('../fonts/supernaturalKG-1.eot') format('embedded-opentype'),
+    src: url('../fonts/supernaturalKG.eot?#iefix') format('embedded-opentype'),
     url('../fonts/supernaturalKG.woff') format('woff'),
-    url('../fonts/supernaturalKG.txt') format('truetype');
+    url('../fonts/supernaturalKG.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     }
 @font-face{
     font-family: 'segoeUi-light';
     src: url('../fonts/segoeUi-light.eot');
-    src: url('../fonts/segoeUi-light-1.eot') format('embedded-opentype'),
+    src: url('../fonts/segoeUi-light.eot?#iefix') format('embedded-opentype'),
     url('../fonts/segoeUi-light.woff') format('woff'),
-    url('../fonts/segoeUi-light.txt') format('truetype');
+    url('../fonts/segoeUi-light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
     }
 @font-face{
     font-family: 'Open Sans';
     src: url('../fonts/openSansLight.eot');
-    src: url('../fonts/openSansLight-1.eot') format('embedded-opentype'),
+    src: url('../fonts/openSansLight.eot?#iefix') format('embedded-opentype'),
     url('../fonts/openSansLight.woff') format('woff'),
-    url('../fonts/openSansLight.txt') format('truetype');
+    url('../fonts/openSansLight.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
     }
 @font-face{
     font-family: 'Open Sans';
     src: url('../fonts/openSansRegular.eot');
-    src: url('../fonts/openSansRegular-1.eot') format('embedded-opentype'),
+    src: url('../fonts/openSansRegular.eot?#iefix') format('embedded-opentype'),
     url('../fonts/openSansRegular.woff') format('woff'),
-    url('../fonts/openSansRegular.txt') format('truetype');
+    url('../fonts/openSansRegular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     }
 @font-face{
     font-family: 'Open Sans';
     src: url('../fonts/openSansSemiBold.eot');
-    src: url('../fonts/openSansSemiBold-1.eot') format('embedded-opentype'),
+    src: url('../fonts/openSansSemiBold.eot?#iefix') format('embedded-opentype'),
     url('../fonts/openSansSemiBold.woff') format('woff'),
-    url('../fonts/openSansSemiBold.txt') format('truetype');
+    url('../fonts/openSansSemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     }
 @font-face{
     font-family: 'Open Sans';
     src: url('../fonts/openSansBold.eot');
-    src: url('../fonts/openSansBold-1.eot') format('embedded-opentype'),
+    src: url('../fonts/openSansBold.eot?#iefix') format('embedded-opentype'),
     url('../fonts/openSansBold.woff') format('woff'),
-    url('../fonts/openSansBold.txt') format('truetype');
+    url('../fonts/openSansBold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     }
@@ -457,9 +457,6 @@ p img:first-child{
     outline: none !important;
     text-overflow: ellipsis;
     }
-.field .form-control.field-error {
-    margin-top: 0;
-}
 .form-control[class*="icon-"]{
     padding-left: 52px;
     }
@@ -2071,6 +2068,9 @@ button{
 #game-box.game-bg2 > .align-m{
     background: url("../img/game-bg2-pattern.png") repeat 100% 100%;
     }
+#game-box .container{
+    max-width: 100%;
+    }
 #game-box .game-bg{
     display: none;
     }
@@ -2156,6 +2156,7 @@ button{
     position: relative;
     display: inline-block;
     vertical-align: top;
+    max-width: 100%;
     background: #000;
     -webkit-box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 1);
     box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 1);
@@ -2165,7 +2166,22 @@ button{
     z-index: 2;
     height: 100%;
     overflow: auto;
+    min-width: 800px;
+    min-height: 400px;
     -webkit-overflow-scrolling: touch;
+    }
+@media screen and (max-height: 565px){
+    #game-iframe-box .sub-box{
+        min-width: 300px;
+        min-height: 100px;
+        }
+    }
+@media screen and (max-width: 820px){
+    #game-iframe-box .sub-box{
+        min-width: 0;
+        min-height: 0;
+        max-width: 100%;
+        }
     }
 #game-iframe-box img{
     position: relative;
@@ -2914,7 +2930,7 @@ html:not(.ie) .games-list .game-item .overlay span:before{
 	-webkit-transition: none;
 	transition: none;
 	}
-.no-touchevents .assistance-popup .accordion.sub-appearance a:hover{
+.no-touchevents .assistance-popup .accordion.sub-appearance a:hover, .no-touchevents .assistance-popup .accordion.sub-appearance a.active, .no-touchevents .assistance-popup .accordion.sub-appearance a.active:hover{
     background: -webkit-linear-gradient(100deg, rgba(253,156,2,1) 0%, rgba(255,227,103,1) 52%, rgba(250,176,2,1) 100%);
     background: linear-gradient(350deg, rgba(253,156,2,1) 0%, rgba(255,227,103,1) 52%, rgba(250,176,2,1) 100%);
     -webkit-background-clip: text;
@@ -2923,9 +2939,41 @@ html:not(.ie) .games-list .game-item .overlay span:before{
     border-bottom: 1px solid;
     border-image: linear-gradient(to right, rgba(253,156,2,1), rgba(255,227,103,1), rgba(250,176,2,1) ) 52% 0%;
     }
+.no-touchevents .assistance-popup .accordion.sub-appearance a.active{
+    border-image: linear-gradient(to right, rgba(253,156,2,0), rgba(255,227,103,0), rgba(250,176,2,0) ) 52% 0%;
+    }
 .no-touchevents.ie .assistance-popup .accordion.sub-appearance a:hover{
     color: #fed84e;
     background: none;
+    }
+.accordion.sub-appearance .text li > a{
+    font-weight: 600;
+}
+.accordion.sub-appearance .text .dropdown{
+    display: none;
+    position: relative;
+    margin: 16px 0 24px;
+    /*padding: 24px;
+    background: rgba(255, 255, 255, .7);*/
+    }
+.accordion.sub-appearance .text .dropdown:before{
+    content: '';
+    position: absolute;
+    z-index: 100;
+    left: -20px;
+    top: 5px;
+    bottom: 3px;
+    width: 1px;
+    background: #363c35;
+    }
+.accordion.sub-appearance .text .dropdown p{
+    margin: 12px 0;
+    }
+.accordion.sub-appearance .text .dropdown > *:first-child{
+    margin-top: 0;
+    }
+.accordion.sub-appearance .text .dropdown > *:last-child{
+    margin-bottom: 0;
     }
 /*=========================END OF MAIN=========================*/
 /*Popup*/
@@ -3126,6 +3174,7 @@ html:not(.ie) .games-list .game-item .overlay span:before{
     }
 .office-items{
     flex: auto;
+    width: calc(100% - 126px);
     margin: 15px 0 0 35px;
     }
 /*Office tabs*/
@@ -3159,6 +3208,7 @@ html:not(.ie) .games-list .game-item .overlay span:before{
     font-size: 17px;
     letter-spacing: .51px;
     text-transform: uppercase;
+    text-align: center;
     padding: 0;
     margin: 0 4.4% 0 0;
     background: none;
@@ -3274,6 +3324,87 @@ html:not(.ie) .games-list .game-item .overlay span:before{
     }
 .office-items .additional-info p{
     margin: 0 0 6px;
+    }
+.office-items .tabs-content .tab .row{
+    width: 100%;
+    }
+.office-items .tabs-content .tab .jq_trans_head, .office-items .tabs-content .tab .jq_withdraw_head{
+    padding: 0 12px 32px;
+    border-bottom: 1px solid #141a23;
+    }
+.office-items .tabs-content .tab .jq_trans_date_beetwen{
+    display: block;
+    }
+.office-items .tabs-content .tab .history_datepicker{
+    position: relative;
+    z-index: 9;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #494949;
+    line-height: 40px;
+    letter-spacing: 0;
+    width: 100%;
+    max-width: 220px;
+    height: 40px;
+    margin: 10px 0;
+    padding: 0 15px;
+    border: 0;
+    background: #f3f2f2;
+    border-radius: 5px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none !important;
+    text-overflow: ellipsis;
+    }
+.office-items .tabs-content table{
+    table-layout: auto;
+    min-width: 0;
+    max-width: 100%;
+    margin: 18px 0;
+    }
+.office-items .tabs-content table:last-child{
+    margin-bottom: 0;
+    }
+.office-items .tabs-content table th, .office-items .tabs-content table td{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+    color: #fff;
+    padding: 14px 12px 16px;
+    background: none;
+    border: none;
+    }
+.jq_hisory_trans_table table th:nth-child(1){
+    width: 33%;
+    }
+.jq_hisory_trans_table table th:nth-child(2){
+    width: 100px;
+    }
+.jq_hisory_trans_table table th:nth-child(3){
+    width: 160px;
+    }
+.jq_hisory_trans_table table th:nth-child(4){
+    width: 33%;
+    }
+.office-items .tabs-content table td{
+    font-weight: 400;
+    }
+
+.tabs-list.tabs2{
+    margin-top: -24px;
+    }
+.tabs-list.tabs2 li{
+    font-size: 15px;
+    }
+.tabs-list.tabs2 li span{
+    padding: 0 24px;
+    }
+.tabs-content.tabs2{
+
     }
 /*Simple popup*/
 .simple-popup{
@@ -4843,6 +4974,11 @@ html:not(.ie) .games-list .game-item .overlay span:before{
     .are-you-ready .golden-text.large{
         font-size: 26px;
         }
+
+
+    .office-items .tabs-list .tab-btn{
+        padding: 0 20px;
+        }
     }
 @media screen and (max-width: 900px){
     /*Main screen*/
@@ -4993,6 +5129,7 @@ html:not(.ie) .games-list .game-item .overlay span:before{
     .office-items{
         display: block;
         margin: 0;
+        width: 100%;
         }
     /*Tabs*/
     .office-items .tabs-list li, .office-items .profile-box .tabs-list li{
@@ -5002,7 +5139,7 @@ html:not(.ie) .games-list .game-item .overlay span:before{
         margin: 0 !important;
         }
     .office-items .tabs-list .tab-btn{
-        padding: 0 24px;
+        padding: 0 22px;
         }
     .office-items .tabs-list .resp-tab-active .tab-btn{
         border-top-left-radius: 1px;
@@ -5636,6 +5773,30 @@ html:not(.ie) .games-list .game-item .overlay span:before{
         }
     .registration-box .btns-box .btn.fix-width{
         width: 200px;
+        }
+    /*Popup tabs*/
+    .office-items .tabs-content .tab .jq_trans_head, .office-items .tabs-content .tab .jq_withdraw_head{
+        padding: 0 0 32px;
+        }
+    .office-items .tabs-content table th, .office-items .tabs-content table td{
+        font-size: 12px;
+        line-height: 24px;
+        padding: 14px 12px 16px 0;
+        }
+    .jq_hisory_trans_table table th:nth-child(1){
+        width: 28%;
+        }
+    .jq_hisory_trans_table table th:nth-child(2){
+        width: 80px;
+        }
+    .jq_hisory_trans_table table th:nth-child(3){
+        width: 120px;
+        }
+    .jq_hisory_trans_table table th:nth-child(4){
+        width: 28%;
+        }
+    .office-items .tabs-content table td{
+        font-weight: 400;
         }
     }
 @media screen and (max-width: 480px){
@@ -6481,7 +6642,316 @@ html:not(.ie) .games-list .game-item .overlay span:before{
         max-width: 80px;
         }
     }
+/**/
+/*DepositLimitsPage*/
+#depositLimitsPage{
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22.5px;
+    letter-spacing: 0;
+    color: #fff;
+    padding: 24px 0 0;
+    }
+#depositLimitsPage h2, #depositLimitsInfo h2{
+    font-size: 32px;
+    line-height: 1.45em;
+    margin-bottom: 12px;
+    }
+#depositLimitsZone{
+    margin: 32px 0 0;
+    }
+#depositLimitsZone .form{
+    padding-bottom: 32px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #141a23;
+    }
+#depositLimitsZone .form:last-child{
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border: none;
+    }
+#depositLimitsInfo{
+    width: 100%;
+    max-width: 100%;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22.5px;
+    letter-spacing: 0;
+    color: #fff;
+    padding: 24px 0 0;
+    }
+#depositLimitItems{
+    padding: 0;
+    }
+#depositLimitItems li{
+    padding-left: 22px;
+    margin-bottom: 12px;
+    background: url("../img/list-bullet.svg") no-repeat 0 10px/6px 6px;
+    }
+#depositLimitsZone .form h4{
+    margin: 0 0 12px;
+    }
+#depositLimitsZone .form .form-row > .col{
+    padding: 0;
+    margin: 0;
+    }
+#depositLimitsZone .form .form-group{
+    margin: 0;
+    }
+#depositLimitsZone .form .form-control{
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    width: calc(100% - 60px);
+    margin: 0;
+    box-shadow: none !important;
+    outline: none !important;
+    transition: none !important;
+    }
+#depositLimitsZone .form .currentLimitRow{
+    display: flex;
+    align-items: center;
+    margin: 20px 0 16px;
+    }
+#depositLimitsZone .form .currentLimitRow > div{
+    width: calc(50% - 60px);
+    }
+#depositLimitsZone .form .currentLimitRow > .currentLimitRemoveCol{
+    width: 120px;
+    }
+#depositLimitsZone .form .removeLimit{
+    font-size: 15px;
+    line-height: 32px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    height: 35px;
+    background: -webkit-linear-gradient(90deg, rgba(102,2,9,1) 0%, rgba(168,0,5,1) 100%);
+    background: linear-gradient(0deg, rgba(102,2,9,1) 0%, rgba(168,0,5,1) 100%);
+    }
+#depositLimitsZone .form .limit-row{
+    display: flex;
+    max-width: 480px;
+    }
+#depositLimitsZone .form .newLimitLabelCol{
+    margin: 0 0 8px;
+    }
+#depositLimitsZone .form .limit-row .col-md-6{
+    width: calc(100% - 140px);
+    }
+#depositLimitsZone .form .limit-row .col-md-6.newLimitSetCol{
+    width: 140px;
+    padding-left: 10px;
+    }
+#depositLimitsZone .form .input-group{
+    display: flex;
+    }
+#depositLimitsZone .form .input-group-append{
+    width: 60px;
+    height: 53px;
+    margin: 0;
+    }
+#depositLimitsZone .form .input-group-text{
+    position: relative;
+    display: block;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 53px;
+    text-align: center;
+    color: #495057;
+    padding: 0;
+    height: 53px;
+    width: 100%;
+    background: #f3f2f2;
+    border: none;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    }
+#depositLimitsZone .form .input-group-text:before{
+    content: '';
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 1px;
+    background: #495057;
+    opacity: .4;
+    }
+#depositLimitsZone .form .btn{
+    position: relative;
+    z-index: 4;
+    display: table;
+    font-family: 'supernaturalKG';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: .48px;
+    color: #000;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    padding: 16px 16px 13px;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    border: 0 !important;
+    border-radius: 27px;
+    background: -webkit-linear-gradient(100deg, rgba(253,156,2,1) 0%, rgba(255,227,103,1) 52%, rgba(250,176,2,1) 100%);
+    background: linear-gradient(350deg, rgba(253,156,2,1) 0%, rgba(255,227,103,1) 52%, rgba(250,176,2,1) 100%);
+    -webkit-box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .5);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .5);
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    }
+#depositLimitsZone .form .btn:not(:disabled):hover{
+    opacity: .7;
+    }
+#depositLimitsZone .form .btn:not(:disabled):active{
+    -webkit-box-shadow: inset 0 3px 5px 0 rgba(0, 0, 0, .4), 0 3px 5px 0 rgba(0, 0, 0, .5);
+    box-shadow: inset 0 3px 5px 0 rgba(0, 0, 0, .4), 0 3px 5px 0 rgba(0, 0, 0, .5);
+    }
+@media screen and (max-width: 840px){
+    #depositLimitsPage{
+        padding-bottom: 24px;
+        }
+    }
+@media screen and (max-width: 680px){
+    #depositLimitsInfo{
+        padding: 0 0 24px;
+        }
+    #depositLimitsZone{
+        margin: 0 0 24px;
+        }
+    }
+@media screen and (max-width: 480px){
+    #depositLimitsInfo h2{
+        font-size: 26px;
+        }
+    #depositLimitsInfo h3{
+        font-size: 22px;
+        }
+    }
+@media screen and (max-width: 460px){
+    #depositLimitsZone .form .limit-row{
+        display: block;
+        max-width: none;
+        }
+    #depositLimitsZone .form .limit-row .col-md-6{
+        width: 100%;
+        }
+    #depositLimitsZone .form .limit-row .col-md-6.newLimitSetCol{
+        width: 100%;
+        max-width: 240px;
+        padding: 0;
+        margin: 16px auto 0;
+        }
+    #depositLimitsZone .form .currentLimitRow{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 20px 0 16px;
+        }
+    #depositLimitsZone .form .currentLimitRow > div{
+        width: 50%;
+        }
+    #depositLimitsZone .form .currentLimitRow > .currentLimitRemoveCol{
+        width: 100%;
+        }
+    #depositLimitsZone .form .removeLimit{
+        width: 120px;
+        margin: 16px 0 8px;
+        }
+    }
+@media screen and (max-width: 360px){
+    #depositLimitsZone .form .limit-row .col-md-6.newLimitSetCol{
+        max-width: 100%;
+        }
 
-.hidden {
-    display: none;
-}
+    #depositLimitsZone .form .currentLimitRow > div{
+        width: 100%;
+        }
+    #depositLimitsZone .form .currentLimitRow > .currentLimitLabelCol{
+        margin-bottom: 8px;
+        }
+    }
+/*Add to home screen*/
+#js-add-to-device-screen{
+	position: fixed;
+	z-index: 1000;
+	right: 0;
+	bottom: 0;
+	display: block;
+	width: 50px;
+	height: 50px;
+	background: rgba(0, 0, 0, .5);
+	cursor: pointer;
+	-webkit-transition: all .2s ease;
+	transition: all .2s ease;
+	}
+.no-touchevents #js-add-to-device-screen{
+	display: none;
+	}
+#to-device-screen-popup{
+	position: fixed;
+	z-index: 1000;
+	top: 50%;
+	left: 50%;
+	display: block;
+	font-size: 16px;
+	line-height: 1.75em;
+	width: 300px;
+	margin: 0 0 0 -150px;
+	padding: 40px 16px 32px;
+	background: rgba(0, 0, 0, .75);
+	cursor: pointer;
+	-webkit-transform: translate3d(0, -50%, 0);
+	transform: translate3d(0, -50%, 0);
+	-webkit-transition: all .2s ease;
+	transition: all .2s ease;
+	overflow: hidden;
+	visibility: hidden;
+	opacity: 0;
+	}
+#to-device-screen-popup.visible{
+	opacity: 1;
+	visibility: visible;
+	}
+#to-device-screen-popup p{
+	margin: 0;
+	}
+#to-device-screen-popup img{
+	display: inline-block;
+	vertical-align: top;
+	margin: -1px 6px 0;
+	}
+#to-device-screen-popup .text{
+	display: none;
+	}
+#to-device-screen-popup .android-box img{
+	margin-top: 1px;
+	}
+.android #to-device-screen-popup .android-box{
+	display: block;
+	}
+.ios #to-device-screen-popup .ios-box{
+	display: block;
+	}
+#to-device-screen-popup .js-close{
+	position: absolute;
+	right: 4px;
+	top: 10px;
+	width: 32px;
+	height: 32px;
+	background: url("../img/close-icon.png") no-repeat 50% 50%;
+	-webkit-transition: all .2s ease;
+	transition: all .2s ease;
+	}

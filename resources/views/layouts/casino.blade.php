@@ -6,6 +6,7 @@
     <meta name="format-detection" content="telephone=no">
     <title>Casino | Казино</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <script src="{{ asset('js/pace.min.js') }}"></script>
     <script>
         var casino_type = "{{ $casino_type }}";
@@ -67,7 +68,7 @@
                     <div id="game-iframe-box">
                         <div class="sub-box">
                             <img src="{{ asset('img\game-iframe-proportion.png') }}" alt="">
-                            <iframe id="game-frame" src="" data-ratio="16/9"></iframe>
+                            <iframe id="game-frame" src="" data-ratio="16/9" data-launch-width="320" data-launch-height="240"></iframe>
                         </div>
                         <div class="controls">
                             <div class="control-btn js-full-screen">

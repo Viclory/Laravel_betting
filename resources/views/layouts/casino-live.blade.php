@@ -7,6 +7,7 @@
 <meta name="format-detection" content="telephone=no" />
 <title>Casino | Казино</title>
 <link rel="stylesheet" href="{{ asset('/css/style.css') }}" />
+<link rel="stylesheet" href="{{ asset('/css/custom.css') }}" />
 <script src="{{ asset('/js/pace.min.js') }}"></script>
 
 <script>
