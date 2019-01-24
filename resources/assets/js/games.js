@@ -472,9 +472,7 @@ function gameActions() {
 }
 
 $('.js-close-game').click(function(){
-
-
-    consoel.o
+    
     //
     $('html').removeClass('opened-game game-page scroll-top');
     $('#game-box').attr('class', '');
