@@ -462,62 +462,63 @@
         });
     }
 
-    $(document).on('click', '.js-open-game', function(e){
-        e.stopPropagation();
-        e.preventDefault();
-
-        var $link = $(this).parents('a');
-
-        var provider = $link.data('provider');
-        var id = $link.data('id');
-        var mode = $link.data('mode');
-
-
-        if ($('#user_agent').val() == 'mobile') {
-            var mobile_launch_url = $(data).find('#game-frame').attr('src');
-            window.location = mobile_launch_url + '&mobileLobbyUrl=' + window.location.origin + window.location.pathname;
-            return false;
-        }
-
-        // $('#game-all').html(data);
-
-        if($('html').hasClass('touchevents')){
-            scrollTopTouch = $(window).scrollTop();
-        }
-
-        $('html').addClass('opened-game game-page');
-        $('#header').removeClass('sticky');
-
-        var gameBoxBg = $(this).attr('data-game-bg');
-        var gameIframeSrc = $(this).attr('data-src');
-
-        $('#game-box').addClass(gameBoxBg);
-        $('#game-frame').attr('src', gameIframeSrc);
-
-        gameLaunchWidth = $('html').find('#game-frame').attr('data-launch-width');
-        gameLaunchHeight = $('html').find('#game-frame').attr('data-launch-height');
-        gameProportion = gameLaunchWidth / gameLaunchHeight;
-        windowGameHeight = $(window).height() - 160;
-
-        $('#game-iframe-box .sub-box').css({width:windowGameHeight * gameProportion, height: windowGameHeight});
-
-        /*Init*/
-        jsClock();
-
-        $('.js-close-popup').trigger('click');
-
-        var msg_key = 'msg-' + (new Date().getTime());
-
-        $('.game-message.msg1').addClass(msg_key);
-        setTimeout(function () {
-            $('.game-message.msg1.' + msg_key).fadeIn(200);
-        }, 5000);
-
-        $('.game-message.msg2').addClass(msg_key);
-        setTimeout(function () {
-            $('.game-message.msg2.' + msg_key).fadeIn(200);
-        }, 40000);
-    });
+    // $(document).on('click', '.js-open-game', function(e){
+    //     e.stopPropagation();
+    //     e.preventDefault();
+    //     console.log('xxxxxxxxxxxxxxxxx');
+    //
+    //     var $link = $(this).parents('a');
+    //
+    //     var provider = $link.data('provider');
+    //     var id = $link.data('id');
+    //     var mode = $link.data('mode');
+    //
+    //
+    //     if ($('#user_agent').val() == 'mobile') {
+    //         var mobile_launch_url = $(data).find('#game-frame').attr('src');
+    //         window.location = mobile_launch_url + '&mobileLobbyUrl=' + window.location.origin + window.location.pathname;
+    //         return false;
+    //     }
+    //
+    //     // $('#game-all').html(data);
+    //
+    //     if($('html').hasClass('touchevents')){
+    //         scrollTopTouch = $(window).scrollTop();
+    //     }
+    //
+    //     $('html').addClass('opened-game game-page');
+    //     $('#header').removeClass('sticky');
+    //
+    //     var gameBoxBg = $(this).attr('data-game-bg');
+    //     var gameIframeSrc = $(this).attr('data-src');
+    //
+    //     $('#game-box').addClass(gameBoxBg);
+    //     $('#game-frame').attr('src', gameIframeSrc);
+    //
+    //     gameLaunchWidth = $('html').find('#game-frame').attr('data-launch-width');
+    //     gameLaunchHeight = $('html').find('#game-frame').attr('data-launch-height');
+    //     gameProportion = gameLaunchWidth / gameLaunchHeight;
+    //     windowGameHeight = $(window).height() - 160;
+    //
+    //     $('#game-iframe-box .sub-box').css({width:windowGameHeight * gameProportion, height: windowGameHeight});
+    //
+    //     /*Init*/
+    //     jsClock();
+    //
+    //     $('.js-close-popup').trigger('click');
+    //
+    //     var msg_key = 'msg-' + (new Date().getTime());
+    //
+    //     $('.game-message.msg1').addClass(msg_key);
+    //     setTimeout(function () {
+    //         $('.game-message.msg1.' + msg_key).fadeIn(200);
+    //     }, 5000);
+    //
+    //     $('.game-message.msg2').addClass(msg_key);
+    //     setTimeout(function () {
+    //         $('.game-message.msg2.' + msg_key).fadeIn(200);
+    //     }, 40000);
+    // });
 
     var msg_key = 'msg-' + (new Date().getTime());
     if ($('.game-message.msg1').length) {
