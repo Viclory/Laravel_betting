@@ -185,7 +185,7 @@ function applyFilters(params) {
     $('input[name="type"]:checked').each(function(){
         checked_types.push($(this).val());
     });
-    $.extend(params, {types: checked_types});
+    $.extend(params, {types: checked_types, locale: $.cookie('locale')});
 
 
     $.ajax({

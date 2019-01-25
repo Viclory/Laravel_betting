@@ -52,7 +52,7 @@
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" value="{{ $player_info->username }}" placeholder="{{ __('common.your_login') }}">
+                                            <input type="text" class="form-control" disabled value="{{ $player_info->username }}" placeholder="{{ __('common.your_login') }}">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -79,7 +79,7 @@
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="Российская Федерация">
+                                            <input type="text" value="{{ $player_info->country->name }}" disabled class="form-control" placeholder="{{ __('registration.country') }}">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -108,14 +108,14 @@
                                     </div>
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="Телефон">
+                                            <input type="text" class="form-control" placeholder="{{ __('registration.phone') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" value="{{ $player_info->dob }}" placeholder="1989-08-11">
+                                            <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($player_info->dob)->format('Y-m-d') }}" placeholder="1989-08-11">
                                         </div>
                                     </div>
                                 </div>

@@ -14,4 +14,6 @@ return [
     'repeat_password' => 'Repeat Password',
     'enter_promocode' => 'Enter Promocode',
     'sign_up_2_steps' => 'Create free account in 2 easy steps',
+    'country' => 'Country',
+    'phone' => 'Phone'
 ];
