@@ -10,7 +10,7 @@
                                 <span>{{ __('common.popular') }}</span>
                             </a>
                             @if($active == 'casino')
-                            <a href="" class="swiper-slide js-filter-games @if($active == 'casino') active @endif" data-game-type="slots">
+                            <a href="" class="swiper-slide js-filter-games @if($active == 'casino') active @endif" data-game-type="slot">
                                 <div class="icon slots-icon"></div>
                                 <span>{{ __('common.slots') }}</span>
                             </a>

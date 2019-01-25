@@ -1,5 +1,5 @@
 var games_count = getGamesCountDependsOnResolution();
-var selected_games_type = 'slots';
+var selected_games_type = 'slot';
 var selected_vendor = null;
 var popular_games_limit = 20;
 var new_games_limit = 10;
@@ -319,11 +319,11 @@ function emptySearch() {
 
 
 if ($('header.popular-games-section').is(':visible')) {
-    getPopularGames({limit: 20, game_type: 'slots'});
+    getPopularGames({limit: 20, game_type: 'slot'});
 }
 
 if ($('header.new-games-section').is(':visible')) {
-    getNewGames({game_type: 'slots'});
+    getNewGames({game_type: 'slot'});
 }
 
 if ($('header.all-games-section').is(':visible')) {
