@@ -16,6 +16,7 @@ function initFormValidation(formId, formObj) {
             //onfocusout: true,
             errorPlacement: function(error, element){
 
+                $(element).parents('.field').find('.field-error').remove();
 
                 var field_error = '<div class="field-error"><div class="align-m">' +
                     '<p>' + error.text() + '</p>' + '</div>' + '</div>';
