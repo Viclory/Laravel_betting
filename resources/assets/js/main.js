@@ -344,6 +344,7 @@
     $('#all').click(function(){
         if($html.hasClass('opened-games-search')){
             $html.removeClass('opened-games-search');
+            emptySearch();
             setTimeout(function(){
                 gamesFilterSlider.update();
             }, 200);

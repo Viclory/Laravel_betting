@@ -96,6 +96,7 @@ function search(elm) {
     var config = {
         limit: (games_count * 2),
         game_type: selected_games_type,
+        casino_type: casino_type
     }
 
     if (elm.val().length > 0) {
@@ -551,6 +552,10 @@ function attachClickEvents()
     $('.js-close-game').on('click', function(e){
 
         e.preventDefault();
+
+        if($('#header').hasClass('hidden')){
+            $('#header').removeClass('hidden');
+        }
 
         $html.removeClass('opened-game game-page scroll-top');
         $('#game-box').attr('class', '');

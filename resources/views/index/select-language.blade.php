@@ -20,26 +20,11 @@
             <div class="content-box">
                 <div class="sub-box">
                     <ul class="choose-list">
-
+                        @foreach(Config::get('languages') as $lang => $language)
                         <li>
-                            <a href="#" data-text="vi">Vietnamese</a>
+                            <a href="#" data-text="{{ $lang }}">{{ $language }}</a>
                         </li>
-                        <li>
-                            <a href="#" data-text="en">English</a>
-                        </li>
-                        <li>
-                            <a href="#" data-text="ru">Русский</a>
-                        </li>
-                        <li>
-                            <a href="#" data-text="es">Español</a>
-                        </li>
-                        <li>
-                            <a href="#" data-text="pt">Portugues</a>
-                        </li>
-                        <li>
-                            <a href="#" data-text="zn">China</a>
-                        </li>
-
+                        @endforeach
                     </ul>
                 </div>
             </div>

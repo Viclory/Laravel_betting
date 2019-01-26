@@ -32,7 +32,7 @@
                         <a href="{{ URL::to('/bingo') }}">Bingo</a>
                     </li>
                     <li>
-                        <a href="#bonus-anchor">Bonus</a>
+                        <a href="{{ URL::to('/') }}">Bonus</a>
                     </li>
                 </ul>
                 <span id="js-close-nav" title="Закрыть меню"></span>
@@ -87,7 +87,7 @@
                     <a href="{{ URL::to('/bingo') }}" class="bingo-link" title="Bingo">
                         <span class="chest" data-text="Bingo">Bingo</span>
                     </a>
-                    <a href="#bonus-anchor" class="bonus-link" title="Bonus">
+                    <a href="{{ URL::to('/') }}" class="bonus-link" title="Bonus">
                         <span class="chest" data-text="Bonus">Bonus</span>
                     </a>
                     <img src="{{ asset('img/main-nav-proportion.gif') }}" class="proportion" alt="">
