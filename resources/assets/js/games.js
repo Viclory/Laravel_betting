@@ -253,7 +253,7 @@ function placeGames(games, type, append = false) {
             var game_item = '<div class="game-item">';
 
             if (value.iframe_logged == undefined) {
-                game_item += '<a href="#" class="game-link js-open-popup" data-game-id="' + value.id + '" data-touch-popup="choose-game-popup" data-popup="authorization" style="background-image: url(' + value.game_img + ');">';
+                game_item += '<a href="#" class="game-link js-open-popup" data-game-id="' + value.id + '" data-touch-popup="choose-game-popup" data-popup="authorization" data-img-src="'+value.game_img+'" style="background-image: url(' + value.game_img + ');">';
             } else {
                 game_item += '<a href="#" class="game-link js-open-game" data-game-id="' + value.id + '" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
             }
@@ -396,6 +396,8 @@ $('.game-link.js-open-popup').on('click', function(e){
         dataPopup = $(this).attr('data-touch-popup');
         var btnGameSrc = $(this).find('.js-open-game').attr('data-src');
         $('.choose-game-popup .js-open-game').attr('data-src', btnGameSrc);
+        $('.choose-game-popup img').attr('src', $(this).attr('data-img-src'));
+        console.log('wwww');
     }
     $('html').addClass('opened-popup');
     $("." + dataPopup).removeClass('hidden').addClass('visible');

@@ -1,3 +1,8 @@
 .hidden {
     display: none;
 }
+
+
+.choose-game-popup img {
+    width: 100%;
+}
