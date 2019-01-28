@@ -105,6 +105,17 @@
                     </header>
                 </div>
 
+                <!-- LAST GAMES -->
+                <div class="games-list last-games-items hidden">
+                    <header class="header last-games-section">
+                        <span class="type">{{ __('games.last_games_results') }}</span>
+                        <span class="count-text">
+                            <span class="text">{{ __('games.found_games') }} /</span>
+                            <span class="count"></span>
+                        </span>
+                    </header>
+                </div>
+
                 <div class="ajax-upload-box">
                     <a href="#" class="js-load-more btn">{{ __('games.load_more') }}</a>
 

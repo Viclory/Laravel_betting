@@ -378,13 +378,21 @@
 
         selected_games_type = $(this).attr('data-game-type');
 
-        params = collectParams();
+        // console.log(selected_games_type);
 
-        clearGames();
+        if (selected_games_type != 'last') {
 
-        getPopularGames(params);
-        getNewGames(params);
-        getAllGames(params);
+            params = collectParams();
+
+            clearGames();
+
+            getPopularGames(params);
+            getNewGames(params);
+            getAllGames(params);
+        } else {
+            clearGames();
+            getLastGames();
+        }
     });
 
     if($('.games-filter').length){
@@ -687,7 +695,8 @@
                 exclude_all: exclude["all"],
                 casino_type: casino_type,
                 limit: load_more_limit,
-                game_type: selected_games_type
+                game_type: selected_games_type,
+                merchant_id: $('#merchant_id').val()
             };
 
             var games = applyFilters(params);
@@ -989,9 +998,9 @@
 
     $('.provider-popup .js-confirm').click(function(e){
         e.preventDefault();
-        if(!$(this).hasClass('disabled')){
+        // if(!$(this).hasClass('disabled')){
             $('.js-close-popup').trigger('click');
-        }
+        // }
         selected_vendor = $(this).parents('.provider-popup').find('ul.choose-list li.active a').attr('data-vendor-id');
 
         console.log('vendor confirmed');

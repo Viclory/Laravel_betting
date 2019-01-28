@@ -5,6 +5,13 @@ var popular_games_limit = 20;
 var new_games_limit = 10;
 var all_games_limit = 30;
 var load_more_limit = 60;
+if (!$.cookie('last_games')) {
+    var last_games = new Array();
+    $.cookie('last_games', last_games);
+} else {
+    var last_games = $.cookie('last_games').split(',');
+    // console.log(last_games);
+}
 
 
 function getGamesCountDependsOnResolution(type = null) {
@@ -69,6 +76,8 @@ function getGamesCountDependsOnResolution(type = null) {
 function clearGames() {
     $('.games-list .game-item').remove();
     $('.games-list header .count-text .count').html('');
+
+    $('.games-list').hide();
 }
 
 function getAllGames() {
@@ -78,6 +87,9 @@ function getAllGames() {
         game_type: selected_games_type,
         request_total_count: true
     };
+
+    $('.games-list.all-games-items').show();
+
     $.extend(params, collectParams());
     var games = applyFilters(params);
     placeGames(games, 'all');
@@ -134,11 +146,11 @@ function search(elm) {
 }
 
 function collectParams(default_params) {
-    var params = {};
+    var params = {merchant_id: $('#merchant_id').val()};
 
     $.extend(params, {casino_type: casino_type});
 
-    console.log(params);
+    // console.log(params);
 
     if (default_params != null) {
         $.extend(params, default_params);
@@ -228,6 +240,8 @@ function getPopularGames(additional_params) {
         limit: popular_games_limit
     }
 
+    $('.games-list.popular-games-items').show();
+
     $.extend(params, additional_params);
     $.extend(params, collectParams());
 
@@ -282,21 +296,30 @@ function placeGames(games, type, append = false) {
                 }
             } else {
                 $(game_item).insertAfter($('.games-list header.' + type + '-games-section'));
-                $('.games-list header.' + type + '-games-section').find('.count-text .count').html($('.games-list header.' + type + '-games-section').parents('.games-list.' + type + '-games-items').find('.game-item').length);
+                // $('.games-list header.' + type + '-games-section').find('.count-text .count').html(games.result.total_count);
             }
-            attachClickEvents();
         });
 
         // gameActions();
     } else {
+        // console.log('omg');
         gamesHtml = '<div>No Results</div>';
     }
 
+    attachClickEvents(type);
 
 
-    $('.games-list.popular-games-items header .count-text .count').html($('.games-list.popular-games-items .game-item').length);
-    $('.games-list.new-games-items header .count-text .count').html($('.games-list.new-games-items .game-item').length);
-    $('.games-list.all-games-items header .count-text .count').html($('.games-list.all-games-items .game-item').length);
+
+    // $('.games-list.'+type+'-games-items header .count-text .count').html(games.total_count);
+    if (type == 'all') {
+        $('.games-list.'+type+'-games-items header .count-text .count').html(games.total_count);
+    } else {
+        $('.games-list.' + type + '-games-items').show();
+    }
+    $('.games-list.'+type+'-games-items header .count-text .count').html($('.games-list.'+type+'-games-items .game-item').length);
+    // $('.games-list.popular-games-items header .count-text .count').html($('.games-list.popular-games-items .game-item').length);
+    // $('.games-list.new-games-items header .count-text .count').html($('.games-list.new-games-items .game-item').length);
+    // $('.games-list.all-games-items header .count-text .count').html($('.games-list.all-games-items .game-item').length);
 
     if (games.show_more == true) {
     //     $('.games-section.'+type+'-games .view-more').removeClass('d-none');
@@ -384,171 +407,205 @@ $('.js-open-popup:not(.game-link)').on('click', function(e){
     return false;
 });
 
-$('.game-link.js-open-popup').on('click', function(e){
-    console.log('ooooooooooooooooooooo');
-    e.preventDefault();
-    $('#popup').find('.visible').removeClass('visible').addClass('hidden');
-    var dataPopup;
-    if($('html').hasClass('no-touchevents')){
-        dataPopup = $(this).attr('data-popup');
-    }
-    else{
-        dataPopup = $(this).attr('data-touch-popup');
-        var btnGameSrc = $(this).find('.js-open-game').attr('data-src');
-        $('.choose-game-popup .js-open-game').attr('data-src', btnGameSrc);
-        $('.choose-game-popup img').attr('src', $(this).attr('data-img-src'));
-        console.log('wwww');
-    }
-    $('html').addClass('opened-popup');
-    $("." + dataPopup).removeClass('hidden').addClass('visible');
-    return false;
-});
+// $('.game-link.js-open-popup').on('click', function(e){
+//     console.log('ooooooooooooooooooooo');
+//     e.preventDefault();
+//     $('#popup').find('.visible').removeClass('visible').addClass('hidden');
+//     var dataPopup;
+//     if($('html').hasClass('no-touchevents')){
+//         dataPopup = $(this).attr('data-popup');
+//     }
+//     else{
+//         dataPopup = $(this).attr('data-touch-popup');
+//         var btnGameSrc = $(this).find('.js-open-game').attr('data-src');
+//         $('.choose-game-popup .js-open-game').attr('data-src', btnGameSrc);
+//         $('.choose-game-popup img').attr('src', $(this).attr('data-img-src'));
+//         console.log('wwww');
+//     }
+//     $('html').addClass('opened-popup');
+//     $("." + dataPopup).removeClass('hidden').addClass('visible');
+//     return false;
+// });
 
-$('.js-open-game').on('click', function(e){
-    e.stopPropagation();
-    e.preventDefault();
+// $('.js-open-game').on('click', function(e){
+//     e.stopPropagation();
+//     e.preventDefault();
+//
+//     var $link = $(this).parents('a');
+//
+//     var provider = $link.data('provider');
+//     var id = $link.data('id');
+//     var mode = $link.data('mode');
+//
+//
+//     if ($('#user_agent').val() == 'mobile') {
+//         var mobile_launch_url = $(data).find('#game-frame').attr('src');
+//         window.location = mobile_launch_url + '&mobileLobbyUrl=' + window.location.origin + window.location.pathname;
+//         return false;
+//     }
+//
+//     // $('#game-all').html(data);
+//
+//     if($('html').hasClass('touchevents')){
+//         scrollTopTouch = $(window).scrollTop();
+//     }
+//
+//     $('html').addClass('opened-game game-page');
+//     $('#header').removeClass('sticky');
+//
+//     var gameBoxBg = $(this).attr('data-game-bg');
+//     var gameIframeSrc = $(this).attr('data-src');
+//
+//     $('#game-box').addClass(gameBoxBg);
+//     $('#game-frame').attr('src', gameIframeSrc);
+//
+//     gameLaunchWidth = $('html').find('#game-frame').attr('data-launch-width');
+//     gameLaunchHeight = $('html').find('#game-frame').attr('data-launch-height');
+//     gameProportion = gameLaunchWidth / gameLaunchHeight;
+//     windowGameHeight = $(window).height() - 160;
+//
+//     $('#game-iframe-box .sub-box').css({width:windowGameHeight * gameProportion, height: windowGameHeight});
+//
+//     /*Init*/
+//     jsClock();
+//
+//     $('.js-close-popup').trigger('click');
+//
+//     var msg_key = 'msg-' + (new Date().getTime());
+//
+//     $('.game-message.msg1').addClass(msg_key);
+//     setTimeout(function () {
+//         $('.game-message.msg1.' + msg_key).fadeIn(200);
+//     }, 5000);
+//
+//     $('.game-message.msg2').addClass(msg_key);
+//     setTimeout(function () {
+//         $('.game-message.msg2.' + msg_key).fadeIn(200);
+//     }, 40000);
+//
+//     return false;
+// });
 
-    var $link = $(this).parents('a');
+// $('.js-close-game').on('click', function(e){
+//
+//     e.preventDefault();
+//
+//     $html.removeClass('opened-game game-page scroll-top');
+//     $('#game-box').attr('class', '');
+//     $('#game-frame').attr('src', '');
+//     var scrollTop = $(window).scrollTop();
+//     if($html.hasClass('no-touchevents')){
+//         $('html, body').scrollTop(scrollTop - 1);
+//     }
+//     else{
+//         $('html, body').scrollTop(scrollTopTouch - 1);
+//     }
+//
+//
+//     if($('#game-iframe-box .js-full-screen').hasClass('active')) {
+//         toggleFullScreen(document.body);
+//     }
+//
+//     return false;
+//
+// });
 
-    var provider = $link.data('provider');
-    var id = $link.data('id');
-    var mode = $link.data('mode');
-
-
-    if ($('#user_agent').val() == 'mobile') {
-        var mobile_launch_url = $(data).find('#game-frame').attr('src');
-        window.location = mobile_launch_url + '&mobileLobbyUrl=' + window.location.origin + window.location.pathname;
-        return false;
-    }
-
-    // $('#game-all').html(data);
-
-    if($('html').hasClass('touchevents')){
-        scrollTopTouch = $(window).scrollTop();
-    }
-
-    $('html').addClass('opened-game game-page');
-    $('#header').removeClass('sticky');
-
-    var gameBoxBg = $(this).attr('data-game-bg');
-    var gameIframeSrc = $(this).attr('data-src');
-
-    $('#game-box').addClass(gameBoxBg);
-    $('#game-frame').attr('src', gameIframeSrc);
-
-    gameLaunchWidth = $('html').find('#game-frame').attr('data-launch-width');
-    gameLaunchHeight = $('html').find('#game-frame').attr('data-launch-height');
-    gameProportion = gameLaunchWidth / gameLaunchHeight;
-    windowGameHeight = $(window).height() - 160;
-
-    $('#game-iframe-box .sub-box').css({width:windowGameHeight * gameProportion, height: windowGameHeight});
-
-    /*Init*/
-    jsClock();
-
-    $('.js-close-popup').trigger('click');
-
-    var msg_key = 'msg-' + (new Date().getTime());
-
-    $('.game-message.msg1').addClass(msg_key);
-    setTimeout(function () {
-        $('.game-message.msg1.' + msg_key).fadeIn(200);
-    }, 5000);
-
-    $('.game-message.msg2').addClass(msg_key);
-    setTimeout(function () {
-        $('.game-message.msg2.' + msg_key).fadeIn(200);
-    }, 40000);
-
-    return false;
-});
-
-$('.js-close-game').on('click', function(e){
-
-    e.preventDefault();
-
-    $html.removeClass('opened-game game-page scroll-top');
-    $('#game-box').attr('class', '');
-    $('#game-frame').attr('src', '');
-    var scrollTop = $(window).scrollTop();
-    if($html.hasClass('no-touchevents')){
-        $('html, body').scrollTop(scrollTop - 1);
-    }
-    else{
-        $('html, body').scrollTop(scrollTopTouch - 1);
-    }
-
-
-    if($('#game-iframe-box .js-full-screen').hasClass('active')) {
-        toggleFullScreen(document.body);
-    }
-
-    return false;
-
-});
-
-function attachClickEvents()
+function attachClickEvents(type)
 {
+    // switch(type)
+    // {
+    //     case 'popular':
+    //         var elements = $('.games-list.' + type + '-games-items').find('.game-item');
+    //         break;
+    //     case 'new':
+    //         var elements = $('.games-list.' + type + '-games-items').find('.game-item');
+    //         break;
+    //     case 'all':
+    //         var elements = $('.games-list.' + type + '-games-items').find('.game-item');
+    //         break;
+    //     case 'last':
+    //         var elements = $('.games-list.' + type + '-games-items').find('.game-item');
+    //         break;
+    // }
 
-    console.log('attachclickevents');
+    var elements = [];
+    $('.games-list').not('.hidden').each(function(){
+        $(this).find('.game-item').each(function(){
+            elements.push($(this));
+        });
+    });
 
-    $('.js-open-game').on('click', function(e){
-        e.stopPropagation();
-        e.preventDefault();
+    $(elements).each(function(){
 
-        var $link = $(this).parents('a');
+        $(this).find('.js-open-game').on('click', function(e){
+            e.stopPropagation();
+            e.preventDefault();
+            // return false;
 
-        var provider = $link.data('provider');
-        var id = $link.data('id');
-        var mode = $link.data('mode');
+            var $link = $(this).parents('a');
+
+            // console.log($link.attr('data-game-id'));
+            if (!last_games.includes($link.attr('data-game-id'))) {
+                last_games.unshift($link.attr('data-game-id'));
+                $.cookie('last_games', last_games);
+            }
+            // console.log(last_games);
+
+            // last_games.add($link.attr('data-game-id'));
+            // $.cookie('last_games', last_games);
+
+            var provider = $link.data('provider');
+            var id = $link.data('id');
+            var mode = $link.data('mode');
 
 
-        if ($('#user_agent').val() == 'mobile') {
-            var mobile_launch_url = $(data).find('#game-frame').attr('src');
-            window.location = mobile_launch_url + '&mobileLobbyUrl=' + window.location.origin + window.location.pathname;
+            if ($('#user_agent').val() == 'mobile') {
+                var mobile_launch_url = $(data).find('#game-frame').attr('src');
+                window.location = mobile_launch_url + '&mobileLobbyUrl=' + window.location.origin + window.location.pathname;
+                return false;
+            }
+
+            // $('#game-all').html(data);
+
+            if($('html').hasClass('touchevents')){
+                scrollTopTouch = $(window).scrollTop();
+            }
+
+            $('html').addClass('opened-game game-page');
+            $('#header').removeClass('sticky');
+
+            var gameBoxBg = $(this).attr('data-game-bg');
+            var gameIframeSrc = $(this).attr('data-src');
+
+            $('#game-box').addClass(gameBoxBg);
+            $('#game-frame').attr('src', gameIframeSrc);
+
+            gameLaunchWidth = $('html').find('#game-frame').attr('data-launch-width');
+            gameLaunchHeight = $('html').find('#game-frame').attr('data-launch-height');
+            gameProportion = gameLaunchWidth / gameLaunchHeight;
+            windowGameHeight = $(window).height() - 160;
+
+            $('#game-iframe-box .sub-box').css({width:windowGameHeight * gameProportion, height: windowGameHeight});
+
+            /*Init*/
+            jsClock();
+
+            $('.js-close-popup').trigger('click');
+
+            var msg_key = 'msg-' + (new Date().getTime());
+
+            $('.game-message.msg1').addClass(msg_key);
+            setTimeout(function () {
+                $('.game-message.msg1.' + msg_key).fadeIn(200);
+            }, 5000);
+
+            $('.game-message.msg2').addClass(msg_key);
+            setTimeout(function () {
+                $('.game-message.msg2.' + msg_key).fadeIn(200);
+            }, 40000);
+
             return false;
-        }
-
-        // $('#game-all').html(data);
-
-        if($('html').hasClass('touchevents')){
-            scrollTopTouch = $(window).scrollTop();
-        }
-
-        $('html').addClass('opened-game game-page');
-        $('#header').removeClass('sticky');
-
-        var gameBoxBg = $(this).attr('data-game-bg');
-        var gameIframeSrc = $(this).attr('data-src');
-
-        $('#game-box').addClass(gameBoxBg);
-        $('#game-frame').attr('src', gameIframeSrc);
-
-        gameLaunchWidth = $('html').find('#game-frame').attr('data-launch-width');
-        gameLaunchHeight = $('html').find('#game-frame').attr('data-launch-height');
-        gameProportion = gameLaunchWidth / gameLaunchHeight;
-        windowGameHeight = $(window).height() - 160;
-
-        $('#game-iframe-box .sub-box').css({width:windowGameHeight * gameProportion, height: windowGameHeight});
-
-        /*Init*/
-        jsClock();
-
-        $('.js-close-popup').trigger('click');
-
-        var msg_key = 'msg-' + (new Date().getTime());
-
-        $('.game-message.msg1').addClass(msg_key);
-        setTimeout(function () {
-            $('.game-message.msg1.' + msg_key).fadeIn(200);
-        }, 5000);
-
-        $('.game-message.msg2').addClass(msg_key);
-        setTimeout(function () {
-            $('.game-message.msg2.' + msg_key).fadeIn(200);
-        }, 40000);
-
-        return false;
+        });
     });
 
     $('.js-close-game').on('click', function(e){
@@ -578,4 +635,45 @@ function attachClickEvents()
         return false;
 
     });
+}
+
+function imageExists(image_url)
+{
+
+    var http = new XMLHttpRequest();
+
+    http.open('HEAD', image_url, false);
+    http.send();
+
+    return http.status != 404;
+
+}
+
+// $('.choose-game-popup .js-open-game').on('click', function(e){
+//     e.preventDefault();
+//     e.stopPropagation();
+//
+//     window.open($(this).attr('data-src'), '_blank');
+//     $('#game-box .js-close-game').trigger('click');
+//     return false;
+// });
+
+
+function getLastGames()
+{
+    $('.games-list').hide();
+    $('.ajax-upload-box').hide();
+    //
+    $('.games-list.last-games-items').removeClass('hidden');
+
+    var params = {
+        merchant_id: $('#merchant_id').val(),
+        games: $.cookie('last_games').split(',')
+    };
+
+    var games = applyFilters(params);
+
+    placeGames(games, 'last');
+
+    console.log(params);
 }

@@ -34,7 +34,7 @@
                             @endif
 
                             @if($active == 'casino')
-                            <a href="" class="swiper-slide js-filter-games" data-game-type="table-games">
+                            <a href="" class="swiper-slide js-filter-games" data-game-type="table">
                                 <div class="icon on-tables-icon"></div>
                                 <span>{{ __('common.table_games') }}</span>
                             </a>
@@ -58,7 +58,7 @@
                             @endif
 
                             @if($active == 'casino')
-                            <a href="" class="swiper-slide js-filter-games" data-game-type="last-games">
+                            <a href="" class="swiper-slide js-filter-games" data-game-type="last">
                                 <div class="icon last-games-icon"></div>
                                 <span>{{ __('common.last_games') }}</span>
                             </a>

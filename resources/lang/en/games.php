@@ -26,5 +26,6 @@ return [
     'search_games' => 'Search games',
     'search_games_results' => 'Search Results',
     'found_games' => 'Found',
-    'all_games_are_loaded' => 'All games are loaded'
+    'all_games_are_loaded' => 'All games are loaded',
+    'last_games_results' => 'Last Games'
 ];

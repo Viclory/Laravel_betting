@@ -6,3 +6,7 @@
 .choose-game-popup img {
     width: 100%;
 }
+
+.no-touchevents.game-page #header {
+    right: 0;
+}
