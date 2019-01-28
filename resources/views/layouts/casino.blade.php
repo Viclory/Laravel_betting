@@ -10,6 +10,7 @@
     <script src="{{ asset('js/pace.min.js') }}"></script>
     <script>
         var casino_type = "{{ $casino_type }}";
+        var merchant_id = "{{ env('MERCHANT_ID') }}";
     </script>
 </head>
 <body>

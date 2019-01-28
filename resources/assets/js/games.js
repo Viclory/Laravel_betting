@@ -146,7 +146,10 @@ function search(elm) {
 }
 
 function collectParams(default_params) {
-    var params = {merchant_id: $('#merchant_id').val()};
+    console.log('COLLECT PARAMS');
+    var params = {merchant_id: merchant_id};
+
+    console.log(params);
 
     $.extend(params, {casino_type: casino_type});
 
@@ -244,6 +247,8 @@ function getPopularGames(additional_params) {
 
     $.extend(params, additional_params);
     $.extend(params, collectParams());
+
+    console.log(params);
 
     var games = applyFilters(params);
 
