@@ -17,6 +17,17 @@
 
             <div class="container games-wrapper">
 
+                <!-- FAVORITE GAMES -->
+                <div class="games-list favorite-games-items">
+                    <header class="header popular-games-section">
+                        <span class="type">{{ __('common.favorites') }}</span>
+                        <span class="count-text">
+                            <span class="text">{{ __('games.found_games') }} /</span>
+                            <span class="count"></span>
+                        </span>
+                    </header>
+                </div>
+
                 <!-- POPULAR GAMES -->
                 <div class="games-list popular-games-items">
                     <header class="header popular-games-section">
@@ -51,51 +62,51 @@
                 </div>
 
                 <!-- SLOTS GAMES -->
-                <div class="games-list slots-games-items hidden">
+                <div class="games-list slots-games-items">
                     <header class="header slots-games-section">
                         <span class="type">{{ __('games.slots') }}</span>
                         <span class="count-text">
-                            <span class="text">{{ __('games.slots') }} /</span>
+                            <span class="text">{{ __('games.found_games') }} /</span>
                             <span class="count"></span>
                         </span>
                     </header>
                 </div>
 
                 <!-- JACKPOT GAMES -->
-                <div class="games-list jackpot-games-items hidden">
+                <div class="games-list jackpot-games-items">
                     <header class="header jackbot-games-section">
                         <span class="type">{{ __('games.jackpot') }}</span>
                         <span class="count-text">
-                            <span class="text">{{ __('games.jackpot') }} /</span>
+                            <span class="text">{{ __('games.found_games') }} /</span>
                             <span class="count"></span>
                         </span>
                     </header>
                 </div>
 
                 <!-- TABLE GAMES -->
-                <div class="games-list jackpot-games-items hidden">
+                <div class="games-list jackpot-games-items">
                     <header class="header table-games-section">
                         <span class="type">{{ __('games.table') }}</span>
                         <span class="count-text">
-                            <span class="text">{{ __('games.table') }} /</span>
+                            <span class="text">{{ __('games.found_games') }} /</span>
                             <span class="count"></span>
                         </span>
                     </header>
                 </div>
 
                 <!-- VIDEO-POKER GAMES -->
-                <div class="games-list jackpot-games-items hidden">
+                <div class="games-list jackpot-games-items">
                     <header class="header videopoker-games-section">
                         <span class="type">{{ __('games.video_poker') }}</span>
                         <span class="count-text">
-                            <span class="text">{{ __('games.table') }} /</span>
+                            <span class="text">{{ __('games.found_games') }} /</span>
                             <span class="count"></span>
                         </span>
                     </header>
                 </div>
 
                 <!-- SEARCH GAMES -->
-                <div class="games-list search-games-items hidden">
+                <div class="games-list search-games-items">
                     <header class="header search-games-section">
                         <span class="type">{{ __('games.search_games_results') }}</span>
                         <span class="count-text">
@@ -105,8 +116,19 @@
                     </header>
                 </div>
 
+                <!-- VENDOR GAMES -->
+                <div class="games-list vendor-games-items">
+                    <header class="header vendor-games-section">
+                        <span class="type"></span>
+                        <span class="count-text">
+                            <span class="text">{{ __('games.found_games') }} /</span>
+                            <span class="count"></span>
+                        </span>
+                    </header>
+                </div>
+
                 <!-- LAST GAMES -->
-                <div class="games-list last-games-items hidden">
+                <div class="games-list last-games-items">
                     <header class="header last-games-section">
                         <span class="type">{{ __('games.last_games_results') }}</span>
                         <span class="count-text">

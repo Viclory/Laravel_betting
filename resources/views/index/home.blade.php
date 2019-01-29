@@ -50,7 +50,7 @@
                     <div class="img">
                         <img src="{{ asset('img/bonus-img3.png') }}" alt="">
                     </div>
-                    <a href="" class="sub-link">Условия и правила</a>
+                    <a href="#terms" class="sub-link">Условия и правила</a>
                 </div>
                 <div class="item">
                     <div class="text">
@@ -64,12 +64,12 @@
                     <div class="img">
                         <img src="{{ asset('img\bonus-img2.png') }}" alt="">
                     </div>
-                    <a href="" class="sub-link">Условия и правила</a>
+                    <a href="#terms" class="sub-link">Условия и правила</a>
                 </div>
             </div>
             <p class="sub-title center"><span data-text="Lorem Ipsum is simply dummy text of the printing and typesetting industry">Lorem Ipsum is simply dummy text of the printing and typesetting industry</span></p>
             <div class="accordion">
-                <div class="item active">
+                <div class="item active" id="terms">
                     <div class="title">
                         <h2>Условия и правила</h2>
                     </div>

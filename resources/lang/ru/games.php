@@ -27,5 +27,7 @@ return [
     'search_games_results' => 'Результаты поиска',
     'found_games' => 'Найдено',
     'all_games_are_loaded' => 'Все игры загружены',
-    'last_games_results' => 'Последние игры'
+    'last_games_results' => 'Последние игры',
+    'play_for_free' => 'Играть бесплатно',
+    'new' => 'Новинка'
 ];

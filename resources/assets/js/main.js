@@ -258,10 +258,39 @@
         }, 300);
     });
 
+    $body.on('click', "a.js-anchor[href*='#']", function (e) {
+        var href = $(this).attr('href');
 
+        var count = 40;
+        if (windowWidth <= 780) {
+            count = 22
+        }
+
+        var id = '#' + href.split('#')[1];
+
+        if ($(id).length) {
+            e.preventDefault();
+
+            if ($(id).closest('.accordion').length) {
+                if ($(id).hasClass('item') && !$(id).hasClass('active')) {
+                    $(id).closest('.accordion').find('.item').removeClass('active').find('.text').hide();
+                    $(id).addClass('active').find('.text').show();
+                } else if (!$(id).closest('.item').hasClass('active')) {
+                    $(id).closest('.accordion').find('.item').removeClass('active').find('.text').hide();
+                    $(id).closest('.item').addClass('active').find('.text').show();
+                }
+            }
+
+            var scrollToPosition = $(id).offset().top;
+
+            $('html, body').animate({
+                scrollTop: scrollToPosition - count
+            }, 300);
+        }
+    });
 
     /*Main screen*/
-    $('#main-screen .js-anchor').click(function(){
+    $('#main-screen .js-anchor').on('click', function(){
         var scrollCount = $(this).parents('#main-screen').height();
 
         $('html, body').animate({
@@ -286,7 +315,7 @@
     if($('.accordion .active').length){
         $('.accordion .active .text').show();
     }
-    $('.accordion .title').click(function(){
+    $('.accordion .title').on('click', function(){
         var scrollCount = 16;
 
         var el = $(this).parents('.item');
@@ -303,6 +332,18 @@
             $('html, body').animate({
                 scrollTop: $(this).offset().top - scrollCount
             }, 300);
+        }
+    });
+
+    $('.accordion.sub-appearance .item .text a').on('click', function(e){
+        if($(this).next('.dropdown').length){
+            e.preventDefault();
+            if(!$(this).hasClass('active')){
+                $(this).addClass('active').next('.dropdown').slideDown(150);
+            }
+            else{
+                $(this).removeClass('active').next('.dropdown').slideUp(150);
+            }
         }
     });
 
@@ -544,29 +585,7 @@
         }, 40000);
     }
 
-    function toggleFullScreen(elem) {
-        if((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
-            if (elem.requestFullScreen) {
-                elem.requestFullScreen();
-            } else if (elem.mozRequestFullScreen) {
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullScreen) {
-                elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            }
-        } else {
-            if (document.cancelFullScreen) {
-                document.cancelFullScreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitCancelFullScreen) {
-                document.webkitCancelFullScreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-        }
-    }
+
 
 
     $('#game-iframe-box .js-full-screen').click(function(){
@@ -667,13 +686,15 @@
             var exclude = [];
             var games_category = '';
 
-            $('.games-list:not(.hidden)').each(function(){
+            $('.games-list:visible').each(function(){
                 if ($(this).hasClass('popular-games-items')) {
                     games_category = 'popular';
                 } else if($(this).hasClass('new-games-items')) {
                     games_category = 'new';
                 } else if($(this).hasClass('all-games-items')) {
                     games_category = 'all';
+                } else if($(this).hasClass('vendor-games-items')) {
+                    games_category = 'vendor';
                 }
                 exclude[games_category] = [];
 
@@ -693,15 +714,28 @@
                 exclude_popular: exclude["popular"],
                 exclude_new: exclude["new"],
                 exclude_all: exclude["all"],
+                exclude_vendor: exclude["vendor"],
                 casino_type: casino_type,
                 limit: load_more_limit,
                 game_type: selected_games_type,
-                merchant_id: $('#merchant_id').val()
+                merchant_id: $('#merchant_id').val(),
+                request_total_count: true
             };
+
+            if (selected_vendor != null) {
+                $.extend(params, {vendor: selected_vendor});
+            }
+
+            console.log('selectedvendor:' + selected_vendor);
 
             var games = applyFilters(params);
 
-            placeGames(games,'', true);
+            if (selected_vendor != null) {
+
+                placeGames(games,'vendor', true);
+            } else {
+                placeGames(games,games_category, true);
+            }
 
             return false;
         }
@@ -1003,14 +1037,19 @@
         // }
         selected_vendor = $(this).parents('.provider-popup').find('ul.choose-list li.active a').attr('data-vendor-id');
 
-        console.log('vendor confirmed');
         params = collectParams();
+
+        $.extend(params, {request_total_count: true});
+
+        games = applyFilters(params);
 
         clearGames();
 
-        getPopularGames(params);
-        getNewGames(params);
-        getAllGames(params);
+        placeGames(games, 'vendor');
+
+        // getPopularGames(params);
+        // getNewGames(params);
+        // getAllGames(params);
     });
 
 
@@ -1054,7 +1093,7 @@
     $(function(){
         if ($.cookie('locale') == undefined) {
             // show languages popup
-            console.log($('.select-language-popup').length);
+            // console.log($('.select-language-popup').length);
             //$('[data-popup="language-popup"]').trigger('click');
         }
         initFormValidation('registration', $('#quick_registration'));
@@ -1070,23 +1109,36 @@
             $html.addClass('page-load');
 
             if(window.location.hash){
+
+                var id = '#' + window.location.hash.split('#')[1];
                 var count = 40;
                 if(windowWidth <= 780){
                     count = 22
                 }
-                setTimeout(function() {
-                    $('html, body').scrollTop(0);
+
+                if ($(id).length) {
+
+                    if ($(id).closest('.accordion').length) {
+                        if ($(id).hasClass('item') && !$(id).hasClass('active')) {
+                            $(id).closest('.accordion').find('.item').removeClass('active').find('.text').hide();
+                            $(id).addClass('active').find('.text').show();
+                        } else if (!$(id).closest('.item').hasClass('active')) {
+                            $(id).closest('.accordion').find('.item').removeClass('active').find('.text').hide();
+                            $(id).closest('.item').addClass('active').find('.text').show();
+                        }
+                    }
+
+                    var scrollToPosition = $(id).offset().top;
+
                     $('html, body').animate({
-                        scrollTop: $(window.location.hash).offset().top - count
-                    }, 500)
-                }, 0);
+                        scrollTop: scrollToPosition - count
+                    }, 300);
+                }
             }
 
             if($('.games-filter').length) {
                 gamesFilterSlider.update();
             }
-
-            helpSectionsText();
         });
     });
 
@@ -1167,3 +1219,27 @@ var waitForFinalEvent = (function () {
         timer = setTimeout(callback, ms);
     };
 })();
+
+function toggleFullScreen(elem) {
+    if((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
+        if (elem.requestFullScreen) {
+            elem.requestFullScreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullScreen) {
+            elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+    } else {
+        if (document.cancelFullScreen) {
+            document.cancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+}

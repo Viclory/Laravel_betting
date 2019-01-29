@@ -5,9 +5,9 @@
                 <div class="games-filter">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <a href="" class="swiper-slide js-filter-games" data-game-type="popular">
+                            <a href="" class="swiper-slide js-filter-games" data-game-type="favorites">
                                 <div class="icon popular-icon"></div>
-                                <span>{{ __('common.popular') }}</span>
+                                <span>{{ __('common.favorites') }}</span>
                             </a>
                             @if($active == 'casino')
                             <a href="" class="swiper-slide js-filter-games @if($active == 'casino') active @endif" data-game-type="slot">

@@ -22,6 +22,7 @@
         <p>Вы можете связаться с нами через чат или электронную почту: <a href="mailto:{{ env('SUPPORT_EMAIL') }}">{{ env('SUPPORT_EMAIL') }}</a></p>
     </div>
 </div>
+
 <div class="item" id="terms-and-conditions">
     <div class="title">
         <h2>Правила и условия пользования сервисом Lepreconcasino</h2>
@@ -187,6 +188,7 @@
         <h3>Последнее обновление: 18 августа 2018 г.</h3>
     </div>
 </div>
+
 <div class="item" id="responsible-gambling">
     <div class="title">
         <h2>Ответственное отношение к азартным играм</h2>
@@ -232,6 +234,7 @@
         <p>Для вашей пользы, термин задержки равный 7 дням будет применяться к любому запросу по снятию ограничений, установленных в отношении вашей учетной записи или лимита на ставки.</p>
     </div>
 </div>
+
 <div class="item" id="betting-rules">
     <div class="title">
         <h2>Правила приема ставок</h2>
@@ -240,6 +243,7 @@
         <p><a href="https://bettend.com/img/Sports%20Betting%20Rules%20-%20PDF.pdf" target="_blank">Sports Betting Rules – SPORTS, MARKETS AND RULES</a></p>
     </div>
 </div>
+
 <div class="item" id="privacy-policy">
     <div class="title">
         <h2>Политика конфиденциальности</h2>
@@ -296,6 +300,7 @@
         </ol>
     </div>
 </div>
+
 <div class="item" id="partners">
     <div class="title">
         <h2>Партнерам</h2>
