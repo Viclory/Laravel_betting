@@ -393,6 +393,7 @@
     });
 
     $('.games-filter .js-filter-games').click(function(e){
+        remove_empty_sections = true;
         e.preventDefault();
         if (selected_vendor != null) {
             $('.provider-popup ul.choose-list li.active').removeClass('active');

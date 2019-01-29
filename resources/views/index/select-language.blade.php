@@ -6,6 +6,7 @@
     <meta name="format-detection" content="telephone=no">
     <title>Casino</title>
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
     <script src="js\pace.min.js"></script>
 </head>
 <body class="responsimg" data-responsimg780="{{ asset('/img/sub-page-bg.jpg') }}" data-responsimg10="{{ asset('/img/sub-page-mobile-bg.jpg') }}">
