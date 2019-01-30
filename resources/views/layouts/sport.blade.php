@@ -109,7 +109,7 @@
 
 
                 var biaOptions = parseQuery(window.location.hash);
-                biaOptions.walletcode  = "739562";
+                biaOptions.walletcode  = "150999";
                 biaOptions.token  = "{{ $player_token }}";
                 biaOptions.page = 'prelive';
                 biaOptions.getMarketsCallback = function (result) {
