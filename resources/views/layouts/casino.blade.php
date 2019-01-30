@@ -106,12 +106,14 @@
                             <img src="{{ asset('img\message-icon1.png') }}" alt=""><img src="{{ asset('img\message-icon2.png') }}" alt=""></p>
                         <span class="js-close-message" title="Закрыть"></span>
                     </div>
+                    @if(!\Auth::user())
                     <div class="game-message">
                         <p> Вы находитесь в гостевом режиме. <a href="" data-popup="authorization" class="js-open-popup">Войдите</a>
                             или <a href="" data-popup="registration-popup" class="js-open-popup">зарегистрируйтесь</a>,
                             чтобы играть по-настоящему.</p>
                         <span class="js-close-message" title="Закрыть"></span>
                     </div>
+                    @endif
                 </div>
                 <div class="close-box">
                     <span class="js-close-game" title="Закрыть"></span>
