@@ -72,7 +72,7 @@ return [
     'baccarat' => 'Baccarat',
     'poker' => 'Poker',
     'last_games' => 'Last Games',
-    'provider_filter' => 'Vendor',
+    'provider_filter' => 'Providers',
     'fullscreen_mode' => 'Fullscreen mode',
     'assistance_popup_send_message_guide' => 'Send us a message or talk to us using chat, look into FAQ or contact with us over social networks',
     'faq' => 'Frequently Asked Questions',
