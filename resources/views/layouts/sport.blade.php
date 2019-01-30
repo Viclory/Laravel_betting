@@ -50,7 +50,7 @@
             @if($agent->isMobile())
                 <script type="text/javascript" src="https://msports-itainment-uat.biahosted.com/staticResources/betinactionApi.js"></script>
             @else
-                <script type="text/javascript" src="https://sports-itainment-uat.biahosted.com/staticResources/betinactionApi.js"></script>
+                <script type="text/javascript" src="https://sports-itainment.biahosted.com/staticResources/betinactionApi.js"></script>
             @endif
             <section class="content">
                 <div class="container-fluid">
