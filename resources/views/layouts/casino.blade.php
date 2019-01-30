@@ -142,12 +142,11 @@
 
         @if(\Auth::user())
             @include('partials.profile-popup')
-        @endif
-
-        @if(!Auth::user())
+        @else
             @include('partials.recover-password-popup')
             @include('partials.login-popup')
         @endif
+
         <div class="simple-popup payment-order hidden">
             <p class="h2" data-text="Депозит с neteller">Депозит с neteller</p>
 
