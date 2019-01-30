@@ -12,6 +12,8 @@
 
 <script>
     var casino_type = "{{ $casino_type }}";
+    var merchant_id = "{{ env('MERCHANT_ID') }}";
+    var overlay_text = "{{ __('games.play_for_free') }}";
 </script>
 </head>
 <body>
