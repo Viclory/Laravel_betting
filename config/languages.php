@@ -2,7 +2,7 @@
 return [
     'en' => 'English',
     'ru' => 'Русский',
-    'vi' => 'Vietnamese',
+    'vi' => 'Tiếng Việt',
     'ch' => '中國',
     'es' => 'Español',
     'po' => 'Portugues'
