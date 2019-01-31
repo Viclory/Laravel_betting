@@ -839,15 +839,15 @@
     /*Simple popup*/
 
     /*Fake submit*/
-    $('.recover-password .form button').click(function(e){
-        e.preventDefault();
-        $(e.target).parents('form').trigger('submit');
+    // $('.recover-password .form button').click(function(e){
+        // e.preventDefault();
+        // $(e.target).parents('form').trigger('submit');
         // return false;
         // $(this).parents('.recover-password').children('.max-w').hide();
 
         // recover password sent
         //$(this).parents('.recover-password').find('.submit-ok-box').show();
-    });
+    // });
 
     /*Assistance popup*/
     $('.assistance-items a[data-child]').click(function(e){

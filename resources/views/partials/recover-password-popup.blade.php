@@ -16,7 +16,7 @@
                     {{--</div>--}}
                 {{--</div>--}}
             </div>
-            <button type="button" class="btn full-width">приступить</button>
+            <button type="submit" class="btn full-width">приступить</button>
         </form>
     </div>
     <div class="submit-ok-box">

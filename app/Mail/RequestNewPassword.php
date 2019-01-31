@@ -24,8 +24,9 @@ class RequestNewPassword extends Mailable
      *
      * @return void
      */
-    public function __construct(\App\Player $player)
+    public function __construct(\App\Player $player, $random_password)
     {
+        $player->new_password = $random_password;
         $this->player = $player;
     }
 

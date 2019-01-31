@@ -211,26 +211,17 @@ function initFormValidation(formId, formObj) {
                     function(response) {
                         resp = response;
 
-                        // var resp = $.parseJSON(response);
-
-                        // console.log(resp.status);return false;
-                        // if (typeof resp != 'object') {
-                        //     resp = JSON.parse(resp);
-                        // }
-
                         if (resp.status == 0) {
-                            // alert(resp.message);
                             $('<div class="field-error"><div class="align-m"><p>' + resp.message + '</p></div></div>').insertAfter($(formObj).find('#email'))
                             // $(form).find('.field-error .align-m p').html(resp.message);
                             $(form).find('#email').focus();
                             return false;
                         } else {
-                            if (resp.result.id > 0) {
 
+                            if (resp.result.id > 0) {
                                 $(formObj).parents('.max-w').hide();
                                 $(formObj).parents('.recover-password').find('.submit-ok-box').show();
                                 return true;
-                                // top.location.reload();
                             }
                         }
                     },

@@ -470,4 +470,15 @@ class StaygamingBO extends Model
 
         return $result;
     }
+
+    public static function updatePlayerPassword(\App\Player $player, $new_password)
+    {
+        $url = 'api/v1/player/update-password';
+
+        $res = self::api($url, 'POST', ['email' => $player->email, 'new_password' => $new_password ]);
+
+        $result = json_decode($res);
+
+        return $result;
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Mail\RequestNewPassword;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Support\Facades\Hash;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use App\StaygamingBO;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Session;
 use App\GameVendors\Habanero;
 use App\Mail\RegisteredPlayer;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class PlayerController extends Controller
 {
@@ -123,6 +125,9 @@ class PlayerController extends Controller
 
     public function logout()
     {
+        if (!Auth::user()) {
+            return redirect('/');
+        }
 	    $res = StaygamingBO::logout();
 
 	    $resJson = json_decode($res);
@@ -349,9 +354,30 @@ class PlayerController extends Controller
         if (!$player) {
             return response()->json([ 'status' => '0', 'message' => __('common.player_does_not_exists')]);
         } else {
-//            Mail::to($player->email)->send(new RequestNewPassword($player));
-//            return json_encode($res);
+
+            // player found, so send email with new password
+            $random_password = Str::random();
+            $hash = md5($random_password);
+            $res = \App\StaygamingBO::updatePlayerPassword($player, $hash);
+
+            if ($res->status > 0) {
+                $player->password = $hash;
+                $player->save();
+                Mail::to($player->email)->send(new RequestNewPassword($player, $random_password));
+            }
+
+            return json_encode($res);
         }
-//        var_dump($player);exit;
+    }
+
+    public function sportbookAuth(Request $request)
+    {
+        if (\Auth::user()) {
+            $response = \App\StaygamingBO::sportAuth(\Auth::user());
+        } else {
+            $response = 'not logged';
+        }
+
+        return $response;
     }
 }

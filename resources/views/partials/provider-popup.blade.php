@@ -13,7 +13,7 @@
         </div>
     </div>
     <footer class="footer">
-        <a href="index-4.html" class="btn js-confirm disabled">{{ __('common.confirm') }}</a>
+        <a href="#" class="btn js-confirm disabled">{{ __('common.confirm') }}</a>
     </footer>
     <span class="js-close-popup" title="{{ __('common.close') }}"></span>
 </div>
