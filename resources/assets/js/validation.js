@@ -234,7 +234,7 @@ function initFormValidation(formId, formObj) {
                             }
                         }
                     },
-                    'json',
+                    'json'
                 );
             },
             errorPlacement: function(error, element){
