@@ -361,7 +361,7 @@ class PlayerController extends Controller
             $res = \App\StaygamingBO::updatePlayerPassword($player, $hash);
 
             if ($res->status > 0) {
-                $player->password = $hash;
+                $player->password = bcrypt($random_password);
                 $player->save();
                 Mail::to($player->email)->send(new RequestNewPassword($player, $random_password));
             }
