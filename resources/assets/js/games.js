@@ -91,6 +91,10 @@ $('.game-link.js-open-popup').on('click', function(e){
         dataPopup = $(this).attr('data-touch-popup');
         var btnGameSrc = $(this).find('.js-open-game').attr('data-src');
         $('.choose-game-popup .js-open-game').attr('data-src', btnGameSrc);
+        if (mobile) {
+            $('.choose-game-popup .js-open-game').attr('href', btnGameSrc);
+            $('.choose-game-popup .js-open-game').attr('target', '_blank');
+        }
         $('.choose-game-popup img').attr('src', $(this).attr('data-img-src'));
     }
     $('html').addClass('opened-popup');
