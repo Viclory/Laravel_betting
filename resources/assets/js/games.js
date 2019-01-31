@@ -647,7 +647,7 @@ function placeGames(games, type, append = false) {
             if (value.iframe_logged == undefined) {
                 game_item += '<a href="'+(mobile ? value.iframe_not_logged : '#')+'" class="game-link js-open-popup" data-game-id="' + value.id + '" data-src="' + value.iframe_not_logged + '" data-touch-popup="choose-game-popup" data-popup="authorization" data-img-src="'+value.game_img+'" style="background-image: url(' + value.game_img + ');">';
             } else {
-                game_item += '<a href="'+(mobile ? value.iframe_logged : '#')+'" class="game-link js-open-game" data-game-id="' + value.id + '" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
+                game_item += '<a href="'+(mobile ? value.iframe_logged : '#')+'" class="game-link '+(!mobile? 'js-open-game' : 'js-open-popup')+'" data-game-id="' + value.id + '" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
             }
 
             game_item += '<div class="overlay">' +
