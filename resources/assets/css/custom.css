@@ -86,3 +86,7 @@
         background-position: 16px 0;
     }
 }
+
+.ajax-upload-box .message {
+    margin: 50px auto;
+}

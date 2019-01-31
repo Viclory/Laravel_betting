@@ -128,7 +128,7 @@
                 <div class="ajax-upload-box">
                     <a href="pages\more-games.html" class="js-load-more btn">{{ __('games.load_more') }}</a>
 
-                    <p class="message" style="margin: 50px auto;" data-text="Все игры загружены">{{ __('games.all_games_are_loaded') }}</p>
+                    <p class="message" data-text="Все игры загружены">{{ __('games.all_games_are_loaded') }}</p>
                 </div>
             </div>
         </main>
