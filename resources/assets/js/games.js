@@ -7,6 +7,9 @@ var all_games_limit = 30;
 var load_more_limit = 60;
 var last_games_quantity = 10;
 var remove_empty_sections = false;
+
+var mobile = $('html').hasClass('touchevents');
+
 if (!$.cookie('last_games')) {
     var last_games = new Array();
     $.cookie('last_games', last_games);
@@ -220,22 +223,22 @@ function attachClickEvents(type)
                 $.cookie('last_games', last_games);
             }
 
-            var provider = $link.data('provider');
-            var id = $link.data('id');
-            var mode = $link.data('mode');
+            // var provider = $link.data('provider');
+            // var id = $link.data('id');
+            // var mode = $link.data('mode');
 
 
-            if ($('#user_agent').val() == 'mobile') {
-                var mobile_launch_url = $(data).find('#game-frame').attr('src');
-                window.location = mobile_launch_url + '&mobileLobbyUrl=' + window.location.origin + window.location.pathname;
-                return false;
-            }
+            // if ($('#user_agent').val() == 'mobile') {
+            //     var mobile_launch_url = $(data).find('#game-frame').attr('src');
+            //     window.location = mobile_launch_url + '&mobileLobbyUrl=' + window.location.origin + window.location.pathname;
+            //     return false;
+            // }
 
             // $('#game-all').html(data);
 
-            if($('html').hasClass('touchevents')){
-                scrollTopTouch = $(window).scrollTop();
-            }
+            // if($('html').hasClass('touchevents')){
+            //     scrollTopTouch = $(window).scrollTop();
+            // }
 
             $('html').addClass('opened-game game-page');
             $('#header').removeClass('sticky');
@@ -642,9 +645,9 @@ function placeGames(games, type, append = false) {
             var game_item = '<div class="game-item">';
 
             if (value.iframe_logged == undefined) {
-                game_item += '<a href="#" class="game-link js-open-popup" data-game-id="' + value.id + '" data-touch-popup="choose-game-popup" data-popup="authorization" data-img-src="'+value.game_img+'" style="background-image: url(' + value.game_img + ');">';
+                game_item += '<a href="'+(mobile ? value.iframe_not_logged : '#')+'" class="game-link js-open-popup" data-game-id="' + value.id + '" data-src="' + value.iframe_not_logged + '" data-touch-popup="choose-game-popup" data-popup="authorization" data-img-src="'+value.game_img+'" style="background-image: url(' + value.game_img + ');">';
             } else {
-                game_item += '<a href="#" class="game-link js-open-game" data-game-id="' + value.id + '" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
+                game_item += '<a href="'+(mobile ? value.iframe_logged : '#')+'" class="game-link js-open-game" data-game-id="' + value.id + '" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
             }
 
             game_item += '<div class="overlay">' +
