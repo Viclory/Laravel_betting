@@ -126,22 +126,23 @@
                             Проверка
                         </div>
                         <div class="tab">
-                            <form action="#" class="form change-password">
+                            <form action="{{ URL::to('/update-password') }}" method="post" id="change_password" class="form change-password">
+                                {{ csrf_field() }}
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="password" class="form-control" placeholder="{{ __('common.new_password') }}">
+                                            <input type="password" class="form-control" name="password" placeholder="{{ __('common.new_password') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="password" class="form-control" placeholder="{{ __('common.repeat_password') }}">
+                                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="{{ __('common.repeat_password') }}">
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn">{{ __('common.save') }}</button>
+                                <button type="submit" class="btn">{{ __('common.save') }}</button>
                             </form>
                         </div>
                     </div>

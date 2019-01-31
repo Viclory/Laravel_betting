@@ -366,7 +366,9 @@ function loader(enable)
     if (enable) {
         $('.ajaxLoader').show();
     } else {
-        $('.ajaxLoader').hide();
+        setTimeout(function(){
+            $('.ajaxLoader').hide();
+        }, 1000);
     }
 }
 
@@ -516,7 +518,7 @@ function search(elm) {
 }
 
 function collectParams(default_params) {
-    loader(true);
+    // loader(true);
     var params = {merchant_id: merchant_id};
 
     // if (typeof casino_type == undefined) {
@@ -553,10 +555,6 @@ function collectParams(default_params) {
 }
 
 function applyFilters(params) {
-
-    // show preloader
-    loader(true);
-
     var api_res;
 
     var isMobile = false; //initiate as false
@@ -581,6 +579,10 @@ function applyFilters(params) {
         dataType: 'json',
         data: params,
         async: false,
+        beforeSend: function(){
+            // show preloader
+            loader(true);
+        },
         success: function(data) {
             api_res = data;
         }
@@ -634,7 +636,7 @@ function getPopularGames(additional_params) {
 
 function placeGames(games, type, append = false) {
     var gamesHtml = '';
-    loader(false);
+
 
     $('.games-list.' + type + '-games-items').show();
 
@@ -744,5 +746,6 @@ function placeGames(games, type, append = false) {
     // countVisibleGames(append);
 
 
+    loader(false);
     return false;
 }

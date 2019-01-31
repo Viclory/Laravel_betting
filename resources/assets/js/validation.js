@@ -244,6 +244,63 @@ function initFormValidation(formId, formObj) {
         });
     }
 
+    if (formId == 'change_password') {
+        console.log('tutut');
+        $(formObj).validate({
+            focusCleanup: true,
+            success: function(label, element){
+                $(element).parents('.field').find('.field-error').remove();
+            },
+            submitHandler: function(form) {
+                alert('eeeeeee');
+                return false;
+                $.post(
+                    $(form).attr('action'),
+                    {
+                        _token: $(form).find('input[name="_token"]').val(),
+                        new_password: $(form).find('input[name="password"]').val()
+                    },
+                    function(response) {
+                        resp = response;
+
+                        console.log(resp);
+
+                        if (resp.status == 0) {
+                            $('<div class="field-error"><div class="align-m"><p>' + resp.message + '</p></div></div>').insertAfter($(formObj).find('#email'))
+                            // $(form).find('.field-error .align-m p').html(resp.message);
+                            $(form).find('#email').focus();
+                            return false;
+                        } else {
+
+                            // if (resp.result.id > 0) {
+                            //     $(formObj).parents('.max-w').hide();
+                            //     $(formObj).parents('.recover-password').find('.submit-ok-box').show();
+                                return true;
+                            // }
+                        }
+                    },
+                    'json'
+                );
+            },
+            errorPlacement: function(error, element){
+                var field_error = '<div class="field-error"><div class="align-m">' +
+                    '<p>' + error.text() + '</p>' + '</div>' + '</div>';
+
+                $(field_error).insertAfter($(element));
+            },
+            rules: {
+                password: {
+                    required: true,
+                },
+                confirm_password: {
+                    required: true,
+                    equalTo: '#confirm_password'
+                }
+
+            }
+        });
+    }
+
     if (formId == 'full-registration-step1') {
         $(formObj).validate({
             focusCleanup: true,

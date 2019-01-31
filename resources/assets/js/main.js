@@ -393,6 +393,7 @@
     });
 
     $('.games-filter .js-filter-games').click(function(e){
+        loader(true);
         remove_empty_sections = true;
         e.preventDefault();
         if (selected_vendor != null) {
@@ -1102,6 +1103,7 @@
         initFormValidation('recover_password', $('#recover_password'));
         initFormValidation('full-registration-step1', $('#full-registration-step1'));
         initFormValidation('full-registration-step2', $('#full-registration-step2'));
+        initFormValidation('chage_password', $('#change_password'));
     });
 
     /*Window load*/

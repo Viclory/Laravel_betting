@@ -28,6 +28,7 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@
 //Route::get('/get-all-games/{page_number}/{type}', 'HomeController@getAllHomeGames');
 Route::post('/games', 'HomeController@games');
 Route::post('/recover-password', 'PlayerController@recoverPassword');
+Route::post('/update-password', 'PlayerController@updatePassword');
 //Route::get('/games/{games_type}', ['uses' => 'HomeController@viewGames']);
 //Route::post('/get-all-games', 'HomeController@getAllHomeGames');
 Route::get('/sport', 'HomeController@sport');
