@@ -55,12 +55,12 @@
                             {{--<input type="radio" name="payment_method" value="CARD" required class="d-none" autocomplete="off">--}}
                         {{--</label>--}}
                     {{--</div>--}}
-                    <div class="col-md-4 box">
-                        <label class="">
-                            <img src="{{ asset('img/payments/logo_neteller.png') }}" alt="..." class="">
-                            <input type="radio" name="payment_method" value="NT" class="d-none" autocomplete="off">
-                        </label>
-                    </div>
+                    {{--<div class="col-md-4 box">--}}
+                        {{--<label class="">--}}
+                            {{--<img src="{{ asset('img/payments/logo_neteller.png') }}" alt="..." class="">--}}
+                            {{--<input type="radio" name="payment_method" value="NT" class="d-none" autocomplete="off">--}}
+                        {{--</label>--}}
+                    {{--</div>--}}
                 <!--
                                 <div class="col-md-4 box">
                                     <label class="btn">
@@ -96,22 +96,22 @@
                     @endif
 
                     @if(in_array($playerInfo->currency->char_code, array('EUR', 'USD', 'CAD', 'GBP')))
-                        {{--<div class="col-md-4 box">--}}
-                            {{--<label class="btn">--}}
-                                {{--<img src="{{ asset('img/payments/ecopayz.png') }}" alt="..." class="img-thumbnail img-check">--}}
-                                {{--<input type="radio" name="payment_method" value="ECOVOUCHER" class="d-none" autocomplete="off">--}}
-                            {{--</label>--}}
-                        {{--</div>--}}
+                        <div class="col-md-4 box">
+                            <label class="">
+                                <img src="{{ asset('img/payments/ecopayz.png') }}" alt="..." class="img-check">
+                                <input type="radio" name="payment_method" value="ECOVOUCHER" class="d-none" autocomplete="off">
+                            </label>
+                        </div>
                     @endif
 
 
                     @if($playerInfo->currency->char_code == 'EUR')
-                        {{--<div class="col-md-4 box">--}}
-                            {{--<label class="btn">--}}
-                                {{--<img src="{{ asset('img/payments/paykasa.png') }}" alt="..." class="img-thumbnail img-check">--}}
-                                {{--<input type="radio" name="payment_method" value="PAYKASA" class="d-none" autocomplete="off">--}}
-                            {{--</label>--}}
-                        {{--</div>--}}
+                        <div class="col-md-4 box">
+                            <label class="">
+                                <img src="{{ asset('img/payments/paykasa.png') }}" alt="..." class="img-check">
+                                <input type="radio" name="payment_method" value="PAYKASA" class="d-none" autocomplete="off">
+                            </label>
+                        </div>
                     @endif
 
 
