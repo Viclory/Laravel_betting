@@ -370,14 +370,12 @@ class PlayerController extends Controller
         }
     }
 
-    public function sportbookAuth(Request $request)
+    public function updatePassword(Request $request)
     {
-        if (\Auth::user()) {
-            $response = \App\StaygamingBO::sportAuth(\Auth::user());
-        } else {
-            $response = 'not logged';
+        if (!\Auth::user()) {
+            return response()->json([ 'status' => '0', 'message' => __('common.player_does_not_exists')]);
         }
 
-        return $response;
+
     }
 }

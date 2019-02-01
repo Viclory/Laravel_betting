@@ -32,6 +32,7 @@ mix.copy('resources/assets/js/pace.min.js', 'public/js')
     .copy('resources/assets/js/jquery.validate.messages_ru.js', 'public/js')
     .copy('resources/assets/js/validation.js', 'public/js')
     .copy('resources/assets/js/games.js', 'public/js')
+    .copy('resources/assets/js/depo.js', 'public/js')
 ;
 //.js('resources/assets/js/validation.js', 'public/js')
     //.extract(['jquery', 'bootstrap', 'isotope-layout'])
