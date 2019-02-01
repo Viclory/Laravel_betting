@@ -55,12 +55,12 @@
                             {{--<input type="radio" name="payment_method" value="CARD" required class="d-none" autocomplete="off">--}}
                         {{--</label>--}}
                     {{--</div>--}}
-                    {{--<div class="col-md-4 box">--}}
-                        {{--<label class="">--}}
-                            {{--<img src="{{ asset('img/payments/logo_neteller.png') }}" alt="..." class="">--}}
-                            {{--<input type="radio" name="payment_method" value="NT" class="d-none" autocomplete="off">--}}
-                        {{--</label>--}}
-                    {{--</div>--}}
+                    <div class="col-md-4 box">
+                        <label class="">
+                            <img src="{{ asset('img/payments/logo_neteller.png') }}" alt="..." class="">
+                            <input type="radio" name="payment_method" value="NT" class="d-none" autocomplete="off">
+                        </label>
+                    </div>
                 <!--
                                 <div class="col-md-4 box">
                                     <label class="btn">
