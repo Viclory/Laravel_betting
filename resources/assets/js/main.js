@@ -720,7 +720,7 @@
                 casino_type: casino_type,
                 limit: load_more_limit,
                 game_type: selected_games_type,
-                merchant_id: $('#merchant_id').val(),
+                merchant_id: merchant_id,
                 request_total_count: true
             };
 
