@@ -4,7 +4,7 @@
     var $body = $('body');
     var windowWidth = Math.max($(window).width(), window.innerWidth);
 
-    $('.games-list').hide();
+    // $('.games-list').hide();
 
 
     /*Detect IE*/

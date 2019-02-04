@@ -304,7 +304,7 @@ function attachClickEvents(type) {
 
 
 function getLastGames() {
-    $('.games-list').hide();
+    // $('.games-list').hide();
     $('.ajax-upload-box').hide();
     //
     $('.games-list.last-games-items').removeClass('hidden');
@@ -327,7 +327,7 @@ function countVisibleGames() {
             if (count_games_in_section > 0) {
                 $(this).find('header').find('.count-text .count').html(count_games_in_section);
             } else {
-                $(this).hide();
+                $(this).addClass('hidden');
             }
         }
     });
@@ -346,11 +346,11 @@ function loader(enable)
 
 function hideAllGamesSections()
 {
-    $('.games-list').hide();
+    // $('.games-list').hide();
 
-    $('.games-list.popular-games-items').show();
-    $('.games-list.new-games-items').show();
-    $('.games-list.all-games-items').show();
+    $('.games-list.popular-games-items').removeClass('hidden');
+    $('.games-list.new-games-items').removeClass('hidden');
+    $('.games-list.all-games-items').removeClass('hidden');
 }
 
 function emptySearch() {
@@ -429,7 +429,7 @@ function clearGames() {
     $('.games-list .game-item').remove();
     $('.games-list header .count-text .count').html('');
 
-    $('.games-list').hide();
+    // $('.games-list').hide();
 }
 
 function getAllGames() {
@@ -558,6 +558,7 @@ function applyFilters(params) {
             api_res = data;
 
             placeGames(api_res, params.type, params.append);
+            $('.games-list.' + params.type + '-games-items header .count-text .count').html($('.games-list.' + params.type + '-games-items .game-item').length);
         },
         complete: function(xhr, status){
         }
@@ -613,7 +614,7 @@ function placeGames(games, type, append = false) {
     var gamesHtml = '';
 
 
-    $('.games-list.' + type + '-games-items').show();
+    $('.games-list.' + type + '-games-items').removeClass('hidden');
 
     if (type == 'vendor') {
         $('.' + type + '-games-section .type').html($('.provider-popup .choose-list li.active a').text());
