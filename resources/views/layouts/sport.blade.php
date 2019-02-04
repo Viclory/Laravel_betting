@@ -50,7 +50,7 @@
             @if($agent->isMobile())
                 <script type="text/javascript" src="https://msports-itainment-uat.biahosted.com/staticResources/betinactionApi.js"></script>
             @else
-                <script type="text/javascript" src="https://sports-itainment.biahosted.com/staticResources/betinactionApi.js"></script>
+                <script type="text/javascript" src="https://sports-itainment-uat.biahosted.com/staticResources/betinactionApi.js"></script>
             @endif
             <section class="content">
                 <div class="container-fluid">
@@ -109,7 +109,7 @@
 
 
                 var biaOptions = parseQuery(window.location.hash);
-                biaOptions.walletcode  = "150999";
+                biaOptions.walletcode  = "739562";
                 biaOptions.token  = "{{ $player_token }}";
                 biaOptions.page = 'prelive';
                 biaOptions.getMarketsCallback = function (result) {
