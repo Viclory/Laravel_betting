@@ -11,9 +11,9 @@
     right: 0;
 }
 
-.field:not(.error-field) .field-error {
-    display: none;
-}
+/*.field:not(.error-field) .field-error {*/
+    /*display: none;*/
+/*}*/
 .ajaxLoader {
     display: none;
     position: fixed;

@@ -4,6 +4,9 @@
     var $body = $('body');
     var windowWidth = Math.max($(window).width(), window.innerWidth);
 
+    $('.games-list').hide();
+
+
     /*Detect IE*/
     function detectIE() {
         var ua = window.navigator.userAgent;
@@ -393,7 +396,7 @@
     });
 
     $('.games-filter .js-filter-games').click(function(e){
-        loader(true);
+        // loader(true);
         remove_empty_sections = true;
         e.preventDefault();
         if (selected_vendor != null) {
@@ -676,6 +679,7 @@
 
     $body.on('click', ".js-load-more", function(e){
         e.preventDefault();
+        loader(true);
         if(loading){
             alert('Please wait');
         }
@@ -719,7 +723,7 @@
                 exclude_vendor: exclude["vendor"],
                 casino_type: casino_type,
                 limit: load_more_limit,
-                game_type: selected_games_type,
+                game_type: $('.games-filter a.active').attr('data-game-type'),
                 merchant_id: merchant_id,
                 request_total_count: true
             };
@@ -730,13 +734,16 @@
 
             console.log('selectedvendor:' + selected_vendor);
 
-            var games = applyFilters(params);
-
             if (selected_vendor != null) {
 
-                placeGames(games,'vendor', true);
+                $.extend(params, {type: 'vendor', append: true});
+                applyFilters(params);
+
+                // placeGames(games,'vendor', true);
             } else {
-                placeGames(games,games_category, true);
+                $.extend(params, {type: games_category, append: true});
+                applyFilters(params);
+                // placeGames(games,games_category, true);
             }
 
             return false;
@@ -1093,6 +1100,22 @@
 
     /*Document ready*/
     $(function(){
+        function checkPendingRequest() {
+            if ($.active > 0) {
+                window.setTimeout(checkPendingRequest, 1000);
+                loader(true);
+                //Mostrar peticiones pendientes ejemplo: $("#control").val("Peticiones pendientes" + $.active);
+            } else {
+                loader(false);
+                // alert("No hay peticiones pendientes");
+            }
+        };
+
+        window.setInterval(checkPendingRequest, 1000);
+    });
+
+    /*Window load*/
+    $(window).on('load', function(){
         if ($.cookie('locale') == undefined) {
             // show languages popup
             // console.log($('.select-language-popup').length);
@@ -1104,10 +1127,6 @@
         initFormValidation('full-registration-step1', $('#full-registration-step1'));
         initFormValidation('full-registration-step2', $('#full-registration-step2'));
         initFormValidation('chage_password', $('#change_password'));
-    });
-
-    /*Window load*/
-    $(window).on('load', function(){
         $.ready.then(function(){
             $html.addClass('page-load');
 
@@ -1246,3 +1265,4 @@ function toggleFullScreen(elem) {
         }
     }
 }
+
