@@ -8,7 +8,6 @@
 <title>Casino | Казино</title>
 <link rel="stylesheet" href="{{ asset('/css/style.css') }}" />
 <link rel="stylesheet" href="{{ asset('/css/custom.css') }}" />
-<script src="{{ asset('/js/pace.min.js') }}"></script>
 
 <script>
     var casino_type = "{{ $casino_type }}";
@@ -190,7 +189,7 @@
 
 <div id="page-overlay"></div>
 
-@include('partials.page-preloader')
+
 
 <div id="popup">
     <div class="container">
