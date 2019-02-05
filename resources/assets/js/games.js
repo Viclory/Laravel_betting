@@ -60,47 +60,7 @@ function jsClock(){
 }
 
 /*Popup*/
-$('.js-open-popup:not(.game-link)').on('click', function(e){
-    e.preventDefault();
-    $('#popup').find('.visible').removeClass('visible').addClass('hidden');
-    var dataPopup = $(this).attr('data-popup');
-    $('html').addClass('opened-popup');
-    $("." + dataPopup).removeClass('hidden').addClass('visible');
 
-
-    /*Tain iframe resize recalc hack*/
-    var resizeEvent = new Event('resize');
-    window.dispatchEvent(resizeEvent);
-
-    setTimeout(function(){
-        var resizeEvent = new Event('resize');
-        window.dispatchEvent(resizeEvent);
-    }, 250);
-
-    return false;
-});
-
-$('.game-link.js-open-popup').on('click', function(e){
-    e.preventDefault();
-    $('#popup').find('.visible').removeClass('visible').addClass('hidden');
-    var dataPopup;
-    if($('html').hasClass('no-touchevents')){
-        dataPopup = $(this).attr('data-popup');
-    }
-    else{
-        dataPopup = $(this).attr('data-touch-popup');
-        var btnGameSrc = $(this).find('.js-open-game').attr('data-src');
-        $('.choose-game-popup .js-open-game').attr('data-src', btnGameSrc);
-        if (mobile) {
-            $('.choose-game-popup .js-open-game').attr('href', btnGameSrc);
-            $('.choose-game-popup .js-open-game').attr('target', '_blank');
-        }
-        $('.choose-game-popup img').attr('src', $(this).attr('data-img-src'));
-    }
-    $('html').addClass('opened-popup');
-    $("." + dataPopup).removeClass('hidden').addClass('visible');
-    return false;
-});
 
 // $('.js-open-game').on('click', function(e){
 //     e.stopPropagation();
@@ -310,20 +270,21 @@ function getLastGames() {
     $('.games-list.last-games-items').removeClass('hidden');
 
     var params = {
+        type: 'last',
         merchant_id: $('#merchant_id').val(),
         games: $.cookie('last_games').split(',')
     };
 
-    var games = applyFilters(params);
+    applyFilters(params);
 
-    placeGames(games, 'last');
+    // placeGames(games, 'last');
 }
 
 function countVisibleGames() {
     $('.games-list').each(function(){
         if ($(this).is(':visible')) {
             count_games_in_section = $(this).find('.game-item').length;
-            console.log('count games ' + count_games_in_section);
+            // console.log('count games ' + count_games_in_section);
             if (count_games_in_section > 0) {
                 $(this).find('header').find('.count-text .count').html(count_games_in_section);
             } else {
@@ -443,15 +404,15 @@ function getAllGames() {
     $('.games-list.all-games-items').show();
 
     $.extend(params, collectParams());
-    var games = applyFilters(params);
+    applyFilters(params);
     //placeGames(games, 'all');
 }
 
 function getLiveCasinoGames() {
     var params = {type: 'live-casino'};
     $.extend(params, collectParams());
-    var games = applyFilters(params);
-    placeGames(games, 'live-casino');
+    applyFilters(params);
+    // placeGames(games, 'live-casino');
 }
 
 

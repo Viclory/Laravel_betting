@@ -1162,6 +1162,48 @@
                 gamesFilterSlider.update();
             }
         });
+
+        $('.js-open-popup:not(.game-link)').on('click', function(e){
+            e.preventDefault();
+            $('#popup').find('.visible').removeClass('visible').addClass('hidden');
+            var dataPopup = $(this).attr('data-popup');
+            $('html').addClass('opened-popup');
+            $("." + dataPopup).removeClass('hidden').addClass('visible');
+
+
+            /*Tain iframe resize recalc hack*/
+            var resizeEvent = new Event('resize');
+            window.dispatchEvent(resizeEvent);
+
+            setTimeout(function(){
+                var resizeEvent = new Event('resize');
+                window.dispatchEvent(resizeEvent);
+            }, 250);
+
+            return false;
+        });
+
+        $('.game-link.js-open-popup').on('click', function(e){
+            e.preventDefault();
+            $('#popup').find('.visible').removeClass('visible').addClass('hidden');
+            var dataPopup;
+            if($('html').hasClass('no-touchevents')){
+                dataPopup = $(this).attr('data-popup');
+            }
+            else{
+                dataPopup = $(this).attr('data-touch-popup');
+                var btnGameSrc = $(this).find('.js-open-game').attr('data-src');
+                $('.choose-game-popup .js-open-game').attr('data-src', btnGameSrc);
+                if (mobile) {
+                    $('.choose-game-popup .js-open-game').attr('href', btnGameSrc);
+                    $('.choose-game-popup .js-open-game').attr('target', '_blank');
+                }
+                $('.choose-game-popup img').attr('src', $(this).attr('data-img-src'));
+            }
+            $('html').addClass('opened-popup');
+            $("." + dataPopup).removeClass('hidden').addClass('visible');
+            return false;
+        });
     });
 
 

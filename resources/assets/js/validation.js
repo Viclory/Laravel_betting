@@ -179,7 +179,6 @@ function initFormValidation(formId, formObj) {
                 );
             },
             errorPlacement: function(error, element){
-                console.log(element);
                 var field_error = '<div class="field-error"><div class="align-m">' +
                     '<p>' + error.text() + '</p>' + '</div>' + '</div>';
 
