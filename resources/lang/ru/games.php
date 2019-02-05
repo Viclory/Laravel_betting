@@ -26,7 +26,7 @@ return [
     'search_games' => 'Поиск по играм',
     'search_games_results' => 'Результаты поиска',
     'found_games' => 'Найдено',
-    'all_games_are_loaded' => 'Нет игр в данном разделе',
+    'all_games_are_loaded' => 'Все игры загружены',
     'last_games_results' => 'Последние игры',
     'play_for_free' => 'Играть бесплатно',
     'new' => 'Новинка'
