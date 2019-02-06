@@ -8,7 +8,7 @@
                 <?php $balanceObj = App\StaygamingBO::getBalanceByPlayerId(Auth::user()->player_id); ?>
                 <a href="" data-popup="payment-order" class="icon-btn deposit js-open-popup">
                     <span class="icon"></span>
-                    <span class="sum">{{ \floor($balanceObj->result->balance) }} <span class="currency">{{ $balanceObj->result->currency }}</span></span>
+                    <span class="sum">{{ $balanceObj->result->balance }} <span class="currency">{{ $balanceObj->result->currency }}</span></span>
                 </a>
                 <a href="" data-popup="private-office-popup" class="icon-btn account js-open-popup">
                     <span class="icon"></span>

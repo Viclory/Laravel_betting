@@ -1,5 +1,5 @@
 <div class="choose-game-popup hidden">
-    <img src="{{ asset('img/uploads/choose-game-popup-img.jpg') }}" alt="">
+    <img src="{{ asset('/img/uploads/choose-game-popup-img.jpg') }}" alt="">
 
     <div class="btns-box">
         <a href="" class="btn js-open-popup" data-popup="authorization">{{ __('games.play_on_rel_money') }}</a>

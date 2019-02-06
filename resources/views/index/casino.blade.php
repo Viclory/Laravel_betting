@@ -17,6 +17,8 @@
 
             <div class="container games-wrapper">
 
+
+
                 <!-- FAVORITE GAMES -->
                 <div class="games-list favorite-games-items hidden">
                     <header class="header popular-games-section">
@@ -29,7 +31,7 @@
                 </div>
 
                 <!-- POPULAR GAMES -->
-                <div class="games-list popular-games-items hidden">
+                <div class="games-list popular-games-items">
                     <header class="header popular-games-section">
                         <span class="type">{{ __('games.popular_games') }}</span>
                         <span class="count-text">
@@ -40,7 +42,7 @@
                 </div>
 
                 <!-- NEW GAMES -->
-                <div class="games-list new-games-items hidden">
+                <div class="games-list new-games-items">
                     <header class="header new-games-section">
                         <span class="type">{{ __('games.new_games') }}</span>
                         <span class="count-text">
@@ -51,7 +53,7 @@
                 </div>
 
                 <!-- ALL GAMES -->
-                <div class="games-list all-games-items hidden">
+                <div class="games-list all-games-items">
                     <header class="header all-games-section">
                         <span class="type">{{ __('games.all_games') }}</span>
                         <span class="count-text">
@@ -105,17 +107,6 @@
                     </header>
                 </div>
 
-                <!-- POKER GAMES -->
-                <div class="games-list poker-games-items hidden">
-                    <header class="header poker-games-section">
-                        <span class="type">{{ __('games.poker') }}</span>
-                        <span class="count-text">
-                            <span class="text">{{ __('games.found_games') }} /</span>
-                            <span class="count"></span>
-                        </span>
-                    </header>
-                </div>
-
                 <!-- SEARCH GAMES -->
                 <div class="games-list search-games-items hidden">
                     <header class="header search-games-section">
@@ -149,11 +140,7 @@
                     </header>
                 </div>
 
-                <div class="ajax-upload-box">
-                    <a href="#" class="js-load-more btn">{{ __('games.load_more') }}</a>
-
-                    <p class="message" data-text="Все игры загружены">{{ __('games.all_games_are_loaded') }}</p>
-                </div>
+                @include('partials.ajax-upload-box')
             </div>
         </main>
 @endsection

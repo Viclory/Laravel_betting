@@ -2,7 +2,7 @@
 <div class="private-office-popup hidden">
     <div class="sub-box">
         <div class="office-nav">
-            <a href="{{ URL::to('/logout') }}" class="js-leave-popup">{{ __('auth.logout') }}</a>
+            <a href="{{ URL::to('/logout') }}" class="js-leave-popup js-not-leave-popup">{{ __('auth.logout') }}</a>
             <a href="" class="nav-item active" data-box="profile-box">
                 <span class="icon">
                     <img src="{{ asset('img/profile-icon.png') }}" alt="">

@@ -13,58 +13,7 @@
 
 <div id="all">
 
-    <header id="header">
-        <div class="container">
-            <a href="{{ URL::to('/') }}" id="logo" title="{{ __('common.go_to_main') }}"></a>
-            <nav id="nav">
-                <ul>
-                    <li>
-                        <a href="{{ URL::to('/casino') }}">Casino</a>
-                    </li>
-                    <li>
-                        <a href="{{ URL::to('/casino-live') }}">Casino live</a>
-                    </li>
-                    <li>
-                        <a href="{{ URL::to('/sport') }}">Sport</a>
-                    </li>
-                    <li>
-                        <a href="{{ URL::to('/bingo') }}">Bingo</a>
-                    </li>
-                    <li>
-                        <a href="#bonus-anchor" class="bonus-link">Bonus</a>
-                    </li>
-                </ul>
-                <span id="js-close-nav" title="Закрыть меню"></span>
-            </nav>
-            <div class="controls">
-                @if(!Auth::user())
-                <a href="#" data-popup="registration-popup" class="btn sub-color small-btn js-open-popup">{{ __('auth.registration') }}</a>
-                <a href="" data-popup="authorization" class="icon-btn login js-open-popup">
-                    <span class="icon"></span>
-                </a>
-                @else
-                    <?php $balanceObj = App\StaygamingBO::getBalanceByPlayerId(Auth::user()->player_id); ?>
-                <a href="" data-popup="payment-order" class="icon-btn deposit js-open-popup">
-                    <span class="icon"></span>
-                    <span class="sum">{{ \floor($balanceObj->result->balance) }} <span class="currency">{{ $balanceObj->result->currency }}</span></span>
-                </a>
-                <a href="" data-popup="private-office-popup" class="icon-btn account js-open-popup">
-                    <span class="icon"></span>
-                </a>
-                @endif
-                <a href="" data-popup="assistance-popup" class="icon-btn assistance js-open-popup">
-                    <span class="icon"></span>
-                </a>
-                @include('partials.languages-selector')
-
-            </div>
-            <span id="js-open-nav" title="Открыть меню">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-        </div>
-    </header>
+    @include('partials.header', ['active' => ''])
 
     <div id="main-screen">
         <div class="sub-box">
@@ -86,7 +35,7 @@
                     <a href="{{ URL::to('/bingo') }}" class="bingo-link" title="Bingo">
                         <span class="chest" data-text="Bingo">Bingo</span>
                     </a>
-                    <a href="#bonus" class="bonus-link" title="Bonus">
+                    <a href="{{ URL::to('/') }}#bonus-anchor" class="bonus-link" title="Bonus">
                         <span class="chest" data-text="Bonus">Bonus</span>
                     </a>
                     <img src="{{ asset('img/main-nav-proportion.gif') }}" class="proportion" alt="">

@@ -26,8 +26,9 @@ return [
     'search_games' => 'Search games',
     'search_games_results' => 'Search Results',
     'found_games' => 'Found',
-    'all_games_are_loaded' => 'No games in this section',
+    'all_games_are_loaded' => 'All games are loaded',
     'last_games_results' => 'Last Games',
     'play_for_free' => 'Play for free',
-    'new' => 'New'
+    'new' => 'New',
+    'not_found' => 'Games not found.'
 ];

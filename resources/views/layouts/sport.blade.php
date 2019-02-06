@@ -14,36 +14,7 @@
 
 <div id="all">
 
-    <header id="header">
-        <div class="container">
-            @include('partials.navigation', ['active' => 'sport'])
-            <div class="controls">
-                @if (Auth::user())
-                    <?php $balanceObj = App\StaygamingBO::getBalanceByPlayerId(Auth::user()->player_id); ?>
-                    <a href="" data-popup="payment-order" class="icon-btn deposit js-open-popup">
-                        <span class="icon"></span>
-                        <span class="sum">{{ \floor($balanceObj->result->balance) }} <span class="currency">{{ $balanceObj->result->currency }}</span></span>
-                    </a>
-                    <a href="" data-popup="private-office-popup" class="icon-btn account js-open-popup">
-                        <span class="icon"></span>
-                    </a>
-                @else
-                    <a href="" data-popup="authorization" class="icon-btn login js-open-popup">
-                        <span class="icon"></span>
-                    </a>
-                @endif
-                <a href="" data-popup="assistance-popup" class="icon-btn assistance js-open-popup">
-                    <span class="icon"></span>
-                </a>
-                @include('partials.languages-selector')
-            </div>
-            <span id="js-open-nav" title="{{ __('common.open_menu') }}">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-        </div>
-    </header>
+    @include('partials.header', ['active' => 'sport'])
 
     <div id="page-bg">
         {{--<iframe class="sport-iframe">--}}
@@ -191,10 +162,10 @@
                 <form action="#" class="form">
                     <div class="field">
                         <select name="sel1" id="sel1" class="img-select">
-                            <option value="NETELLER" data-img="{{ asset('uploads/select-img1.png') }}">NETELLER</option>
-                            <option value="NETELLER 2" data-img="{{ asset('uploads/select-img2.png') }}">NETELLER 2</option>
-                            <option value="NETELLER 3" data-img="{{ asset('uploads/select-img3.png') }}">NETELLER 3</option>
-                            <option value="NETELLER 4" data-img="{{ asset('uploads/select-img4.png') }}">NETELLER 4</option>
+                            <option value="NETELLER" data-img="{{ asset('/img/uploads/select-img1.png') }}">NETELLER</option>
+                            <option value="NETELLER 2" data-img="{{ asset('/img/uploads/select-img2.png') }}">NETELLER 2</option>
+                            <option value="NETELLER 3" data-img="{{ asset('/img/uploads/select-img3.png') }}">NETELLER 3</option>
+                            <option value="NETELLER 4" data-img="{{ asset('/img/uploads/select-img4.png') }}">NETELLER 4</option>
                         </select>
                     </div>
                     <div class="field">
