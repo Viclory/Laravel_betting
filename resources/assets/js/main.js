@@ -628,6 +628,7 @@
 
         loader(true);
         if ($(this).hasClass('active')) {
+            loader(false);
             return;
         }
 
@@ -1508,6 +1509,7 @@
 
 
         if (games.show_more == true) {
+            $('.ajax-upload-box').show();
             $('.ajax-upload-box .js-load-more').show();
             $('.ajax-upload-box p.message').hide();
         } else {
@@ -1951,7 +1953,13 @@
 
         selected_vendor = $(this).parents('.provider-popup').find('ul.choose-list li.active a').attr('data-vendor-id');
 
-        // setFilterParam({vendor: selected_vendor});
+        // remove probably selected game_type
+        if (filter_params.casino_type == 'casino') {
+            setFilterParam({game_type: 'slot'});
+
+        } else {
+            setFilterParam({game_type: 'all-tables'});
+        }
 
         getVendorGames();
     });
