@@ -114,7 +114,7 @@
                 biaOptions.loadCallback = function () {
                     if (betinactionAPI.initParams.full) {
                         document.getElementById("SetPageButtons").style.display = "block";
-                        document.getElementById("SelectionIdForm").style.display = "none";
+                        //document.getElementById("SelectionIdForm").style.display = "none";
                     }
                     else {
                         document.getElementById("SetPageButtons").style.display = "none";
