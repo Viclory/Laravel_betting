@@ -833,7 +833,7 @@
         }
 
         if (mobile) {
-            var mobile_launch_url = $('html').find('#game-frame').attr('src');
+            var mobile_launch_url = $(this).data('src');
             window.open(mobile_launch_url, '_blank');
             return false;
         }
@@ -1384,7 +1384,7 @@
                 }
 
                 game_item += '<div class="overlay">';
-                if (value.has_demo == 1 || value.has_demo == null) {
+                if (value.has_demo == 1 || value.has_demo == null || value.iframe_not_logged.indexOf('Demo not supported') == 0) {
                     game_item += '<span data-text="' + overlay_text + '" class="js-open-game" data-src="' + value.iframe_not_logged + '" data-game-bg="static-bg">' + overlay_text + '</span>';
                 }
                 game_item += '</div>';
