@@ -1983,7 +1983,7 @@
             initFormValidation('login_form', $('#login_form'));
         }
         if ($('#recover_password').length > 0) {
-            initFormValidation('recover_password', );
+            initFormValidation('recover_password', $('#recover_password'));
         }
         if ($('#full-registration-step1').length > 0) {
             initFormValidation('full-registration-step1', $('#full-registration-step1'));
