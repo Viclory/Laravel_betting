@@ -56,7 +56,7 @@ Route::get('/logout', 'PlayerController@logout');
 //Route::get('/game/{game_vendor_id}', 'PlayerController@game')->name('single-game');
 //Route::get('player-cards/{pid}/{ctype}', 'HomeController@getPlayerCards')->name('player-cards');
 //Route::post('lpspayment', 'HomeController@makePayment')->name('lpspayment');
-//Route::post('/profile/update', 'PlayerController@profileUpdate');
+Route::post('/profile/update', 'PlayerController@profileUpdate');
 //
 //Route::get('/promotions', 'HomeController@promotions');
 //Route::post('/cool-off', 'PlayerController@coolingOff');
