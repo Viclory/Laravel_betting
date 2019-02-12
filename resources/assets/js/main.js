@@ -245,7 +245,7 @@
     jsClock();
 
     function getPopularGames() {
-        console.log('getPopularGames');
+        // console.log('getPopularGames');
 
         setFilterParam({type: 'popular', limit: 20});
         applyFilters();
@@ -254,7 +254,7 @@
     }
 
     function getNewGames() {
-        console.log('getNewGames');
+        // console.log('getNewGames');
         setFilterParam({type: 'new', limit: 10});
 
         applyFilters();
@@ -262,14 +262,14 @@
     }
 
     function getAllGames() {
-        console.log('getAllGames');
+        // console.log('getAllGames');
         setFilterParam({type: 'all', limit: 30});
         applyFilters();
         return true;
     }
 
     function getLastGames() {
-        console.log('getLastGames');
+        // console.log('getLastGames');
         $('.games-list').addClass('hidden');
         $('.ajax-upload-box').hide();
         $('.games-list.last-games-items').removeClass('hidden');
@@ -283,7 +283,7 @@
     }
 
     function getVendorGames() {
-        console.log('getVendorGames');
+        // console.log('getVendorGames');
         setFilterParam({vendor: selected_vendor, type: 'vendor'});
         $('.games-list .game-item').remove();
         $('.games-list').addClass('hidden');
@@ -714,7 +714,7 @@
 
         loader(false);
 
-        console.log(tag);
+        // console.log(tag);
 
         // $.get(route_new_url, {tag: tag}, function (data) {
         //     //var replacer_content = $(data).filter('.casino-page-content');
@@ -863,10 +863,13 @@
 
         var game_id = $link.data('game-id');
 
-        if (e.target.nodeName == 'SPAN') {
-            var iframe_url = getIframeUrl(game_id, false);
-        } else if (e.target.nodeName == 'DIV') {
+        if (e.target.nodeName == 'DIV') {
             var iframe_url = getIframeUrl(game_id, true);
+        } else if (e.target.nodeName == 'SPAN') {
+            var iframe_url = getIframeUrl(game_id, false);
+        } else if (e.target.nodeName == 'A') {
+            game_id = $(this).data('game-id');
+            var iframe_url = getIframeUrl(game_id, logged);
         }
         $link.attr('data-src', iframe_url);
 
@@ -879,7 +882,7 @@
         }
 
         if (mobile) {
-            var mobile_launch_url = $link.data('src');
+            var mobile_launch_url = $(this).attr('data-src');
             window.open(mobile_launch_url, '_blank');
             return false;
         }
@@ -1100,7 +1103,7 @@
     var ajaxUploadBox;
 
     $body.on('click', ".js-load-more", function(e){
-        console.log('load-more-more');
+        // console.log('load-more-more');
         e.preventDefault();
 
 
@@ -1225,7 +1228,9 @@
             dataPopup = $(this).attr('data-popup');
         } else{
             dataPopup = $(this).attr('data-touch-popup');
-            var btnGameSrc = $(this).find('.js-open-game').attr('data-src');
+            var btnGameSrc = getIframeUrl($(this).attr('data-game-id'), false);
+            // var btnGameSrc = $(this).attr('data-game-id');
+            // console.log($(this).attr('data-game-id'));
             $('.choose-game-popup .js-open-game').attr('data-src', btnGameSrc);
         }
 
@@ -1399,13 +1404,13 @@
     }
 
     function loader(enable) {
-        console.log('loader started');
+        // console.log('loader started');
         if (enable) {
             $('.ajaxLoader').show();
         } else {
-            // setTimeout(function(){
+            setTimeout(function(){
                 $('.ajaxLoader').hide();
-            // }, 1000);
+            }, 1000);
         }
         return true;
     }
@@ -1900,7 +1905,7 @@
             var tag = $('#games-filter-box').find('.js-filter-games.active:first').data('tag') || '';
             var provider = $(this).closest('.provider_list').find('li.active:first').data('provider') || '';
 
-            console.log(provider);
+            // console.log(provider);
 
             // $.get(route_new_url, {tag: tag, provider: provider}, function (data) {
             //     $('.jq_casino_content').html(data);
