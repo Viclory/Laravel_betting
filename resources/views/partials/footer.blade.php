@@ -49,7 +49,7 @@
         </div>
         <div class="middle-box">
             <div class="text">
-                <p>LEPRECONCASINO – Play Casino, Live Casino, Slots, Bingo and Sportsbook online<br>LEPRECONCASINO has one of the largest selections of casino games. Play casino games like Roulette, Slots, Blackjack and lots more. For new players here at Lepreconcasino our welcome package gives you a 200% on the first deposit.</p>
+                <p>Lepreconcasino is part of the DragonGame KFT. This website is operated by DragonGame, a company registered under the laws of Hungry with registration number: 01-09-335891, registered address: 1113 Budapest, Kenese utca 3. The Lepreconcasino website is operating under license of DragonGame N.V. part of the DragonGame KFT, a company licensed and regulated by the laws of Curacao and has its sublicense issued by Gaming Services Provider N.V. #365/JAZ</p>
             </div>
             <div class="img">
                 <img src="{{ asset('img/uploads/footer-img1.jpg') }}" alt="">
