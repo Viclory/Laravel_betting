@@ -481,4 +481,23 @@ class StaygamingBO extends Model
 
         return $result;
     }
+
+    public static function getGameIframeUrl($game_id, $parameters)
+    {
+        $url = 'api/v1/games/get-iframe-url';
+        $params = [
+            'game_id' => $game_id,
+        ];
+        if (\Auth::user()) {
+            $params['api_token'] = \Auth::user()->access_token;
+        }
+
+        if (sizeof($parameters) > 0) {
+            $params = array_merge($params, $parameters);
+        }
+
+        $res = self::api($url, 'POST', $params);
+
+        return $res;
+    }
 }

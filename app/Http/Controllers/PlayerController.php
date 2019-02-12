@@ -375,7 +375,5 @@ class PlayerController extends Controller
         if (!\Auth::user()) {
             return response()->json([ 'status' => '0', 'message' => __('common.player_does_not_exists')]);
         }
-
-
     }
 }
