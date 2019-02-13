@@ -663,9 +663,9 @@
 
         clearFilterObj();
 
-        loader(true);
+        // loader(true);
         if ($(this).hasClass('active')) {
-            loader(false);
+            // loader(false);
             return;
         }
 
@@ -712,7 +712,7 @@
         }
         //applyFilters();
 
-        loader(false);
+        // loader(false);
 
         // console.log(tag);
 
@@ -2054,7 +2054,7 @@
             initFormValidation('full-registration-step2', $('#full-registration-step2'));
         }
         if ($('#change_password').length > 0) {
-            initFormValidation('chage_password', $('#change_password'));
+            initFormValidation('change_password', $('#change_password'));
         }
         if ($('#personal_data').length > 0) {
             initFormValidation('personal_data', $('#personal_data'));
@@ -2068,7 +2068,7 @@
         // console.log($('.games-list.popular-games-items').length);
 
         if ($('.games-list.popular-games-items').length > 0 && $('.games-list.popular-games-items').not('.hidden')) {
-            loader(true);
+            // loader(true);
             // setFilterParam({limit: 20, type: 'popular'});
             // $.extend(filter_params, {limit: 20});
             // console.log(JSON.stringify(filter_params));
@@ -2078,7 +2078,7 @@
 
             getAllGames();
 
-            loader(false);
+            // loader(false);
         }
 
 

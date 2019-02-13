@@ -371,6 +371,13 @@ class PlayerController extends Controller
     {
         if (!\Auth::user()) {
             return response()->json([ 'status' => '0', 'message' => __('common.player_does_not_exists')]);
+        } else {
+            $res = \App\StaygamingBO::updatePlayerPassword(\Auth::user(), md5($request->new_password));
+            if ($res->status > 0) {
+                \Auth::user()->password = bcrypt($request->new_password);
+                \Auth::user()->save();
+            }
+            return json_encode($res);
         }
     }
 }
