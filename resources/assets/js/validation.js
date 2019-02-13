@@ -400,18 +400,19 @@ function initFormValidation(formId, formObj) {
                     data: {
                         // email: $(form).find('#email').val(),
                         _token: $(form).find('input[name="_token"]').val(),
-                        name: $(form).find('input[name="player_name"]'),
-                        dob: $(form).find('input[name="dob"]'),
-                        gender: $(form).find('input[name="sel-gender2"]').val(),
-                        city: $(form).find('input[name="city"]'),
-                        address: $(form).find('input[name="address"]'),
-                        zip: $(form).find('input[name="zip"]'),
-                        phone: $(form).find('input[name="phone"]')
+                        name: $(form).find('input[name="name"]').val(),
+                        dob: $(form).find('input[name="dob"]').val(),
+                        // gender: $(form).find('select[name="sel-gender2"]').val(),
+                        city: $(form).find('input[name="city"]').val(),
+                        address: $(form).find('input[name="address"]').val(),
+                        zip: $(form).find('input[name="zip"]').val(),
+                        phone: $(form).find('input[name="phone"]').val()
                     },
                     dataType: 'json',
                     method: 'post',
                     success: function(data, status, xhr) {
                         console.log(data);
+                        top.location.reload();
                         return false;
                     }
                 });

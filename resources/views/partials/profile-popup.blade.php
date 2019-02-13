@@ -70,12 +70,17 @@
                                     </div>
                                     <div class="col">
                                         <div class="field">
-                                            <select name="sel-gender2" id="sel-gender2" class="select">
-                                                <option value="male">{{ __('common.male') }}</option>
-                                                <option value="female">{{ __('common.female') }}</option>
-                                            </select>
+                                            <input type="text" name="phone" value="{{ $player_info->phone }}" class="form-control" placeholder="{{ __('registration.phone') }}">
                                         </div>
                                     </div>
+                                    {{--<div class="col">--}}
+                                        {{--<div class="field">--}}
+                                            {{--<select name="sel-gender2" id="sel-gender2" class="select">--}}
+                                                {{--<option value="male">{{ __('common.male') }}</option>--}}
+                                                {{--<option value="female">{{ __('common.female') }}</option>--}}
+                                            {{--</select>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                 </div>
                                 <div class="two-cols">
                                     <div class="col">
@@ -107,11 +112,11 @@
                                             <input type="text" disabled class="form-control" value="{{ $player_info->email }}" placeholder="Email">
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="field">
-                                            <input type="text" name="phone" value="{{ $player_info->phone }}" class="form-control" placeholder="{{ __('registration.phone') }}">
-                                        </div>
-                                    </div>
+                                    {{--<div class="col">--}}
+                                        {{--<div class="field">--}}
+                                            {{--<input type="text" name="phone" value="{{ $player_info->phone }}" class="form-control" placeholder="{{ __('registration.phone') }}">--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                 </div>
                                 <div class="two-cols">
                                     {{--<div class="col">--}}
@@ -120,7 +125,7 @@
                                         {{--</div>--}}
                                     {{--</div>--}}
                                 </div>
-                                <button class="btn">{{ __('common.save') }}</button>
+                                <button type="submit" class="btn">{{ __('common.save') }}</button>
                             </form>
                         </div>
                         <div class="tab">

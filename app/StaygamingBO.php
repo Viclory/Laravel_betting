@@ -297,9 +297,11 @@ class StaygamingBO extends Model
 
 	    $playerUpdateBean = array(
 		    'name' => $request->name,
-		    'gender' => $request->get('sel-gender2'),
+//		    'gender' => $request->gender,
 		    'dob' => $request->dob,
 		    'phone' => $request->phone,
+		    'city' => $request->city,
+		    'zip' => $request->zip,
 		    'address' => $request->address,
 		    'api_token' => Auth::user()->access_token,
 		    'player_id' => $playerId,

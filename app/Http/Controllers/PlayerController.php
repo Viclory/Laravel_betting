@@ -265,9 +265,7 @@ class PlayerController extends Controller
 	{
         $res = StaygamingBO::updatePlayer($request);
 
-        if ($res) {
-			return back();
-		}
+        return $res;
 	}
 
 	public function uploadkycDocs(Request $request)
