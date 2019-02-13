@@ -394,45 +394,34 @@ function initFormValidation(formId, formObj) {
     if (formId == 'personal_data') {
         $(formObj).validate({
             focusCleanup: true,
-            success: function(label, element){
-                $(element).parents('.field').find('.field-error').remove();
-            },
             submitHandler: function(form) {
-                $.post(
-                    $(form).attr('action'),
-                    {
+
+                $.ajax($(form).attr('action'), {
+                    data: {
                         // email: $(form).find('#email').val(),
                         _token: $(form).find('input[name="_token"]').val(),
                         name: $(form).find('input[name="player_name"]'),
                         dob: $(form).find('input[name="dob"]'),
-                        gender: $(form).find('input[name="sel_gender2"]').val(),
+                        gender: $(form).find('input[name="sel-gender2"]').val(),
                         city: $(form).find('input[name="city"]'),
                         address: $(form).find('input[name="address"]'),
                         zip: $(form).find('input[name="zip"]'),
                         phone: $(form).find('input[name="phone"]')
                     },
-                    function(response) {
-                        resp = response;
-
-                        console.log(resp);
+                    dataType: 'json',
+                    method: 'post',
+                    success: function(data, status, xhr) {
+                        console.log(data);
                         return false;
+                    }
+                });
 
-                        // if (resp.status == 0) {
-                        //     $('<div class="field-error"><div class="align-m"><p>' + resp.message + '</p></div></div>').insertAfter($(formObj).find('#email'))
-                        //     // $(form).find('.field-error .align-m p').html(resp.message);
-                        //     $(form).find('#email').focus();
-                        //     return false;
-                        // } else {
-                        //
-                        //     if (resp.result.id > 0) {
-                        //         $(formObj).parents('.max-w').hide();
-                        //         $(formObj).parents('.recover-password').find('.submit-ok-box').show();
-                        //         return true;
-                        //     }
-                        // }
-                    },
-                    'json'
-                );
+                return false;
+
+
+            },
+            success: function(label, element){
+                $(element).parents('.field').find('.field-error').remove();
             },
             errorPlacement: function(error, element){
                 var field_error = '<div class="field-error"><div class="align-m">' +

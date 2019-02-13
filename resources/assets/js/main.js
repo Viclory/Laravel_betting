@@ -1614,17 +1614,18 @@
             fit: true,
             tabidentify: 'tabs',
             activate: function() {
-                var plchldr = $('.tab.resp-tab-content-active').find('.iframe-placeholder');
-                if (plchldr.length) {
-                    var src = plchldr.data('iframe');
-                    plchldr.replaceWith('<iframe src="' + src + '" width="100%" frameborder="0" class="js-iframe"></iframe>');
-                    $('.tab.resp-tab-content-active .js-iframe').each(function () {
-                        $(this).iFrameResize([{
-                            enablePublicMethods: true,
-                            heightCalculationMethod: 'lowestElement'
-                        }]);
-                    });
-                }
+                console.log('tab activated');
+                // var plchldr = $('.tab.resp-tab-content-active').find('.iframe-placeholder');
+                // if (plchldr.length) {
+                //     var src = plchldr.data('iframe');
+                //     plchldr.replaceWith('<iframe src="' + src + '" width="100%" frameborder="0" class="js-iframe"></iframe>');
+                //     $('.tab.resp-tab-content-active .js-iframe').each(function () {
+                //         $(this).iFrameResize([{
+                //             enablePublicMethods: true,
+                //             heightCalculationMethod: 'lowestElement'
+                //         }]);
+                //     });
+                // }
             }
         });
 
@@ -1993,6 +1994,9 @@
         }
         if ($('#change_password').length > 0) {
             initFormValidation('chage_password', $('#change_password'));
+        }
+        if ($('#personal_data').length > 0) {
+            initFormValidation('personal_data', $('#personal_data'));
         }
 
         if (typeof merchant_id != 'undefined') {
