@@ -245,7 +245,7 @@
     jsClock();
 
     function getPopularGames() {
-        console.log('getPopularGames');
+        // console.log('getPopularGames');
 
         setFilterParam({type: 'popular', limit: 20});
         applyFilters();
@@ -254,7 +254,7 @@
     }
 
     function getNewGames() {
-        console.log('getNewGames');
+        // console.log('getNewGames');
         setFilterParam({type: 'new', limit: 10});
 
         applyFilters();
@@ -262,14 +262,14 @@
     }
 
     function getAllGames() {
-        console.log('getAllGames');
+        // console.log('getAllGames');
         setFilterParam({type: 'all', limit: 30});
         applyFilters();
         return true;
     }
 
     function getLastGames() {
-        console.log('getLastGames');
+        // console.log('getLastGames');
         $('.games-list').addClass('hidden');
         $('.ajax-upload-box').hide();
         $('.games-list.last-games-items').removeClass('hidden');
@@ -283,7 +283,7 @@
     }
 
     function getVendorGames() {
-        console.log('getVendorGames');
+        // console.log('getVendorGames');
         setFilterParam({vendor: selected_vendor, type: 'vendor'});
         $('.games-list .game-item').remove();
         $('.games-list').addClass('hidden');
@@ -393,6 +393,43 @@
         });
 
         return false;
+    }
+
+    function getIframeUrl(game_id, logged_in) {
+        var url = '';
+        var request_data = {
+            game_id: game_id,
+            locale: $.cookie('locale'),
+            merchant_id: merchant_id
+        };
+
+        if (logged_in == true) {
+            $.extend(request_data, {logged: logged_in});
+        }
+        $.ajax(
+            '/games/get-iframe-url',
+            {
+                data: request_data,
+                dataType: 'json',
+                method: 'post',
+                async: false,
+                success: function(data, status, xhr) {
+
+                    if (data.status > 0) {
+                        // console.log('> 0');
+                        // console.log(data.result);
+                        url = data.result;
+                    } else {
+                        // alert('something went wrong');
+                        return false;
+                    }
+                }
+            }
+        );
+
+        // console.log(url);
+
+        return url.length > 0 ? url : null;
     }
 
     /*Nav*/
@@ -677,7 +714,7 @@
 
         loader(false);
 
-        console.log(tag);
+        // console.log(tag);
 
         // $.get(route_new_url, {tag: tag}, function (data) {
         //     //var replacer_content = $(data).filter('.casino-page-content');
@@ -822,7 +859,19 @@
         e.stopPropagation();
         e.preventDefault();
 
-        var $link = $(this).parents('a');
+        var $link = $(this).parents('.game-item').first().find('a');
+
+        var game_id = $link.data('game-id');
+
+        if (e.target.nodeName == 'DIV') {
+            var iframe_url = getIframeUrl(game_id, true);
+        } else if (e.target.nodeName == 'SPAN') {
+            var iframe_url = getIframeUrl(game_id, false);
+        } else if (e.target.nodeName == 'A') {
+            game_id = $(this).data('game-id');
+            var iframe_url = getIframeUrl(game_id, logged);
+        }
+        $link.attr('data-src', iframe_url);
 
         if (!last_games.includes($link.attr('data-game-id'))) {
             if (last_games.length >= last_games_quantity) {
@@ -833,7 +882,7 @@
         }
 
         if (mobile) {
-            var mobile_launch_url = $(this).data('src');
+            var mobile_launch_url = $(this).attr('data-src');
             window.open(mobile_launch_url, '_blank');
             return false;
         }
@@ -847,8 +896,8 @@
         $html.addClass('opened-game game-page');
         $('#header').removeClass('sticky');
 
-        var gameBoxBg = $(this).attr('data-game-bg');
-        var gameIframeSrc = $(this).attr('data-src');
+        var gameBoxBg = $link.attr('data-img-src');
+        var gameIframeSrc = $link.attr('data-src');
 
         $('#game-box').addClass(gameBoxBg);
         $('#game-frame').attr('src', gameIframeSrc);
@@ -896,15 +945,20 @@
     }
 
     $(document).on('click', '.js-close-game', function(){
-        if ($html.hasClass('game-single-page')) {
+        if ($('html').hasClass('game-single-page')) {
             return;
         }
-        $html.removeClass('opened-game game-page scroll-top');
+
+        if($('#header').hasClass('hidden')){
+            $('#header').removeClass('hidden');
+        }
+
+        $('html').removeClass('opened-game game-page scroll-top');
         setTimeout(function () {
-            $('#game-all').html('');
+            // $('#game-all').html('');
         }, 200);
-        //$('#game-box').attr('class', '');
-        //$('#game-frame').attr('src', '');
+        $('#game-box').attr('class', '');
+        $('#game-frame').attr('src', '');
         var scrollTop = $(window).scrollTop();
         if($html.hasClass('no-touchevents')){
             $('html, body').scrollTop(scrollTop - 1);
@@ -1049,7 +1103,7 @@
     var ajaxUploadBox;
 
     $body.on('click', ".js-load-more", function(e){
-        console.log('load-more-more');
+        // console.log('load-more-more');
         e.preventDefault();
 
 
@@ -1174,7 +1228,9 @@
             dataPopup = $(this).attr('data-popup');
         } else{
             dataPopup = $(this).attr('data-touch-popup');
-            var btnGameSrc = $(this).find('.js-open-game').attr('data-src');
+            var btnGameSrc = getIframeUrl($(this).attr('data-game-id'), false);
+            // var btnGameSrc = $(this).attr('data-game-id');
+            // console.log($(this).attr('data-game-id'));
             $('.choose-game-popup .js-open-game').attr('data-src', btnGameSrc);
         }
 
@@ -1348,13 +1404,13 @@
     }
 
     function loader(enable) {
-        console.log('loader started');
+        // console.log('loader started');
         if (enable) {
             $('.ajaxLoader').show();
         } else {
-            // setTimeout(function(){
+            setTimeout(function(){
                 $('.ajaxLoader').hide();
-            // }, 1000);
+            }, 1000);
         }
         return true;
     }
@@ -1377,16 +1433,21 @@
 
                 var game_item = '<div class="game-item">';
 
-                if (value.iframe_logged == undefined) {
+                if (!logged) {
                     game_item += '<a href="'+(mobile ? value.iframe_not_logged : '#')+'" class="game-link js-open-popup" data-game-id="' + value.id + '" data-src="' + value.iframe_not_logged + '" data-touch-popup="choose-game-popup" data-popup="authorization" data-img-src="'+value.game_img+'" style="background-image: url(' + value.game_img + ');">';
                 } else {
                     game_item += '<a href="'+(mobile ? value.iframe_logged : '#')+'" class="game-link js-open-game" data-game-id="' + value.id + '" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
                 }
 
                 game_item += '<div class="overlay">';
-                if (value.has_demo == 1 || value.has_demo == null || value.iframe_not_logged.indexOf('Demo not supported') == 0) {
-                    game_item += '<span data-text="' + overlay_text + '" class="js-open-game" data-src="' + value.iframe_not_logged + '" data-game-bg="static-bg">' + overlay_text + '</span>';
+
+                if (value.has_demo == null || value.has_demo == 1) {
+                    game_item += '<span data-text="' + overlay_text + '" class="js-open-game" data-game-bg="static-bg">' + overlay_text + '</span>';
                 }
+
+                // if (value.has_demo == 1 || value.has_demo == null || value.iframe_not_logged.indexOf('Demo not supported') == 0) {
+                //     game_item += '<span data-text="' + overlay_text + '" class="js-open-game" data-src="' + value.iframe_not_logged + '" data-game-bg="static-bg">' + overlay_text + '</span>';
+                // }
                 game_item += '</div>';
 
                 if (filter_params.type == 'new' || value.is_new > 0) {
@@ -1435,7 +1496,7 @@
 
         $('.games-list.' + filter_params.type + '-games-items header.' + filter_params.type + '-games-section .count-text .count').html($('.games-list.' + filter_params.type + '-games-items .game-item').length);
 
-        attachClickEvents(filter_params.type);
+        // attachClickEvents(filter_params.type);
 
 
 
@@ -1845,7 +1906,7 @@
             var tag = $('#games-filter-box').find('.js-filter-games.active:first').data('tag') || '';
             var provider = $(this).closest('.provider_list').find('li.active:first').data('provider') || '';
 
-            console.log(provider);
+            // console.log(provider);
 
             // $.get(route_new_url, {tag: tag, provider: provider}, function (data) {
             //     $('.jq_casino_content').html(data);

@@ -13,6 +13,7 @@
         var merchant_id = "{{ env('MERCHANT_ID') }}";
         var overlay_text = "{{ __('games.play_for_free') }}";
         var not_found_text = "{{ __('games.not_found') }}";
+        var logged = {{ \Auth::user() ? "true" : "false" }};
     </script>
 </head>
 <body>

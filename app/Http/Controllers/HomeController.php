@@ -143,4 +143,13 @@ class HomeController extends Controller
     {
         return view('home.promotions');
     }
+
+    public function getIframeUrl(Request $request)
+    {
+        $game_id = $request->game_id;
+
+        $url = \App\StaygamingBO::getGameIframeUrl($game_id, $params = $request->toArray());
+
+        return $url;
+    }
 }
