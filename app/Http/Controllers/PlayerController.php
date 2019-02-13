@@ -263,10 +263,9 @@ class PlayerController extends Controller
 
 	public function profileUpdate(Request $request)
 	{
-		$res = StaygamingBO::updatePlayer($request);
+        $res = StaygamingBO::updatePlayer($request);
 
-		if ($res) {
-
+        if ($res) {
 			return back();
 		}
 	}

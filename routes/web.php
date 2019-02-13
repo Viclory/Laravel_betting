@@ -34,7 +34,6 @@ Route::post('/update-password', 'PlayerController@updatePassword');
 //Route::post('/get-all-games', 'HomeController@getAllHomeGames');
 Route::get('/sport', 'HomeController@sport');
 Route::post('/player/register', 'PlayerController@register');
-//
 Route::post('/player/login', 'PlayerController@login');
 //Auth::routes();
 //

@@ -48,23 +48,24 @@
                     </ul>
                     <div class="tabs-content tabs">
                         <div class="tab">
-                            <form action="#" class="form">
+                            <form action="{{ URL::to('/profile/update') }}" method="post" id="personal_data" class="form">
+                                {{ csrf_field() }}
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" disabled value="{{ $player_info->username }}" placeholder="{{ __('common.your_login') }}">
+                                            <input type="text" class="form-control" name="username" disabled value="{{ $player_info->username }}" placeholder="{{ __('common.your_login') }}">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" value="{{ $player_info->name }}" placeholder="{{ __('common.your_name') }}">
+                                            <input type="text" class="form-control" name="name" value="{{ $player_info->name }}" placeholder="{{ __('common.your_name') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="{{ __('common.your_surname') }}">
+                                            <input type="text" name="dob" class="form-control" value="{{ \Carbon\Carbon::parse($player_info->dob)->format('Y-m-d') }}" placeholder="1989-08-11">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -84,40 +85,40 @@
                                     </div>
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="{{ __('common.city') }}">
+                                            <input type="text" name="city" value="{{ $player_info->city }}" class="form-control" placeholder="{{ __('common.city') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="{{ __('common.address') }}">
+                                            <input type="text" name="address" value="{{ $player_info->address }}" class="form-control" placeholder="{{ __('common.address') }}">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="{{ __('common.zip') }}">
+                                            <input type="text" name="zip" value="{{ $player_info->zip }}" class="form-control" placeholder="{{ __('common.zip') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="two-cols">
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" value="{{ $player_info->email }}" placeholder="Email">
+                                            <input type="text" disabled class="form-control" value="{{ $player_info->email }}" placeholder="Email">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" placeholder="{{ __('registration.phone') }}">
+                                            <input type="text" name="phone" value="{{ $player_info->phone }}" class="form-control" placeholder="{{ __('registration.phone') }}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="two-cols">
-                                    <div class="col">
-                                        <div class="field">
-                                            <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($player_info->dob)->format('Y-m-d') }}" placeholder="1989-08-11">
-                                        </div>
-                                    </div>
+                                    {{--<div class="col">--}}
+                                        {{--<div class="field">--}}
+                                            {{--<input type="text" class="form-control" value="{{ \Carbon\Carbon::parse($player_info->dob)->format('Y-m-d') }}" placeholder="1989-08-11">--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                 </div>
                                 <button class="btn">{{ __('common.save') }}</button>
                             </form>

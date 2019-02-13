@@ -293,11 +293,11 @@ class StaygamingBO extends Model
     public static function updatePlayer($request)
     {
     	$url = 'api/v1/player/update';
-    	$playerId = $request->player_id;
+    	$playerId = \Auth::user()->player_id;
 
 	    $playerUpdateBean = array(
-		    'firstname' => $request->firstname,
-		    'gender' => $request->gender,
+		    'name' => $request->name,
+		    'gender' => $request->get('sel-gender2'),
 		    'dob' => $request->dob,
 		    'phone' => $request->phone,
 		    'address' => $request->address,
@@ -305,10 +305,10 @@ class StaygamingBO extends Model
 		    'player_id' => $playerId,
 	    );
 
-	    $res = self::api($url, 'POST', $playerUpdateBean);
+        $res = self::api($url, 'POST', $playerUpdateBean);
 
-	    $player = \App\Player::where('player_id', $playerId)->first();
-	    $player->name = $playerUpdateBean['firstname'];
+        $player = \App\Player::where('player_id', $playerId)->first();
+	    $player->name = $playerUpdateBean['name'];
 	    $player->save();
 
 	    return $res;
