@@ -21,6 +21,8 @@ Route::get('/bingo', 'HomeController@bingo')->name('bingo');
 Route::get('/player/activate/{hash}/email/{email}', ['uses' => 'PlayerController@activate']);
 Route::get('/player/just-registered', 'PlayerController@justRegistered');
 Route::post('/games/get-iframe-url', 'HomeController@getIframeUrl');
+Route::post('/games/add-to-fav', 'PlayerController@addGameToFav');
+Route::post('/games/get-fav', 'PlayerController@getFavGames');
 
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);

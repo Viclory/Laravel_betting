@@ -502,4 +502,29 @@ class StaygamingBO extends Model
 
         return $res;
     }
+
+    public static function addGameToFavorites($game_id, $api_token) {
+	    $url = 'api/v1/game/add-to-fav';
+	    $params = [
+	        'game_id' => $game_id,
+            'api_token' => $api_token
+        ];
+
+	    $res = self::api($url, 'POST', $params);
+
+	    return $res;
+    }
+
+    public static function getFavoritesGames($player_token) {
+	    $url = 'api/v1/player/get-fav-games';
+        $params = [
+            'api_token' => $player_token
+        ];
+
+        $res = self::api($url, 'POST', $params);
+
+        var_dump($res);exit;
+
+        return $res;
+    }
 }

@@ -380,4 +380,33 @@ class PlayerController extends Controller
             return json_encode($res);
         }
     }
+
+    public function addGameToFav(Request $request) {
+
+        if (!\Auth::user()) {
+            $res = array(
+                'status' => '0',
+                'message' => __('common.player_not_authorized')
+            );
+
+        } else {
+            $res = \App\StaygamingBO::addGameToFavorites($request->game_id, \Auth::user()->access_token);
+        }
+
+        return response($res);
+    }
+
+    public function getFavGames() {
+        if (!\Auth::user()) {
+            $res = array(
+                'status' => '0',
+                'message' => __('common.player_not_authorized')
+            );
+
+        } else {
+            $res = \App\StaygamingBO::getFavoritesGames(\Auth::user()->access_token);
+        }
+
+        return response($res);
+    }
 }
