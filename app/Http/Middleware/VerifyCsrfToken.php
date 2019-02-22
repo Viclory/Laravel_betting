@@ -17,6 +17,8 @@ class VerifyCsrfToken extends BaseVerifier
 	    '/games',
 	    '/lpspayment',
         '/trustly-deposit',
-        '/games/get-iframe-url'
+        '/games/get-iframe-url',
+        '/games/add-to-fav',
+        '/games/get-fav',
     ];
 }
