@@ -420,8 +420,9 @@
                         // console.log('> 0');
                         // console.log(data.result);
                         request_result = data;
+						console.log(request_result);
                     } else {
-                        // alert('something went wrong');
+                         alert('something went wrong');
                         return false;
                     }
                 }
@@ -866,10 +867,12 @@
 		$('.js-game-like').attr('data-game-id',game_id);
         if (e.target.nodeName == 'DIV') {
             var iframe_url = getIframeUrl(game_id, true);
+			console.log("this is in div");
         } else if (e.target.nodeName == 'SPAN') {
+			console.log("this is in span");
             var iframe_url = getIframeUrl(game_id, false);
         } else if (e.target.nodeName == 'A') {
-			//console.log("this is in anchor");
+			console.log("this is in anchor");
             game_id = $(this).data('src');
             //var iframe_url = getIframeUrl(game_id, logged);
 			iframe_url = game_id;
@@ -1114,10 +1117,32 @@
 	*/
 	
 	$(document).on('click','.js-game-like',function(){
-		
+			
 		var gameId = $(this).attr('data-game-id');
-		alert(gameId);
-		alert(logged);
+		//alert(gameId);
+		//alert(logged);
+			
+		if(logged == false)
+		{			
+					alert('not logged in');
+					
+		}
+		else{
+				$.post('/games/add-to-fav',{ game_id : gameId },function(res){
+			var res = JSON.parse(res);
+			//console.log(res["status"]);
+			//console.log(res.status);
+			if( res["status"] == 1 )
+			{	
+				$('.js-game-like').addClass('active');	
+			}
+			else{
+					
+				  console.log(res.result);
+			}
+		});
+		}
+			
 		
 		
 	});
@@ -1257,6 +1282,16 @@
     });
 
     $(document).on('click', '.js-open-popup.game-link', function(e){
+		
+		if( $(this).attr('data-has-demo') == 0 || $(this).attr('data-has-demo') == "0"  )
+		{
+			$('a.sub-color.js-open-game').hide();
+		}
+		else
+		{
+			$('a.sub-color.js-open-game').show();
+		}
+		
         e.preventDefault();
         if ($(e.target).hasClass('js-open-game')) {
             return;
@@ -1463,7 +1498,7 @@
     }
 
     function placeGames(games) {
-		//console.log(games);
+		console.log(games);
         var gamesHtml = '';
 
         $('.not-found-text').remove();
@@ -1484,13 +1519,14 @@
                 var game_item = '<div class="game-item">';
 
                 if (!logged) {
-                    game_item += '<a href="'+(mobile ? value.iframe_not_logged : '#')+'" class="game-link js-open-popup" data-game-id="' + value.id + '" data-src="' + value.iframe_not_logged + '" data-touch-popup="choose-game-popup" data-popup="authorization" data-img-src="'+value.game_img+'" style="background-image: url(' + value.game_img + ');">';
+                    game_item += '<a href="'+(mobile ? value.iframe_not_logged : '#')+'" data-has-demo="'+value.has_demo+'" class="game-link js-open-popup" data-game-id="' + value.id + '" data-src="' + value.iframe_not_logged + '" data-touch-popup="choose-game-popup" data-popup="authorization" data-img-src="'+value.game_img+'" style="background-image: url(' + value.game_img + ');">';
                 } else {
-                    game_item += '<a href="'+(mobile ? value.iframe_logged : '#')+'" class="game-link js-open-game" data-game-id="' + value.id + '" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
+                    game_item += '<a href="'+(mobile ? value.iframe_logged : '#')+'" data-has-demo="'+value.has_demo+'" class="game-link js-open-game" data-game-id="' + value.id + '" data-src="' + value.iframe_logged + '" style="background-image: url(' + value.game_img + ');">';
                 }
 
                 game_item += '<div class="overlay">';
-
+				//console.log(value);
+				
                 if (value.has_demo == null || value.has_demo == 1) {
                     game_item += '<span data-text="' + overlay_text + '" class="js-open-game" data-game-bg="static-bg">' + overlay_text + '</span>';
                 }
