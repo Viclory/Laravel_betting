@@ -5,7 +5,7 @@
 
         <div class="container">
 
-            <p class="h1" id="bonus-anchor" data-text="Бонусы">Bonuses</p>
+            <p class="h1" id="bonus-anchor" data-text="Bonuses">Bonuses</p>
 
             <div class="bonus-list">
                 <div class="item">

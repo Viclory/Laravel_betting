@@ -6,17 +6,17 @@
     <div class="bonus-rotator">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" data-ream-more="#1">
+                <div class="swiper-slide" data-ream-more="{{ URL::to('/') }}#bonus-anchor">
                     <p>
                         <span>Lorem Ipsum</span> is simply dummy text
                     </p>
                 </div>
-                <div class="swiper-slide" data-ream-more="#2">
+                <div class="swiper-slide" data-ream-more="{{ URL::to('/') }}#bonus-anchor">
                     <p>
                         <span>simply dummy</span> Lorem ipsum is simply dummy
                     </p>
                 </div>
-                <div class="swiper-slide" data-ream-more="#3">
+                <div class="swiper-slide" data-ream-more="{{ URL::to('/') }}#bonus-anchor">
                     <p>
                         <span>dummy</span> Lorem ipsum is simply dummy
                     </p>

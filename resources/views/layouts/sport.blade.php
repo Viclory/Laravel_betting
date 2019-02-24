@@ -152,6 +152,8 @@
         @if(!Auth::user())
             @include('partials.recover-password-popup')
             @include('partials.login-popup')
+        @else
+            @include('partials.profile-popup')
         @endif
 
         <div class="simple-popup top-up-balance hidden">

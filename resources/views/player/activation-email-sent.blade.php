@@ -142,9 +142,10 @@
 <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('/js/modernizr.custom.js') }}"></script>
 <script src="{{ asset('/js/jquery.responsImg.min.js') }}"></script>
-{{--<script src="js\select2.full.min.js"></script>--}}
+<script src="{{ asset('/js/jquery.cookie.js') }}"></script>
+<script src="js\select2.full.min.js"></script>
 {{--<script src="js\tabs.min.js"></script>--}}
-{{--<script src="js\jquery.date-dropdowns.js"></script>--}}
+<script src="js\jquery.date-dropdowns.js"></script>
 <script src="{{ asset('/js/swiper.min.js') }}"></script>
 <script src="{{ asset('/js/sticky.min.js') }}"></script>
 <script src="{{ asset('/js/iframeResizer.min.js') }}"></script>
