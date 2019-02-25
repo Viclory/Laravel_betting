@@ -5,15 +5,12 @@ $(document).ready(function(){
 
 function initFormValidation(formId, formObj) {
 
-    //console.log(formName == 'registration');
     if (formId == 'registration') {
-        // console.log($.validator.defaults);
         $(formObj).validate({
             ignore: [],
             // debug: true,
             focusCleanup: true,
             focusInvalid: true,
-            //onfocusout: true,
             errorPlacement: function(error, element){
 
                 $(element).parents('.field').find('.field-error').remove();
@@ -26,51 +23,18 @@ function initFormValidation(formId, formObj) {
                 } else {
                     $(field_error).insertAfter($(element));
                 }
-
-
             },
-            // onkeyup: false,
-            //errorClass: "field-error",
-            // errorElement: "div",
-            // errorContainer: ".field-error ",
-            // wrapper: "div",
+
             success: function(label, element) {
                 $(element).parents('.field').find('.field-error').remove();
             },
-            submitHandler: function(form){
-                console.log('form submitted');
+            submitHandler: function(form) {
                 var data = $(form).serializeArray();
                 var data_formatted = {};
-
-                // console.log('erererere');
-                // return false;
-
-
-                // for (field in data) {
-                //     if (data[field].name == 'registration_currency') {
-                //         data[field].value = 'EUR';
-                //     }
-                //     if (data[field].name == 'registration_country_id') {
-                //         data[field].value = 202 // Slovakia;
-                //     }
-                //     if (data[field].name == 'calendar1_[day]') {
-                //         data[field].value = 12;
-                //     }
-                //     if (data[field].name == 'calendar1_[month]') {
-                //         data[field].value = 07;
-                //     }
-                //     if (data[field].name == 'calendar1_[year]') {
-                //         data[field].value = 1985;
-                //     }
-                //     // console.log(data[field]);
-                // }
 
                 for (field in data) {
                     data_formatted[data[field].name] = data[field].value;
                 }
-                // console.log($(form).find('[name="calendar1_[day]"]').val());
-                // return false;
-
 
                 var registerObj = {
                     // name: $('#register-player-form #name').val(),
@@ -90,8 +54,9 @@ function initFormValidation(formId, formObj) {
                 // console.log(registerObj);
                 // return false;
 
-
-
+                if(getUrlVars()['btag'] != undefined) {
+                    registerObj.btag = getUrlVars()['btag'];
+                }
 
                 $.post(
                     $(form).attr('action'),
@@ -443,6 +408,14 @@ function initFormValidation(formId, formObj) {
     }
 
     return false;
+}
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
 }
 
 function clearErrors(form)

@@ -15,5 +15,5 @@
     <script src="{{ asset('js/jquery.validate.messages_' . \App::getLocale() . '.js') }}"></script>
 @endif
 <script src="{{ asset('js/validation.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/main.js') }}?v={{ \md5(time()) }}"></script>
 <script src="{{ asset('js/depo.js') }}"></script>
