@@ -400,16 +400,23 @@ class PlayerController extends Controller
         return response($res);
     }
 
-    public function getFavGames() {
+    public function getFavGames(Request $request) {
         if (!\Auth::user()) {
             $res = array(
                 'status' => '0',
                 'message' => __('common.player_not_authorized')
             );
-
-        } else {
-            $res = \App\StaygamingBO::getFavoritesGames(\Auth::user()->access_token);
+            return response($res);
         }
+        if (!$request->has('casino_type')) {
+            $res = array(
+                'status' => '0',
+                'message' => __('common.player_not_authorized')
+            );
+            return response($res);
+        }
+
+        $res = \App\StaygamingBO::getFavoritesGames($request, \Auth::user()->access_token);
 
         return response($res);
     }
