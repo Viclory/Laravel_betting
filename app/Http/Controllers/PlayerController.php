@@ -71,6 +71,10 @@ class PlayerController extends Controller
 		    'city' => $request->input('city')
 	    ];
 
+	    if ($request->has('btag')) {
+	        $registerBean['btag'] = $request->input('btag');
+        }
+
 //	    dd($registerBean);
 
         $result = StaygamingBO::registerUser($registerBean);
@@ -390,7 +394,7 @@ class PlayerController extends Controller
             );
 
         } else {
-            $res = \App\StaygamingBO::addGameToFavorites($request->game_id, \Auth::user()->access_token);
+            $res = \App\StaygamingBO::addGameToFavorites($request, \Auth::user()->access_token);
         }
 
         return response($res);

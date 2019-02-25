@@ -503,10 +503,11 @@ class StaygamingBO extends Model
         return $res;
     }
 
-    public static function addGameToFavorites($game_id, $api_token) {
+    public static function addGameToFavorites($request, $api_token) {
 	    $url = 'api/v1/game/add-to-fav';
 	    $params = [
-	        'game_id' => $game_id,
+	        'game_id' => $request->game_id,
+            'casino_type' => $request->casino_type,
             'api_token' => $api_token
         ];
 
