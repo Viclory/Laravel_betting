@@ -528,4 +528,17 @@ class StaygamingBO extends Model
 
         return $res;
     }
+
+    public static function deleteGameFromFavorites($request, $player_token) {
+        $url = 'api/v1/game/del-from-fav';
+        $params = [
+            'game_id' => $request->game_id,
+            'casino_type' => $request->casino_type,
+            'api_token' => $player_token
+        ];
+
+        $res = self::api($url, 'POST', $params);
+
+        return $res;
+    }
 }

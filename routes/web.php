@@ -22,6 +22,7 @@ Route::get('/player/activate/{hash}/email/{email}', ['uses' => 'PlayerController
 Route::get('/player/just-registered', 'PlayerController@justRegistered');
 Route::post('/games/get-iframe-url', 'HomeController@getIframeUrl');
 Route::post('/games/add-to-fav', 'PlayerController@addGameToFav');
+Route::post('/games/del-from-fav', 'PlayerController@deleteGameFromFav');
 Route::post('/games/get-fav', 'PlayerController@getFavGames');
 
 

@@ -413,4 +413,18 @@ class PlayerController extends Controller
 
         return response($res);
     }
+
+    public function deleteGameFromFav(Request $request) {
+        if (!\Auth::user()) {
+            $res = array(
+                'status' => '0',
+                'message' => __('common.player_not_authorized')
+            );
+
+        } else {
+            $res = \App\StaygamingBO::deleteGameFromFavorites($request, \Auth::user()->access_token);
+        }
+
+        return response($res);
+    }
 }
