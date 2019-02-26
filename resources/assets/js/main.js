@@ -267,6 +267,13 @@
         applyFilters(true,'all');
         return true;
     }
+	
+	 function getFavGames() {
+        // console.log('getAllGames');
+        setFilterParam({type: 'fav', limit: 30});
+        applyFilters(true,'fav');
+        return true;
+    }
 
     function getLastGames() {
         // console.log('getLastGames');
@@ -373,9 +380,15 @@
         $.extend(filter_params, {types: checked_types});
 
         // console.log(filter_params);
-
+		if(paramType == 'fav')
+		{
+			var requestPath = '/games/get-fav';
+		}
+		else{
+			var requestPath = '/games';
+		}
         $.ajax({
-            url: '/games',
+            url: requestPath ,
             method: 'post',
             dataType: 'json',
             data: filter_params,
@@ -864,10 +877,12 @@
 		if( $(this).attr('data-is-fav') == 0 || $(this).attr('data-is-fav') == "0" )
 		{
 			$('.js-game-like').removeClass('active');
+			$('.js-game-like').attr('take-action','add');
 		}
 		else{
 				//alert("yes");	
 				$('.js-game-like').addClass('active');
+				$('.js-game-like').attr('take-action','remove');
 		}
         var $link = $(this).parents('.game-item').first().find('a');
 
@@ -1129,30 +1144,48 @@
 		var gameId = $(this).attr('data-game-id');
 		//alert(gameId);
 		//alert(logged);
-			
-		if(logged == false)
-		{			
-					alert('not logged in');
-					
-		}
-		else{
-				console.log();
-				$.post('/games/add-to-fav',{ game_id : gameId, casino_type : casino_type },function(res){
-			var res = JSON.parse(res);
-			//console.log(res["status"]);
-			//console.log(res.status);
-			if( res["status"] == 1 )
-			{	
-				$('.js-game-like').addClass('active');	
-			}
-			else{
-					
-				  console.log(res.result);
-			}
-		});
-		}
-			
 		
+		if( $(this).attr('take-action') == 'add' )
+		{
+				console.log('add-to-fev');
+				$.post('/games/add-to-fav',{ game_id : gameId, casino_type : casino_type },function(res){
+				var res = JSON.parse(res);
+				if( res["status"] == 1 )
+				{	
+					$('.js-game-like').addClass('active');	
+					var aId = 'a[data-game-id='+gameId+']';
+					var spanId = 'span[data-game-id='+gameId+']';	
+					$(aId).attr('data-is-fav','1');
+					$(spanId).attr('data-is-fav','1');
+					$('.js-game-like').attr('take-action','remove');
+				}
+				else
+				{	console.log(res.result);
+				}
+			});
+		}
+		else if( $(this).attr('take-action') == 'remove' )
+		{
+			console.log('del-from-fev');
+			$.post('/games/del-from-fav',{ game_id : gameId, casino_type : casino_type },function(res){
+				console.log(res);
+				var res = JSON.parse(res);
+				if( res["status"] == 1 )
+				{	
+					$('.js-game-like').removeClass('active');	
+					var aId = 'a[data-game-id='+gameId+']';
+					var spanId = 'span[data-game-id='+gameId+']';	
+					$(aId).attr('data-is-fav','0');
+					$(spanId).attr('data-is-fav','0');
+					$('.js-game-like').attr('take-action','add');
+				}
+				else
+				{	console.log(res.result);
+				}	
+});				
+		}
+			
+			
 		
 	});
 
@@ -1511,7 +1544,7 @@
     }
 
     function placeGames(games) {
-		//console.log(games);
+		console.log(games);
         var gamesHtml = '';
 
         $('.not-found-text').remove();
@@ -1541,7 +1574,16 @@
 				//console.log(value);
 				
                 if (value.has_demo == null || value.has_demo == 1) {
-                    game_item += '<span data-text="' + overlay_text + '" class="js-open-game" data-game-bg="static-bg">' + overlay_text + '</span>';
+                    
+					if(!logged)
+					{
+							game_item += '<span data-text="' + overlay_text + '" class="js-open-game" data-game-bg="static-bg">' + overlay_text + '</span>';
+					}
+					else
+					{
+						game_item += '<span data-is-fav="'+value.is_fav+'" data-game-id="'+ value.id +'" data-text="' + overlay_text + '" class="js-open-game" data-game-bg="static-bg">' + overlay_text + '</span>';
+					}
+					
                 }
 
                 // if (value.has_demo == 1 || value.has_demo == null || value.iframe_not_logged.indexOf('Demo not supported') == 0) {
