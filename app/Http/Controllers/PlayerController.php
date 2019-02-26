@@ -451,4 +451,10 @@ class PlayerController extends Controller
 
         return json_encode($res);
     }
+
+    public function getAffiliates($btag) {
+	    $res = \App\StaygamingBO::getAffiliates($btag);
+
+	    return $res;
+    }
 }

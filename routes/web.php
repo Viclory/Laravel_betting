@@ -66,3 +66,5 @@ Route::post('/profile/update', 'PlayerController@profileUpdate');
 //Route::post('/cool-off', 'PlayerController@coolingOff');
 //
 //Route::post('/trustly-deposit', 'PlayerController@trustlyDepo');
+
+Route::get('/affiliates/get/{btag}', 'PlayerController@getAffiliates');

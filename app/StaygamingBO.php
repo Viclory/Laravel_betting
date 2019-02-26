@@ -544,4 +544,15 @@ class StaygamingBO extends Model
 
         return $res;
     }
+
+    public static function getAffiliates($btag) {
+	    $url = 'api/v1/players/get-affiliates';
+	    $params = [
+	        'btag' => $btag
+        ];
+
+	    $res = self::api($url, 'POST', $params);
+
+        return $res;
+    }
 }
