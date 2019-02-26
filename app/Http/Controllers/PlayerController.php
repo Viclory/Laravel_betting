@@ -438,11 +438,17 @@ class PlayerController extends Controller
     public function getBalance() {
 	    if (\Auth::user() != null) {
 	        $res = \App\StaygamingBO::getBalanceByPlayerId(\Auth::user()->player_id);
+	        if ($res->result->balance != \Auth::user()->balance) {
+	            \Auth::user()->balance = $res->result->balance;
+                \Auth::user()->save();
+            }
         } else {
             $res = array(
                 'status' => '0',
                 'message' => __('common.player_not_authorized')
             );
         }
+
+        return json_encode($res);
     }
 }
