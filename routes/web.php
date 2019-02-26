@@ -24,6 +24,7 @@ Route::post('/games/get-iframe-url', 'HomeController@getIframeUrl');
 Route::post('/games/add-to-fav', 'PlayerController@addGameToFav');
 Route::post('/games/del-from-fav', 'PlayerController@deleteGameFromFav');
 Route::post('/games/get-fav', 'PlayerController@getFavGames');
+Route::post('/player/get-balance', 'PlayerController@getBalance');
 
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
