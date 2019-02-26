@@ -401,7 +401,7 @@ class PlayerController extends Controller
     }
 
     public function getFavGames(Request $request) {
-        if (!\Auth::user()) {
+        if (\Auth::user() == null) {
             $res = array(
                 'status' => '0',
                 'message' => __('common.player_not_authorized')
@@ -411,7 +411,7 @@ class PlayerController extends Controller
         if (!$request->has('casino_type')) {
             $res = array(
                 'status' => '0',
-                'message' => __('common.player_not_authorized')
+                'message' => __('common.missing_parameter_casino_type')
             );
             return response($res);
         }
@@ -433,5 +433,16 @@ class PlayerController extends Controller
         }
 
         return response($res);
+    }
+
+    public function getBalance() {
+	    if (\Auth::user() != null) {
+	        $res = \App\StaygamingBO::getBalanceByPlayerId(\Auth::user()->player_id);
+        } else {
+            $res = array(
+                'status' => '0',
+                'message' => __('common.player_not_authorized')
+            );
+        }
     }
 }
