@@ -15,21 +15,26 @@
     /*display: none;*/
 /*}*/
 .ajaxLoader {
-    display: none;
+    
     position: fixed;
-    z-index: 1111;
+    z-index: 99999;
+	overflow-y: hidden !important;
     width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
+    height: 100vh !important;
+    left: 0px;
+    top: 0px !important;
     background: rgba(42, 53, 57, .2);
+	
 }
-.ajaxLoader .loader {
+
+
+ .ajaxLoader .loader {
     position: absolute;
     left: 50%;
     top: 50%;
     margin: -35px 0 0 -35px;
 }
+
 .choose-game-popup-image {
     width: 100%;
     height: 0;
