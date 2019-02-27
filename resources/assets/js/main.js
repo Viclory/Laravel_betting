@@ -295,8 +295,14 @@ $(document).ready(function(){
         
         setFilterParam({game_type: 'favorite',type: 'favorite',limit : 30, casino_type : casino_type, append : false});
 		$.post('/games/get-fav',filter_params,function(games){
+			console.log(games);
+			if(games == false)
+			{
+				
+			}
+		
 			var games = JSON.parse(games);
-			//console.log(games.result);
+			console.log(games.result);
 			
 			placeGames(games);
 			
@@ -724,7 +730,25 @@ $(document).ready(function(){
         if (tag == 'last') {
             getLastGames();
         } else if(tag == 'favorites'){
-			getFavGames();
+			if( !logged )
+			{
+				$('#popup').find('.visible').removeClass('visible').addClass('hidden');
+        var dataPopup = 'authorization';
+        $html.addClass('opened-popup');
+        $("." + dataPopup).removeClass('hidden').addClass('visible');
+
+        var resizeEvent = new Event('resize');
+        window.dispatchEvent(resizeEvent);
+
+        setTimeout(function(){
+            var resizeEvent = new Event('resize');
+            window.dispatchEvent(resizeEvent);
+        }, 250);
+			}
+			else{
+					getFavGames();
+			}
+			
 		} else {
             //clearGames();
             $('.games-list .game-item').remove();
@@ -887,9 +911,15 @@ $(document).ready(function(){
     $(document).on('click', '.js-open-game', function(e){
         e.stopPropagation();
         e.preventDefault();
+		if( !logged )
+		{
+			$('.js-game-like').removeClass('active');
+		}
+		
 		console.log('This is my fav in game'+$(this).attr('data-is-fav'));
 		if( $(this).attr('data-is-fav') == 0 || $(this).attr('data-is-fav') == "0" )
-		{
+		{	
+				
 			$('.js-game-like').removeClass('active');
 			$('.js-game-like').attr('take-action','add');
 		}
@@ -1149,37 +1179,7 @@ $(document).ready(function(){
         }
     }
 
-    /*$(document).on('click', '.js-game-like', function () {
-        var $el = $(this);
-        if ($el.hasClass('is-busy')) {
-            return;
-        }
-        if (!$(this).hasClass('active')) {
-            $(this).addClass('active');
-        } else {
-            $(this).removeClass('active');
-        }
-        $el.addClass('is-busy');
-        var game_id = $(this).data('game_id');
-        $.ajax({
-            data: {
-                game_id: game_id
-            },
-            success: function () {
-                setTimeout(function () {
-                    $el.removeClass('is-busy');
-                }, 200);
-            },
-            error: function () {
-                setTimeout(function () {
-                    $el.removeClass('is-busy');
-                }, 200);
-            },
-            type: 'POST',
-            url: '/favorite-game'
-        });
-    });
-	*/
+    
 	
 	$(document).on('click','.js-game-like',function(){
 			
@@ -1187,6 +1187,25 @@ $(document).ready(function(){
 		//alert(gameId);
 		//alert(logged);
 		
+		if( !logged )
+		{
+		
+        $('#popup').find('.visible').removeClass('visible').addClass('hidden');
+        var dataPopup = 'authorization';
+        $html.addClass('opened-popup');
+        $("." + dataPopup).removeClass('hidden').addClass('visible');
+
+        var resizeEvent = new Event('resize');
+        window.dispatchEvent(resizeEvent);
+
+        setTimeout(function(){
+            var resizeEvent = new Event('resize');
+            window.dispatchEvent(resizeEvent);
+        }, 250);
+			
+		}
+		else{
+			
 		if( $(this).attr('take-action') == 'add' )
 		{
 				console.log('add-to-fev');
@@ -1224,10 +1243,10 @@ $(document).ready(function(){
 				else
 				{	console.log(res.result);
 				}	
-});				
+			});				
 		}
-			
-			
+		
+		}
 		
 	});
 
@@ -2318,6 +2337,11 @@ $(document).ready(function(){
     });
 
 	var getBalance = function(){
+		
+		if( logged )
+		{
+			
+		
 		$.post('/player/get-balance',function(result){
 			
 			var result = JSON.parse(result);
@@ -2334,8 +2358,16 @@ $(document).ready(function(){
 			
 			
 		});
+	
+		}
 	}
 	
-	
+		$('#personal_data .btn').click(function(e){
+				e.preventDefault();
+				//console.log($('#personal_data').serializeArray());
+				return false;
+			
+		});
+
 	
 })(jQuery);
