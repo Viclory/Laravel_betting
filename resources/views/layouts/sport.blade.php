@@ -18,9 +18,9 @@
     <div id="page-bg">
         {{--<iframe class="sport-iframe">--}}
             @if($agent->isMobile())
-                <script type="text/javascript" src="https://msports-itainment-uat.biahosted.com/staticResources/betinactionApi.js"></script>
+                <script type="text/javascript" src="https://msports-itainment.biahosted.com/staticResources/betinactionApi.js"></script>
             @else
-                <script type="text/javascript" src="https://sports-itainment-uat.biahosted.com/staticResources/betinactionApi.js"></script>
+                <script type="text/javascript" src="https://sports-itainment.biahosted.com/staticResources/betinactionApi.js"></script>
             @endif
             <section class="content">
                 <div class="container-fluid">
@@ -81,6 +81,7 @@
                 var biaOptions = parseQuery(window.location.hash);
                 biaOptions.walletcode  = "{{ env('APP_SPORTSBOOK_WALLET_CODE') }}";
                 biaOptions.token  = "{{ $player_token }}";
+                biaOptions.skinid = 'leprecon';
                 biaOptions.page = 'prelive';
                 biaOptions.getMarketsCallback = function (result) {
                     if(result.length !== 0){
