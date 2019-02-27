@@ -2362,12 +2362,12 @@ $(document).ready(function(){
 		}
 	}
 	
-		$('#personal_data .btn').click(function(e){
+		/*$('#personal_data .btn').click(function(e){
 				e.preventDefault();
 				//console.log($('#personal_data').serializeArray());
 				return false;
 			
-		});
+		});*/
 
 	
 })(jQuery);

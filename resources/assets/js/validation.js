@@ -223,8 +223,9 @@ function initFormValidation(formId, formObj) {
                     dataType: 'json',
                     method: 'post',
                     success: function(data, status, xhr) {
-                        top.location.reload();
-                        return false;
+                        //top.location.reload();
+                        alert("Password changed successfully");	
+						return false;
                     }
                 });
 
@@ -365,8 +366,9 @@ function initFormValidation(formId, formObj) {
                     dataType: 'json',
                     method: 'post',
                     success: function(data, status, xhr) {
-                        console.log(data);
-                        top.location.reload();
+                       // console.log(data);
+						alert("Profile updated successfully");	
+						//top.location.reload();
                         return false;
                     }
                 });
@@ -377,7 +379,7 @@ function initFormValidation(formId, formObj) {
             },
             success: function(label, element){
                 $(element).parents('.field').find('.field-error').remove();
-            },
+		    },
             errorPlacement: function(error, element){
                 var field_error = '<div class="field-error"><div class="align-m">' +
                     '<p>' + error.text() + '</p>' + '</div>' + '</div>';
