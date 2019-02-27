@@ -25,13 +25,13 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div id="SetPageButtons">
+                        <!--<div id="SetPageButtons">
                             <button onClick="betinactionAPI.setPagePrelive()">Prelive</button>
                             @if(!$agent->isMobile())
                                 <button onClick="betinactionAPI.setPageLive()">Live</button>
                             @endif
                             <button onClick="betinactionAPI.setPageVfl()">Vfl</button>
-                        </div>
+                        </div>-->
 
                         <div class="content__games1 clearfix1" style="height:auto !important;">
                             <div id="BIA_client_container"></div>
