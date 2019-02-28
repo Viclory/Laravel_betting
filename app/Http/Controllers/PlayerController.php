@@ -563,7 +563,10 @@ class PlayerController extends Controller
     }
 
     public function checkAffiliatesIp(Request $request) {
-	    if ($request->ip() != env('AFFILIATE_IP')) {
+
+	    $allowed_ips = explode(',', env('ALLOWED_AFFILIATE_IPS'));
+
+	    if (!in_array($request->ip(), $allowed_ips)) {
             return false;
         } else {
 	        return true;
