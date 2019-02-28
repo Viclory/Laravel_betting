@@ -2,9 +2,12 @@
     <header class="header">
         <div class="container">
             <div class="sub-box">
+                @if($active == 'casino')
                 <div class="games-filter">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
+
+
                             <a href="" class="swiper-slide js-filter-games" data-game-type="favorites">
                                 <div class="icon popular-icon"></div>
                                 <span>{{ __('common.favorites') }}</span>
@@ -84,6 +87,8 @@
                         <button type="button" class="search-btn" title="{{ __('common.search') }}"></button>
                     </form>
                 </div>
+
+                @endif
             </div>
         </div>
     </header>
