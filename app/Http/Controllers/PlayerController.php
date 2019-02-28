@@ -454,7 +454,12 @@ class PlayerController extends Controller
 
     public function getAffiliates(Request $request) {
 
-	    $this->checkAffiliatesIp($request);
+        if (!$this->checkAffiliatesIp($request)) {
+            return response()->json([
+                'status' => 0,
+                'result' => 'forbidden'
+            ], 404);
+        }
 
 	    $params = [];
 
@@ -509,7 +514,12 @@ class PlayerController extends Controller
 
     public function getAffiliatesTransactionsData(Request $request) {
 
-        $this->checkAffiliatesIp($request);
+        if (!$this->checkAffiliatesIp($request)) {
+            return response()->json([
+                'status' => 0,
+                'result' => 'forbidden'
+            ], 404);
+        }
 
         $params = [];
 
@@ -554,10 +564,9 @@ class PlayerController extends Controller
 
     public function checkAffiliatesIp(Request $request) {
 	    if ($request->ip() != env('AFFILIATE_IP')) {
-            return response()->toJson([
-                'status' => 0,
-                'result' => 'not.found'
-            ], 404);
+            return false;
+        } else {
+	        return true;
         }
     }
 }
