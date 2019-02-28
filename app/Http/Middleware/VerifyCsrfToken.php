@@ -20,6 +20,8 @@ class VerifyCsrfToken extends BaseVerifier
         '/games/get-iframe-url',
         '/games/add-to-fav',
         '/games/get-fav',
-        '/games/del-from-fav'
+        '/games/del-from-fav',
+        '/affiliates/get-players-data',
+        '/affiliates/get-transactions-data'
     ];
 }

@@ -67,4 +67,5 @@ Route::post('/profile/update', 'PlayerController@profileUpdate');
 //
 //Route::post('/trustly-deposit', 'PlayerController@trustlyDepo');
 
-Route::get('/affiliates/get/{btag}', 'PlayerController@getAffiliates');
+Route::post('/affiliates/get-players-data', 'PlayerController@getAffiliates');
+Route::post('/affiliates/get-transactions-data', 'PlayerController@getAffiliatesTransactionsData');

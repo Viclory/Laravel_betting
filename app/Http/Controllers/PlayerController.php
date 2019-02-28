@@ -452,9 +452,98 @@ class PlayerController extends Controller
         return json_encode($res);
     }
 
-    public function getAffiliates($btag) {
-	    $res = \App\StaygamingBO::getAffiliates($btag);
+    public function getAffiliates(Request $request) {
+
+	    $params = [];
+
+//	    if($request->has('btag')) {
+//	        $btag = $request->input('btag');
+//	        $params['btag'] = $btag;
+//        } else {
+//	        $res = [
+//	            'status' => 0,
+//                'result' => 'missing.btag.param'
+//            ];
+//        }
+
+        if ($request->has('date_from')) {
+
+            $from = $request->input('date_from');
+            $dt = \DateTime::createFromFormat("Y-m-d", $from);
+
+            if($dt !== false && !array_sum($dt::getLastErrors())) {
+                $params['date_from'] = $from;
+            } else {
+                $res = [
+                    'status' => 0,
+                    'result' => 'wrong.date_from.format'
+                ];
+
+                return json_encode($res);
+            }
+        }
+
+        if ($request->has('date_to')) {
+
+            $from = $request->input('date_to');
+            $dt = \DateTime::createFromFormat("Y-m-d", $from);
+
+            if($dt !== false && !array_sum($dt::getLastErrors())) {
+                $params['date_to'] = $from;
+                $res = 'OK';
+            } else {
+                $res = [
+                    'status' => 0,
+                    'result' => 'wrong.date_to.format'
+                ];
+                return json_encode($res);
+            }
+        }
+
+	    $res = \App\StaygamingBO::getAffiliates($params);
 
 	    return $res;
+    }
+
+    public function getAffiliatesTransactionsData(Request $request) {
+        $params = [];
+
+        if ($request->has('date_from')) {
+
+            $from = $request->input('date_from');
+            $dt = \DateTime::createFromFormat("Y-m-d", $from);
+
+            if($dt !== false && !array_sum($dt::getLastErrors())) {
+                $params['date_from'] = $from;
+            } else {
+                $res = [
+                    'status' => 0,
+                    'result' => 'wrong.date_from.format'
+                ];
+
+                return json_encode($res);
+            }
+        }
+
+        if ($request->has('date_to')) {
+
+            $from = $request->input('date_to');
+            $dt = \DateTime::createFromFormat("Y-m-d", $from);
+
+            if($dt !== false && !array_sum($dt::getLastErrors())) {
+                $params['date_to'] = $from;
+                $res = 'OK';
+            } else {
+                $res = [
+                    'status' => 0,
+                    'result' => 'wrong.date_to.format'
+                ];
+                return json_encode($res);
+            }
+        }
+
+        $res = \App\StaygamingBO::getAffiliatesTransactionsData($params);
+
+        return $res;
     }
 }
