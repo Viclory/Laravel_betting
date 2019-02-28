@@ -1,8 +1,8 @@
 <div id="games-filter-box">
+    @if($active == 'casino')
     <header class="header">
         <div class="container">
             <div class="sub-box">
-                @if($active == 'casino')
                 <div class="games-filter">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
@@ -87,10 +87,17 @@
                         <button type="button" class="search-btn" title="{{ __('common.search') }}"></button>
                     </form>
                 </div>
-
-                @endif
             </div>
         </div>
     </header>
+    @else
+    <header class="header" style="height:100%;">
+        <div class="container">
+            <div class="sub-box" style="justify-content: center;line-height: 100%;">
+                <h1 style="display: flex;margin:0;" class="text-center">Casino-Live</h1>
+            </div>
+        </div>
+    </header>
+    @endif
     <span class="js-open-popup btn half-btn" data-popup="provider-popup">{{ __('common.provider_filter') }}</span>
 </div>

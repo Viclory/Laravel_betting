@@ -1,6 +1,6 @@
 <div class="we-give">
     @if(!Auth::user())
-    <p>Мы дарим до <span class="money">600$</span> на первый депозит</p>
+    <p>{!! __('common.we_give_first_depo', ['depo_amount' => '<span class="'.\strtolower('money') . '">600$</span>']) !!}</p>
     <a href="" class="btn js-open-popup" data-popup="authorization">{{ __('auth.open_account') }}</a>
     @else
     <div class="bonus-rotator">

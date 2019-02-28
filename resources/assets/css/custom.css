@@ -95,3 +95,12 @@
 .ajax-upload-box .message {
     margin: 50px auto;
 }
+
+.we-give span:not(.MONEY) {
+    display: block;
+    margin: 0 0 6px;
+}
+
+.we-give span.MONEY {
+    display: inline-block !important;
+}

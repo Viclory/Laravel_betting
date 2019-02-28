@@ -1538,11 +1538,11 @@ button{
 .we-give p{
     margin: 0;
     }
-.we-give .money, .we-give span{
+.we-give .money, .we-give .MONEY, .we-give span{
     font-size: 30px;
     color: #45ab25;
     }
-.we-give span:not(.money){
+.we-give span:not(.money), .we-give span:not(.MONEY){
     display: block;
     margin: 0 0 6px;
     }

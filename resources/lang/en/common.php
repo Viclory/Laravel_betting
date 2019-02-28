@@ -78,5 +78,6 @@ return [
     'faq' => 'Frequently Asked Questions',
     'country' => 'Country',
     'continue' => 'continue',
-    'favorites' => 'Favorites'
+    'favorites' => 'Favorites',
+    'we_give_first_depo' => 'We give up to :DEPO_AMOUNT on first deposit'
 ];

@@ -78,5 +78,6 @@ return [
     'faq' => 'Часто задаваемые вопросы',
     'common' => 'Страна',
     'continue' => 'продолжить',
-    'favorites' => 'Избранные'
+    'favorites' => 'Избранные',
+    'we_give_first_depo' => 'Мы дарим до :DEPO_AMOUNT на первый депозит'
 ];
