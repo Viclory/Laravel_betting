@@ -454,6 +454,8 @@ class PlayerController extends Controller
 
     public function getAffiliates(Request $request) {
 
+	    $this->checkAffiliatesIp($request);
+
 	    $params = [];
 
 //	    if($request->has('btag')) {
@@ -506,6 +508,9 @@ class PlayerController extends Controller
     }
 
     public function getAffiliatesTransactionsData(Request $request) {
+
+        $this->checkAffiliatesIp($request);
+
         $params = [];
 
         if ($request->has('date_from')) {
@@ -545,5 +550,14 @@ class PlayerController extends Controller
         $res = \App\StaygamingBO::getAffiliatesTransactionsData($params);
 
         return $res;
+    }
+
+    public function checkAffiliatesIp(Request $request) {
+	    if ($request->ip() != env('AFFILIATE_IP')) {
+            return response()->toJson([
+                'status' => 0,
+                'result' => 'not.found'
+            ], 404);
+        }
     }
 }
