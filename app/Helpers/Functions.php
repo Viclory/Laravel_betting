@@ -62,4 +62,14 @@ class Functions {
 		}
 
 	}
+
+	public static function displayBalance($balance_obj) {
+
+	    $result = '';
+	    $amount = explode('.', $balance_obj->result->balance);
+	    $result .= '<span class="sum">';
+	    $result .= $amount['0'] . '. <span style="font-size:12px;">' . $amount['1'] .' <span style="font-size: 16px;">'. $balance_obj->result->currency .'</span></span> ';
+
+	    return $result;
+    }
 }
