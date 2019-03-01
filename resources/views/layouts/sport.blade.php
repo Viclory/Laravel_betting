@@ -82,7 +82,7 @@
                 biaOptions.walletcode  = "{{ env('APP_SPORTSBOOK_WALLET_CODE') }}";
                 biaOptions.token  = "{{ $player_token }}";
                 biaOptions.skinid = 'leprecon';
-                biaOptions.page = 'live';
+                biaOptions.page = 'prelive';
                 biaOptions.getMarketsCallback = function (result) {
                     if(result.length !== 0){
                         var resultString = JSON.stringify(result);
