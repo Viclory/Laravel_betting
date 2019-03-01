@@ -25,13 +25,13 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <!--<div id="SetPageButtons">
-                            <button onClick="betinactionAPI.setPagePrelive()">Prelive</button>
+                        <div id="SetPageButtons">
+                            {{--<button onClick="betinactionAPI.setPagePrelive()">Prelive</button>--}}
                             @if(!$agent->isMobile())
-                                <button onClick="betinactionAPI.setPageLive()">Live</button>
+                                <a class="btn sportsbook-button" href="http://sports-itainment.biahosted.com/Generic/live.aspx?skinid=leprecon">Live</a>
                             @endif
-                            <button onClick="betinactionAPI.setPageVfl()">Vfl</button>
-                        </div>-->
+                            {{--<button onClick="betinactionAPI.setPageVfl()">Vfl</button>--}}
+                        </div>
 
                         <div class="content__games1 clearfix1" style="height:auto !important;">
                             <div id="BIA_client_container"></div>
@@ -82,7 +82,7 @@
                 biaOptions.walletcode  = "{{ env('APP_SPORTSBOOK_WALLET_CODE') }}";
                 biaOptions.token  = "{{ $player_token }}";
                 biaOptions.skinid = 'leprecon';
-                biaOptions.page = 'prelive';
+                biaOptions.page = 'live';
                 biaOptions.getMarketsCallback = function (result) {
                     if(result.length !== 0){
                         var resultString = JSON.stringify(result);

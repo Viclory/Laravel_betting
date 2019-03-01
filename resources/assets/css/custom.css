@@ -104,3 +104,20 @@
 .we-give span.MONEY {
     display: inline-block !important;
 }
+
+.sportsbook-button {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 700;
+    width: 160px;
+    text-align: center;
+    padding: 0;
+    background: linear-gradient( to top, rgb(55,123,0) 0%, rgb(55,123,0) 21%, rgb(66,146,2) 30%, rgb(77,168,3) 79%, rgb(130,197,75) 79%, rgb(93,160,38) 95%, rgb(55,123,0) 100%);
+    border: 1px solid #377b00;
+    border-radius: 9px 9px 0 0;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 35px;
+    display: inline-block;
+
+}
