@@ -28,7 +28,7 @@
                         <div id="SetPageButtons">
                             {{--<button onClick="betinactionAPI.setPagePrelive()">Prelive</button>--}}
                             @if(!$agent->isMobile())
-                                <a class="btn sportsbook-button" href="http://sports-itainment.biahosted.com/Generic/live.aspx?skinid=leprecon">Live</a>
+                                {{--<a class="btn sportsbook-button" href="http://sports-itainment.biahosted.com/Generic/live.aspx?skinid=leprecon">Live</a>--}}
                             @endif
                             {{--<button onClick="betinactionAPI.setPageVfl()">Vfl</button>--}}
                         </div>
