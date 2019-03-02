@@ -13,8 +13,10 @@
         <li @if($active == 'live-sport') class="active"@endif>
             @if ($active == 'sport')
                 <a href="{{ URL::to('/live-sport') }}">Live Sport</a>
+            @elseif($active == 'live-sport')
+                <a href="{{ URL::to('/live-sport') }}">Live Sport</a>
             @else
-                <a href="{{ URL::to('/bingo') }}">Live Sport</a>
+                <a href="{{ URL::to('/bingo') }}">Bingo</a>
             @endif
         </li>
         <li>
