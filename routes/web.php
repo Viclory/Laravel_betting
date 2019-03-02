@@ -17,6 +17,7 @@ Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/casino', 'HomeController@casino')->name('casino');
 Route::get('/casino-live', 'HomeController@casinoLive')->name('casino-live');
 Route::get('/bingo', 'HomeController@bingo')->name('bingo');
+Route::get('/live-sport', 'HomeController@liveSport')->name('live-sport');
 
 Route::get('/player/activate/{hash}/email/{email}', ['uses' => 'PlayerController@activate']);
 Route::get('/player/just-registered', 'PlayerController@justRegistered');

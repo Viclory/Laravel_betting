@@ -158,4 +158,22 @@ class HomeController extends Controller
 
         return $res;
     }
+
+    public function liveSport() {
+        $countries = StaygamingBO::getCountries();
+        $bonuses = array();
+        $currencies = StaygamingBO::getCurrencies();
+        if(\Auth::user() != null && isset( \Auth::user()->player_id )){
+            $player_token = \Auth::user()->access_token;
+        } else {
+            $player_token = '';
+        }
+        return view('live-sports', [
+                'countries' => $countries,
+                'currencies' => $currencies,
+                'bonuses' => $bonuses,
+                'player_token' => $player_token,
+                'casino_type' => 'sport']
+        );
+    }
 }

@@ -10,8 +10,12 @@
         <li @if($active == 'sport') class="active"@endif>
             <a href="{{ URL::to('/sport') }}">Sport</a>
         </li>
-        <li>
-            <a href="{{ URL::to('/bingo') }}">Bingo</a>
+        <li @if($active == 'live-sport') class="active"@endif>
+            @if ($active == 'sport')
+                <a href="{{ URL::to('/live-sport') }}">Live Sport</a>
+            @else
+                <a href="{{ URL::to('/bingo') }}">Live Sport</a>
+            @endif
         </li>
         <li>
             <a href="{{ URL::to('/') }}#bonus-anchor">Bonus</a>
