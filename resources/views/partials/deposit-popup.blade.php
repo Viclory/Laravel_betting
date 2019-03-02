@@ -2,7 +2,7 @@
     <?php $balanceObj = App\StaygamingBO::getBalanceByPlayerId(Auth::user()->player_id); ?>
     <?php $playerInfo = \App\Helpers\Functions::getPlayerInfo(); ?>
     <div class="simple-popup payment-order hidden">
-        <p class="h2" data-text="Депозит с neteller">Депозит с neteller</p>
+        <p class="h2" data-text="Депозит с neteller">{{ __('depo.depo_with') }} Astropay</p>
         <div class="max-w">
             <p class="large">Min deposit amount: 1.16 USD<br> Max deposit amount: 116.50 USD<br> Remaining deposit amount: 116.50 USD</p>
             <!--
@@ -49,18 +49,18 @@
                     </div>
                 </div>
                 <div class="form-group form-inline psp-types">
-                    {{--<div class="col-md-4 box">--}}
-                        {{--<label class="btn" data-toggle="collapse" href="#card_info" role="button" aria-expanded="false" aria-controls="card_info">--}}
-                            {{--<img src="{{ asset('img/payments/logo_creditcard.png') }}" alt="..." class="img-thumbnail img-check">--}}
-                            {{--<input type="radio" name="payment_method" value="CARD" required class="d-none" autocomplete="off">--}}
-                        {{--</label>--}}
-                    {{--</div>--}}
                     <div class="col-md-4 box">
-                        <label class="">
-                            <img src="{{ asset('img/payments/logo_neteller.png') }}" alt="..." class="">
-                            <input type="radio" name="payment_method" value="NT" class="d-none" autocomplete="off">
+                        <label class="" href="#">
+                            <img src="{{ asset('img/payments/logo_creditcard.png') }}" alt="..." class="">
+                            <input type="radio" name="payment_method" value="ASTROPAY" required class="d-none" autocomplete="off">
                         </label>
                     </div>
+                    {{--<div class="col-md-4 box">--}}
+                        {{--<label class="">--}}
+                            {{--<img src="{{ asset('img/payments/logo_neteller.png') }}" alt="..." class="">--}}
+                            {{--<input type="radio" name="payment_method" value="NT" class="d-none" autocomplete="off">--}}
+                        {{--</label>--}}
+                    {{--</div>--}}
                 <!--
                                 <div class="col-md-4 box">
                                     <label class="btn">
