@@ -18,7 +18,7 @@
 
                 <!-- FAVORITE GAMES -->
                 <div class="games-list favorite-games-items hidden">
-                    <header class="header popular-games-section">
+                    <header class="header favorite-games-section">
                         <span class="type">{{ __('common.favorites') }}</span>
                         <span class="count-text">
                             <span class="text">{{ __('games.found_games') }} /</span>
@@ -114,7 +114,8 @@
                         </span>
                     </header>
                 </div>
-
+					
+				<div class="self-container-casino-live">	
                 <!-- VENDOR GAMES -->
                 <div class="games-list vendor-games-items hidden">
                     <header class="header vendor-games-section">
@@ -125,7 +126,7 @@
                         </span>
                     </header>
                 </div>
-
+				</div>
                 @include('partials.ajax-upload-box')
             </div>
         </main>

@@ -112,13 +112,31 @@ function initFormValidation(formId, formObj) {
     }
 
     if (formId == 'login_form') {
+		
+		
         $(formObj).validate({
             focusCleanup: true,
             success: function(label, element){
                 $(element).parents('.field').find('.field-error').remove();
             },
             submitHandler: function(form) {
-                $.post(
+                //alert("ok");
+				var games = new Array();
+				var type  = new Array();
+				$('.game-item a').each(function(){
+					games.push($(this).attr('data-game-id'));
+					type.push($(this).attr('data-type'));
+				});
+				
+				if (typeof(Storage) !== "undefined") 
+				{
+					window.sessionStorage.setItem("games", JSON.stringify(games));
+					window.sessionStorage.setItem("type", JSON.stringify(type));
+					window.sessionStorage.setItem("after_login",1);
+					window.sessionStorage.setItem("link",window.location.href);
+				} 
+				//console.log(games);
+				$.post(
                     $(form).attr('action'),
                     {
                         username: $(form).find('#login_username').val(),
@@ -137,7 +155,8 @@ function initFormValidation(formId, formObj) {
                             return false;
                         } else {
                             if (resp.result.id > 0) {
-                                top.location.reload();
+                               top.location.reload();
+							   
                             }
                         }
                     }
