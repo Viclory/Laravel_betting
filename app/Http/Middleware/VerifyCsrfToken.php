@@ -19,6 +19,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/trustly-deposit',
         '/games/get-iframe-url',
         '/games/add-to-fav',
+        '/games/get-by-ids',
         '/games/get-fav',
         '/games/del-from-fav',
         '/affiliates/get-players-data',

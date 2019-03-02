@@ -152,4 +152,10 @@ class HomeController extends Controller
 
         return $url;
     }
+
+    public function getGamesByIds(Request $request) {
+        $res = StaygamingBO::getGamesByIds($request);
+
+        return $res;
+    }
 }

@@ -560,4 +560,16 @@ class StaygamingBO extends Model
 
         return $res;
     }
+
+    public static function getGamesByIds($request) {
+	    $url = 'api/v1/games/get-games-by-ids';
+
+	    $params = [
+	        'game_id' => $request->game_id
+        ];
+
+	    $res = self::api($url, 'POST', $params);
+
+	    return $res;
+    }
 }
