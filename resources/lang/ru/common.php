@@ -79,5 +79,13 @@ return [
     'common' => 'Страна',
     'continue' => 'продолжить',
     'favorites' => 'Избранные',
-    'we_give_first_depo' => 'Мы дарим до :DEPO_AMOUNT на первый депозит'
+    'we_give_first_depo' => 'Мы дарим до :DEPO_AMOUNT на первый депозит',
+    'checking_tab' => 'Проверка',
+    'withdraw_done' => 'Вы сняли денег',
+    'your_bonuses' => 'Ваши бонусы',
+    'your_balance' => 'Ваш баланс',
+    'choose_withdraw_method' => 'Выберите способ вывода средств',
+    'new_withdraw' => 'Новый',
+    'done_withdraw' => 'Выполнен',
+    'bonus_tab' => 'Бонусная вкладка'
 ];

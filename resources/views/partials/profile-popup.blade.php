@@ -40,7 +40,7 @@
                             </span>
                         </li>
                         <li>
-                            <span class="tab-btn">Проверка</span>
+                            <span class="tab-btn">{{ __('common.checking_tab') }}</span>
                         </li>
                         <li>
                             <span class="tab-btn">{{ __('common.change_password') }}</span>
@@ -129,7 +129,7 @@
                             </form>
                         </div>
                         <div class="tab">
-                            Проверка
+                            {{ __('common.checking_tab') }}
                         </div>
                         <div class="tab">
                             <form action="{{ URL::to('/update-password') }}" method="post" id="change_password" class="form change-password">
@@ -171,21 +171,21 @@
                         <div class="tab">
                             <div class="data-list">
                                 <div class="item">
-                                    <p>Вы сняли денег:</p>
-                                    <p class="sum"><strong>0.00</strong> рублей</p>
+                                    <p>{{ __('common.withdraw_done') }}:</p>
+                                    <p class="sum"><strong>0.00</strong> {{ $player_info->currency->char_code }}</p>
                                 </div>
                                 <div class="item">
-                                    <p>Ваши бонусы:</p>
-                                    <p class="sum"><strong>20.00</strong> рублей</p>
+                                    <p>{{ __('common.your_bonuses') }}:</p>
+                                    <p class="sum"><strong>{{ $player_info->bonus }}</strong> {{ $player_info->currency->char_code }}</p>
                                 </div>
                                 <div class="item">
-                                    <p>Ваш баланс:</p>
-                                    <p class="sum"><strong>10 000.00</strong> рублей</p>
+                                    <p>{{ __('common.your_balance') }}:</p>
+                                    <p class="sum"><strong>{{ $player_info->balance }}</strong> {{ $player_info->currency->char_code }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="tab">
-                            История
+                            {{ __('common.history') }}
                         </div>
                         <div class="tab">
                             {{ __('common.payment_history') }}
@@ -197,21 +197,21 @@
                 <div class="private-office-tabs">
                     <ul class="tabs-list tabs">
                         <li>
-                            <span class="tab-btn">Новый</span>
+                            <span class="tab-btn">{{ __('common.new_withdraw') }}</span>
                         </li>
                         <li>
-                            <span class="tab-btn">Выполнен</span>
+                            <span class="tab-btn">{{ __('common.done_withdraw') }}</span>
                         </li>
                     </ul>
                     <div class="tabs-content tabs">
                         <div class="tab">
                             <div class="data-list">
                                 <div class="item">
-                                    <p>Ваш баланс:</p>
-                                    <p class="sum"><strong>0.00</strong> рублей</p>
+                                    <p>{{ __('common.your_balance') }}:</p>
+                                    <p class="sum"><strong>{{ $player_info->balance }}</strong> {{ $player_info->currency->char_code }}</p>
                                 </div>
                                 <div class="item">
-                                    <p>Выберите способ вывода средств</p>
+                                    <p>{{ __('common.choose_withdraw_method') }}</p>
                                     <form class="form" action="#">
                                         <div class="two-cols">
                                             <div class="col">
@@ -236,7 +236,7 @@
                             </div>
                         </div>
                         <div class="tab">
-                            Выполнен
+                            {{ __('common.done_withdraw') }}
                         </div>
                     </div>
                 </div>
@@ -245,18 +245,18 @@
                 <div class="private-office-tabs">
                     <ul class="tabs-list tabs">
                         <li>
-                            <span class="tab-btn">Бонус вкладка</span>
+                            <span class="tab-btn">{{ __('common.bonus_tab') }}</span>
                         </li>
                         <li>
-                            <span class="tab-btn">Бонус вкладка2</span>
+                            <span class="tab-btn">{{ __('common.bonus_tab') }}2</span>
                         </li>
                     </ul>
                     <div class="tabs-content tabs">
                         <div class="tab">
-                            Бонус вкладка
+                            {{ __('common.bonus_tab') }}
                         </div>
                         <div class="tab">
-                            Бонус вкладка2
+                            {{ __('common.bonus_tab') }}2
                         </div>
                     </div>
                 </div>

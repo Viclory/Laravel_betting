@@ -79,5 +79,13 @@ return [
     'country' => 'Country',
     'continue' => 'continue',
     'favorites' => 'Favorites',
-    'we_give_first_depo' => 'We give up to :DEPO_AMOUNT on first deposit'
+    'we_give_first_depo' => 'We give up to :DEPO_AMOUNT on first deposit',
+    'checking_tab' => 'Checking',
+    'withdraw_done' => 'Withdraw done',
+    'your_bonuses' => 'Your Bonuses',
+    'your_balance' => 'Your Balance',
+    'choose_withdraw_method' => 'Choose withdraw method',
+    'new_withdraw' => 'New',
+    'done_withdraw' => 'Processed',
+    'bonus_tab' => 'Bonus Tab'
 ];
