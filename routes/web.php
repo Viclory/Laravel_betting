@@ -69,5 +69,5 @@ Route::post('/profile/update', 'PlayerController@profileUpdate');
 //
 //Route::post('/trustly-deposit', 'PlayerController@trustlyDepo');
 
-Route::post('/affiliates/get-players-data', 'PlayerController@getAffiliates');
-Route::post('/affiliates/get-transactions-data', 'PlayerController@getAffiliatesTransactionsData');
+Route::post('/affiliates/get-players-data', 'PlayerController@getAffiliates')->name('affiliates.get-players-data');
+Route::post('/affiliates/get-transactions-data', 'PlayerController@getAffiliatesTransactionsData')->name('affiliates.get-transactions-data');
