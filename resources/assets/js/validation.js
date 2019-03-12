@@ -1,8 +1,3 @@
-$(document).ready(function(){
-    // console.log($.validator.prototype);
-});
-
-
 function initFormValidation(formId, formObj) {
 
     if (formId == 'registration') {
@@ -120,22 +115,31 @@ function initFormValidation(formId, formObj) {
                 $(element).parents('.field').find('.field-error').remove();
             },
             submitHandler: function(form) {
-                //alert("ok");
-				var games = new Array();
-				var type  = new Array();
-				$('.game-item a').each(function(){
-					games.push($(this).attr('data-game-id'));
-					type.push($(this).attr('data-type'));
-				});
-				
+                
 				if (typeof(Storage) !== "undefined") 
 				{
-					window.sessionStorage.setItem("games", JSON.stringify(games));
-					window.sessionStorage.setItem("type", JSON.stringify(type));
-					window.sessionStorage.setItem("after_login",1);
-					window.sessionStorage.setItem("link",window.location.href);
+					
+					if( window.sessionStorage.games )
+					{
+						window.sessionStorage.games = getUserState();
+						window.sessionStorage.after_login = 1;
+						window.sessionStorage.game_type = $('.js-filter-games.active').attr('data-game-type');
+						window.sessionStorage.keyword = $('input[name="games-search-box"]').val();
+						window.sessionStorage.vendor = $(".choose-list li.active a").attr("data-vendor-id");
+						
+					}
+					else
+					{
+						window.sessionStorage.setItem("games", getUserState());
+						window.sessionStorage.setItem("after_login",1);
+						window.sessionStorage.setItem("game_type",$('.js-filter-games.active').attr('data-game-type'));
+						window.sessionStorage.setItem("keyword",$('input[name="games-search-box"]').val());
+						window.sessionStorage.setItem("vendor",$(".choose-list li.active a").attr("data-vendor-id"));
+					
+					}
 				} 
-				//console.log(games);
+				
+				
 				$.post(
                     $(form).attr('action'),
                     {
@@ -155,7 +159,9 @@ function initFormValidation(formId, formObj) {
                             return false;
                         } else {
                             if (resp.result.id > 0) {
-                               top.location.reload();
+								
+							 // window.sessionStorage.clicked = null;	
+							  location.reload();
 							   
                             }
                         }
@@ -454,3 +460,50 @@ function helpSectionsText()
         $('#' + section + ' .title').trigger('click');
     }
 }
+
+var getUserState = function()
+{
+				
+				var sessionData = [];
+				
+				$('.games-list:not(.hidden)').each(function(){
+					
+					 var sessionObject = { type : null, game_id : new Array(), set_type : null };
+					 sessionObject.type = $('.type',this).text();
+					 var $this = $(this);
+					 
+					 $(".game-item a",this).each(function(){
+						sessionObject.game_id.push($(this).attr('data-game-id'));
+						
+					 });
+					 
+					 sessionObject.set_type = $(".game-item a",this).data('type');
+					 sessionObject.game_id.reverse();	
+					 sessionData.push(sessionObject);	
+					 
+					
+				});
+				
+				//console.log(sessionData);
+				return JSON.stringify(sessionData);
+}
+
+
+var createTicket = function(){
+console.log('create-ticket'+$('#supportEmail').val()+'-->'+$('#supportMessage').val()+'-0--->'+$('#supportSubject').val());	
+	//alert("we will shortly open this section.");
+	$.post('/live-chat/create-ticket',{ recipient : $('#supportEmail').val(), departmentid : 'default', useridentifier : 'leprecon@yayagaming.com', message : $('#supportMessage').val(), subject : $('#supportSubject').val() },function(result){
+
+		console.log(result);
+	
+	});
+	
+	
+	
+}
+
+$(document).ready(function(){
+	
+	
+	
+});

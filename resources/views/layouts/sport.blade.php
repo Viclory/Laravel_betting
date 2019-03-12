@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <title>Casino | Спорт</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/custom.css?v=4.1') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?v=1.1') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css?v=4.7') }}">
 </head>
 <body>
 
@@ -27,8 +27,10 @@
                     <div class="row">
                         <div id="SetPageButtons">
                             {{--<button onClick="betinactionAPI.setPagePrelive()">Prelive</button>--}}
-                            @if(!$agent->isMobile())
-                                {{--<a class="btn sportsbook-button" href="http://sports-itainment.biahosted.com/Generic/live.aspx?skinid=leprecon">Live</a>--}}
+			    @if(!$agent->isMobile())
+				<!--<button onClick="betinactionAPI.setPageLive()">Live</button>-->
+				{{--<a class="btn sportsbook-button" href="http://sports-itainment.biahosted.com/Generic/live.aspx?skinid=leprecon">Live</a>--}}
+				
                             @endif
                             {{--<button onClick="betinactionAPI.setPageVfl()">Vfl</button>--}}
                         </div>
@@ -190,6 +192,38 @@
 </div>
 
 @include('partials.included_scripts')
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	var intervalBalance = setInterval(getBalance, 5000);
+	
+});
+
+var getBalance = function(){
+		
+		
+		$.post('/player/get-balance',function(result){
+			
+			var result = JSON.parse(result);
+			//console.log(result);
+			if( result["status"] == 1 )
+			{	
+				
+				$('.sum').html(result["result"]["balance"]+' <span class="currency">'+result["result"]["currency"]+'</span>');	
+				//console.log(result["result"]["balance"]);
+			}
+			else{
+					//console.log("cant update");
+			}
+			
+			
+		});
+	
+		}
+	
+</script>
 
 </body>
 </html>

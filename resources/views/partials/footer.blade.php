@@ -1,3 +1,4 @@
+<div id="temp-container"></div>
 <footer id="footer">
     <div class="container">
         <div class="top-box">

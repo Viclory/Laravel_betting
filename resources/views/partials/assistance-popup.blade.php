@@ -12,12 +12,12 @@
         <p>{{ __('common.assistance_popup_send_message_guide') }}</p>
         <p>Онлайн-чат открыт с 08:00 до 00:00</p>
         <div class="assistance-items">
-            <div class="item">
+            <div class="item" style="cursor:pointer"  onClick="chatButton.onClick();">
                 <div class="icon">
                     <img src="{{ asset('img/chat-icon.png') }}" alt="">
                 </div>
                 <div class="text">
-                    <p><a href="" data-child="chat-box">{{ __('common.online_chat') }}</a></p>
+                    <p><a href="#!" id="invoke_chat">{{ __('common.online_chat') }}</a></p>
                     <p>{{ __('common.chat_with_support') }}</p>
                 </div>
             </div>
@@ -448,26 +448,26 @@
         </form>
     </div>
     <div class="message-box assistance-child">
-        <p class="h2">Отправить сообщение для поддержки</p>
-        <p>Ответ будет в течение 12 часов</p>
+        <p class="h2">Send a message to support</p>
+        <p>The answer will be within 12 hours</p>
         <form action="#" class="form">
             <div class="field required">
-                <label class="field-name">Ваш адрес электронной почты</label>
+                <label class="field-name">Your e-mail address</label>
                 <div class="inp-box">
-                    <input type="text" class="form-control" placeholder="Email">
+                    <input type="text" id="supportEmail" name="supportEmail" class="form-control" placeholder="Email">
                 </div>
             </div>
             <div class="field">
                 <div class="inp-box">
-                    <input type="text" class="form-control" placeholder="Тема сообщения">
+                    <input type="text" id="supportSubject" name="supportSubject" class="form-control" placeholder="Message subject">
                 </div>
             </div>
             <div class="field">
                 <div class="inp-box">
-                    <textarea class="form-control" rows="10" cols="10" placeholder="Сообщениие"></textarea>
+                    <textarea class="form-control" id="supportMessage" name="supportMessage" rows="10" cols="10" placeholder="Message"></textarea>
                 </div>
             </div>
-            <button type="button" class="btn full-width">отправить  сообщениие</button>
+            <button type="button" onclick="createTicket()" class="btn full-width">send message</button>
         </form>
     </div>
 </div>

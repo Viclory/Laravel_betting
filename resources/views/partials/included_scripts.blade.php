@@ -16,4 +16,30 @@
 @endif
 <script src="{{ asset('js/validation.js') }}?v={{ $nocache_hash }}"></script>
 <script src="{{ asset('js/main.js') }}?v={{ $nocache_hash }}"></script>
-<script src="{{ asset('js/depo.js') }}"></script>
+<script src="{{ asset('js/depo.js') }}?v={{ $nocache_hash }}"></script>
+
+
+
+<script type="text/javascript">
+
+var chatButton;
+(function(d, src, c) { var t=d.scripts[d.scripts.length - 1],s=d.createElement('script');s.id='la_x2s6df8d';s.async=true;s.src=src;s.onload=s.onreadystatechange=function(){var rs=this.readyState;if(rs&&(rs!='complete')&&(rs!='loaded')){return;}c(this);};t.parentElement.insertBefore(s,t.nextSibling);})(document,
+'https://lepreconcasino.ladesk.com/scripts/track.js',
+function(e){ 
+
+if( $('#personal_data input[name="name"]').val() != undefined && $('#personal_data input[placeholder="Email"]').val() != undefined  )
+{
+		LiveAgent.setUserDetails($('#personal_data input[placeholder="Email"]').val(),$('#personal_data input[name="name"]').val()); 
+}
+
+chatButton = LiveAgent.createButton('f4e35ce2', e); 
+
+});
+
+$(document).ready(function(){
+	
+});
+
+</script>
+
+

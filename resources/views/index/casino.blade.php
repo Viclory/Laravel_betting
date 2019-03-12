@@ -21,7 +21,7 @@
 
                 <!-- FAVORITE GAMES -->
                 <div class="games-list favorite-games-items hidden">
-                    <header class="header popular-games-section">
+                    <header class="header favorite-games-section">
                         <span class="type">{{ __('common.favorites') }}</span>
                         <span class="count-text">
                             <span class="text">{{ __('games.found_games') }} /</span>

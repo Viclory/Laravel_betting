@@ -119,5 +119,18 @@
     color: #fff;
     line-height: 35px;
     display: inline-block;
+}
 
+.psp-types img{
+
+	margin-bottom : 0px;
+	margin-left : 35px;	
+	position : relative;
+	top : 30px;
+	height : 40px;
+}
+
+.currency{
+	position : relative;
+	margin-left : 4px;
 }
