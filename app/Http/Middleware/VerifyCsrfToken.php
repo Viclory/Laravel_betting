@@ -23,6 +23,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/games/get-fav',
         '/games/del-from-fav',
         '/affiliates/get-players-data',
-        '/affiliates/get-transactions-data'
+        '/affiliates/get-transactions-data',
+        '/live-chat/create-ticket'
     ];
 }

@@ -572,4 +572,14 @@ class StaygamingBO extends Model
 
 	    return $res;
     }
+
+    public static function createSupportTicket(Request $request) {
+	    $url = 'api/v1/live-chat/create-ticket';
+
+	    $params = $request->toArray();
+
+	    $res = self::api($url, 'POST', $params);
+
+	    return $res;
+    }
 }

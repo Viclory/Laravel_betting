@@ -34,8 +34,6 @@ class PlayerController extends Controller
 				'kycDocs',
 				'profileUpdate',
 				'uploadkycDocs',
-				'makeWithdraw',
-				'makeDeposit'
 			]]);
 		if(isset( Session::all()['player'] )){
 

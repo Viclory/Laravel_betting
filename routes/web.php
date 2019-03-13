@@ -41,11 +41,13 @@ Route::post('/update-password', 'PlayerController@updatePassword');
 Route::get('/sport', 'HomeController@sport');
 Route::post('/player/register', 'PlayerController@register');
 Route::post('/player/login', 'PlayerController@login');
+
+Route::post('/live-chat/create-ticket', 'HomeController@createSupportTicket');
 //Auth::routes();
 //
 Route::get('/logout', 'PlayerController@logout');
 //
-//Route::post('/deposit', 'PlayerController@makeDeposit');
+Route::post('/deposit', 'PlayerController@makeDeposit');
 //Route::post('/withdraw', 'PlayerController@makeWithdraw');
 //Route::get('/my-account', 'PlayerController@myAccount');
 //

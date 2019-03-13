@@ -29,10 +29,10 @@ class Functions {
 
 	public static function getBonusesList()
 	{
-		$bonuses = [];
-		if (\Auth::user() != null) {
-			$bonuses = StaygamingBO::getBonusList(\Auth::user()->player_id);
-			if($bonuses->status=='1'){
+        $bonuses = [];
+        if (\Auth::user() != null) {
+            $bonuses = StaygamingBO::getBonusList(\Auth::user()->player_id);
+            if($bonuses->status=='1'){
 				$bonuses = $bonuses->result;
 			}else{
 				$bonuses = [];
