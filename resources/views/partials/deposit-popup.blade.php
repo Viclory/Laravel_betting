@@ -3,7 +3,7 @@
     <?php $playerInfo = \App\Helpers\Functions::getPlayerInfo(); ?>
     <?php $bonuses = \App\Helpers\Functions::getBonusesList(); ?>
     <div class="simple-popup payment-order hidden">
-		 <p class="h2" data-text="Депозит с neteller">{{ __('depo.depo_with') }} Astropay</p>
+		 <p class="h2" data-text="Депозит с neteller">{{ __('depo.depo_with') }} Credit Card</p>
         <div class="max-w">
             <p class="large">Min deposit amount: 1.16 USD<br> Max deposit amount: 116.50 USD<br> Remaining deposit amount: 116.50 USD</p>
             <!--
