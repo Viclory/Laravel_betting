@@ -2119,22 +2119,17 @@ $(document).ready(function(){
         }
         else {
             $(this).parents('li').removeClass('active');
-            $(this).parents('.control-box').find('.btn:not(.sel-provider)').addClass('disabled');
-			alert('remove');
+            //$(this).parents('.control-box').find('.btn:not(.sel-provider)').addClass('disabled');
+			//alert('remove');
 		}
         if ($(this).closest('.provider_list').length) {
             // var route_new_url = $('#sort_url').val();
-			alert("list");
+			//alert("list");
             $('.jq_search_input').val('');
 
             var tag = $('#games-filter-box').find('.js-filter-games.active:first').data('tag') || '';
             var provider = $(this).closest('.provider_list').find('li.active:first').data('provider') || '';
-
-            // console.log(provider);
-
-            // $.get(route_new_url, {tag: tag, provider: provider}, function (data) {
-            //     $('.jq_casino_content').html(data);
-            // }, 'html');
+			
         }
     });
 
@@ -2182,16 +2177,38 @@ $(document).ready(function(){
         }
 
         selected_vendor = $(this).parents('.provider-popup').find('ul.choose-list li.active a').attr('data-vendor-id');
+		if( selected_vendor == undefined || selected_vendor == 'undefined' )
+		{
+			
+			/* getPopularGames();
+			  getNewGames();
+			  getAllGames();
+				
+				$('.games-list').addClass('hidden');
+				$('.popular-games-items').removeClass('hidden');
+				$('.new-games-items').removeClass('hidden');
+				$('.all-games-items').removeClass('hidden');
+			*/
+			location.reload();
 
+		}
+		else
+		{
+		//console.log(selected_vendor);
         // remove probably selected game_type
         if (filter_params.casino_type == 'casino') {
             setFilterParam({game_type: 'slot'});
-
+			//alert("casino");
         } else {
             setFilterParam({game_type: 'all-tables'});
-        }
+			//alert('al');
+		}
 
-        getVendorGames();
+		
+			getVendorGames();
+		}
+			
+        
     });
 
 
@@ -2481,9 +2498,6 @@ $(document).ready(function(){
 
 	var getBalance = function(){
 		
-		if( logged )
-		{
-			
 		
 		$.post('/player/get-balance',function(result){
 			
@@ -2504,7 +2518,6 @@ $(document).ready(function(){
 			
 		});
 	
-		}
 	}
 	
 	

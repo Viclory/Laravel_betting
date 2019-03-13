@@ -3,7 +3,7 @@
     <?php $playerInfo = \App\Helpers\Functions::getPlayerInfo(); ?>
     <?php $bonuses = \App\Helpers\Functions::getBonusesList(); ?>
     <div class="simple-popup payment-order hidden">
-        <p class="h2" data-text="Депозит с neteller">{{ __('depo.depo_with') }} Astropay</p>
+		 <p class="h2" data-text="Депозит с neteller">{{ __('depo.depo_with') }} Astropay</p>
         <div class="max-w">
             <p class="large">Min deposit amount: 1.16 USD<br> Max deposit amount: 116.50 USD<br> Remaining deposit amount: 116.50 USD</p>
             <!--
@@ -73,12 +73,24 @@
                         </label>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
+                    {{--<div class="col-sm-offset-2 col-sm-10">--}}
                     <button type="button" class="btn btn-primary mt-3">Done</button>
+                    {{--</div>--}}
                 </div>
+
+
+
+
             </form>
         </div>
         <span class="js-close-popup" title="{{ __('common.close') }}"></span>
     </div>
+
+	<div class="simple-popup invoke-gateway hidden" style="padding-bottom:0px">
+	 <iframe id="invoke-payment" class="invoke-payment" style="position:relative;width:100%;height:600px;"></iframe>
+	<span class="js-close-popup" title="{{ __('common.close') }}"></span>
+	</div>
+
 @endif
