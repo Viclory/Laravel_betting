@@ -1,5 +1,5 @@
 $('form.deposit-form button').on('click', function (e) {
-
+	console.log('in deposite');
     var form = $(this).parents('form');
     var amount = $(form).find('input[name="amount"]');
     var payment_method = $(form).find('input[name="payment_method"]:checked');
@@ -85,9 +85,14 @@ $('form.deposit-form button').on('click', function (e) {
             if ($(form).find('input[name="payment_method"]:checked').val() == 'IDEAL') {
                 url += '/' + $(form).find('select[name="bank"]').val();
             }
-            window.open(url, '_blank');
+           console.log(url);
+		    $('#invoke-payment').attr('src',url);
+		    $('.simple-popup').removeClass('visible').addClass('hidden');
+			$('.invoke-gateway').removeClass('hidden').addClass('visible');
+		   //window.open(url, '_blank');
             // top.location.href = url;
-        }
+			
+		}
     }
 
     e.preventDefault();

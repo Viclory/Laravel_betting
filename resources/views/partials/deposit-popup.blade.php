@@ -1,9 +1,8 @@
 @if(Auth::user())
     <?php $balanceObj = App\StaygamingBO::getBalanceByPlayerId(Auth::user()->player_id); ?>
     <?php $playerInfo = \App\Helpers\Functions::getPlayerInfo(); ?>
-    <?php $bonuses = \App\Helpers\Functions::getBonusesList(); ?>
     <div class="simple-popup payment-order hidden">
-        <p class="h2" data-text="Депозит с neteller">{{ __('depo.depo_with') }} Astropay</p>
+		 <p class="h2" data-text="Депозит с neteller">{{ __('depo.depo_with') }} Astropay</p>
         <div class="max-w">
             <p class="large">Min deposit amount: 1.16 USD<br> Max deposit amount: 116.50 USD<br> Remaining deposit amount: 116.50 USD</p>
             <!--
@@ -42,23 +41,7 @@
                 <input type="hidden" name="mobile" value="{{ $playerInfo->phone }}">
 
 
-                @if(count($bonuses)>0)
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label" for="inputEmail3">Bonus</label>
-                        <div class="col-sm">
-                            <select class="form-control" id="bonuses" name="bonus_id">
-                                <option value="0">select bonus</option>
-
-                                @foreach($bonuses as $bonus)
-                                    <option value="{{ $bonus->id }}">{{ $bonus->title }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div/>
-                @else
-                    <input type="hidden" name="bonus_id" value="0">
-                @endif
-
+                <input type="hidden" name="bonus_id" value="0">
                 <div class="form-group">
                     <label  class="control-label" for="amount">Amount</label>
                     <div>
@@ -78,8 +61,7 @@
                             {{--<input type="radio" name="payment_method" value="NT" class="d-none" autocomplete="off">--}}
                         {{--</label>--}}
                     {{--</div>--}}
-                <!--
-                                <div class="col-md-4 box">
+                <!--    <div class="col-md-4 box">
                                     <label class="btn">
                                         <img src="{{ asset('img/payments/skrill1.png') }}" alt="..." class="img-thumbnail img-check">
                                         <input type="radio" name="payment_method" value="MBKR" required class="d-none" autocomplete="off">
@@ -113,22 +95,22 @@
                     @endif
 
                     @if(in_array($playerInfo->currency->char_code, array('EUR', 'USD', 'CAD', 'GBP')))
-                        {{--<div class="col-md-4 box">--}}
-                            {{--<label class="">--}}
-                                {{--<img src="{{ asset('img/payments/ecopayz.png') }}" alt="..." class="img-check">--}}
-                                {{--<input type="radio" name="payment_method" value="ECOVOUCHER" class="d-none" autocomplete="off">--}}
-                            {{--</label>--}}
-                        {{--</div>--}}
+                        <div class="col-md-4 box">
+                            <label class="">
+                                <img src="{{ asset('img/payments/ecopayz.png') }}" alt="..." class="img-check">
+                                <input type="radio" name="payment_method" value="ECOVOUCHER" class="d-none" autocomplete="off">
+                            </label>
+                        </div>
                     @endif
 
 
                     @if($playerInfo->currency->char_code == 'EUR')
-                        {{--<div class="col-md-4 box">--}}
-                            {{--<label class="">--}}
-                                {{--<img src="{{ asset('img/payments/paykasa.png') }}" alt="..." class="img-check">--}}
-                                {{--<input type="radio" name="payment_method" value="PAYKASA" class="d-none" autocomplete="off">--}}
-                            {{--</label>--}}
-                        {{--</div>--}}
+                        <div class="col-md-4 box">
+                            <label class="">
+                                <img src="{{ asset('img/payments/paykasa.png') }}" alt="..." class="img-check">
+                                <input type="radio" name="payment_method" value="PAYKASA" class="d-none" autocomplete="off">
+                            </label>
+                        </div>
                     @endif
 
 
@@ -338,4 +320,10 @@
         </div>
         <span class="js-close-popup" title="{{ __('common.close') }}"></span>
     </div>
+	
+	<div class="simple-popup invoke-gateway hidden" style="padding-bottom:0px">
+	 <iframe id="invoke-payment" class="invoke-payment" style="position:relative;width:100%;height:600px;"></iframe>
+	<span class="js-close-popup" title="{{ __('common.close') }}"></span>
+	</div>
+	
 @endif
