@@ -176,4 +176,10 @@ class HomeController extends Controller
                 'casino_type' => 'sport']
         );
     }
+
+    public function createSupportTicket(Request $request) {
+        $res = \App\StaygamingBO::createSupportTicket($request);
+
+        return $res;
+    }
 }
