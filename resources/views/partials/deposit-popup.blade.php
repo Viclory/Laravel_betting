@@ -5,7 +5,7 @@
     <div class="simple-popup payment-order hidden">
 		 <p class="h2" data-text="Депозит с neteller">{{ __('depo.depo_with') }} Credit Card</p>
         <div class="max-w">
-            <p class="large">Min deposit amount: 1.16 USD<br> Max deposit amount: 116.50 USD<br> Remaining deposit amount: 116.50 USD</p>
+            <p class="large">Min deposit amount: 15 {{ $playerInfo->currency->char_code }}<br> Max deposit amount: 10000 EUR</p>
             <!--
             <form action="#" class="form">
                 <div class="field">
@@ -69,7 +69,7 @@
                     <div class="col-md-4 box">
                         <label class="" href="#">
                             <img src="{{ asset('img/payments/logo_creditcard.png') }}" alt="..." class="">
-                            <input type="radio" name="payment_method" value="RAVEDIRECTFP" required class="d-none" autocomplete="off">
+                            <input type="radio" name="payment_method" value="RAVEDIRECTFP" required class="d-none" autocomplete="off" checked>
                         </label>
                     </div>
                 </div>

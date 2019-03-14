@@ -16,7 +16,7 @@
             @elseif($active == 'live-sport')
                 <a href="{{ URL::to('/live-sport') }}">Live Sport</a>
             @else
-                <a href="{{ URL::to('/bingo') }}">Bingo</a>
+                <!--<a href="{{ URL::to('/bingo') }}">Bingo</a>-->
             @endif
         </li>
         <li>
