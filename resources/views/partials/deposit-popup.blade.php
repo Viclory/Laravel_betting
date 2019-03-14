@@ -5,7 +5,7 @@
     <div class="simple-popup payment-order hidden">
 		 <p class="h2" data-text="Депозит с neteller">{{ __('depo.depo_with') }} Credit Card</p>
         <div class="max-w">
-            <p class="large">Min deposit amount: 15 {{ $playerInfo->currency->char_code }}<br> Max deposit amount: 10000 EUR</p>
+            <p class="large">Min deposit amount: {{ $balanceObj->result->min_depo }} {{ $playerInfo->currency->char_code }}<br> Max deposit amount: {{ $balanceObj->result->max_depo }} {{ $playerInfo->currency->char_code }}</p>
             <!--
             <form action="#" class="form">
                 <div class="field">
@@ -62,7 +62,7 @@
                 <div class="form-group">
                     <label  class="control-label" for="amount">Amount</label>
                     <div>
-                        <input type="number" required class="form-control" name="amount" min="10" max="10000" placeholder="Enter amount to deposit">
+                        <input type="number" required class="form-control" name="amount" min="{{ $balanceObj->result->min_depo }}" max="{{ $balanceObj->result->max_depo }}" placeholder="Enter amount to deposit">
                     </div>
                 </div>
                 <div class="form-group form-inline psp-types">
