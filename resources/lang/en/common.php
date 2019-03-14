@@ -87,5 +87,6 @@ return [
     'choose_withdraw_method' => 'Choose withdraw method',
     'new_withdraw' => 'New',
     'done_withdraw' => 'Processed',
-    'bonus_tab' => 'Bonus Tab'
+    'bonus_tab' => 'Bonus Tab',
+    'depo_profile_not_filled' => 'You need to fill your player\'s profile required fields to do deposit, such as City, Address, Zip, Phone'
 ];

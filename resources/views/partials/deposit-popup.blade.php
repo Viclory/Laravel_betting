@@ -62,7 +62,7 @@
                 <div class="form-group">
                     <label  class="control-label" for="amount">Amount</label>
                     <div>
-                        <input type="number" required class="form-control" name="amount" placeholder="Enter amount to deposit">
+                        <input type="number" required class="form-control" name="amount" min="10" max="10000" placeholder="Enter amount to deposit">
                     </div>
                 </div>
                 <div class="form-group form-inline psp-types">
@@ -75,8 +75,15 @@
                 </div>
 
                 <div class="form-group">
+                    <p class="alert alert-danger error-text">
+                        {{ __('common.depo_profile_not_filled') }}
+                    </p>
+                </div>
+
+
+                <div class="form-group">
                     {{--<div class="col-sm-offset-2 col-sm-10">--}}
-                    <button type="button" class="btn btn-primary mt-3">Done</button>
+                    <button type="button" @if ($playerInfo->can_depo == false)  {{'disabled'}} @endif class="btn btn-primary mt-3">Done</button>
                     {{--</div>--}}
                 </div>
 
