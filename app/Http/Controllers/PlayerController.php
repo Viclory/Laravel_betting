@@ -343,7 +343,8 @@ class PlayerController extends Controller
     {
         return view('player.activation-email-sent', [
             'title' => 'Congrats! You\'ve registered!',
-            'text' => 'Only thing is left is to activate your profile. Please check your registration email and follow instructions there'
+            'text' => ''
+//            'text' => 'Only thing is left is to activate your profile. Please check your registration email and follow instructions there'
         ]);
     }
 
