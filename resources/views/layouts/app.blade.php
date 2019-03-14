@@ -32,9 +32,9 @@
                     <a href="{{ URL::to('/sport') }}" class="sport-link" title="Sport">
                         <span class="chest" data-text="Sport">Sport</span>
                     </a>
-                    <a href="{{ URL::to('/bingo') }}" class="bingo-link" title="Bingo">
+                    <!--<a href="{{ URL::to('/bingo') }}" class="bingo-link" title="Bingo">
                         <span class="chest" data-text="Bingo">Bingo</span>
-                    </a>
+                    </a>-->
                     <a href="{{ URL::to('/') }}#bonus-anchor" class="bonus-link" title="Bonus">
                         <span class="chest" data-text="Bonus">Bonus</span>
                     </a>
