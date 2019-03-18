@@ -31,7 +31,6 @@ class AffiliateAuth
 
     public function checkAffiliatesCredentials($request) {
 
-//        dd('ssss');
         if (!$request->has('login') || !$request->has('password')) {
             return false;
         }
