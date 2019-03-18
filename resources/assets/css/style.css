@@ -5168,6 +5168,15 @@ html:not(.ie) .games-list .game-item .overlay span:before{
         margin: 0;
         }
     }
+	
+	@media screen and (max-width : 321px){
+		#header .controls a[data-popup="registration-popup"]{
+			display :none !important;
+			font-size : 10px !important;
+		}
+	
+	}
+	
 @media screen and (max-width: 780px){
     /*Independent*/
     .container{
@@ -5181,8 +5190,16 @@ html:not(.ie) .games-list .game-item .overlay span:before{
         top: 0;
         }
     #header .controls .js-open-popup.small-btn, #header .controls .icon-btn.deposit{
-        display: none;
+        /*display: flex;*/
         }
+		#header .controls .sum{
+			display : none !important; 
+		}
+		
+		#header .controls a[data-popup="registration-popup"]{
+			font-size : 10px !important;
+		}
+		
     #logo{
         margin: 18px 12px 0 -10px;
         }

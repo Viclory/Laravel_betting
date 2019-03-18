@@ -937,21 +937,31 @@ $(document).ready(function(){
 
         var game_id = $link.data('game-id');
 		$('.js-game-like').attr('data-game-id',game_id);
-        if (e.target.nodeName == 'DIV') {
-            var iframe_url = getIframeUrl(game_id, logged);
+        
+		if( $(this).attr('data-text') == 'Play for free' )
+		{
+			var playMode = false;
+		}
+		else
+		{
+			var playMode = logged;
+		}
+		//alert(playMode);
+		if (e.target.nodeName == 'DIV') {
+            var iframe_url = getIframeUrl(game_id, playMode);
 			//console.log("this is in div");
         } else if (e.target.nodeName == 'SPAN') {
 			//console.log("this is in span -- "+game_id);
 			//var iframe_url = $(this).data('src');
 
-            var iframe_url = getIframeUrl(game_id, logged);
+            var iframe_url = getIframeUrl(game_id, playMode);
         } else if (e.target.nodeName == 'A') {
 			//console.log("this is in anchor");
             
             if(logged)
 			{
 				game_id = $(this).data('game-id');
-				var iframe_url = getIframeUrl(game_id, logged);
+				var iframe_url = getIframeUrl(game_id, playMode);
 			}
 			else
 			{
@@ -959,7 +969,7 @@ $(document).ready(function(){
 				var iframe_url = game_id;
 			}
 	}
-	    console.log(iframe_url);
+	    //console.log(iframe_url);
 	    if (typeof(iframe_url.inject_code) == "undefined") {
         	$link.attr('data-src', iframe_url.result);
 		var gameIframeSrc = $link.attr('data-src');
@@ -970,7 +980,7 @@ $(document).ready(function(){
 		{
 			$(this).attr('data-is-inject','true');
 			$(this).attr('data-src',iframe_url.result);
-			console.log(iframe_url.result);
+			//console.log(iframe_url.result);
 		}			
 		$('#game-frame').removeAttr('src');
 		//console.log(iframe_url.result);
@@ -1254,7 +1264,7 @@ $(document).ready(function(){
 			
 		if( $(this).attr('take-action') == 'add' )
 		{
-				console.log('add-to-fev');
+				//console.log('add-to-fev');
 				$.post('/games/add-to-fav',{ game_id : gameId, casino_type : casino_type },function(res){
 				var res = JSON.parse(res);
 				if( res["status"] == 1 )
@@ -1267,15 +1277,15 @@ $(document).ready(function(){
 					$('.js-game-like').attr('take-action','remove');
 				}
 				else
-				{	console.log(res.result);
+				{	//console.log(res.result);
 				}
 			});
 		}
 		else if( $(this).attr('take-action') == 'remove' )
 		{
-			console.log('del-from-fev');
+			//console.log('del-from-fev');
 			$.post('/games/del-from-fav',{ game_id : gameId, casino_type : casino_type },function(res){
-				console.log(res);
+				//console.log(res);
 				var res = JSON.parse(res);
 				if( res["status"] == 1 )
 				{	
@@ -1287,7 +1297,7 @@ $(document).ready(function(){
 					$('.js-game-like').attr('take-action','add');
 				}
 				else
-				{	console.log(res.result);
+				{	//console.log(res.result);
 				}	
 			});				
 		}
@@ -1640,7 +1650,7 @@ $(document).ready(function(){
     }
 
     function loader(enable) {
-         console.log('loader started');
+         //console.log('loader started');
         if (enable) {
             $('.ajaxLoader').show();
         } else {
@@ -2506,9 +2516,12 @@ $(document).ready(function(){
 			if( result["status"] == 1 )
 			{	
 				
-				//<span class="sum">0. <span style="font-size:12px;">00 <span style="font-size: 16px;">$</span></span></span>
 				
-				$('.sum').html(result["result"]["balance"]+' <span class="currency">'+result["result"]["currency"]+'</span>');	
+				
+				$('a.deposit .sum').html(result["result"]["balance"]+' <span class="currency">'+result["result"]["currency"]+'</span>');	
+				$('.sum.balance-display').html(result["result"]["balance"]+' <span class="currency">'+result["result"]["currency"]+'</span>');
+				$('.sum.bonus-display').html(result["result"]["bonus"]+' <span class="currency">'+result["result"]["currency"]+'</span>');
+				$('.sum.withdraw-display').html('0 <span class="currency">'+result["result"]["currency"]+'</span>');				
 				console.log(result["result"]);
 			}
 			else{
