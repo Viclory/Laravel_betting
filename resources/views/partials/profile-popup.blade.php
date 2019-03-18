@@ -203,6 +203,7 @@
                                         <td>{{ $payment->currency }}</td>
                                         <td>{{ $payment->value }}</td>
                                         <td>{{ $payment->result }}</td>
+                                        <td>{{ \date('d-m-Y', \strtotime($payment->created_at)) }}</td>
                                     </tr>
                                     @endforeach
                                 </table>
