@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="field">
-                                            <input type="text" class="form-control" name="name" value="{{ $player_info->name }}" placeholder="{{ __('common.your_name') }}">
+                                            <input type="text" class="form-control" name="name" value="{{ $player_info->name }}" placeholder="{{ __('common.your_name') }} {{ __('common.your_surname') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -160,9 +160,9 @@
                         <li>
                             <span class="tab-btn">{{ __('common.balance') }}</span>
                         </li>
-                        <li>
+                        <!--<li>
                             <span class="tab-btn">{{ __('common.history') }}</span>
-                        </li>
+                        </li>-->
                         <li>
                             <span class="tab-btn">{{ __('common.payment_history') }}</span>
                         </li>
@@ -175,20 +175,40 @@
                                     <p class="sum withdraw-display"><strong>0.00</strong> {{ $player_info->currency->char_code }}</p>
                                 </div>
                                 <div class="item">
-                                    <p>{{ __('common.your_bonuses') }}:</p>
+                                    <p>{{ __('common.your_bonuses') }}: {{ $player_info->bonus }}</p>
                                     <p class="sum bonus-display"><strong>{{ $player_info->bonus }}</strong> {{ $player_info->currency->char_code }}</p>
                                 </div>
-                                <div class="item balance-display">
-                                    <p>{{ __('common.your_balance') }}:</p>
+                                <div class="item">
+                                    <p>{{ __('common.your_balance') }}: {{$player_info->balance}}</p>
                                     <p class="sum balance-display"><strong>{{ $player_info->balance }}</strong> {{ $player_info->currency->char_code }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="tab">
-                            {{ __('common.history') }}
-                        </div>
-                        <div class="tab">
-                            {{ __('common.payment_history') }}
+                            @php
+                            $payment_history = \App\Helpers\Functions::getPlayerPaymentHistory();
+                            @endphp
+                            @if(count($payment_history) > 0)
+                                <table class="table">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Currency</th>
+                                        <th>Value</th>
+                                        <th>Result</th>
+                                        <th>Date</th>
+                                    </tr>
+                                    @foreach($payment_history as $payment)
+                                    <tr>
+                                        <td>{{ $payment->id }}</td>
+                                        <td>{{ $payment->currency }}</td>
+                                        <td>{{ $payment->value }}</td>
+                                        <td>{{ $payment->result }}</td>
+                                    </tr>
+                                    @endforeach
+                                </table>
+                            @else
+                                <h3>No operations found</h3>
+                            @endif
                         </div>
                     </div>
                 </div>
