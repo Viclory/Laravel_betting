@@ -72,4 +72,15 @@ class Functions {
 
 	    return $result;
     }
+
+    public static function getPlayerPaymentHistory() {
+
+	    $res = \App\StaygamingBO::getPlayerPaymentHistory();
+
+	    if ($res->status > 0) {
+	        return $res->result;
+        }
+
+        return $res;
+    }
 }

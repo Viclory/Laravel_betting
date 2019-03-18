@@ -582,4 +582,20 @@ class StaygamingBO extends Model
 
 	    return $res;
     }
+
+    public static function getPlayerPaymentHistory() {
+        if (\Auth::user() == null) {
+            $result = array('status' => 0, 'message' => 'player is not logged in');
+        } else {
+            $url = 'api/v1/player/payment-history';
+            $params = array(
+                'player_id' => \Auth::user()->player_id,
+                'api_token' => \Auth::user()->access_token
+            );
+
+            $result = self::api($url, 'POST', $params);
+        }
+
+        return json_decode($result);
+    }
 }
