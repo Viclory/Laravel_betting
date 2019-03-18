@@ -513,7 +513,7 @@ class PlayerController extends Controller
 
     public function getAffiliatesTransactionsData(Request $request) {
 
-        if (!$this->checkAffiliatesIp($request)) {
+        if (/*!$this->checkAffiliatesIp($request)*/false) {
             return response()->json([
                 'status' => 0,
                 'result' => 'forbidden'
