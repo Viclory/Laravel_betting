@@ -37,6 +37,8 @@
 <div id="popup">
     <div class="container">
 
+        @include('partials.notification')
+
         @include('partials.provider-popup')
 
         @if(\Auth::user())
