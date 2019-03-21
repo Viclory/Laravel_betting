@@ -99,11 +99,51 @@ class PlayerController extends Controller
     public function login(Request $request)
     {
 	    $player = Player::where('username', $request->username)->first();
+	    $boPlayer = json_decode(\App\StaygamingBO::checkPlayerExists($request));
+
 	    if (!$player) {
-	        $result = array(
-	            'status' => 0,
-                'message' => __('auth.user_not_found')
-            );
+	        if ($boPlayer->status > 0) {
+
+                $newPlayer = new \App\Player();
+                $newPlayer->username = $boPlayer->result->username;
+                $newPlayer->name = $boPlayer->result->name;
+                $newPlayer->email = $boPlayer->result->email;
+//                var_dump($boPlayer->result->password);exit;
+                $newPlayer->password = bcrypt($boPlayer->result->password);
+                $newPlayer->player_id = $boPlayer->result->id;
+                $newPlayer->balance = $boPlayer->result->balance;
+                $newPlayer->access_token = ' ';
+
+
+//                var_dump($request->toArray());exit;
+
+                $newPlayer->save();
+
+                $result = StaygamingBO::loginUser($request);
+                $res = json_decode($result);
+                if ($res->status > 0) {
+                    if (Auth::attempt(array('username' => $res->result->username, 'password' => $request->password))) {
+                        $player->access_token = $res->result->token;
+
+                        // update balance api call here
+                        $player->balance = $res->result->balance;
+
+                        $player->save();
+                        $request->session()->put('player', $res->result);
+
+                    }
+                }
+
+//                $result = array(
+//                    'status' => 1,
+//                    'message' => 'created and logged in'
+//                );
+            } else {
+                $result = array(
+                    'status' => 0,
+                    'message' => __('auth.user_not_found')
+                );
+            }
 
         } else {
             $result = StaygamingBO::loginUser($request);

@@ -77,8 +77,10 @@ class Functions {
 
 	    $res = \App\StaygamingBO::getPlayerPaymentHistory();
 
-	    if ($res->status > 0) {
+	    if (isset($res->status) && $res->status > 0) {
 	        return $res->result;
+        } else {
+	        throw new \Exception('');
         }
 
         return $res;

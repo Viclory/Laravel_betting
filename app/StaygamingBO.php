@@ -598,4 +598,16 @@ class StaygamingBO extends Model
 
         return json_decode($result);
     }
+
+    public static function checkPlayerExists(Request $request) {
+	    $url = 'api/v1/player/check-if-exists';
+	    $params = array(
+	        'username' => $request->username,
+            'password' => $request->password
+        );
+
+	    $result = self::api($url, 'POST', $params);
+
+	    return $result;
+    }
 }
