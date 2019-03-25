@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <title>Casino | Спорт</title>
+    @include('partials.favicon')
     <link rel="stylesheet" href="{{ asset('css/style.css?v=2.1') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css?v=4.9') }}">
 </head>
