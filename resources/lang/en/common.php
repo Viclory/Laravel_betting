@@ -103,6 +103,7 @@ return [
 	'faq_5' => 'Technical assistance',
 	'faq_6' => 'General questions',
 	'faq_sub' => 'What has been discussed lately?',
-	'bonuses' => 'Bonuses'
+	'bonuses' => 'Bonuses',
+    'no_operations_found' => 'No operations found'
 	
 ];

@@ -208,7 +208,7 @@
                                     @endforeach
                                 </table>
                             @else
-                                <h3>No operations found</h3>
+                                {{ __('common.no_operations_found') }}
                             @endif
                         </div>
                     </div>
