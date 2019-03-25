@@ -80,9 +80,7 @@ class Functions {
 	    if (isset($res->status) && $res->status > 0) {
 	        return $res->result;
         } else {
-	        throw new \Exception('');
+	        return json_decode(json_encode(array('status' => 0, 'result' => [])));
         }
-
-        return $res;
-    }
+	}
 }
