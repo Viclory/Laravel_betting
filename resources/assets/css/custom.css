@@ -157,3 +157,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.are-you-ready .golden-text:before{
+	text-shadow : none !important;
+}

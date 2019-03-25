@@ -6,7 +6,7 @@
     <meta name="format-detection" content="telephone=no">
     <title>Leprecon Casino</title>
     <link rel="stylesheet" href="{{ asset('css/style.css?v=2.1') }}">
-    <link rel="stylesheet" href="{{ asset('css/custom.css?v=4.7') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css?v=5.6') }}">
 </head>
 <body>
 

@@ -6,7 +6,7 @@
     <meta name="format-detection" content="telephone=no">
     <title>Casino | Казино</title>
     <link rel="stylesheet" href="{{ asset('css/style.css?v=2.1') }}">
-    <link rel="stylesheet" href="{{ asset('css/custom.css?v=5.1') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css?v=5.6') }}">
     <script>
         var casino_type = "{{ $casino_type }}";
         var merchant_id = "{{ env('MERCHANT_ID') }}";

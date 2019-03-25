@@ -74,11 +74,11 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <p class="alert alert-danger error-text">
                         {{ __('common.depo_profile_not_filled') }}
                     </p>
-                </div>
+                </div>!-->
 
 
                 <div class="form-group">

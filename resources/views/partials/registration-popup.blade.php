@@ -73,12 +73,12 @@
                     <div class="field">
                         <div class="checkbox-item">
                             <input id="rules-inp" name="rules-inp" id="registration_rules" type="checkbox" checked>
-                            <label for="rules-inp">Я прочитал(а) и принял(а) <a href="">Правила и условия</a></label>
+                            <label for="rules-inp">{{ __('registration.agreement') }} <a href="">{{ __('registration.terms_conditions_link') }}</a></label>
                         </div>
                     </div>
                     <div class="btns-box">
                         <a href="#" data-step="choose-registration" class="btn sub-color js-further-step">{{ __('common.back') }}</a>
-                        <a href="#" data-step="quick-registration-complete" class="btn js-further-step">регистрация</a>
+                        <a href="#" data-step="quick-registration-complete" class="btn js-further-step">{{ __('common.check_in') }}</a>
                     </div>
 
                 </form>
@@ -96,22 +96,22 @@
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" name="player_firstname" id="full_registration_firstname" class="form-control" placeholder="Ваше имя">
+                                    <input type="text" name="player_firstname" id="full_registration_firstname" class="form-control" placeholder="{{ __('registration.first_name') }}">
                                 </div>
                             </div>
                         </div>
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" name="player_lastname" id="full_registration_lastname" class="form-control" placeholder="Ваша фамилия">
+                                    <input type="text" name="player_lastname" id="full_registration_lastname" class="form-control" placeholder="{{ __('registration.last_name') }}">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <select name="gender" id="full_registration_gender" class="select" data-placeholder="Пол">
+                                    <select name="gender" id="full_registration_gender" class="select" data-placeholder="{{ __('registration.gender') }}">
                                         <option></option>
-                                        <option value="m">Мужчина</option>
-                                        <option value="f">Женщина</option>
+                                        <option value="m">{{ __('registration.gender_male') }}</option>
+                                        <option value="f">{{ __('registration.gender_female') }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <select name="currency" id="full_registration_currency" class="select" data-placeholder="Валюта">
+                                    <select name="currency" id="full_registration_currency" class="select" data-placeholder="{{ __('registration.currency') }}">
                                         <option value=""></option>
                                         <?php $currencies = \App\Helpers\Functions::getCurrencies(); ?>
                                         @foreach($currencies as $currency)
@@ -138,18 +138,18 @@
                             <div id="calendar2"></div>
                         </div>
                         <div class="btns-box">
-                            <a href="#" data-step="choose-registration" class="btn sub-color js-further-step">Назад</a>
-                            <a href="#" data-step="step2" class="btn js-to-step fix-width">Далее</a>
+                            <a href="#" data-step="choose-registration" class="btn sub-color js-further-step">{{ __('common.back') }}</a>
+                            <a href="#" data-step="step2" class="btn js-to-step fix-width">{{ __('common.further') }}</a>
                         </div>
                     </form>
                 </div>
                 <div class="step step2 hidden">
-                    <p class="title">Регистрация почти завершена - последний шаг</p>
+                    <p class="title">{{ __('registration.last_step') }}</p>
                     <form class="form" id="full-registration-step2">
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <select name="country" id="full_registration_country" class="select" data-placeholder="Страна">
+                                    <select name="country" id="full_registration_country" class="select" data-placeholder="{{ __('registration.country') }}">
                                         <option></option>
                                         <?php $countries = \App\Helpers\Functions::getCountries(); ?>
                                         @foreach ($countries as $country)
@@ -160,69 +160,69 @@
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" name="city" id="full_registration_city" class="form-control" placeholder="Город">
+                                    <input type="text" name="city" id="full_registration_city" class="form-control" placeholder="{{ __('registration.city') }}">
                                 </div>
                             </div>
                         </div>
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" name="address" id="full_registration_address" class="form-control" placeholder="Адрес">
+                                    <input type="text" name="address" id="full_registration_address" class="form-control" placeholder="{{ __('registration.address') }}">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <input type="text" name="zip" id="full_registration_zip" class="form-control" placeholder="Почтовый индекс">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="two-cols">
-                            <div class="col">
-                                <div class="field">
-                                    <input type="text" name="phone" id="full_registration_phone" class="form-control" placeholder="Телефон">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="field">
-                                    <input type="text" name="promocode" id="full_registration_promocode" class="form-control" placeholder="Введите промокод">
+                                    <input type="text" name="zip" id="full_registration_zip" class="form-control" placeholder="{{ __('registration.postcode') }}">
                                 </div>
                             </div>
                         </div>
                         <div class="two-cols">
                             <div class="col">
                                 <div class="field">
-                                    <input type="password" name="password" id="full_registration_password" class="form-control" placeholder="Пароль">
+                                    <input type="text" name="phone" id="full_registration_phone" class="form-control" placeholder="{{ __('registration.phone') }}">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="field">
-                                    <input type="password" name="confirm_password" id="full_registration_confirm_password" class="form-control" placeholder="Повторите пароль">
+                                    <input type="text" name="promocode" id="full_registration_promocode" class="form-control" placeholder="{{ __('registration.promo_code') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="two-cols">
+                            <div class="col">
+                                <div class="field">
+                                    <input type="password" name="password" id="full_registration_password" class="form-control" placeholder="{{ __('registration.password') }}">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="field">
+                                    <input type="password" name="confirm_password" id="full_registration_confirm_password" class="form-control" placeholder="{{ __('registration.repeat_password') }}">
                                 </div>
                             </div>
                         </div>
                         <div class="field">
                             <div class="checkbox-item">
                                 <input id="rules-inp2" name="rules-inp2" type="checkbox" checked="">
-                                <label for="rules-inp2">Я прочитал(а) и принял(а) <a href="#">Правила и условия</a></label>
+                                <label for="rules-inp2">{{ __('registration.agreement') }} <a href="#">{{ __('registration.terms_conditions_link') }}</a></label>
                             </div>
                         </div>
                         <div class="btns-box">
-                            <a href="#" data-step="step1" class="btn sub-color js-to-step">Назад</a>
-                            <a href="#" data-step="full-registration-complete" class="btn js-further-step">Регистрация</a>
+                            <a href="#" data-step="step1" class="btn sub-color js-to-step">{{ __('common.back') }}</a>
+                            <a href="#" data-step="full-registration-complete" class="btn js-further-step">{{ __('common.check_in') }}</a>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="registration-complete hidden child">
-                <p class="title">Регистрация завершена.<br>Подтвердите ваш E-mail.</p>
-                <p>Чтобы подтвердить E-mail, перейдите в Вашу электронную почту, откройте наше письмо и перейдите по ссылке.</p>
+                <p class="title">{{ __('registration.success_1') }}<br>{{ __('registration.success_2') }}</p>
+                <p>{{ __('registration.success_3') }}</p>
             </div>
         </div>
         <div class="bg-box">
             <img src="{{ asset('img/registration-character.png') }}" alt="">
             <p class="are-you-ready">
-                <span class="golden-text" data-text="А ты готов">А ты готов</span>
-                <span class="golden-text large" data-text="выигрывать">выигрывать</span>
+                <span class="golden-text" data-text="{{ __('registration.ready_1') }}"> {{ __('registration.ready_1') }} </span>
+                <span class="golden-text large" data-text="{{ __('registration.ready_2') }}"> {{ __('registration.ready_2') }} </span>
             </p>
         </div>
     </div>

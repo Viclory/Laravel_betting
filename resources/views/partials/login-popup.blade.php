@@ -19,3 +19,11 @@
     </footer>
     <span class="js-close-popup" title="{{ __('auth.close') }}"></span>
 </div>
+
+<div class="simple-popup notification-popup hidden">
+    <p class="h2" data-text="Депозит с neteller">Credit Card</p>
+        <div class="max-w">
+            <p class="large" style="font-size:14px;text-align:center;letter-spacing:0.8px">dsadsadasdasd</p>
+		</div>
+ <span class="js-close-popup" title=""></span>
+</div> 

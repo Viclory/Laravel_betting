@@ -299,9 +299,9 @@ $(document).ready(function(){
         
         setFilterParam({game_type: 'favorite',sub_container:false,type: 'favorite',limit : 30, casino_type : casino_type, append : false});
 		$.post('/games/get-fav',filter_params,function(games){
-			console.log(games);
+			//console.log(games);
 			var games = JSON.parse(games);
-			console.log(games.result);
+			//console.log(games.result);
 			
 			placeGames(games);
 			
@@ -453,12 +453,12 @@ $(document).ready(function(){
                 method: 'post',
                 async: false,
                 success: function(data, status, xhr) {
-					console.log(data);
+					//console.log(data);
                     if (data.status > 0) {
                         // console.log('> 0');
                         // console.log(data.result);
                         request_result = data;
-						console.log(request_result);
+						//console.log(request_result);
                     } else {
                          alert('something went wrong');
                         return false;
@@ -467,7 +467,7 @@ $(document).ready(function(){
             }
         );
 
-         console.log(url);
+         //console.log(url);
 
         return request_result.status > 0 ? request_result : null;
     }
@@ -739,7 +739,11 @@ $(document).ready(function(){
         } else if(tag == 'favorites'){
 			if( !logged )
 			{
-				$('#popup').find('.visible').removeClass('visible').addClass('hidden');
+
+				$('.js-filter-games').removeClass('active');
+				$(this).addClass('active');
+			
+			$('#popup').find('.visible').removeClass('visible').addClass('hidden');
         var dataPopup = 'authorization';
         $html.addClass('opened-popup');
         $("." + dataPopup).removeClass('hidden').addClass('visible');
@@ -751,6 +755,9 @@ $(document).ready(function(){
             var resizeEvent = new Event('resize');
             window.dispatchEvent(resizeEvent);
         }, 250);
+			
+			
+			
 			}
 			else{
 					getFavGames();
@@ -969,12 +976,24 @@ $(document).ready(function(){
 				var iframe_url = game_id;
 			}
 	}
-	    //console.log(iframe_url);
+	   // console.log(iframe_url);
 	    if (typeof(iframe_url.inject_code) == "undefined") {
+			$('.ajaxLoader').show();
         	$link.attr('data-src', iframe_url.result);
 		var gameIframeSrc = $link.attr('data-src');
-		$('#game-frame').attr('src', gameIframeSrc);
-	    } else {
+		$('#game-box-holder').html('<iframe id="game-frame" src="" data-ratio="16/9" data-launch-width="320" data-launch-height="240"></iframe>');
+		 
+		 $('#game-frame').attr('src', gameIframeSrc);
+		 $('.ajaxLoader').fadeOut('slow');
+	    
+		gameLaunchWidth = $('html').find('#game-frame').attr('data-launch-width');
+        gameLaunchHeight = $('html').find('#game-frame').attr('data-launch-height');
+        gameProportion = gameLaunchWidth / gameLaunchHeight;
+        windowGameHeight = $(window).height() - 160;
+		$('#game-iframe-box .sub-box').css({width:windowGameHeight * gameProportion, height: windowGameHeight});
+		$('.ajaxLoader').fadeOut('slow');
+		
+		} else {
 		
 		if( logged && mobile )
 		{
@@ -985,16 +1004,40 @@ $(document).ready(function(){
 		$('#game-frame').removeAttr('src');
 		//console.log(iframe_url.result);
 		var tempIframe = iframe_url.result+'<script>$(document).ready(function(){ egamingsStartNetEnt(); })</script>';
-		$('#temp-container').html(tempIframe);
+		//$('#temp-container').html(tempIframe);
 		
 		$('.ajaxLoader').show();
-		setTimeout(function(){ $('#game-frame').attr('src',$('#egamings_container').attr('src'));$('#temp-container').html(''); $('.ajaxLoader').fadeOut('slow'); $('.loader').hide(); }, 2000);
+		$('#game-box-holder').html('<div data-ratio="16/9" id="game-frame"></div>');
 		
-		/*var doc = document.getElementById('game-frame').contentWindow.document;
-		doc.open();
-		doc.write(iframe_url.result);
-		doc.close();	
-		*/
+		$('#game-frame').html(tempIframe);
+		
+		gameLaunchWidth = $('html').find('#game-frame').attr('data-launch-width');
+        gameLaunchHeight = $('html').find('#game-frame').attr('data-launch-height');
+        gameProportion = gameLaunchWidth / gameLaunchHeight;
+        windowGameHeight = ($(window).height() - 160) + 20;
+		
+		
+		//
+		setTimeout(function(){
+			
+			if( $('object#egamings_container').attr('width') == undefined || $('object#egamings_container').attr('width') == 'undefined'  )
+			{
+				$('#game-iframe-box .sub-box').css('width',windowGameHeight * gameProportion);
+		        $('#game-iframe-box .sub-box').css('height',windowGameHeight);
+				$('#egamings_container').removeAttr('style');
+				//alert('iframe');
+			}
+			else
+			{
+				$('#game-iframe-box .sub-box').css('width','auto');
+				$('#game-iframe-box .sub-box').css('height','auto');
+				//alert('object');
+			}
+			
+			$('.ajaxLoader').fadeOut('slow');
+			
+		},3000);
+		
 		//console.log(iframe_url.result);
 		}
 
@@ -1035,16 +1078,6 @@ $(document).ready(function(){
 						else{
 							
 							var mobile_launch_url = JSON.parse(mobile_launch_url);
-							/*var mobile_launch_url = mobile_launch_url + 
-								"<script>"+
-								"document.getElementById('egamings_container').onload = function() {"+
-								"window.location.href = document.getElementsByTagName('iframe')[0].src;"+
-								"}"+
-								"</script>";
-							*/
-							//var mobile_launch_url = mobile_launch_url.replace('</span>','</iframe>');
-							//var mobile_launch_url = mobile_launch_url.replace('<span','<iframe style="width:100%;height:100vh" ');
-							//x.document.write(mobile_launch_url);
 								
 							$('body').append(mobile_launch_url);
 							$('body').append('<script>egamingsStartNetEnt(function(){ alert("done"); });</script>');
@@ -1079,13 +1112,7 @@ $(document).ready(function(){
         //$('#game-frame').attr('src', gameIframeSrc);
 	//console.log($('#game-frame').first().contents().find('body').html('test-test'));
 
-        gameLaunchWidth = $('html').find('#game-frame').attr('data-launch-width');
-        gameLaunchHeight = $('html').find('#game-frame').attr('data-launch-height');
-        gameProportion = gameLaunchWidth / gameLaunchHeight;
-        windowGameHeight = $(window).height() - 160;
-
-        $('#game-iframe-box .sub-box').css({width:windowGameHeight * gameProportion, height: windowGameHeight});
-
+        
         /*Init*/
         jsClock();
 
@@ -1149,7 +1176,7 @@ $(document).ready(function(){
         if($('#game-iframe-box .js-full-screen').hasClass('active')){
             toggleFullScreen(document.body);
         }
-		
+		$('#game-box-holder').html('');
 		clearInterval(intervalBalance);
 		getBalance();
 		
@@ -1918,7 +1945,7 @@ $(document).ready(function(){
             fit: true,
             tabidentify: 'tabs',
             activate: function() {
-                console.log('tab activated');
+                //console.log('tab activated');
                
             }
         });
@@ -2369,11 +2396,20 @@ $(document).ready(function(){
 				{
 					$('input[name="games-search-box"]').val(window.sessionStorage.keyword);
 					search($('input[name="games-search-box"]'));
-					console.log('search--->'+window.sessionStorage.keyword);
+					//console.log('search--->'+window.sessionStorage.keyword);
 				}
 				else
 				{
-					setUserState();
+					//console.log(window.sessionStorage.game_type);	
+					if( window.sessionStorage.game_type == 'favorites' )
+					{		
+							getFavGames();
+					}
+					else
+					{
+							setUserState();
+					}
+					
 				}
 				$('.js-filter-games').removeClass('active');
 				$('.js-filter-games[data-game-type="'+window.sessionStorage.game_type+'"]').addClass('active');
@@ -2522,7 +2558,7 @@ $(document).ready(function(){
 				$('.sum.balance-display').html(result["result"]["balance"]+' <span class="currency">'+result["result"]["currency"]+'</span>');
 				$('.sum.bonus-display').html(result["result"]["bonus"]+' <span class="currency">'+result["result"]["currency"]+'</span>');
 				$('.sum.withdraw-display').html('0 <span class="currency">'+result["result"]["currency"]+'</span>');				
-				console.log(result["result"]);
+				//console.log(result["result"]);
 			}
 			else{
 					//console.log("cant update");
@@ -2563,7 +2599,7 @@ $(document).ready(function(){
 				
 			}
 			
-			console.log(window.sessionStorage.clicked);
+			//console.log(window.sessionStorage.clicked);
 		
 	});
 	
@@ -2573,7 +2609,7 @@ $(document).ready(function(){
 	 if( window.sessionStorage.games )
 	 {
 		 var games = JSON.parse(window.sessionStorage.games);
-		 console.log(games);
+		 //console.log(games);
 		 if( games.length > 0 )
 		 {
 			$('.ajaxLoader').show(); 
@@ -2618,7 +2654,27 @@ $(document).ready(function(){
 	
 	}
 	
+	var invokeNotification = function(message,flag){
+			
+		var dataPopup = 'notification-popup';
+        $('.notification-popup .h2').html(flag);
+		$('.notification-popup .large').html(message);
+		$html.addClass('opened-popup');
+        $("." + dataPopup).removeClass('hidden').addClass('visible');
+
+        var resizeEvent = new Event('resize');
+        window.dispatchEvent(resizeEvent);
+
+        setTimeout(function(){
+            var resizeEvent = new Event('resize');
+            window.dispatchEvent(resizeEvent);
+        }, 250);
+	}
+	
 	$(document).ready(function(){
+			
+			//invokeNotification('We recvied your message, We will get back to you shortly.','success');
+		
 			
 			$('.sum').hide();
 			getBalance();

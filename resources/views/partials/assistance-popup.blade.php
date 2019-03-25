@@ -10,7 +10,7 @@
     <div class="main-box">
         <p class="h2">{{ __('common.how_can_we_help_you') }}?</p>
         <p>{{ __('common.assistance_popup_send_message_guide') }}</p>
-        <p>Онлайн-чат открыт с 08:00 до 00:00</p>
+        <p>{{ __('common.live_chat_open_time') }}</p>
         <div class="assistance-items">
             <div class="item" style="cursor:pointer"  onClick="chatButton.onClick();">
                 <div class="icon">
@@ -52,11 +52,11 @@
     </div>
     <div class="faq-box assistance-child">
         <p class="h2">{{ __('common.faq') }}</p>
-        <p>Что обсуждалось в последнее время?</p>
+        <p>{{ __('common.faq_sub') }}</p>
         <div class="accordion sub-appearance">
             <div class="item">
                 <div class="title">
-                    <p>1. Как начать играть на LepreconCasino</p>
+                    <p>1. {{ __('common.faq_1') }}</p>
                 </div>
                 <div class="text">
                     <ul>
@@ -161,7 +161,7 @@
             </div>
             <div class="item">
                 <div class="title">
-                    <p>2. Депозиты</p>
+                    <p>2. {{ __('common.faq_2') }}</p>
                 </div>
                 <div class="text">
                     <ul>
@@ -247,7 +247,7 @@
             </div>
             <div class="item">
                 <div class="title">
-                    <p>3. Вывод средств</p>
+                    <p>3. {{ __('common.faq_3') }}</p>
                 </div>
                 <div class="text">
                     <ul>
@@ -276,7 +276,7 @@
             </div>
             <div class="item">
                 <div class="title">
-                    <p>4. Ваши документы</p>
+                    <p>4. {{ __('common.faq_4') }}</p>
                 </div>
                 <div class="text">
                     <ul>
@@ -315,7 +315,7 @@
             </div>
             <div class="item">
                 <div class="title">
-                    <p>5. Техническая помощь</p>
+                    <p>5. {{ __('common.faq_5') }}</p>
                 </div>
                 <div class="text">
                     <ul>
@@ -377,7 +377,7 @@
             </div>
             <div class="item">
                 <div class="title">
-                    <p>6. Общие вопросы LepreconCasino</p>
+                    <p>6. {{ __('common.faq_6') }}</p>
                 </div>
                 <div class="text">
                     <ul>
@@ -448,11 +448,11 @@
         </form>
     </div>
     <div class="message-box assistance-child">
-        <p class="h2">Send a message to support</p>
-        <p>The answer will be within 12 hours</p>
+        <p class="h2">{{ __('common.message_support') }}</p>
+        <p>{{ __('common.message_support_sub') }}</p>
         <form action="#" class="form">
             <div class="field required">
-                <label class="field-name">Your e-mail address</label>
+                <label class="field-name">{{ __('common.your_email_address') }}</label>
                 <div class="inp-box">
                     <input type="text" id="supportEmail" name="supportEmail" class="form-control" placeholder="Email">
                 </div>
@@ -467,7 +467,7 @@
                     <textarea class="form-control" id="supportMessage" name="supportMessage" rows="10" cols="10" placeholder="Message"></textarea>
                 </div>
             </div>
-            <button type="button" onclick="createTicket()" class="btn full-width">send message</button>
+            <button type="button" onclick="createTicket()" class="btn full-width">{{ __('common.send_message') }}</button>
         </form>
     </div>
 </div>

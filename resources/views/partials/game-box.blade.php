@@ -54,10 +54,13 @@
         <div class="align-m">
             <div class="container">
                 <div id="game-iframe-box">
-                    <div class="sub-box">
-                        <img src="{{ asset('img\game-iframe-proportion.png') }}" alt="">
-                        <iframe id="game-frame" src="" data-ratio="16/9" data-launch-width="320" data-launch-height="240"></iframe>
-                    </div>
+                    <div class="sub-box" style="overflow: hidden;">
+                        <!--<img src="{{ asset('img\game-iframe-proportion.png') }}" alt="">-->
+                        <!-- data-launch-width="320" data-launch-height="240" -->
+						<section id="game-box-holder">
+						<iframe id="game-frame" src="" data-ratio="16/9"  ></iframe>
+						</section>
+					</div>
                     <div class="controls">
                         <div class="control-btn js-full-screen">
                             <div class="pretty-hint">

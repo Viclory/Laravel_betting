@@ -88,5 +88,21 @@ return [
     'new_withdraw' => 'New',
     'done_withdraw' => 'Processed',
     'bonus_tab' => 'Bonus Tab',
-    'depo_profile_not_filled' => 'You need to fill your player\'s profile required fields to do deposit, such as City, Address, Zip, Phone'
+    'depo_profile_not_filled' => 'You need to fill your player\'s profile required fields to do deposit, such as City, Address, Zip, Phone',
+	'check_in' => 'Check In',
+	'further' => 'Further',
+	'message_support' => 'Send a message to support',
+	'message_support_sub' => 'The answer will be within 12 hours',
+	'your_email_address' => 'Your Email Address',
+	'send_message' => 'Send Message',
+	'live_chat_open_time' => 'Live chat is open from 08:00 to 00:00',
+	'faq_1' => 'How to start playing at LepreconCasino',
+	'faq_2' => 'Deposits',
+	'faq_3' => 'Withdrawal of funds',
+	'faq_4' => 'KYC procedure, documents',
+	'faq_5' => 'Technical assistance',
+	'faq_6' => 'General questions',
+	'faq_sub' => 'What has been discussed lately?',
+	'bonuses' => 'Bonuses'
+	
 ];
