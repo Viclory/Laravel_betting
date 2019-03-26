@@ -1695,7 +1695,7 @@ $(document).ready(function(){
 
         $('.not-found-text').remove();
 
-		$('.ajaxLoader').show();
+		//$('.ajaxLoader').show();
 
         // $('.games-list.' + filter_params.type + '-games-items').removeClass('hidden');
 
@@ -1890,7 +1890,7 @@ $(document).ready(function(){
         //     count_games_in_section =
         // });
 
-		$('.ajaxLoader').fadeOut('slow');	
+		//$('.ajaxLoader').fadeOut('slow');	
         return false;
     }
 
