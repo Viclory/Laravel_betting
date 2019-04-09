@@ -1,6 +1,6 @@
 <div class="boxes-holder full-register-block">
     
-        <form id="#full-registration-step1" action="{{ URL::to('/player/register') }}" method="post">	
+        <form id="full-registration-step1" action="{{ URL::to('/player/register') }}" method="post">	
 		<input type="hidden" name="merchant_id" id="merchant_id" value="{{ env('MERCHANT_ID') }}">
 		
 		<div class="box box-1 full-register-block-1">
@@ -65,7 +65,7 @@
             </a>
         </div>
 		</form>
-		<form id="#full-registration-step2" action="{{ URL::to('/player/register') }}" method="post">	
+		<form id="full-registration-step2" action="{{ URL::to('/player/register') }}" method="post">	
 		
         <div class="box box-2 full-register-block-2">
             <h2>Регистрация почти завершена - последний шаг</h2>
@@ -73,7 +73,7 @@
                 <div class="form-row">
                     <label>Страна</label>
                     <div class="col-right-func-select col-right-func-number-select w100_992">
-                        <span class="col-right-func-select-header">Россия</span><div class="col-right-func-select-toggle"><i class="icon-svernut-dly-vsex-stranic"></i></div>
+                        <span class="col-right-func-select-header input_country">Россия</span><div class="col-right-func-select-toggle"><i class="icon-svernut-dly-vsex-stranic"></i></div>
                         <div class="col-right-func-select-options-wrapper">
                             <ul class="col-right-func-select-options">
                                 <li>Россия</li>
@@ -138,7 +138,7 @@
                 <div class=" form-row date-birthday">
                     <label>Дата рождения</label>
                     <div class="col-right-func-select col-right-func-number-select birthday-day">
-                        <span class="col-right-func-select-header">01</span><div class="col-right-func-select-toggle"><i class="icon-svernut-dly-vsex-stranic"></i></div>
+                        <span class="col-right-func-select-header input_bdate_day">01</span><div class="col-right-func-select-toggle"><i class="icon-svernut-dly-vsex-stranic"></i></div>
                         <div class="col-right-func-select-options-wrapper">
                             <ul class="col-right-func-select-options">
                                 <li>02</li>
@@ -175,7 +175,7 @@
                         </div>
                     </div>
                     <div class="col-right-func-select col-right-func-number-select birthday-month">
-                        <span class="col-right-func-select-header">Январь</span><div class="col-right-func-select-toggle"><i class="icon-svernut-dly-vsex-stranic"></i></div>
+                        <span class="col-right-func-select-header input_bdate_month">Январь</span><div class="col-right-func-select-toggle"><i class="icon-svernut-dly-vsex-stranic"></i></div>
                         <div class="col-right-func-select-options-wrapper">
                             <ul class="col-right-func-select-options">
                                 <li>Январь</li>
@@ -194,7 +194,7 @@
                         </div>
                     </div>
                     <div class="col-right-func-select col-right-func-number-select birthday-year">
-                        <span class="col-right-func-select-header">2017</span><div class="col-right-func-select-toggle"><i class="icon-svernut-dly-vsex-stranic"></i></div>
+                        <span class="col-right-func-select-header input_bdate_year">2017</span><div class="col-right-func-select-toggle"><i class="icon-svernut-dly-vsex-stranic"></i></div>
                         <div class="col-right-func-select-options-wrapper">
                             <ul class="col-right-func-select-options">
                                 <li>2017</li>
@@ -215,13 +215,13 @@
                     </div>
                 </div>
                 <div class="form-row gender">
-                    <label>Пол</label>
+                    <label>Gender</label>
                     <div class="col-right-func-select col-right-func-number-select gender-select">
-                        <span class="col-right-func-select-header">Муж</span><div class="col-right-func-select-toggle"><i class="icon-svernut-dly-vsex-stranic"></i></div>
+                        <span class="col-right-func-select-header input_gender">Male</span><div class="col-right-func-select-toggle"><i class="icon-svernut-dly-vsex-stranic"></i></div>
                         <div class="col-right-func-select-options-wrapper">
                             <ul class="col-right-func-select-options">
-                                <li>Муж</li>
-                                <li>Жен</li>
+                                <li>Male</li>
+                                <li>Female</li>
                             </ul>
                         </div>
                     </div>
