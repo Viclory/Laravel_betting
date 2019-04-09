@@ -9,49 +9,33 @@
                 <div class="form-row">
                     <label>E-mail</label>
                     <input name="email" id="input-email" class="tippeable" original-title="" autofocus="true" type="email">
-                    <div class="error">
-                        Введите правильный E-mail
-                    </div>
+                    
                 </div>
                 <div class="form-row info">
                     <label>Логин</label>
                     <input autocomplete="off" name="username" id="input-username" class="tippeable" original-title="" type="text">
-                    <div class="error">
-                        Введите правильный логин
                     </div>
-                </div>
             </fieldset>
             <fieldset>
                 <div class="form-row">
                     <label>Ваше имя</label>
                     <input name="firstname" id="name" class="tippeable" original-title="" type="text">
-                    <div class="error">
-                        Введите правильный пароль
-                    </div>
+                    
                 </div>
                 <div class="form-row">
                     <label>Ваша фамилия</label>
                     <input name="lastname" id="input-lastname" class="tippeable" original-title="" type="text">
-                    <div class="error">
-                        Введите правильный пароль
                     </div>
-                </div>
             </fieldset>
             <fieldset>
                 <div class="form-row">
                     <label>Пароль</label>
                     <input autocomplete="off" name="password" id="input-password" class="tippeable" original-title="" type="password">
-                    <div class="error">
-                        Введите правильный пароль
-                    </div>
-                </div>
+                  </div>
                 <div class="form-row">
                     <label>Повторите пароль</label>
                     <input id="input-retype-password" class="tippeable" original-title="" name="confirm_password" type="password">
-                    <div class="error">
-                        Введите правильный пароль
-                    </div>
-                </div>
+                 </div>
 
             </fieldset>
             <div class="form-fields-tip">
@@ -87,25 +71,16 @@
                 <div class="form-row info">
                     <label>Адрес</label>
                     <input autocomplete="off" name="address" id="address" class="tippeable" original-title="" type="text">
-                    <div class="error">
-                        Введите правильный пароль
-                    </div>
-                </div>
+                  </div>
             </fieldset>
             <fieldset>
                 <div class="form-row">
                     <label>Город</label>
                     <input name="city" id="city" class="tippeable" original-title="" type="text">
-                    <div class="error">
-                        Введите правильный пароль
-                    </div>
-                </div>
+                 </div>
                 <div class="form-row">
                     <label>Почтовый индекс</label>
                     <input name="zip" id="zip" class="tippeable" original-title="" type="text">
-                    {{--<div class="error">--}}
-                        {{--Введите правильный пароль--}}
-                    {{--</div>--}}
                 </div>
             </fieldset>
             <!--<fieldset>

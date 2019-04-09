@@ -1,6 +1,9 @@
 $('#full-registration-step1').validate({
 			
             focusCleanup: true,
+			onfocusout:false,
+			onfocusin:false,
+			onkeyup:false,
 			debug: true,
 			rules: {
                 username: {
@@ -36,6 +39,7 @@ $('#full-registration-step1').validate({
             },
              
             errorPlacement: function(error, element){
+				$(element).parents('.field').find('.field-error').remove();
 			    var field_error = '<div class="field-error"><div class="align-m">' +
                     '<p>' + error.text() + '</p>' + '</div>' + '</div>';
 
@@ -54,6 +58,11 @@ $('#full-registration-step1').validate({
  $('#full-registration-step2').validate({
 			
             focusCleanup: true,
+			onfocusout:false,
+			onfocusin:false,
+			onkeyup:false,
+			debug: true,
+			
 			debug: true,
 			rules: {
                 address: {
@@ -96,7 +105,7 @@ $('#full-registration-step1').validate({
 
 	var registerObj = {
 		username : $('input[name="username"]').val(),
-		name : $('input[name="firstname"]').val()+ ' '+ $('#input[name="lastname"]').val(),
+		name : $('input[name="firstname"]').val()+ ' '+ $('input[name="lastname"]').val(),
 		email : $('input[name="email"]').val(),
 		password : $('input[name="password"]').val(),
 		address : $('input[name="address"]').val(),
@@ -106,6 +115,8 @@ $('#full-registration-step1').validate({
 		dob : $('.input_dob_year font font').html()+'-'+$('.input_dob_month font font').html()+'-'+$('.input_dob_day font font').html(),
 		merchant_id : $('input[name="merchant_id"]').val()
 	}
+	
+	console.log(registerObj);
 	
 	$.post($('#full-registration-step1').attr('action'),registerObj,function(result){
 		console.log(result);
